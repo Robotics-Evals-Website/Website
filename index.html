@@ -21,7 +21,7 @@
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('reb-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;1,6..72,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
    THE SEEDED FIELD — tokens
@@ -57,6 +57,10 @@
   --fs-body:1.0625rem;
   --fs-small:.9rem;
   --fs-label:.75rem;
+  --fs-label-sm:.65rem;
+  --fs-body-sm:.9375rem;
+  --fs-data:.8rem;
+  --tr-label:.1em;
 }
 @media (prefers-color-scheme:dark){
   :root{
@@ -98,17 +102,16 @@ h3{font-size:var(--fs-h3);line-height:1.3;font-weight:600}
 p{margin:0}
 a{color:var(--accent);text-decoration:none}
 a:hover{color:var(--accent-strong)}
-strong{font-weight:600}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:2px}
 .wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
 .mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
 
 /* section rhythm + markers */
 .band{padding-block:clamp(64px,8vw,120px);border-top:1px solid var(--line)}
-.marker{font-family:var(--mono);font-size:var(--fs-label);letter-spacing:.14em;text-transform:uppercase;
+.marker{font-family:var(--mono);font-size:var(--fs-label);letter-spacing:var(--tr-label);text-transform:uppercase;
   color:var(--ink-muted);margin:0 0 clamp(1.75rem,3vw,2.75rem)}
 .marker b{color:var(--accent);font-weight:500}
-.eyebrow{font-family:var(--mono);font-size:var(--fs-label);letter-spacing:.16em;text-transform:uppercase;
+.eyebrow{font-family:var(--mono);font-size:var(--fs-label);letter-spacing:var(--tr-label);text-transform:uppercase;
   color:var(--accent);font-weight:500;margin:0}
 .lead{font-size:var(--fs-lead);color:var(--ink-muted);line-height:1.5;max-width:60ch}
 .prose{max-width:68ch}
@@ -132,7 +135,7 @@ header.top{
 .brand .dot{width:9px;height:9px;border-radius:50%;border:2px solid var(--accent);flex:none;position:relative}
 .brand .dot::after{content:"";position:absolute;inset:2px;border-radius:50%;background:var(--accent)}
 nav.main{margin-left:auto;display:flex;align-items:center;gap:1.35rem;flex:none}
-nav.main a.nlink{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;
+nav.main a.nlink{font-family:var(--mono);font-size:var(--fs-label);letter-spacing:var(--tr-label);text-transform:uppercase;
   color:var(--ink-muted);position:relative;padding:.2rem 0}
 nav.main a.nlink::after{content:"";position:absolute;left:0;bottom:-2px;height:1px;width:0;background:var(--accent);
   transition:width .18s var(--ease)}
@@ -168,7 +171,7 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
 .hero .lead{max-width:60ch;color:var(--ink-muted)}
 .hero .lead .amt{color:var(--ink);font-weight:500;white-space:nowrap}
 .cta-row{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2rem;align-items:center}
-.cta-note{font-family:var(--mono);font-size:var(--fs-label);letter-spacing:.06em;text-transform:uppercase;
+.cta-note{font-family:var(--mono);font-size:var(--fs-label);letter-spacing:var(--tr-label);text-transform:uppercase;
   color:var(--ink-muted);margin-top:1.1rem}
 
 /* status bar */
@@ -177,7 +180,7 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
 .statusbar .wrap{display:grid;gap:1px;background:var(--line-strong);grid-template-columns:repeat(2,1fr);padding-inline:0}
 @media (min-width:760px){.statusbar .wrap{grid-template-columns:repeat(4,1fr)}}
 .status-cell{background:var(--surface-2);padding:1rem clamp(1rem,3vw,1.6rem)}
-.status-cell span{display:block;font-family:var(--mono);font-size:var(--fs-label);letter-spacing:.1em;
+.status-cell span{display:block;font-family:var(--mono);font-size:var(--fs-label);letter-spacing:var(--tr-label);
   text-transform:uppercase;color:var(--ink-muted);margin-bottom:.3rem}
 .status-cell b{font-family:var(--mono);font-weight:500;font-size:1.12rem;color:var(--ink);font-variant-numeric:tabular-nums}
 .status-cell b em{font-style:normal;color:var(--accent)}
@@ -197,7 +200,7 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
 .mission-fig{margin:0}
 .mf-sheet{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:clamp(12px,2.2vw,16px)}
 .mf-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding-bottom:10px;margin-bottom:12px;border-bottom:1px solid var(--line)}
-.mf-recipe{font-family:var(--mono);font-size:.82rem;font-weight:500;color:var(--ink);letter-spacing:.01em}
+.mf-recipe{font-family:var(--mono);font-size:var(--fs-data);font-weight:500;color:var(--ink);letter-spacing:.01em}
 .mf-recipe .op{color:var(--accent)}
 .mf-count{font-family:var(--mono);font-size:.68rem;letter-spacing:.04em;color:var(--ink-muted);white-space:nowrap}
 .mf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(6px,1.4vw,10px)}
@@ -225,7 +228,7 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
 .mf-legend .lg-obj{fill:var(--surface);stroke:var(--ink);stroke-width:1.2}
 .mf-legend .lg-ori{stroke:var(--accent);stroke-width:1.3;stroke-linecap:round}
 .mf-legend .lg-reach{fill:none;stroke:var(--ghost);stroke-width:1;stroke-dasharray:3 2.4}
-.mission-fig figcaption{margin-top:1rem;font-family:var(--sans);font-size:.92rem;color:var(--ink-muted);line-height:1.55;max-width:52ch}
+.mission-fig figcaption{margin-top:1rem;font-family:var(--sans);font-size:var(--fs-body-sm);color:var(--ink-muted);line-height:1.55;max-width:52ch}
 
 /* ============================================================
    BENCHMARK CATEGORIES + IDEA LISTS
@@ -236,11 +239,11 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
 .cat-head .cat-idx{font-family:var(--mono);font-size:1rem;font-weight:500;color:var(--accent);
   border:1px solid var(--line-strong);border-radius:5px;width:2rem;height:2rem;display:grid;place-items:center;margin-bottom:1rem}
 .cat-head h3{margin-bottom:.6rem}
-.cat-head p{color:var(--ink-muted);font-size:.98rem;max-width:40ch}
+.cat-head p{color:var(--ink-muted);font-size:var(--fs-body-sm);max-width:40ch}
 .idea-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.7rem}
-.idea-list li{position:relative;padding-left:1.4rem;font-size:.95rem;color:var(--ink);line-height:1.5;text-wrap:pretty}
+.idea-list li{position:relative;padding-left:1.4rem;font-size:var(--fs-body-sm);color:var(--ink);line-height:1.5;text-wrap:pretty}
 .idea-list li::before{content:"+" / "";position:absolute;left:0;top:0;color:var(--accent);font-family:var(--mono);font-weight:500}
-.idea-list li b{color:var(--ink);font-weight:600;font-family:var(--mono);font-size:.95rem}
+.idea-list li b{color:var(--ink);font-weight:600;font-family:var(--sans)}
 
 /* ============================================================
    TRACKS
@@ -250,24 +253,27 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
 .track{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:clamp(1.5rem,3vw,2.2rem);display:flex;flex-direction:column}
 .track.feature{border-color:var(--line-strong)}
 .track .t-top{display:flex;justify-content:space-between;align-items:baseline;gap:1rem}
-.track .t-label{font-family:var(--mono);font-size:var(--fs-label);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-muted)}
-.track .t-flag{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);border-radius:999px;padding:.15em .55em}
+.track .t-label{font-family:var(--mono);font-size:var(--fs-label);letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--ink-muted)}
+.track .t-flag{font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);border-radius:999px;padding:.15em .55em}
 .track h3{margin:.5rem 0 .3rem}
-.track .t-scope{color:var(--ink-muted);font-size:.95rem}
+.track .t-scope{color:var(--ink-muted);font-size:var(--fs-body-sm)}
 .track .prize{font-family:var(--serif);font-weight:600;font-size:clamp(2.3rem,1.6rem + 2.6vw,3.3rem);line-height:1;
   color:var(--ink);margin:1.3rem 0 .2rem;font-variant-numeric:tabular-nums}
-.track .prize small{display:block;font-family:var(--mono);font-size:.8rem;font-weight:400;color:var(--ink-muted);margin-top:.5rem;letter-spacing:.02em}
-.track .meta{list-style:none;margin:1.3rem 0 0;padding:0;display:grid;gap:.6rem;font-size:.9rem}
+.track .prize small{display:block;font-family:var(--mono);font-size:var(--fs-data);font-weight:400;color:var(--ink-muted);margin-top:.5rem;letter-spacing:.02em}
+.track .meta{list-style:none;margin:1.3rem 0 0;padding:0;display:grid;gap:.6rem;font-size:var(--fs-body-sm)}
 .track .meta li{display:flex;justify-content:space-between;gap:1rem;padding-bottom:.6rem;border-bottom:1px solid var(--line)}
 .track .meta li span{color:var(--ink-muted)}
 .track .meta li b{font-family:var(--mono);font-weight:500;color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap}
-.track .ms{list-style:none;margin:1.1rem 0 0;padding:0;font-family:var(--mono);font-size:.8rem}
+.track .ms{list-style:none;margin:1.1rem 0 0;padding:0;font-family:var(--mono);font-size:var(--fs-data)}
 .track .ms li{display:flex;justify-content:space-between;gap:1rem;padding:.5rem 0;border-top:1px dashed var(--line)}
 .track .ms li b{color:var(--accent);font-weight:500;font-variant-numeric:tabular-nums;white-space:nowrap}
 .track .ms li span{color:var(--ink-muted)}
 .track .btn{margin-top:auto;padding-top:0;align-self:flex-start}
-.track .ms{margin-bottom:1.5rem}
-.tracks-note{margin-top:1.25rem;font-family:var(--mono);font-size:.8rem;color:var(--ink-muted);letter-spacing:.01em}
+.track .plus{margin:1.5rem 0 0;display:flex;align-items:center;gap:.7em;font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--accent)}
+.track .plus::after{content:"";flex:1;height:1px;background:var(--line)}
+.track .t-total{margin:1.1rem 0 1.5rem;padding-top:.9rem;border-top:1px solid var(--line-strong);font-family:var(--mono);font-size:.8rem;color:var(--ink-muted);letter-spacing:.02em}
+.track .t-total b{color:var(--ink);font-weight:500}
+.tracks-note{margin-top:1.25rem;font-family:var(--mono);font-size:var(--fs-data);color:var(--ink-muted);letter-spacing:.01em}
 
 /* ============================================================
    HOW IT WORKS
@@ -275,19 +281,19 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
 .stages{display:grid;gap:clamp(1rem,2vw,1.5rem);margin-top:clamp(2rem,4vw,3rem)}
 @media (min-width:820px){.stages{grid-template-columns:1fr 1fr}}
 .stage{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:clamp(1.4rem,2.5vw,1.9rem)}
-.stage .s-num{font-family:var(--mono);font-size:var(--fs-label);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.stage .s-num{font-family:var(--mono);font-size:var(--fs-label);letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--accent)}
 .stage h3{margin:.4rem 0 .6rem}
-.stage p{color:var(--ink);font-size:.95rem;text-wrap:pretty}
-.stage .pays{list-style:none;margin:1.1rem 0 0;padding:0;font-family:var(--mono);font-size:.82rem}
+.stage p{color:var(--ink);font-size:var(--fs-body-sm);text-wrap:pretty}
+.stage .pays{list-style:none;margin:1.1rem 0 0;padding:0;font-family:var(--mono);font-size:var(--fs-data)}
 .stage .pays li{display:flex;justify-content:space-between;gap:1rem;padding:.5rem 0;border-top:1px solid var(--line)}
 .stage .pays li b{color:var(--accent);font-weight:500;font-variant-numeric:tabular-nums;white-space:nowrap}
 .stage .pays li span{color:var(--ink-muted)}
 .reqs{margin-top:clamp(1.5rem,3vw,2rem);background:var(--surface-2);border:1px solid var(--line);border-radius:4px;padding:clamp(1.3rem,2.5vw,1.8rem)}
-.reqs h3{font-size:1.1rem;margin-bottom:.9rem}
-.reqs ul{list-style:none;margin:0;padding:0;display:grid;gap:.55rem;color:var(--ink-muted);font-size:.95rem}
+.reqs h3{margin-bottom:.9rem}
+.reqs ul{list-style:none;margin:0;padding:0;display:grid;gap:.55rem;color:var(--ink-muted);font-size:var(--fs-body-sm)}
 .reqs li{display:flex;gap:.7rem}
-.reqs li::before{content:"›" / "";color:var(--accent);font-weight:700}
-.robots-lead{margin:1.2rem 0 .6rem;color:var(--ink-muted);font-size:.95rem;max-width:62ch}
+.reqs li::before{content:"›" / "";color:var(--accent);font-weight:600}
+.robots-lead{margin:1.2rem 0 .6rem;color:var(--ink-muted);font-size:var(--fs-body-sm);max-width:62ch}
 .robots-lead b{color:var(--ink);font-weight:600}
 
 /* --- harness strip --- */
@@ -295,10 +301,10 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
 .harness .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:clamp(14px,3vw,36px);padding-top:clamp(1.4rem,3vw,2rem);padding-bottom:clamp(1.4rem,3vw,2rem)}
 .harness-t{flex:1 1 300px;min-width:0}
 .harness-t b{display:block;font-family:var(--serif);font-weight:500;font-size:var(--fs-h3);letter-spacing:-.01em;color:var(--ink);margin-bottom:.35rem}
-.harness-t p{color:var(--ink-muted);font-size:.98rem;max-width:56ch;margin:0}
+.harness-t p{color:var(--ink-muted);font-size:var(--fs-body-sm);max-width:56ch;margin:0}
 .harness-t em{font-style:normal;color:var(--ink);font-weight:600}
 .harness-p{flex:0 1 auto;display:grid;gap:.5rem;margin:0;padding:0;list-style:none}
-.harness-p li{display:flex;gap:.6em;font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-muted)}
+.harness-p li{display:flex;gap:.6em;font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--ink-muted)}
 .harness-p li::before{content:"›" / "";color:var(--accent)}
 
 /* --- SO-101 bimanual mark --- */
@@ -355,9 +361,9 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
 @media (prefers-reduced-motion:reduce){.arm-svg .j1,.arm-svg .j2,.arm-svg .j3,.arm-svg .ja,.arm-svg .jb,.arm-svg .a-blk{animation:none}.arm-replay{display:none}}
 .arm-cap{margin-top:.7rem;display:flex;align-items:baseline;justify-content:space-between;gap:.6rem}
 .arm-cap b{display:block;font-family:var(--sans);font-weight:500;font-size:.92rem;color:var(--ink)}
-.arm-cap span{display:block;font-family:var(--mono);font-size:.62rem;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-muted);line-height:1.75}
+.arm-cap span{display:block;font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--ink-muted);line-height:1.75}
 .arm-cap .a{color:var(--accent)}
-.arm-replay{flex:none;background:none;border:0;padding:.1rem .2rem;cursor:pointer;font-family:var(--mono);font-size:.6rem;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);border-bottom:1px solid transparent}
+.arm-replay{flex:none;background:none;border:0;padding:.1rem .2rem;cursor:pointer;font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--accent);border-bottom:1px solid transparent}
 .arm-replay:hover,.arm-replay:focus-visible{border-bottom-color:var(--accent)}
 @media (max-width:860px){.reqs{display:block}.arm-fig{width:100%;max-width:280px;margin:1.5rem auto 0}}
 .alt-robots{margin:.9rem 0 0;border-top:1px solid var(--line)}
@@ -378,9 +384,9 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
 .tl::before{content:"";position:absolute;left:-1.6rem;top:.35rem;width:9px;height:9px;border-radius:50%;
   background:var(--bg);border:1.5px solid var(--line-strong);transform:translateX(-1px)}
 .tl.now::before{background:var(--accent);border-color:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 18%,transparent)}
-.tl .d{font-family:var(--mono);font-size:.8rem;letter-spacing:.03em;color:var(--accent);font-variant-numeric:tabular-nums}
+.tl .d{font-family:var(--mono);font-size:var(--fs-data);letter-spacing:.03em;color:var(--accent);font-variant-numeric:tabular-nums}
 .tl b{display:block;font-family:var(--serif);font-weight:500;font-size:1.08rem;margin:.15rem 0 .3rem;letter-spacing:-.01em}
-.tl p{color:var(--ink-muted);font-size:.92rem;max-width:60ch}
+.tl p{color:var(--ink-muted);font-size:var(--fs-body-sm);max-width:60ch}
 
 /* ============================================================
    FAQ
@@ -394,7 +400,7 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
 .faq summary::after{content:"+";position:absolute;right:.2rem;top:1.05rem;font-family:var(--mono);font-size:1.25rem;
   color:var(--accent);transition:transform .2s var(--ease)}
 .faq details[open] summary::after{transform:rotate(45deg)}
-.faq details p{color:var(--ink);padding:0 2.5rem 1.3rem 0;font-size:.98rem;max-width:66ch;text-wrap:pretty}
+.faq details p{color:var(--ink);padding:0 2.5rem 1.3rem 0;font-size:var(--fs-body-sm);max-width:66ch;text-wrap:pretty}
 
 /* ============================================================
    APPLY
@@ -414,10 +420,10 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 .foot-grid{display:grid;gap:2rem}
 @media (min-width:720px){.foot-grid{grid-template-columns:2fr 1fr 1fr}}
 .foot-brand{font-family:var(--serif);font-weight:600;font-size:1.15rem}
-.foot-tag{color:var(--ink-muted);font-size:.92rem;margin-top:.5rem;max-width:40ch}
-.foot-col h3{font-family:var(--mono);font-size:var(--fs-label);letter-spacing:.1em;text-transform:uppercase;
+.foot-tag{color:var(--ink-muted);font-size:var(--fs-body-sm);margin-top:.5rem;max-width:40ch}
+.foot-col h3{font-family:var(--mono);font-size:var(--fs-label);letter-spacing:var(--tr-label);text-transform:uppercase;
   color:var(--ink-muted);margin:0 0 .8rem;font-weight:500}
-.foot-col a{display:block;color:var(--ink-muted);font-size:.92rem;padding:.45rem 0}
+.foot-col a{display:block;color:var(--ink-muted);font-size:var(--fs-body-sm);padding:.45rem 0}
 .foot-col a:hover{color:var(--accent)}
 .foot-meta{margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--line);display:flex;justify-content:space-between;
   gap:1rem;flex-wrap:wrap;font-family:var(--mono);font-size:var(--fs-label);letter-spacing:.03em;color:var(--ink-muted)}
@@ -434,22 +440,22 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 .cb{max-width:1000px;margin:0 auto;background:var(--surface);border:1px solid var(--line);border-radius:6px;
   overflow:hidden;font-family:var(--sans);color:var(--ink)}
 .cb__head{padding:clamp(16px,3vw,26px) clamp(16px,3vw,28px) 6px}
-.cb__eyebrow{font-family:var(--mono);font-weight:500;font-size:.7rem;line-height:1;letter-spacing:.16em;
+.cb__eyebrow{font-family:var(--mono);font-weight:500;font-size:var(--fs-label);line-height:1;letter-spacing:var(--tr-label);
   text-transform:uppercase;color:var(--accent);margin:0 0 .8rem}
 .cb__title{font-family:var(--serif);font-size:clamp(1.4rem,1.1rem + 1.3vw,2rem);line-height:1.14;margin:0 0 .6rem;font-weight:600;letter-spacing:-.015em}
-.cb__lead{margin:0;color:var(--ink-muted);font-size:.98rem;max-width:66ch;line-height:1.55}
+.cb__lead{margin:0;color:var(--ink-muted);font-size:var(--fs-body-sm);max-width:66ch;line-height:1.55}
 .cb__lead b{color:var(--ink);font-weight:600}
 .cb__body{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:clamp(14px,2.4vw,26px);padding:clamp(14px,3vw,26px)}
 @media (max-width:720px){.cb__body{grid-template-columns:1fr}}
 .cb__panel{background:var(--bg);border:1px solid var(--line);border-radius:5px;display:flex;flex-direction:column;min-width:0}
 .cb__panelhd{display:flex;align-items:baseline;justify-content:space-between;gap:8px;padding:11px 14px;border-bottom:1px solid var(--line)}
-.cb__panelhd h3{margin:0;font-family:var(--mono);font-weight:500;font-size:.7rem;line-height:1;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-muted)}
+.cb__panelhd h3{margin:0;font-family:var(--mono);font-weight:500;font-size:var(--fs-label);line-height:1;letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--ink-muted)}
 .cb__tag{font-family:var(--mono);font-weight:500;font-size:.66rem;line-height:1;letter-spacing:.06em;color:var(--accent)}
-.cb__spec{margin:0;padding:14px;font-family:var(--mono);font-weight:400;font-size:.82rem;line-height:1.75;color:var(--ink);overflow-x:auto}
+.cb__spec{margin:0;padding:14px;font-family:var(--mono);font-weight:400;font-size:var(--fs-data);line-height:1.75;color:var(--ink);overflow-x:auto}
 .cb__spec .v{color:var(--accent);font-weight:500}
 .cb__spec .d{color:var(--ink-muted)}
 .cb__spec .rule{color:var(--line-strong)}
-.cb__spec b{color:var(--ink);font-weight:600}
+.cb__spec b{color:var(--ink);font-weight:500}
 .cb__spec .a{color:var(--accent);font-weight:500}
 .cb__figwrap{padding:12px 12px 6px}
 .cb__svg{display:block;width:100%;height:auto;background:var(--bg);border-radius:5px}
@@ -486,7 +492,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 .cb__seed{margin-left:auto;font-family:var(--mono);font-weight:500;font-size:.82rem;color:var(--ink);
   background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:.5em .7em}
 .cb__seed .k{color:var(--accent)}
-.cb__vals{margin:0;font-family:var(--mono);font-weight:400;font-size:.78rem;line-height:1.7;color:var(--ink);white-space:pre;overflow-x:auto}
+.cb__vals{margin:0;font-family:var(--mono);font-weight:400;font-size:var(--fs-data);line-height:1.7;color:var(--ink);white-space:pre;overflow-x:auto}
 .cb__vals .hd{color:var(--ink-muted)}
 .cb__vals .a{color:var(--accent)}
 .cb__sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
@@ -495,7 +501,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 .method-foot{max-width:1000px;margin:clamp(1.5rem,3vw,2.25rem) auto 0;display:grid;gap:clamp(1.25rem,3vw,2rem)}
 @media (min-width:820px){.method-foot{grid-template-columns:1.2fr .8fr;align-items:center}}
 .needlist{list-style:none;margin:0;padding:0;display:grid;gap:.6rem}
-.needlist li{display:flex;gap:.8rem;font-size:.95rem;color:var(--ink-muted)}
+.needlist li{display:flex;gap:.8rem;font-size:var(--fs-body-sm);color:var(--ink-muted)}
 .needlist li b{color:var(--ink);font-weight:500;font-family:var(--mono);font-size:.8rem;letter-spacing:.03em;text-transform:uppercase;min-width:9rem;padding-top:.12rem}
 .callout{padding:1rem 1.2rem;border-left:2px solid var(--accent);background:var(--surface);border-radius:0 5px 5px 0;font-size:1rem;color:var(--ink)}
 
@@ -505,14 +511,14 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 .rg{max-width:940px;margin:0 auto;background:var(--surface);border:1px solid var(--line);border-radius:6px;overflow:hidden;font-family:var(--sans);color:var(--ink)}
 .rg__scroll{overflow-x:auto;padding:clamp(12px,2vw,20px) clamp(10px,2vw,18px) 6px}
 .rg__table{border-collapse:separate;border-spacing:0;width:100%;min-width:560px;font-size:.9rem}
-.rg__table caption{caption-side:top;text-align:left;padding:0 6px 12px;font-family:var(--mono);font-weight:500;font-size:.68rem;
-  line-height:1.4;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-muted)}
+.rg__table caption{caption-side:top;text-align:left;padding:0 6px 12px;font-family:var(--mono);font-weight:500;font-size:var(--fs-label-sm);
+  line-height:1.4;letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--ink-muted)}
 .rg__table th,.rg__table td{padding:0;text-align:center}
 .rg__table thead th{position:sticky;top:0;z-index:2;background:var(--surface);padding:10px 12px 12px;vertical-align:bottom;border-bottom:1.5px solid var(--line-strong)}
 .rg__model{font-family:var(--sans);font-weight:600;font-size:.86rem;color:var(--ink);white-space:nowrap}
 .rg__org{display:block;margin-top:2px;font-family:var(--mono);font-size:.64rem;letter-spacing:.04em;color:var(--ink-muted)}
 .rg__corner{text-align:left !important;background:var(--surface)}
-.rg__corner span{font-family:var(--mono);font-weight:500;font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-muted)}
+.rg__corner span{font-family:var(--mono);font-weight:500;font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--ink-muted)}
 .rg__table tbody th{text-align:left;padding:0 16px;white-space:nowrap;border-bottom:1px solid var(--line);background:var(--surface)}
 .rg__fam{font-family:var(--sans);font-weight:600;font-size:.9rem;color:var(--ink)}
 .rg__famsub{display:block;font-family:var(--mono);font-size:.62rem;color:var(--ink-muted);margin-top:1px}
@@ -527,9 +533,9 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 .rg__cell:hover .rg__dash{color:var(--accent)}
 .rg__foot{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;
   padding:14px clamp(16px,3vw,26px) clamp(16px,3vw,22px);border-top:1px solid var(--line);margin-top:2px}
-.rg__caption{margin:0;font-family:var(--mono);font-size:.78rem;line-height:1.5;color:var(--ink-muted)}
+.rg__caption{margin:0;font-family:var(--mono);font-size:var(--fs-data);line-height:1.5;color:var(--ink-muted)}
 .rg__caption .a{color:var(--accent);font-weight:500}
-.rg__badge{font-family:var(--mono);font-weight:500;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);
+.rg__badge{font-family:var(--mono);font-weight:500;font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--accent);
   border:1px solid var(--accent);border-radius:999px;padding:.45em .8em;white-space:nowrap}
 .rg__sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 </style>
@@ -562,7 +568,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
     <div class="wrap">
       <p class="eyebrow">Open bounty · built on Inspect Robots</p>
       <h1>A call for robotics benchmarks.</h1>
-      <p class="lead">Measure what robots can actually do, and how fast that's changing. We fund reproducible, open-source benchmarks built on <b>Inspect Robots</b> &mdash; the public record robotics has never had.</p>
+      <p class="lead">Measure what robots can actually do, and how fast that's changing. We fund reproducible, open-source benchmarks built on <b>Inspect Robots</b>. The public record robotics has never had.</p>
       <div class="cta-row">
         <a class="btn btn-primary btn-lg" href="#apply">Apply to build a benchmark</a>
         <a class="btn btn-ghost btn-lg" href="#benchmarks">See what to build</a>
@@ -587,41 +593,45 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
       <p class="marker"><b>01</b> / two ways to take part</p>
       <div class="prose">
         <h2>Choose your track.</h2>
-        <p class="lead">Grants cover the work: compute, materials, and milestone awards that fund your build from idea to independently replicated benchmark.</p>
+        <p class="lead">The award pays for the benchmark you deliver. The robots, compute, and materials budget come <b>on top of it</b>, not deducted from what you earn.</p>
       </div>
       <div class="tracks reveal">
         <div class="track">
           <div class="t-top"><span class="t-label">Track 1 · Simulation</span></div>
           <h3>Sim benchmarks</h3>
           <p class="t-scope">Built into Inspect Robots, the shared harness.</p>
-          <div class="prize">$2,000<small>for the delivered benchmark · up to 15 teams</small></div>
-          <ul class="meta">
-            <li><span>Compute credits</span><b>$1,000 on acceptance</b></li>
-          </ul>
+          <div class="prize">$2,000<small>for the benchmark &middot; up to 15 teams</small></div>
           <ul class="ms">
             <li><span>Benchmark delivered</span><b>up to $2,000</b></li>
           </ul>
+          <p class="plus">Plus, on top of the award</p>
+          <ul class="meta">
+            <li><span>Compute credits, on acceptance</span><b>$1,000</b></li>
+          </ul>
+          <p class="t-total">Up to <b>$3,000</b> per team</p>
           <a class="btn btn-ghost" href="#apply">Apply · Simulation</a>
         </div>
         <div class="track feature">
           <div class="t-top"><span class="t-label">Track 2 · Real-world hardware</span><span class="t-flag">Featured</span></div>
           <h3>Hardware benchmarks</h3>
           <p class="t-scope">Runs on a designated reference robot.</p>
-          <div class="prize">$34,000<small>per team · up to 12 teams</small></div>
-          <ul class="meta">
-            <li><span>Reference robots</span><b>2 &times; SO-101, free</b></li>
-            <li><span>Compute credits (upfront)</span><b>$1,000</b></li>
-            <li><span>Materials (against receipts)</span><b>up to $1,000</b></li>
-          </ul>
+          <div class="prize">$32,000<small>for the benchmark &middot; up to 12 teams</small></div>
           <ul class="ms">
             <li><span>Spec approved</span><b>$2,000</b></li>
             <li><span>Working benchmark</span><b>$8,000</b></li>
             <li><span>Replication + quality tier</span><b>$5,000–$22,000</b></li>
           </ul>
+          <p class="plus">Plus, on top of the award</p>
+          <ul class="meta">
+            <li><span>Two SO-101 follower arms</span><b>free, yours to keep</b></li>
+            <li><span>Compute credits, upfront</span><b>$1,000</b></li>
+            <li><span>Materials, against receipts</span><b>up to $1,000</b></li>
+          </ul>
+          <p class="t-total">Up to <b>$34,000</b> in cash, plus the two arms</p>
           <a class="btn btn-primary" href="#apply">Apply · Hardware</a>
         </div>
       </div>
-      <p class="tracks-note">Every figure is a maximum per team. Compute credits and materials reimbursement are on top of milestone awards. Hardware teams also receive two fully assembled SO-101 follower arms at no cost, shipped after selection and yours to keep; they do not count against the $1,000 materials cap. The final quality-tier amount is set by a rubric published on day one.</p>
+      <p class="tracks-note">Every figure is a maximum per team. The two SO-101 follower arms ship after selection and are yours to keep; they are provided in kind and do not count against the $1,000 materials cap. The final quality-tier amount is set by a rubric published on day one.</p>
     </div>
   </section>
   <!-- ================= BENCHMARKS ================= -->
@@ -630,7 +640,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
       <p class="marker"><b>02</b> / three areas where measurement matters</p>
       <div class="prose">
         <h2>What to build.</h2>
-        <p class="lead">Three areas, three questions: how much paid physical work robots can do, how much of AI's own build-and-maintain loop they can close, and whether any of it is legible to people outside a lab. The examples anchor the idea &mdash; proposals in the same spirit are welcome.</p>
+        <p class="lead">Three areas, three questions: how much paid physical work robots can do, how much of AI's own build-and-maintain loop they can close, and whether any of it is legible to people outside a lab. The examples anchor the idea; proposals in the same spirit are welcome.</p>
       </div>
 
       <div class="cats reveal">
@@ -654,14 +664,14 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
           <div class="cat-head">
             <div class="cat-idx">B</div>
             <h3>AI timelines</h3>
-            <p>How much of the physical loop behind AI progress robots can close without people. Every step a machine takes unassisted &mdash; building robots, servicing compute, running experiments &mdash; removes a human bottleneck from the feedback loop, so the trend line here is direct evidence about how fast takeoff could go.</p>
+            <p>How much of the physical loop behind AI progress robots can close without people. Every step a machine takes unassisted, whether building robots, servicing compute, or running experiments, removes a human bottleneck from the feedback loop, so the trend line here is direct evidence about how fast takeoff could go.</p>
           </div>
           <ul class="idea-list">
             <li><b>SelfBuildBench</b>: assemble a working copy of a reference arm from printed parts and stock hardware; randomize part presentation, fastener set, assembly order.</li>
-            <li><b>MechanicBench</b>: restore another robot to working order &mdash; swap a battery, replace a worn part, tighten loose fixtures; randomize the fault set and component positions.</li>
+            <li><b>MechanicBench</b>: restore another robot to working order by swapping a battery, replacing a worn part, or tightening loose fixtures; randomize the fault set and component positions.</li>
             <li><b>RackBench</b>: mount a compute unit into rails and connect power and data; randomize rail height, unit depth, cable dressing.</li>
             <li><b>HotSwapBench</b>: remove and re-seat a hot-swappable module in a live rack; randomize bay, latch mechanism, insertion force.</li>
-            <li><b>LabBench</b>: execute a wet-lab protocol step &mdash; pipette, weigh, transfer &mdash; to a stated tolerance; randomize vessel layout, volumes, tool positions.</li>
+            <li><b>LabBench</b>: execute a wet-lab protocol step (pipette, weigh, transfer) to a stated tolerance; randomize vessel layout, volumes, tool positions.</li>
             <li><b>ReloadBench</b>: replace a depleted consumable (spool, filter, cartridge) and confirm restored operation; randomize type, seating depth.</li>
           </ul>
         </div>
@@ -813,7 +823,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
           <p class="caption-mono">Built on Inspect Robots · run by RoboCurve · independent of any lab.</p>
         </div>
         <figure class="mission-fig reveal">
-          <div class="mf-sheet" role="img" aria-label="Contact sheet of one benchmark recipe, TidyBench version 1, realized under nine different random seeds. Each of the nine top-down tabletop schematics shows the same robot workcell — a fixed base, a reach envelope, and a gridded work surface — but with a differently sampled goal zone and a differently sampled set of objects at random positions and orientations. The nine samples are visibly different, illustrating that one recipe defines a whole distribution of tasks rather than a single fixed scene.">
+          <div class="mf-sheet" role="img" aria-label="Contact sheet of one benchmark recipe, TidyBench version 1, realized under nine different random seeds. Each of the nine top-down tabletop schematics shows the same robot workcell (a fixed base, a reach envelope, and a gridded work surface) but with a differently sampled goal zone and a differently sampled set of objects at random positions and orientations. The nine samples are visibly different, illustrating that one recipe defines a whole distribution of tasks rather than a single fixed scene.">
             <div class="mf-head">
               <span class="mf-recipe">TidyBench.v1 &nbsp;<span class="op">·</span>&nbsp; <span class="op">realize(</span>recipe, seed<span class="op">)</span></span>
               <span class="mf-count">9 of &#8734; samples</span>
@@ -862,7 +872,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
         <div class="reqs-body">
         <h3>Hardware submission requirements</h3>
         <ul role="list">
-          <li>Runs on the SO-101 &mdash; single-arm or bimanual, using the two follower arms provided</li>
+          <li>Runs on the SO-101, single-arm or bimanual, using the two follower arms provided</li>
           <li>Stays within a bill-of-materials cost cap of about $1,000, excluding the robot</li>
           <li>Specifies precise environment tolerances and success criteria</li>
           <li>Includes a repeatable reset procedure</li>
@@ -942,7 +952,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
       <div class="prose"><h2>From launch to public release.</h2></div>
       <div class="timeline reveal">
         <div class="tl now"><span class="d">Mid-Aug 2026</span><b>Program announced, submissions open</b><p>Rubric, reference robots, and BOM cap published on day one.</p></div>
-        <div class="tl"><span class="d">Early Sep 2026</span><b>Launch hackathon</b><p>Either an in-person event in San Francisco or a virtual one with Apart Research. Meet collaborators, form a team, draft a first proposal.</p></div>
+        <div class="tl"><span class="d">Early Sep 2026</span><b>Launch hackathon</b><p>Meet collaborators, form a team, draft a first proposal.</p></div>
         <div class="tl"><span class="d">Sep 18 2026</span><b>Stage 1 submissions close</b><p>Final deadline for evaluation proposals. Reviewed on a rolling basis until then.</p></div>
         <div class="tl"><span class="d">Late Sep 2026</span><b>Stage 2 cohort selected</b><p>Ideation payouts issued; compute credits, SO-101 arms, and materials budgets disbursed.</p></div>
         <div class="tl"><span class="d">Late Oct 2026</span><b>Mid-point check-in</b><p>First benchmarks integrated into Inspect Robots.</p></div>

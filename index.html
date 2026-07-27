@@ -4,16 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Robotics Evaluation Bounty · measure what robots can actually do</title>
-<meta name="description" content="An open bounty funding rigorous, reproducible, open-source benchmarks of general robotic capability. Grants up to $33,000 per team.">
+<meta name="description" content="An open bounty funding rigorous, reproducible, open-source benchmarks of general robotic capability. Grants up to $34,000 per team, plus a free SO-101 robot arm.">
 <meta name="color-scheme" content="light dark">
 <meta property="og:title" content="Robotics Evaluation Bounty">
-<meta property="og:description" content="There is no public, reproducible way to measure how capable robots are, or how fast that's changing. We fund teams to build one. Grants up to $33,000 per team.">
+<meta property="og:description" content="There is no public, reproducible way to measure how capable robots are, or how fast that's changing. We fund teams to build one. Grants up to $34,000 per team, plus a free SO-101 robot arm.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://robotics-evals-website.github.io/Website/">
 <meta property="og:site_name" content="Robotics Evaluation Bounty">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Robotics Evaluation Bounty">
-<meta name="twitter:description" content="An open bounty funding reproducible, open-source robotics benchmarks. Grants up to $33,000 per team.">
+<meta name="twitter:description" content="An open bounty funding reproducible, open-source robotics benchmarks. Grants up to $34,000 per team, plus a free SO-101 robot arm.">
 <link rel="canonical" href="https://robotics-evals-website.github.io/Website/">
 <meta name="theme-color" content="#F1F4F3" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0C1412" media="(prefers-color-scheme: dark)">
@@ -292,6 +292,12 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
 .robot{background:var(--surface);padding:.85rem 1.1rem}
 .robot b{display:block;font-family:var(--sans);font-weight:500;font-size:.9rem;color:var(--ink);margin-bottom:.2rem}
 .robot span{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-muted)}
+.robots-single{grid-template-columns:1fr !important}
+.robot.is-default{background:color-mix(in srgb,var(--accent) 7%,var(--surface));box-shadow:inset 2px 0 0 var(--accent)}
+.robot.is-default b{color:var(--ink);font-weight:600}
+.robot.is-default span{color:var(--accent)}
+.robots-lead{margin:1.2rem 0 .6rem;color:var(--ink-muted);font-size:.95rem;max-width:62ch}
+.robots-lead b{color:var(--ink);font-weight:600}
 
 /* ============================================================
    TIMELINE
@@ -500,9 +506,9 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
   <!-- ================= STATUS BAR ================= -->
   <div class="statusbar">
     <div class="wrap">
-      <div class="status-cell"><span>Grant pool</span><b>Up to <em>$410,000</em></b></div>
-      <div class="status-cell"><span>Per team</span><b>Up to <em>$33,000</em></b></div>
-      <div class="status-cell"><span>Teams funded</span><b>Up to <em>25</em></b></div>
+      <div class="status-cell"><span>Grant pool</span><b>Up to <em>$500,000</em></b></div>
+      <div class="status-cell"><span>Per team</span><b>Up to <em>$34,000</em></b></div>
+      <div class="status-cell"><span>Teams funded</span><b>Up to <em>27</em></b></div>
       <div class="status-cell"><span>Repository</span><b>Open-source · <em>Jan 2027</em></b></div>
     </div>
   </div>
@@ -718,7 +724,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
           <p class="t-scope">Built into Inspect Robots, the shared harness.</p>
           <div class="prize">$2,000<small>for the delivered benchmark · up to 15 teams</small></div>
           <ul class="meta">
-            <li><span>GPU credits</span><b>$1,000 on acceptance</b></li>
+            <li><span>Compute credits</span><b>$1,000 on acceptance</b></li>
           </ul>
           <ul class="ms">
             <li><span>Benchmark delivered</span><b>up to $2,000</b></li>
@@ -729,20 +735,21 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
           <div class="t-top"><span class="t-label">Track 2 · Real-world hardware</span><span class="t-flag">Featured</span></div>
           <h3>Hardware benchmarks</h3>
           <p class="t-scope">Runs on a designated reference robot.</p>
-          <div class="prize">$33,000<small>per team · up to 10 teams</small></div>
+          <div class="prize">$34,000<small>per team · up to 12 teams</small></div>
           <ul class="meta">
-            <li><span>GPU credits (upfront)</span><b>$2,000</b></li>
+            <li><span>Reference robot</span><b>SO-101, free</b></li>
+            <li><span>Compute credits (upfront)</span><b>$1,000</b></li>
             <li><span>Materials (against receipts)</span><b>up to $1,000</b></li>
           </ul>
           <ul class="ms">
             <li><span>Spec approved</span><b>$2,000</b></li>
             <li><span>Working benchmark</span><b>$8,000</b></li>
-            <li><span>Replication + quality tier</span><b>$5,000–$20,000</b></li>
+            <li><span>Replication + quality tier</span><b>$5,000–$22,000</b></li>
           </ul>
           <a class="btn btn-primary" href="#apply">Apply · Hardware</a>
         </div>
       </div>
-      <p class="tracks-note">Every figure is a maximum per team. GPU credits and materials reimbursement are on top of milestone awards. The final quality-tier amount is set by a rubric published on day one.</p>
+      <p class="tracks-note">Every figure is a maximum per team. Compute credits and materials reimbursement are on top of milestone awards. Hardware teams also receive a fully assembled SO-101 at no cost, shipped after selection and yours to keep; it does not count against the $1,000 materials cap. The final quality-tier amount is set by a rubric published on day one.</p>
     </div>
   </section>
 
@@ -755,7 +762,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
         <div class="stage">
           <span class="s-num">Stage 1 · ~1 month</span>
           <h3>Ideation</h3>
-          <p>Submit an evaluation proposal, including one fully specified task instance. Submissions are accepted on a rolling basis, up to a final deadline.</p>
+          <p>Submit an evaluation proposal, including one fully specified task instance. Submissions are accepted on a rolling basis, up to a final deadline of 18 September 2026.</p>
           <ul class="pays">
             <li><span>Spam or low-effort</span><b>$0</b></li>
             <li><span>Genuine effort, not selected</span><b>$250</b></li>
@@ -765,7 +772,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
         <div class="stage">
           <span class="s-num">Stage 2 · ~3 months</span>
           <h3>Benchmark building</h3>
-          <p>Accepted teams build and deliver against milestone-gated payments; the structure and amounts vary by track. GPU credits are disbursed on selection, with a mid-point check-in partway through.</p>
+          <p>Accepted teams build and deliver against milestone-gated payments; the structure and amounts vary by track. Compute credits are disbursed on selection, with a mid-point check-in partway through, and submissions close 11 December 2026.</p>
           <ul class="pays">
             <li><span>Spec / proposal approved</span><b>Milestone 1</b></li>
             <li><span>Working benchmark delivered</span><b>Milestone 2</b></li>
@@ -777,15 +784,19 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
       <div class="reqs reveal">
         <h3>Hardware submission requirements</h3>
         <ul>
-          <li>Runs on an accepted reference robot</li>
-          <li>Stays within a bill-of-materials cost cap of about $1,000</li>
+          <li>Runs on the SO-101, the default reference embodiment</li>
+          <li>Stays within a bill-of-materials cost cap of about $1,000, excluding the robot</li>
           <li>Specifies precise environment tolerances and success criteria</li>
           <li>Includes a repeatable reset procedure</li>
           <li>States a rollout count, so a score carries an honest error bar</li>
         </ul>
+        <p class="robots-lead">You don't need to own a robot to apply. Every Stage 2 hardware team is sent a fully assembled <b>SO-101</b> at no cost, and keeps it.</p>
+        <div class="robots robots-single">
+          <div class="robot is-default"><b>SO-101</b><span>Arm · default, provided free</span></div>
+        </div>
+        <p class="robots-lead">If you already own one of these, you may propose it as an alternative embodiment instead, subject to approval in your Stage 1 spec.</p>
         <div class="robots">
           <div class="robot"><b>YAM</b><span>Arm</span></div>
-          <div class="robot"><b>SO-101</b><span>Arm</span></div>
           <div class="robot"><b>WidowX AI</b><span>Arm · Trossen</span></div>
           <div class="robot"><b>Franka Research 3</b><span>Arm</span></div>
           <div class="robot"><b>AgiBot X1</b><span>Humanoid</span></div>
@@ -802,11 +813,12 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
       <div class="prose"><h2>From launch to public release.</h2></div>
       <div class="timeline reveal">
         <div class="tl now"><span class="d">Mid-Aug 2026</span><b>Program announced, submissions open</b><p>Rubric, reference robots, and BOM cap published on day one.</p></div>
-        <div class="tl"><span class="d">Early Sep 2026</span><b>In-person launch hackathon</b><p>Meet collaborators, form a team, draft a first proposal.</p></div>
-        <div class="tl"><span class="d">Mid-Sep 2026</span><b>Stage 2 cohort selected</b><p>Ideation payouts and credits disbursed.</p></div>
-        <div class="tl"><span class="d">Mid-Oct 2026</span><b>Mid-point check-in</b><p>First benchmarks integrated into Inspect Robots.</p></div>
-        <div class="tl"><span class="d">Late Nov 2026</span><b>Stage 2 submissions close</b><p>Full reproducibility packages due.</p></div>
-        <div class="tl"><span class="d">Mid-Jan 2027</span><b>Public repository released</b><p>Independent replication complete; benchmarks published open source.</p></div>
+        <div class="tl"><span class="d">Early Sep 2026</span><b>Launch hackathon</b><p>Either an in-person event in San Francisco or a virtual one with Apart Research. Meet collaborators, form a team, draft a first proposal.</p></div>
+        <div class="tl"><span class="d">Sep 18 2026</span><b>Stage 1 submissions close</b><p>Final deadline for evaluation proposals. Reviewed on a rolling basis until then.</p></div>
+        <div class="tl"><span class="d">Late Sep 2026</span><b>Stage 2 cohort selected</b><p>Ideation payouts issued; compute credits, SO-101 arms, and materials budgets disbursed.</p></div>
+        <div class="tl"><span class="d">Late Oct 2026</span><b>Mid-point check-in</b><p>First benchmarks integrated into Inspect Robots.</p></div>
+        <div class="tl"><span class="d">Dec 11 2026</span><b>Stage 2 submissions close</b><p>Full reproducibility packages due.</p></div>
+        <div class="tl"><span class="d">Mid-Jan 2027</span><b>Replication complete, final payments</b><p>QA and independent reproduction checks finish, quality tiers settled, and the public repository is released open source.</p></div>
       </div>
     </div>
   </section>
@@ -819,10 +831,10 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
       <div class="faq reveal">
         <details><summary>Who can apply?</summary><p>Teams building robotics evaluations. You pick one of two tracks (Simulation or Real-world hardware) and one of three areas: impact on jobs, infrastructure &amp; self-maintenance, or societal legibility. Strong newcomers and established researchers are both welcome; what matters is a rigorous, reproducible benchmark.</p></details>
         <details><summary>What exactly does a Stage 1 submission need to contain?</summary><p>An evaluation proposal that includes one fully specified task instance in our required format: a goal, setup variables each with a stated distribution, a target, and success criteria. The instance must be a distribution (a seeded recipe), not a single fixed scene. Hardware proposals must also run on an accepted reference robot, stay within the ~$1,000 bill-of-materials cap, and specify environment tolerances, a reset procedure, and a rollout count.</p></details>
-        <details><summary>How do payments and milestones work?</summary><p>Stage 1 pays $500 for an accepted proposal that advances (genuine-but-not-selected proposals receive $250, capped at 50; spam or low-effort receives $0). Stage 2 pays by milestone. Simulation: up to $2,000 on delivery, plus $1,000 in GPU credits on acceptance. Hardware: $2,000 on spec approval, $8,000 on a working benchmark, and $5,000–$20,000 on passing replication and quality tier, plus $2,000 in GPU credits upfront and up to $1,000 in materials reimbursed against receipts. All figures are per-team maximums.</p></details>
-        <details><summary>How is the final hardware quality-tier amount decided?</summary><p>By a rubric published on the first day of the program, so you know the scoring standard before you build. The replication-plus-quality-tier milestone pays between $5,000 and $20,000 based on that rubric.</p></details>
+        <details><summary>How do payments and milestones work?</summary><p>Stage 1 pays $500 for an accepted proposal that advances (genuine-but-not-selected proposals receive $250, capped at 50; spam or low-effort receives $0). Stage 2 pays by milestone. Simulation: up to $2,000 on delivery, plus $1,000 in compute credits on acceptance. Hardware: $2,000 on spec approval, $8,000 on a working benchmark, and $5,000–$22,000 on passing replication and quality tier, plus $1,000 in compute credits upfront and up to $1,000 in materials reimbursed against receipts. Hardware teams also receive a fully assembled SO-101 in kind, which does not count against the materials cap. All figures are per-team maximums.</p></details>
+        <details><summary>How is the final hardware quality-tier amount decided?</summary><p>By a rubric published on the first day of the program, so you know the scoring standard before you build. The replication-plus-quality-tier milestone pays between $5,000 and $22,000 based on that rubric, with the $5,000 base approved as soon as our rerun lands within your stated tolerance. The rubric scores task-family difficulty, documentation quality, stochasticity of instances, and rollout count.</p></details>
         <details><summary>Which robots can I use for a hardware benchmark?</summary><p>An accepted reference robot. Arms: YAM, SO-101, WidowX AI (Trossen), Franka Research 3. Humanoids: AgiBot X1, Unitree G1. The accepted reference robots are confirmed on day one.</p></details>
-        <details><summary>How are benchmarks licensed and released?</summary><p>Everything is released openly. Code is licensed under MIT; data and documentation under CC-BY. The full public repository is released after independent replication, in mid-January 2027.</p></details>
+        <details><summary>How are benchmarks licensed and released?</summary><p>Everything is released openly. Code is licensed under MIT; data and documentation under CC-BY. QA and independent reproduction checks run after the 11 December 2026 submission deadline; final payments are settled and the full public repository is released in mid-January 2027.</p></details>
         <details><summary>What does "an instance is a distribution" actually mean?</summary><p>Instead of one rehearsed scene, you define named random variables with stated distributions, realized under a seed. Each seed produces a new but fair sample of the same task, and a score is an expectation over many seeded rollouts. This measures whether a system generalizes, rather than whether it memorized one setup.</p></details>
         <details><summary>What is Inspect Robots, and who runs the program?</summary><p>Inspect Robots is the shared evaluation harness that benchmarks are built into: define a benchmark once, run any policy on any supported robot or sim, and get reproducible logs. The program is run by RoboCurve, independent of any frontier lab.</p></details>
       </div>

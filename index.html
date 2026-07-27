@@ -719,8 +719,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
       <p class="marker"><b>03</b> / why this exists</p>
       <div class="prose">
         <h2>There's no standard way to measure a robot's real capabilities.</h2>
-        <p class="lead">Every frontier lab scores its own systems on its own private tasks, then ships the demo that looks best. No one outside the labs can say how capable robots really are, or how fast that's changing.</p>
-        <p class="accent-line">No shared benchmark. No public baseline. No way to check the demo.</p>
+        <p class="accent-line">No shared benchmark. No public baseline. No warning outside the labs.</p>
       </div>
 
       <p class="fig-intro">This registry is the front end of the public record we're building. It starts empty by design; filling it, benchmark by benchmark, is what this program is for.</p>
@@ -1110,7 +1109,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
   "use strict";
   var FAMILIES=[{name:"CableBench",sub:"port-panel insertion"},{name:"MechanicBench",sub:"robot repair / part swap"},{name:"CoffeeBench",sub:"multi-step machine op"},{name:"HotSwapBench",sub:"live-rack module swap"},{name:"HarnessRoute",sub:"deformable routing"},{name:"PourBench",sub:"liquids / pouring"}];
   var N_MODELS=5,body=document.getElementById("rg-body");if(!body)return;
-  body.innerHTML=FAMILIES.map(function(f){var cells="";for(var c=0;c<N_MODELS;c++){cells+='<td class="rg__cell"><span class="rg__dash" aria-hidden="true">—</span><span class="rg__sr">no public data (n = 0)</span></td>';}return '<tr><th scope="row"><span class="rg__fam">'+f.name+'</span><span class="rg__famsub">'+f.sub+'</span></th>'+cells+'</tr>';}).join("");
+  body.innerHTML=FAMILIES.map(function(f){var cells="";for(var c=0;c<N_MODELS;c++){cells+='<td class="rg__cell"><span class="rg__dash" aria-hidden="true">—</span><span class="rg__sr">no result on this benchmark yet</span></td>';}return '<tr><th scope="row"><span class="rg__fam">'+f.name+'</span><span class="rg__famsub">'+f.sub+'</span></th>'+cells+'</tr>';}).join("");
 })();
 
 /* ===================== mission contact sheet: one recipe, nine seeds ===================== */

@@ -398,6 +398,9 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
 .faq summary::after{content:"+";position:absolute;right:.2rem;top:1.05rem;font-family:var(--mono);font-size:1.25rem;
   color:var(--accent);transition:transform .2s var(--ease)}
 .faq details[open] summary::after{transform:rotate(45deg)}
+.faq-list{list-style:none;margin:.7rem 0;padding:0;display:grid;gap:.5rem}
+.faq-list li{display:flex;flex-wrap:wrap;gap:.2em .7em;font-size:var(--fs-body-sm);color:var(--ink-muted);line-height:1.55}
+.faq-list b{color:var(--ink);font-weight:600;flex:none;font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);text-transform:uppercase;padding-top:.25em}
 .faq details p{color:var(--ink);padding:0 2.5rem 1.3rem 0;font-size:var(--fs-body-sm);max-width:66ch;text-wrap:pretty}
 
 /* ============================================================
@@ -423,6 +426,10 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
   color:var(--ink-muted);margin:0 0 .8rem;font-weight:500}
 .foot-col a{display:block;color:var(--ink-muted);font-size:var(--fs-body-sm);padding:.45rem 0}
 .foot-col a:hover{color:var(--accent)}
+.foot-partners{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 1.4rem;margin-top:clamp(1.6rem,3vw,2.2rem);padding-top:1.2rem;border-top:1px solid var(--line);font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);text-transform:uppercase}
+.foot-partners span{color:var(--ink-muted)}
+.foot-partners a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent}
+.foot-partners a:hover,.foot-partners a:focus-visible{border-bottom-color:var(--accent)}
 .foot-meta{margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--line);display:flex;justify-content:space-between;
   gap:1rem;flex-wrap:wrap;font-family:var(--mono);font-size:var(--fs-label);letter-spacing:.03em;color:var(--ink-muted)}
 
@@ -566,7 +573,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
     <div class="wrap">
       <p class="eyebrow">Open bounty · built on Inspect Robots</p>
       <h1>A call for robotics benchmarks.</h1>
-      <p class="lead">Measure what robots can actually do, and how fast that's changing. We fund reproducible, open-source benchmarks built on <b>Inspect Robots</b>. The public record robotics has never had.</p>
+      <p class="lead">We fund open, reproducible benchmarks on <b>Inspect Robots</b>: a public measure of what robots can actually do, and how fast that's changing.</p>
       <div class="cta-row">
         <a class="btn btn-primary btn-lg" href="#apply">Apply to build a benchmark</a>
         <a class="btn btn-ghost btn-lg" href="#benchmarks">See what to build</a>
@@ -817,8 +824,8 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
       <div class="split">
         <div class="prose">
           <h2>A public repository of reproducible robotics evaluations.</h2>
-          <p style="margin-top:1rem">RoboCurve funds teams to build open-source benchmarks on Inspect Robots: rigorous enough for frontier labs to trust, open enough for anyone to run, and reproducible enough to compare across systems and over time.</p>
-          <p class="caption-mono">Built on Inspect Robots · run by RoboCurve · independent of any lab.</p>
+          <p style="margin-top:1rem">We fund teams to build open-source benchmarks on Inspect Robots: rigorous enough for frontier labs to trust, open enough for anyone to run, and reproducible enough to compare across systems and over time.</p>
+          <p class="caption-mono">Built on Inspect Robots · independent of any frontier lab.</p>
         </div>
         <figure class="mission-fig reveal">
           <div class="mf-sheet" role="img" aria-label="Contact sheet of one benchmark recipe, TidyBench version 1, realized under nine different random seeds. Each of the nine top-down tabletop schematics shows the same robot workcell (a fixed base, a reach envelope, and a gridded work surface) but with a differently sampled goal zone and a differently sampled set of objects at random positions and orientations. The nine samples are visibly different, illustrating that one recipe defines a whole distribution of tasks rather than a single fixed scene.">
@@ -970,10 +977,15 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
         <details><summary>What exactly is due at the end of Stage 2?</summary><p>Everything an independent team would need to rerun your benchmark and reproduce your numbers, due 11 December 2026: the finished benchmark running on Inspect Robots, its task specs and documentation, and the seeded rollout results behind every score you report. Hardware benchmarks must also document the reset procedure and environment tolerances they were run under. Our replication attempt runs against exactly this package and nothing else.</p></details>
         <details><summary>How do payments and milestones work?</summary><p>Stage 1 pays $500 for an accepted proposal that advances (genuine-but-not-selected proposals receive $250, capped at 50; spam or low-effort receives $0). Stage 2 pays by milestone. Simulation: up to $2,000 on delivery, plus $1,000 in compute credits on acceptance. Hardware: $2,000 on spec approval, $8,000 on a working benchmark, and $5,000–$22,000 on passing replication and quality tier, plus $1,000 in compute credits upfront and bill-of-materials spend reimbursed against receipts up to that same cap. Hardware teams also receive two SO-101 arms in kind, outside the materials cap. All figures are per-team maximums: at most $3,500 for a simulation team, and $34,500 plus the two arms for a hardware team.</p></details>
         <details><summary>How is the final hardware quality-tier amount decided?</summary><p>By a rubric published on the first day of the program, so you know the scoring standard before you build. The replication-plus-quality-tier milestone pays between $5,000 and $22,000, with the $5,000 base approved as soon as our rerun lands within your stated tolerance. The rubric scores task-family difficulty, documentation quality, stochasticity of instances, and rollout count.</p></details>
-        <details><summary>Which robots can I use for a hardware benchmark?</summary><p>An accepted reference robot. Arms: YAM, SO-101, WidowX AI (Trossen), Franka Research 3. Humanoids: AgiBot X1, Unitree G1. The accepted reference robots are confirmed on day one.</p></details>
+        <details><summary>Which robots can I use for a hardware benchmark?</summary><p>An accepted reference robot:</p>
+        <ul class="faq-list">
+          <li><b>Arms</b> YAM, SO-101, WidowX AI (Trossen), Franka Research 3</li>
+          <li><b>Humanoids</b> AgiBot X1, Unitree G1</li>
+        </ul>
+        <p>The accepted reference robots are confirmed on day one.</p></details>
         <details><summary>How are benchmarks licensed and released?</summary><p>Code is licensed under MIT; data and documentation under CC-BY. QA and independent replication checks run after final deliverables are due on 11 December 2026; the full public repository is released in mid-January 2027.</p></details>
         <details><summary>What does "an instance is a distribution" actually mean?</summary><p>Instead of one rehearsed scene, you define named random variables with stated distributions, realized under a seed. Each seed produces a new but fair sample of the same task, and a score is an expectation over many seeded rollouts: a measure of generalization, not memorization.</p></details>
-        <details><summary>What is Inspect Robots, and who runs the program?</summary><p>Inspect Robots is the shared evaluation harness that benchmarks are built into: define a benchmark once, run any policy on any supported robot or sim, and get reproducible logs. The program is run by RoboCurve, independent of any frontier lab.</p></details>
+        <details><summary>What is Inspect Robots, and who runs the program?</summary><p>Inspect Robots is the shared evaluation harness that benchmarks are built into: define a benchmark once, run any policy on any supported robot or sim, and get reproducible logs. The program is a joint effort of ARIA (Scaling Trust), Constellation, and RoboCurve, independent of any frontier lab.</p></details>
       </div>
     </div>
   </section>
@@ -1006,7 +1018,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
     <div class="foot-grid">
       <div>
         <div class="foot-brand">Robotics Evaluation Bounty</div>
-        <p class="foot-tag">An open bounty for reproducible robotics benchmarks. Built on Inspect Robots. Run by RoboCurve.</p>
+        <p class="foot-tag">An open bounty for reproducible robotics benchmarks, built on Inspect Robots.</p>
       </div>
       <div class="foot-col">
         <h3>Explore</h3>
@@ -1022,6 +1034,12 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
         <a href="#apply">Apply for a grant</a>
         <a href="mailto:hello@example.org">Email the organizers</a>
       </div>
+    </div>
+    <div class="foot-partners">
+      <span>A joint effort of</span>
+      <a href="https://aria.org.uk/opportunity-spaces/trust-everything-everywhere/scaling-trust" target="_blank" rel="noopener noreferrer">ARIA · Scaling Trust</a>
+      <a href="https://constellation.org/" target="_blank" rel="noopener noreferrer">Constellation</a>
+      <a href="https://robocurve.org/" target="_blank" rel="noopener noreferrer">RoboCurve</a>
     </div>
     <div class="foot-meta">
       <span>Benchmarks released open source: code MIT, data &amp; docs CC-BY.</span>
@@ -1146,6 +1164,18 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
     html+='<figure class="mf-tile">'+tileSVG(inst)+'<figcaption class="mf-cap"><span class="ix">'+ix+'</span><span class="sd">seed 0x'+hex(seed)+'</span></figcaption></figure>';
   }
   grid.innerHTML=html;
+})();
+</script>
+<script>
+(function(){
+  var items=document.querySelectorAll(".faq details");
+  if(!items.length)return;
+  Array.prototype.forEach.call(items,function(d){
+    d.addEventListener("toggle",function(){
+      if(!d.open)return;
+      Array.prototype.forEach.call(items,function(o){if(o!==d&&o.open)o.open=false;});
+    });
+  });
 })();
 </script>
 <script>

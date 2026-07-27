@@ -294,16 +294,6 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
 .robots-lead{margin:1.2rem 0 .6rem;color:var(--ink-muted);font-size:var(--fs-body-sm);max-width:62ch}
 .robots-lead b{color:var(--ink);font-weight:600}
 
-/* --- harness strip --- */
-.harness{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--surface)}
-.harness .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:clamp(14px,3vw,36px);padding-top:clamp(1.4rem,3vw,2rem);padding-bottom:clamp(1.4rem,3vw,2rem)}
-.harness-t{flex:1 1 300px;min-width:0}
-.harness-t b{display:block;font-family:var(--serif);font-weight:500;font-size:var(--fs-h3);letter-spacing:-.01em;color:var(--ink);margin-bottom:.35rem}
-.harness-t p{color:var(--ink-muted);font-size:var(--fs-body-sm);max-width:56ch;margin:0}
-.harness-t em{font-style:normal;color:var(--ink);font-weight:600}
-.harness-p{flex:0 1 auto;display:grid;gap:.5rem;margin:0;padding:0;list-style:none}
-.harness-p li{display:flex;gap:.6em;font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--ink-muted)}
-.harness-p li::before{content:"›" / "";color:var(--accent)}
 
 /* --- SO-101 bimanual mark --- */
 .reqs{display:flex;align-items:flex-start;gap:clamp(20px,3.2vw,44px)}
@@ -555,7 +545,6 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
       <a class="nlink" href="#tracks">Tracks</a>
       <a class="nlink" href="#benchmarks">What to build</a>
       <a class="nlink" href="#method">Method</a>
-      <a class="nlink" href="#harness">Inspect Robots</a>
       <a class="nlink" href="#faq">FAQ</a>
       <button class="theme" id="themeToggle" type="button" aria-label="Toggle light or dark theme">
         <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -619,7 +608,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
         <div class="track feature">
           <div class="t-top"><span class="t-label">Track 2 · Real-world hardware</span><span class="t-flag">Featured</span></div>
           <h3>Hardware benchmarks</h3>
-          <p class="t-scope">Runs on an accepted reference robot.</p>
+          <p class="t-scope">Runs on an accepted reference robot, built into Inspect Robots.</p>
           <div class="prize">$32,000<small>for the benchmark &middot; up to 12 teams</small></div>
           <ul class="ms">
             <li><span>Spec approved</span><b>$2,000</b></li>
@@ -700,21 +689,6 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
     </div>
   </section>
   <!-- ================= PROBLEM ================= -->
-  <!-- ================= HARNESS ================= -->
-  <div class="harness" id="harness">
-    <div class="wrap">
-      <div class="harness-t">
-        <b>Everything is built on Inspect Robots.</b>
-        <p>Define a benchmark once and get logs anyone can reproduce. <em>All funded work ships as an Inspect Robots task.</em></p>
-      </div>
-      <ul class="harness-p">
-        <li>One task format</li>
-        <li>Any policy, any embodiment</li>
-        <li>Reproducible logs</li>
-      </ul>
-    </div>
-  </div>
-
   <section id="problem" class="band">
     <div class="wrap">
       <p class="marker"><b>03</b> / why this exists</p>
@@ -985,7 +959,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
         <p>The accepted reference robots are confirmed on day one.</p></details>
         <details><summary>How are benchmarks licensed and released?</summary><p>Code is licensed under MIT; data and documentation under CC-BY. QA and independent replication checks run after final deliverables are due on 11 December 2026; the full public repository is released in mid-January 2027.</p></details>
         <details><summary>What does "an instance is a distribution" actually mean?</summary><p>Instead of one rehearsed scene, you define named random variables with stated distributions, realized under a seed. Each seed produces a new but fair sample of the same task, and a score is an expectation over many seeded rollouts: a measure of generalization, not memorization.</p></details>
-        <details><summary>What is Inspect Robots, and who runs the program?</summary><p>Inspect Robots is the shared evaluation harness that benchmarks are built into: define a benchmark once, run any policy on any supported robot or sim, and get reproducible logs. The program is a joint effort of ARIA (Scaling Trust), Constellation, and RoboCurve, independent of any frontier lab.</p></details>
+        <details><summary>What is Inspect Robots, and who runs the program?</summary><p>Inspect Robots is the shared evaluation harness that benchmarks are built into: define a benchmark once, run any policy on any supported robot or sim, and get reproducible logs. The program is a joint effort of ARIA, Constellation, and RoboCurve, independent of any frontier lab.</p></details>
       </div>
     </div>
   </section>
@@ -1037,7 +1011,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
     </div>
     <div class="foot-partners">
       <span>A joint effort of</span>
-      <a href="https://aria.org.uk/opportunity-spaces/trust-everything-everywhere/scaling-trust" target="_blank" rel="noopener noreferrer">ARIA · Scaling Trust</a>
+      <a href="https://aria.org.uk/opportunity-spaces/trust-everything-everywhere/scaling-trust" target="_blank" rel="noopener noreferrer">ARIA</a>
       <a href="https://constellation.org/" target="_blank" rel="noopener noreferrer">Constellation</a>
       <a href="https://robocurve.org/" target="_blank" rel="noopener noreferrer">RoboCurve</a>
     </div>

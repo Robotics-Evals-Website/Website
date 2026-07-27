@@ -370,10 +370,10 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
 @keyframes so-br{0%,59.9%{opacity:0}60%,87.9%{opacity:1}88%,100%{opacity:0}}
 @keyframes so-be{0%,87.9%{opacity:0}88%,100%{opacity:1}}
 @media (prefers-reduced-motion:reduce){.arm-svg .j1,.arm-svg .j2,.arm-svg .j3,.arm-svg .ja,.arm-svg .jb,.arm-svg .a-blk{animation:none}.arm-replay{display:none}}
-.arm-cap{margin-top:.7rem;display:flex;align-items:baseline;justify-content:space-between;gap:.6rem}
-.arm-cap b{display:block;font-family:var(--sans);font-weight:500;font-size:.92rem;color:var(--ink)}
-.arm-cap span{display:block;font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--ink-muted);line-height:1.75}
-.arm-cap .a{color:var(--accent)}
+.arm-cap{margin-top:.75rem;display:flex;flex-wrap:wrap;align-items:baseline;gap:.2rem .6rem}
+.arm-cap b{font-family:var(--sans);font-weight:500;font-size:.9rem;color:var(--ink);white-space:nowrap}
+.arm-cap span{font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--ink-muted);white-space:nowrap}
+.arm-cap .arm-replay{margin-left:auto}
 .arm-replay{flex:none;background:none;border:0;padding:.1rem .2rem;cursor:pointer;font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--accent);border-bottom:1px solid transparent}
 .arm-replay:hover,.arm-replay:focus-visible{border-bottom-color:var(--accent)}
 @media (max-width:860px){.reqs{display:block}.arm-fig{width:100%;max-width:280px;margin:1.5rem auto 0}}
@@ -944,7 +944,8 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
             </g>
           </svg>
           <figcaption class="arm-cap">
-            <span><b>2 × SO-101</b><span>follower arms &middot; 5 DOF + gripper</span><span class="a">provided free</span></span>
+            <b>2 &times; SO-101</b>
+            <span>5 DOF + gripper</span>
             <button class="arm-replay" type="button" id="arm-replay" aria-pressed="false">pause</button>
           </figcaption>
         </figure>

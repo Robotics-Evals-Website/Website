@@ -625,13 +625,13 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
           <ul class="meta">
             <li><span>Two SO-101 follower arms</span><b>free, yours to keep</b></li>
             <li><span>Compute credits, upfront</span><b>$1,000</b></li>
-            <li><span>Materials, against receipts</span><b>up to $1,000</b></li>
+            <li><span>Bill of materials, against receipts</span><b>up to $1,000</b></li>
           </ul>
           <p class="t-total">Up to <b>$34,000</b> in cash, plus the two arms</p>
           <a class="btn btn-primary" href="#apply">Apply · Hardware</a>
         </div>
       </div>
-      <p class="tracks-note">Every figure is a maximum per team. The two SO-101 arms ship after selection, are yours to keep, and don't count against the $1,000 materials cap. A rubric published on day one sets the quality-tier amount.</p>
+      <p class="tracks-note">Every figure is a maximum per team. The two SO-101 arms ship after selection, are yours to keep, and don't count against the $1,000 bill-of-materials cap. A rubric published on day one sets the quality-tier amount.</p>
     </div>
   </section>
   <!-- ================= BENCHMARKS ================= -->
@@ -873,7 +873,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
         <h3>Hardware submission requirements</h3>
         <ul role="list">
           <li>Runs on the SO-101, single-arm or bimanual, using the two follower arms provided</li>
-          <li>Stays within a ~$1,000 bill-of-materials cap, excluding the robot</li>
+          <li>Stays within a ~$1,000 bill-of-materials cap, excluding the robot, reimbursed against receipts</li>
           <li>Specifies precise environment tolerances and success criteria</li>
           <li>Includes a repeatable reset procedure</li>
           <li>States a rollout count, so a score carries an honest error bar</li>
@@ -970,7 +970,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
         <details><summary>Who can apply?</summary><p>Teams building robotics evaluations. You pick one of two tracks (Simulation or Real-world hardware) and one of three areas: impact on jobs, AI timelines, or societal awareness. Strong newcomers and established researchers are both welcome; what matters is a rigorous, reproducible benchmark.</p></details>
         <details><summary>What exactly does a Stage 1 submission need to contain?</summary><p>An evaluation proposal that includes one fully specified task instance in our required format: a goal, setup variables each with a stated distribution, a target, and success criteria. The instance must be a distribution, not a fixed scene. Hardware proposals must also run on an accepted reference robot (single-arm or bimanual), stay within the ~$1,000 bill-of-materials cap, and specify environment tolerances, a reset procedure, and a rollout count.</p></details>
         <details><summary>What exactly is due at the end of Stage 2?</summary><p>Everything an independent team would need to rerun your benchmark and reproduce your numbers, due 11 December 2026: the finished benchmark running on Inspect Robots, its task specs and documentation, and the seeded rollout results behind every score you report. Hardware benchmarks must also document the reset procedure and environment tolerances they were run under. Our replication attempt runs against exactly this package and nothing else.</p></details>
-        <details><summary>How do payments and milestones work?</summary><p>Stage 1 pays $500 for an accepted proposal that advances (genuine-but-not-selected proposals receive $250, capped at 50; spam or low-effort receives $0). Stage 2 pays by milestone. Simulation: up to $2,000 on delivery, plus $1,000 in compute credits on acceptance. Hardware: $2,000 on spec approval, $8,000 on a working benchmark, and $5,000–$22,000 on passing replication and quality tier, plus $1,000 in compute credits upfront and up to $1,000 in materials reimbursed against receipts. Hardware teams also receive two SO-101 arms in kind, outside the materials cap. All figures are per-team maximums.</p></details>
+        <details><summary>How do payments and milestones work?</summary><p>Stage 1 pays $500 for an accepted proposal that advances (genuine-but-not-selected proposals receive $250, capped at 50; spam or low-effort receives $0). Stage 2 pays by milestone. Simulation: up to $2,000 on delivery, plus $1,000 in compute credits on acceptance. Hardware: $2,000 on spec approval, $8,000 on a working benchmark, and $5,000–$22,000 on passing replication and quality tier, plus $1,000 in compute credits upfront and bill-of-materials spend reimbursed against receipts up to that same cap. Hardware teams also receive two SO-101 arms in kind, outside the materials cap. All figures are per-team maximums.</p></details>
         <details><summary>How is the final hardware quality-tier amount decided?</summary><p>By a rubric published on the first day of the program, so you know the scoring standard before you build. The replication-plus-quality-tier milestone pays between $5,000 and $22,000, with the $5,000 base approved as soon as our rerun lands within your stated tolerance. The rubric scores task-family difficulty, documentation quality, stochasticity of instances, and rollout count.</p></details>
         <details><summary>Which robots can I use for a hardware benchmark?</summary><p>An accepted reference robot. Arms: YAM, SO-101, WidowX AI (Trossen), Franka Research 3. Humanoids: AgiBot X1, Unitree G1. The accepted reference robots are confirmed on day one.</p></details>
         <details><summary>How are benchmarks licensed and released?</summary><p>Code is licensed under MIT; data and documentation under CC-BY. QA and independent replication checks run after final deliverables are due on 11 December 2026; the full public repository is released in mid-January 2027.</p></details>

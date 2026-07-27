@@ -9,6 +9,7 @@
 <meta property="og:title" content="Robotics Evaluation Bounty">
 <meta property="og:description" content="There's no public, trustworthy read on how capable robots are — or how fast that's changing. We're funding teams to build one. Grants up to $33,000.">
 <meta property="og:type" content="website">
+<script>try{var t=localStorage.getItem('reb-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -160,38 +161,40 @@ nav.main a:hover{color:var(--text)}
 /* ============================================================
    HERO — First Light
    ============================================================ */
-.hero{position:relative;overflow:hidden;padding-top:clamp(48px,7vw,88px);padding-bottom:clamp(40px,6vw,80px)}
-#field{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
-.hero .wrap{position:relative;z-index:1}
-.hero-grid{display:grid;gap:clamp(2rem,4vw,3.5rem);align-items:center}
-@media (min-width:940px){.hero-grid{grid-template-columns:1.08fr .92fr}}
+.hero{position:relative;padding-top:clamp(40px,6vw,80px);padding-bottom:clamp(40px,6vw,80px)}
+.hero-grid{display:grid;gap:clamp(2.5rem,5vw,4rem);align-items:center}
+@media (min-width:940px){.hero-grid{grid-template-columns:1.05fr .95fr}}
+.hero .eyebrow{color:var(--text-muted)}
 .hero h1{margin:1.4rem 0 0;max-width:15ch}
 .hero h1 .line2{display:block;color:var(--accent);white-space:nowrap}
+@media (max-width:440px){.hero h1 .line2{white-space:normal}}
 .hero .lead{margin-top:1.5rem}
 .hero .cta-row{display:flex;flex-wrap:wrap;gap:.85rem;margin-top:2rem;align-items:center}
 .hero .cta-note{font-family:var(--mono);font-size:var(--fs-label);letter-spacing:.06em;color:var(--text-muted);text-transform:uppercase}
 
-/* readout module */
-.readout{
-  background:color-mix(in srgb,var(--surface) 78%,transparent);
-  border:1px solid var(--line);border-radius:10px;padding:clamp(1.25rem,3vw,1.9rem);
-  box-shadow:0 0 60px -20px var(--glow);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
-}
-.readout .r-head{display:flex;justify-content:space-between;align-items:center;
-  font-family:var(--mono);font-size:var(--fs-label);letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted)}
-.readout .r-live{display:inline-flex;align-items:center;gap:.4rem;color:var(--accent)}
-.readout .r-live::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent-graphic);
-  animation:blink 1.6s steps(2,start) infinite}
-@keyframes blink{50%{opacity:.25}}
-@media (prefers-reduced-motion:reduce){.readout .r-live::before{animation:none}}
-.readout .r-value{font-family:var(--display);font-variation-settings:"wdth" 120,"wght" 700;
-  font-size:clamp(3.4rem,2rem + 6vw,6rem);line-height:.9;letter-spacing:-.02em;color:var(--text);margin:.7rem 0 .2rem;
-  font-variant-numeric:tabular-nums}
-.readout .r-value .pm{color:var(--text-muted);font-size:.32em;vertical-align:.55em;margin-left:.3em;font-variation-settings:"wdth" 100,"wght" 500}
-.readout .r-sub{font-family:var(--mono);font-size:var(--fs-small);color:var(--text-muted)}
-.readout .r-foot{margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--line);
-  font-family:var(--mono);font-size:var(--fs-label);letter-spacing:.04em;color:var(--text-muted);line-height:1.6}
-.readout .r-foot b{color:var(--accent);font-weight:600}
+/* hero figure — robot arm tracing the capability curve (the one characterful element) */
+.hero-figure{margin:0;display:flex;flex-direction:column;gap:1.1rem}
+@media (min-width:940px){.hero-figure{align-items:flex-end}}
+.rc-hero{width:100%;max-width:480px}
+@media (min-width:940px){.rc-hero{margin-left:auto}}
+.rc-hero svg{display:block;width:100%;height:auto;overflow:visible}
+.rc-arm{fill:none;stroke:var(--text-muted);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.rc-joint{stroke:var(--text-muted);stroke-width:3;fill:var(--surface)}
+.rc-mount{stroke:var(--text-muted);stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.rc-ground,.rc-axis{stroke:var(--line);stroke-width:3;stroke-linecap:round;fill:none}
+.rc-ghost{stroke:var(--line);stroke-width:3;stroke-linecap:round;fill:none;stroke-dasharray:2 9}
+.rc-curve{stroke:var(--text);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;fill:none}
+.rc-drop{stroke:var(--line);stroke-width:2;stroke-linecap:round;fill:none;stroke-dasharray:2 6}
+.rc-shadow{fill:var(--text);opacity:.08}
+.rc-tip{fill:var(--accent-graphic)}
+.rc-tip-glow{fill:var(--accent-graphic);opacity:.18}
+.figure-cap{display:flex;align-items:center;gap:.55rem;font-family:var(--mono);font-size:var(--fs-label);
+  letter-spacing:.05em;color:var(--text-muted);margin:0}
+@media (min-width:940px){.figure-cap{justify-content:flex-end}}
+.figure-cap .live-dot{width:7px;height:7px;border-radius:50%;background:var(--accent-graphic);flex:none;
+  animation:capdot 2.4s ease-in-out infinite}
+@keyframes capdot{0%,100%{opacity:.45}50%{opacity:1}}
+@media (prefers-reduced-motion:reduce){.figure-cap .live-dot{animation:none;opacity:1}}
 
 /* ============================================================
    STATUS BAR
@@ -363,7 +366,6 @@ nav.main a:hover{color:var(--text)}
   --bg:#0D1116;--surface:#141A21;--surface-2:#1C242E;--line:#28323D;--line-strong:#37434F;
   --text:#ECF1F6;--text-muted:#94A2B0;--accent:#FFB020;--accent-graphic:#FFB020;--accent-contrast:#0D1116;--glow:rgba(255,176,32,.20);
   background:var(--bg);color:var(--text);border-top:1px solid var(--line)}
-#field2{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.6}
 .final .wrap{position:relative;z-index:1;text-align:center}
 .final h2{max-width:20ch;margin-inline:auto}
 .final .lead{margin:1.2rem auto 2rem;text-align:center}
@@ -377,7 +379,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 @media (min-width:720px){.foot-grid{grid-template-columns:2fr 1fr 1fr}}
 .foot-brand{font-family:var(--display);font-variation-settings:"wdth" 118,"wght" 700;font-size:1.1rem}
 .foot-tag{color:var(--text-muted);font-size:.92rem;margin-top:.5rem;max-width:38ch}
-.foot-col h4{font-family:var(--mono);font-size:var(--fs-label);letter-spacing:.12em;text-transform:uppercase;
+.foot-col h3{font-family:var(--mono);font-size:var(--fs-label);letter-spacing:.12em;text-transform:uppercase;
   color:var(--text-muted);margin:0 0 .8rem;font-weight:500}
 .foot-col a{display:block;color:var(--text-muted);font-size:.92rem;padding:.25rem 0;transition:color .2s}
 .foot-col a:hover{color:var(--accent)}
@@ -419,11 +421,10 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 
   <!-- ================= HERO ================= -->
   <section class="hero">
-    <canvas id="field" aria-hidden="true"></canvas>
     <div class="wrap">
       <div class="hero-grid">
         <div>
-          <p class="eyebrow">Open bounty · reproducible robotics benchmarks · grants to $33,000</p>
+          <p class="eyebrow">Open bounty · reproducible robotics benchmarks</p>
           <h1>Measure what robots<span class="line2">can actually do.</span></h1>
           <p class="lead">Leading robotics models ship on cherry-picked demos and private task lists. We're funding teams to build reproducible, open evaluations of general robotic capability — a trusted public read on how good these systems are, and how fast they're improving.</p>
           <div class="cta-row">
@@ -433,18 +434,28 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
           <p class="cta-note" style="margin-top:1.1rem">Applications open mid-August 2026</p>
         </div>
 
-        <div class="readout reveal" role="img" aria-label="Public capability index: no data yet. Zero benchmarks have been run.">
-          <div class="r-head">
-            <span>Public capability index</span>
-            <span class="r-live">Live</span>
+        <figure class="hero-figure reveal" role="img" aria-label="A minimalist line-drawn robot arm slowly tracing a rising capability curve — the public capability benchmark, which has no data yet.">
+          <div class="rc-hero">
+            <svg viewBox="0 0 360 240" aria-hidden="true" focusable="false">
+              <line class="rc-axis"   x1="54" y1="42"  x2="54"  y2="208"/>
+              <line class="rc-ground" x1="40" y1="208" x2="330" y2="208"/>
+              <path class="rc-ghost" id="rc-ghost" d="M 86 180 C 140 176 168 150 210 118 C 250 88 292 78 322 66"/>
+              <path class="rc-mount" d="M 150 22 L 210 22 M 180 22 L 180 32"/>
+              <circle class="rc-joint" cx="180" cy="32" r="6"/>
+              <line class="rc-arm" id="rc-upper" x1="180" y1="32" x2="150" y2="110"/>
+              <line class="rc-arm" id="rc-fore"  x1="150" y1="110" x2="86" y2="180"/>
+              <line class="rc-arm" id="rc-prongA" x1="86" y1="180" x2="78" y2="174"/>
+              <line class="rc-arm" id="rc-prongB" x1="86" y1="180" x2="80" y2="188"/>
+              <circle class="rc-joint" id="rc-elbow" cx="150" cy="110" r="4.5"/>
+              <path class="rc-curve" id="rc-curve" d="M 86 180 C 140 176 168 150 210 118 C 250 88 292 78 322 66"/>
+              <line class="rc-drop" id="rc-drop" x1="86" y1="182" x2="86" y2="206"/>
+              <ellipse class="rc-shadow" id="rc-shadow" cx="86" cy="207" rx="10" ry="3"/>
+              <circle class="rc-tip-glow" id="rc-glow" cx="86" cy="180" r="9"/>
+              <circle class="rc-tip" id="rc-tip" cx="86" cy="180" r="4"/>
+            </svg>
           </div>
-          <div class="r-value" id="rval">—<span class="pm">± —</span></div>
-          <div class="r-sub" id="rsub">n = 0 rollouts · awaiting the first benchmark</div>
-          <div class="r-foot">
-            No public, replicated measurement of general robotic capability exists yet.<br>
-            <b>This is the number you'll help create.</b>
-          </div>
-        </div>
+          <figcaption class="figure-cap"><span class="live-dot" aria-hidden="true"></span>Public capability curve · n = 0 · awaiting the first benchmark</figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -483,7 +494,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
       <div class="split">
         <div class="stack">
           <h2>A public repository of reproducible robotics evaluations.</h2>
-          <p style="color:var(--text-muted)">We're funding teams to build benchmarks that frontier labs will actually use to measure general robotics capabilities — rigorous enough to trust, open enough for anyone to run, and reproducible enough to compare across models and over time. The finished repository is released publicly as a trusted means to gauge how robotics is advancing.</p>
+          <p style="color:var(--text-muted)">We're funding teams to build benchmarks designed for frontier labs to adopt — rigorous enough to trust, open enough for anyone to run, and reproducible enough to compare across models and over time. The finished repository is released publicly as a trusted means to gauge how robotics is advancing.</p>
           <p class="mono" style="color:var(--text-muted);font-size:.85rem">Built on Inspect Robots, the shared evaluation harness. Program run by RoboCurve.</p>
         </div>
         <div class="stats reveal">
@@ -629,11 +640,11 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
         <div class="stage">
           <span class="s-num">Stage 2 · ~3 months</span>
           <h3>Benchmark building</h3>
-          <p>Accepted teams build and deliver their benchmark, with milestone payments along the way (see your track above) and a mid-point check-in to keep things on track.</p>
+          <p>Accepted teams build and deliver their benchmark over three milestone-gated payments (amounts per track, above), with GPU credits disbursed on selection and a mid-point check-in to keep things on track.</p>
           <ul class="pays">
-            <li><span>Genuine-effort payout cap</span><b>50 subs</b></li>
-            <li><span>Ideation payout, accepted</span><b>$500</b></li>
-            <li><span>Milestones</span><b>per track</b></li>
+            <li><span>Spec / proposal approved</span><b>Milestone 1</b></li>
+            <li><span>Working benchmark delivered</span><b>Milestone 2</b></li>
+            <li><span>Independent replication passed</span><b>Milestone 3</b></li>
           </ul>
         </div>
       </div>
@@ -710,7 +721,6 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 
   <!-- ================= FINAL CTA ================= -->
   <section id="apply" class="final">
-    <canvas id="field2" aria-hidden="true"></canvas>
     <div class="wrap">
       <p class="eyebrow" style="text-align:center">Ready to build?</p>
       <h2>Help build the scoreboard for robotics.</h2>
@@ -733,7 +743,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
         <p class="foot-tag">A public bounty for reproducible robotics benchmarks. Built on Inspect Robots. Run by RoboCurve.</p>
       </div>
       <div class="foot-col">
-        <h4>Explore</h4>
+        <h3>Explore</h3>
         <a href="#problem">Problem</a>
         <a href="#mission">Mission</a>
         <a href="#tracks">Tracks</a>
@@ -742,7 +752,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
         <a href="#faq">FAQ</a>
       </div>
       <div class="foot-col">
-        <h4>Get involved</h4>
+        <h3>Get involved</h3>
         <a href="#apply">Apply for a grant</a>
         <a href="mailto:hello@example.org">Email the organizers</a>
       </div>
@@ -758,14 +768,15 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 (function(){
   var root=document.documentElement, btn=document.getElementById('themeToggle');
   function stored(){try{return localStorage.getItem('reb-theme');}catch(e){return null;}}
+  function isDark(){var c=root.getAttribute('data-theme');if(!c)c=(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches)?'dark':'light';return c==='dark';}
+  function syncAria(){var d=isDark();btn.setAttribute('aria-pressed',d);btn.setAttribute('aria-label',d?'Switch to light theme':'Switch to dark theme');}
   var s=stored(); if(s) root.setAttribute('data-theme',s);
+  syncAria();
   btn.addEventListener('click',function(){
-    var cur=root.getAttribute('data-theme');
-    if(!cur) cur=(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches)?'dark':'light';
-    var next=cur==='dark'?'light':'dark';
+    var next=isDark()?'light':'dark';
     root.setAttribute('data-theme',next);
     try{localStorage.setItem('reb-theme',next);}catch(e){}
-    if(window.__paintFields) window.__paintFields();
+    syncAria();
   });
 
   var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
@@ -781,151 +792,70 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
   }
 
   /* ============================================================
-     "FIRST LIGHT" — canvas capability field
-     Noise resolves toward an upward capability trend.
-     Honest: no fabricated number is asserted.
+     Hero figure — a robot arm slowly traces the capability curve.
+     Honest: the curve is unlabeled/illustrative; no number is asserted.
+     Two-link inverse kinematics; pauses when scrolled out of view.
      ============================================================ */
-  function makeField(canvas, opts){
-    opts=opts||{};
-    var ctx=canvas.getContext('2d'), dpr=Math.min(window.devicePixelRatio||1,2);
-    var W=0,H=0, pts=[], N=opts.count||150, start=0, dur=1900, revealed=false, raf=0, visible=true;
+  (function(){
+    var svg=document.querySelector('.rc-hero > svg[viewBox]');
+    if(!svg) return;
+    var $=function(s){return svg.querySelector(s);};
+    var upper=$('#rc-upper'),fore=$('#rc-fore'),prongA=$('#rc-prongA'),prongB=$('#rc-prongB');
+    var elbow=$('#rc-elbow'),curve=$('#rc-curve'),tip=$('#rc-tip'),glow=$('#rc-glow');
+    var drop=$('#rc-drop'),shadow=$('#rc-shadow');
+    if(!curve) return;
+    var BX=180,BY=32,L1=92,L2=92,BASE=206;
+    var len=curve.getTotalLength(); curve.style.strokeDasharray=len;
 
-    function css(v){return getComputedStyle(root).getPropertyValue(v).trim();}
-    var col={};
-    function readColors(){
-      col.accent=css('--accent-graphic')||'#EF8E00';
-      col.line=css('--line')||'#D8DEE6';
-      col.muted=css('--text-muted')||'#546170';
+    function ik(tx,ty){                       // elbow-down 2-link solution
+      var dx=tx-BX,dy=ty-BY,d=Math.hypot(dx,dy);
+      d=Math.max(Math.abs(L1-L2)+0.01,Math.min(L1+L2-0.01,d));
+      var ang=Math.atan2(dy,dx);
+      var c=(d*d-L1*L1-L2*L2)/(2*L1*L2); c=Math.max(-1,Math.min(1,c));
+      var a2=Math.acos(c);
+      function solve(s){var a1=ang-Math.atan2(L2*Math.sin(s*a2),L1+L2*Math.cos(s*a2));
+        return {ex:BX+L1*Math.cos(a1),ey:BY+L1*Math.sin(a1)};}
+      var A=solve(1),B=solve(-1); return A.ey>=B.ey?A:B;
     }
-
-    // capability curve: accelerating rise. tx in [0,1] -> ty in [0,1] (0=bottom)
-    function curveY(tx){ return Math.pow(tx,1.75); }
-
-    function build(){
-      pts=[];
-      for(var i=0;i<N;i++){
-        var tx=Math.random();
-        var base=curveY(tx);
-        var noise=(Math.random()-0.5)*0.34*(0.4+tx);   // more spread at high capability
-        var ty=Math.max(0.02,Math.min(0.98,base+noise));
-        pts.push({
-          tx:tx, ty:ty,
-          sx:Math.random(), sy:Math.random(),          // scattered start
-          ph:Math.random()*Math.PI*2, amp:0.4+Math.random()*0.8
-        });
-      }
+    function render(progress){
+      progress=Math.max(0,Math.min(1,progress));
+      var at=Math.max(0.5,progress*len), p=curve.getPointAtLength(at), r=ik(p.x,p.y),ex=r.ex,ey=r.ey;
+      upper.setAttribute('x1',BX);upper.setAttribute('y1',BY);upper.setAttribute('x2',ex);upper.setAttribute('y2',ey);
+      fore.setAttribute('x1',ex);fore.setAttribute('y1',ey);fore.setAttribute('x2',p.x);fore.setAttribute('y2',p.y);
+      elbow.setAttribute('cx',ex);elbow.setAttribute('cy',ey);
+      var fa=Math.atan2(p.y-ey,p.x-ex),g=9,spread=0.55;
+      prongA.setAttribute('x1',p.x);prongA.setAttribute('y1',p.y);
+      prongA.setAttribute('x2',p.x+g*Math.cos(fa-spread));prongA.setAttribute('y2',p.y+g*Math.sin(fa-spread));
+      prongB.setAttribute('x1',p.x);prongB.setAttribute('y1',p.y);
+      prongB.setAttribute('x2',p.x+g*Math.cos(fa+spread));prongB.setAttribute('y2',p.y+g*Math.sin(fa+spread));
+      tip.setAttribute('cx',p.x);tip.setAttribute('cy',p.y);glow.setAttribute('cx',p.x);glow.setAttribute('cy',p.y);
+      drop.setAttribute('x1',p.x);drop.setAttribute('y1',p.y+6);drop.setAttribute('x2',p.x);drop.setAttribute('y2',BASE);
+      shadow.setAttribute('cx',p.x);shadow.setAttribute('rx',6+(p.y-58)/14);
+      curve.style.strokeDashoffset=len*(1-progress);
     }
+    if(reduce){ render(0.72); return; }       // still, well-composed pose
 
-    function resize(){
-      var r=canvas.getBoundingClientRect();
-      W=r.width; H=r.height;
-      canvas.width=Math.max(1,W*dpr); canvas.height=Math.max(1,H*dpr);
-      ctx.setTransform(dpr,0,0,dpr,0,0);
-    }
-
-    // map normalized (tx,ty) to canvas coords within an inset plot area
-    function px(tx){ return W*(0.06+tx*0.9); }
-    function py(ty){ return H*(0.92-ty*0.84); }
-
-    function draw(p, t){   // p: reveal progress 0..1, t: ms for ambient
-      ctx.clearRect(0,0,W,H);
-      var ease=p<1?(1-Math.pow(1-p,3)):1;
-
-      // confidence band (drawn as area under a smoothed high estimate, fades in)
-      if(ease>0.15){
-        var a=Math.min(1,(ease-0.15)/0.6);
-        ctx.beginPath();
-        var steps=40;
-        for(var i=0;i<=steps;i++){var tx=i/steps; ctx[i?'lineTo':'moveTo'](px(tx),py(curveY(tx)+0.09));}
-        for(var j=steps;j>=0;j--){var tx2=j/steps; ctx.lineTo(px(tx2),py(curveY(tx2)-0.09));}
-        ctx.closePath();
-        ctx.fillStyle=col.accent; ctx.globalAlpha=0.07*a; ctx.fill(); ctx.globalAlpha=1;
-      }
-
-      // points
-      for(var k=0;k<pts.length;k++){
-        var pt=pts[k];
-        var drift=reduce?0:Math.sin(t/1400+pt.ph)*pt.amp*ease;
-        var cx=px(pt.sx+(pt.tx-pt.sx)*ease);
-        var cy=py(pt.sy+(pt.ty-pt.sy)*ease)+drift;
-        var settle=ease;
-        ctx.beginPath(); ctx.arc(cx,cy,1.5,0,Math.PI*2);
-        ctx.fillStyle=col.accent;
-        ctx.globalAlpha=0.18+0.5*settle;
-        ctx.fill();
-      }
-      ctx.globalAlpha=1;
-
-      // trend line drawing on
-      if(ease>0.25){
-        var lp=Math.min(1,(ease-0.25)/0.7);
-        ctx.beginPath();
-        var seg=Math.floor(48*lp), pts2=48;
-        for(var s=0;s<=seg;s++){var tx=s/pts2; ctx[s?'lineTo':'moveTo'](px(tx),py(curveY(tx)));}
-        ctx.strokeStyle=col.accent; ctx.lineWidth=1.6;
-        ctx.shadowColor=col.accent; ctx.shadowBlur=12*lp;
-        ctx.globalAlpha=0.9; ctx.stroke();
-        ctx.shadowBlur=0; ctx.globalAlpha=1;
-      }
-
-      // baseline axis
-      ctx.beginPath();
-      ctx.moveTo(px(0),py(0)); ctx.lineTo(px(1),py(0));
-      ctx.strokeStyle=col.line; ctx.lineWidth=1; ctx.globalAlpha=0.9; ctx.stroke(); ctx.globalAlpha=1;
-
-      // axis labels
-      ctx.fillStyle=col.muted;
-      ctx.font='500 10px "IBM Plex Mono", monospace';
-      ctx.globalAlpha=0.7*Math.min(1,ease*1.4);
-      ctx.fillText('TIME →', px(0.82), py(0)+16);
-      ctx.save(); ctx.translate(px(0)-2, py(0.5)); ctx.rotate(-Math.PI/2);
-      ctx.fillText('CAPABILITY', 0, -4); ctx.restore();
-      ctx.globalAlpha=1;
-    }
-
+    var PH=[['draw',5200],['hold',1500],['reset',2200],['pause',1400]];
+    var easeInOut=function(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;};
+    var phase=0,t0=null,raf=0,visible=true;
     function frame(ts){
-      if(!start) start=ts;
-      var p=reduce?1:Math.min(1,(ts-start)/dur);
-      draw(p, ts);
-      if(!reduce){
-        if(p<1 || visible){ raf=requestAnimationFrame(frame); }
-      }
+      if(!visible){raf=0;return;}
+      if(t0===null)t0=ts;
+      var ph=PH[phase],name=ph[0],dur=ph[1],k=Math.min(1,(ts-t0)/dur);
+      if(name==='draw')render(easeInOut(k));
+      else if(name==='hold')render(1);
+      else if(name==='reset')render(1-easeInOut(k));
+      else render(0);
+      if(k>=1){phase=(phase+1)%PH.length;t0=ts;}
+      raf=requestAnimationFrame(frame);
     }
-
-    this.paint=function(){ readColors(); draw(revealed||reduce?1:0, performance.now()); };
-    this.init=function(){
-      readColors(); resize(); build();
-      if(reduce){ revealed=true; draw(1,0); return; }
-      // start animation when scrolled into view (or immediately for hero)
-      if('IntersectionObserver' in window){
-        var vo=new IntersectionObserver(function(es){
-          es.forEach(function(e){
-            visible=e.isIntersecting;
-            if(e.isIntersecting && !revealed){ revealed=true; start=0; cancelAnimationFrame(raf); raf=requestAnimationFrame(frame); }
-            else if(e.isIntersecting && revealed){ cancelAnimationFrame(raf); raf=requestAnimationFrame(frame); }
-          });
-        },{threshold:0.05});
-        vo.observe(canvas);
-      } else { revealed=true; raf=requestAnimationFrame(frame); }
-      window.addEventListener('resize',function(){ resize(); },{passive:true});
-    };
-  }
-
-  var fields=[];
-  var f1=document.getElementById('field'); if(f1){var F1=new makeField(f1,{count:170}); F1.init(); fields.push(F1);}
-  var f2=document.getElementById('field2'); if(f2){var F2=new makeField(f2,{count:110}); F2.init(); fields.push(F2);}
-  window.__paintFields=function(){ fields.forEach(function(f){f.paint();}); };
-
-  /* ---- hero readout reveal (honest: stays "—") ---- */
-  var rsub=document.getElementById('rsub');
-  if(rsub && !reduce){
-    // subtle "searching" flicker that never resolves to a fake value
-    var frames=['n = 0 rollouts · awaiting the first benchmark',
-                'n = 0 rollouts · no public data',
-                'n = 0 rollouts · awaiting the first benchmark'];
-    var fi=0;
-    setInterval(function(){ fi=(fi+1)%frames.length; rsub.textContent=frames[fi]; }, 2600);
-  }
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(es){
+        es.forEach(function(e){ visible=e.isIntersecting; if(visible&&!raf){t0=null;raf=requestAnimationFrame(frame);} });
+      },{threshold:0.02}).observe(svg);
+    }
+    render(0); raf=requestAnimationFrame(frame);
+  })();
 })();
 </script>
 </body>

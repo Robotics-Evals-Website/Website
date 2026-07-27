@@ -173,9 +173,11 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
 /* ============================================================
    HERO (compact)
    ============================================================ */
-.hero{padding:clamp(52px,7vh,92px) 0 clamp(36px,5vh,56px)}
-.hero .eyebrow{margin-bottom:1.25rem}
-.hero h1{max-width:16ch;margin-bottom:1.4rem}
+.hero{padding:clamp(84px,12vh,148px) 0 clamp(60px,8vh,92px)}
+.hero h1{max-width:16ch;margin-bottom:2rem}
+.hero .lead{margin-bottom:.5rem}
+.hero .cta-row{margin-top:2.4rem}
+.hero .cta-note{margin-top:1.5rem}
 .hero .lead{max-width:60ch;color:var(--ink-muted)}
 .cta-row{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2rem;align-items:center}
 .cta-note{font-family:var(--mono);font-size:var(--fs-label);letter-spacing:var(--tr-label);text-transform:uppercase;
@@ -327,7 +329,7 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
 .arm-svg .a-plate{fill:var(--line-strong)}
 .arm-svg .a-joint{fill:var(--surface);stroke:var(--ink-muted);stroke-width:1.1}
 .arm-svg .a-tool{fill:none;stroke:var(--accent);stroke-width:2.6;stroke-linecap:round}
-.arm-svg .a-blk{fill:var(--accent)}
+.arm-svg .a-blk{fill:var(--ink);stroke:var(--surface-2);stroke-width:.8}
 .al .j1{transform-origin:24px 60px}
 .arm-svg.play .al .j1{animation-name:so-lj1}
 .al .j2{transform-origin:19.7px 10.2px}
@@ -585,7 +587,6 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
   <!-- ================= HERO ================= -->
   <section class="hero">
     <div class="wrap">
-      <p class="eyebrow">Open bounty · built on Inspect Robots</p>
       <h1>A call for robotics benchmarks.</h1>
       <p class="lead">We fund open, reproducible benchmarks on <b><a href="https://inspectrobots.org/" target="_blank" rel="noopener noreferrer">Inspect Robots</a></b>: a public measure of what robots can actually do, and how fast that's changing.</p>
       <div class="cta-row">
@@ -899,8 +900,8 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
         <figure class="arm-fig">
           <svg class="arm-svg" id="arm-svg" viewBox="0 0 196 111" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
             <path class="a-ground" d="M4,104 L192,104"/>
-            <rect class="a-blk blk-s" x="70.5" y="97" width="7" height="7" rx="1"/>
-            <rect class="a-blk blk-e" x="118.5" y="97" width="7" height="7" rx="1" opacity="0"/>
+            <rect class="a-blk blk-s" x="69.5" y="95" width="9" height="9" rx="1"/>
+            <rect class="a-blk blk-e" x="117.5" y="95" width="9" height="9" rx="1" opacity="0"/>
             <g class="al">
               <rect class="a-plate" x="12" y="100" width="24" height="4" rx="1"/>
               <path class="a-base" d="M18,100 L20.5,62 L27.5,62 L30,100 Z"/>
@@ -914,7 +915,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
                     <path class="a-link" d="M59.7,9 L66,18"/>
                     <circle class="a-joint" cx="59.7" cy="9" r="3.2"/>
                     <path class="a-tool" d="M62.3,20.6 L69.7,15.4"/>
-                    <rect class="a-blk blk-l" x="65" y="25.8" width="7" height="7" rx="1" opacity="0"/>
+                    <rect class="a-blk blk-l" x="64" y="24.8" width="9" height="9" rx="1" opacity="0"/>
                     <g class="ja"><path class="a-tool" d="M62.3,20.6 L65.7,28.9"/></g>
                     <g class="jb"><path class="a-tool" d="M69.7,15.4 L76.4,21.4"/></g>
                   </g>
@@ -934,7 +935,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
                     <path class="a-link" d="M136.3,9 L130,18"/>
                     <circle class="a-joint" cx="136.3" cy="9" r="3.2"/>
                     <path class="a-tool" d="M126.3,15.4 L133.7,20.6"/>
-                    <rect class="a-blk blk-r" x="118.3" y="26.1" width="7" height="7" rx="1" opacity="0"/>
+                    <rect class="a-blk blk-r" x="117.3" y="25.1" width="9" height="9" rx="1" opacity="0"/>
                     <g class="ja"><path class="a-tool" d="M126.3,15.4 L119.6,21.4"/></g>
                     <g class="jb"><path class="a-tool" d="M133.7,20.6 L130.3,28.9"/></g>
                   </g>

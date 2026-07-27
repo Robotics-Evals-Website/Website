@@ -290,6 +290,17 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
 .robots-lead{margin:1.2rem 0 .6rem;color:var(--ink-muted);font-size:.95rem;max-width:62ch}
 .robots-lead b{color:var(--ink);font-weight:600}
 
+/* --- harness strip --- */
+.harness{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--surface)}
+.harness .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:clamp(14px,3vw,36px);padding-top:clamp(1.4rem,3vw,2rem);padding-bottom:clamp(1.4rem,3vw,2rem)}
+.harness-t{flex:1 1 300px;min-width:0}
+.harness-t b{display:block;font-family:var(--serif);font-weight:500;font-size:var(--fs-h3);letter-spacing:-.01em;color:var(--ink);margin-bottom:.35rem}
+.harness-t p{color:var(--ink-muted);font-size:.98rem;max-width:56ch;margin:0}
+.harness-t em{font-style:normal;color:var(--ink);font-weight:600}
+.harness-p{flex:0 1 auto;display:grid;gap:.5rem;margin:0;padding:0;list-style:none}
+.harness-p li{display:flex;gap:.6em;font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-muted)}
+.harness-p li::before{content:"›" / "";color:var(--accent)}
+
 /* --- SO-101 bimanual mark --- */
 .reqs{display:flex;align-items:flex-start;gap:clamp(20px,3.2vw,44px)}
 .reqs-body{flex:1 1 auto;min-width:0}
@@ -530,10 +541,10 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
   <div class="wrap">
     <a class="brand" href="#top"><span class="dot" aria-hidden="true"></span>Robotics Evaluation Bounty</a>
     <nav class="main" aria-label="Primary">
-      <a class="nlink" href="#problem">Problem</a>
-      <a class="nlink" href="#method">Method</a>
-      <a class="nlink" href="#benchmarks">Benchmarks</a>
       <a class="nlink" href="#tracks">Tracks</a>
+      <a class="nlink" href="#benchmarks">What to build</a>
+      <a class="nlink" href="#method">Method</a>
+      <a class="nlink" href="#harness">Inspect Robots</a>
       <a class="nlink" href="#faq">FAQ</a>
       <button class="theme" id="themeToggle" type="button" aria-label="Toggle light or dark theme">
         <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -549,13 +560,12 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
   <!-- ================= HERO ================= -->
   <section class="hero">
     <div class="wrap">
-      <p class="eyebrow">Open bounty · reproducible robotics benchmarks</p>
-      <h1>Measure what robots can actually do.</h1>
-      <p class="hero-dek">An open, field-wide effort to build the public benchmark robotics has never had.</p>
-      <p class="lead">A bounty funding reproducible, open-source benchmarks that measure how capable robots are, and how fast that's changing.</p>
+      <p class="eyebrow">Open bounty · built on Inspect Robots</p>
+      <h1>A call for robotics benchmarks.</h1>
+      <p class="lead">Measure what robots can actually do, and how fast that's changing. We fund reproducible, open-source benchmarks built on <b>Inspect Robots</b> &mdash; the public record robotics has never had.</p>
       <div class="cta-row">
         <a class="btn btn-primary btn-lg" href="#apply">Apply to build a benchmark</a>
-        <a class="btn btn-ghost btn-lg" href="#method">See how it works</a>
+        <a class="btn btn-ghost btn-lg" href="#benchmarks">See what to build</a>
       </div>
       <p class="cta-note">Applications open mid-August 2026</p>
     </div>
@@ -567,14 +577,132 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
       <div class="status-cell"><span>Grant pool</span><b>Up to <em>$500,000</em></b></div>
       <div class="status-cell"><span>Per team</span><b>Up to <em>$34,000</em></b></div>
       <div class="status-cell"><span>Teams funded</span><b>Up to <em>27</em></b></div>
-      <div class="status-cell"><span>Repository</span><b>Open-source · <em>Jan 2027</em></b></div>
+      <div class="status-cell"><span>Harness</span><b>All benchmarks on <em>Inspect Robots</em></b></div>
     </div>
   </div>
 
+  <!-- ================= TRACKS ================= -->
+  <section id="tracks" class="band">
+    <div class="wrap">
+      <p class="marker"><b>01</b> / two ways to take part</p>
+      <div class="prose">
+        <h2>Choose your track.</h2>
+        <p class="lead">Grants cover the work: compute, materials, and milestone awards that fund your build from idea to independently replicated benchmark.</p>
+      </div>
+      <div class="tracks reveal">
+        <div class="track">
+          <div class="t-top"><span class="t-label">Track 1 · Simulation</span></div>
+          <h3>Sim benchmarks</h3>
+          <p class="t-scope">Built into Inspect Robots, the shared harness.</p>
+          <div class="prize">$2,000<small>for the delivered benchmark · up to 15 teams</small></div>
+          <ul class="meta">
+            <li><span>Compute credits</span><b>$1,000 on acceptance</b></li>
+          </ul>
+          <ul class="ms">
+            <li><span>Benchmark delivered</span><b>up to $2,000</b></li>
+          </ul>
+          <a class="btn btn-ghost" href="#apply">Apply · Simulation</a>
+        </div>
+        <div class="track feature">
+          <div class="t-top"><span class="t-label">Track 2 · Real-world hardware</span><span class="t-flag">Featured</span></div>
+          <h3>Hardware benchmarks</h3>
+          <p class="t-scope">Runs on a designated reference robot.</p>
+          <div class="prize">$34,000<small>per team · up to 12 teams</small></div>
+          <ul class="meta">
+            <li><span>Reference robots</span><b>2 &times; SO-101, free</b></li>
+            <li><span>Compute credits (upfront)</span><b>$1,000</b></li>
+            <li><span>Materials (against receipts)</span><b>up to $1,000</b></li>
+          </ul>
+          <ul class="ms">
+            <li><span>Spec approved</span><b>$2,000</b></li>
+            <li><span>Working benchmark</span><b>$8,000</b></li>
+            <li><span>Replication + quality tier</span><b>$5,000–$22,000</b></li>
+          </ul>
+          <a class="btn btn-primary" href="#apply">Apply · Hardware</a>
+        </div>
+      </div>
+      <p class="tracks-note">Every figure is a maximum per team. Compute credits and materials reimbursement are on top of milestone awards. Hardware teams also receive two fully assembled SO-101 follower arms at no cost, shipped after selection and yours to keep; they do not count against the $1,000 materials cap. The final quality-tier amount is set by a rubric published on day one.</p>
+    </div>
+  </section>
+  <!-- ================= BENCHMARKS ================= -->
+  <section id="benchmarks" class="band">
+    <div class="wrap">
+      <p class="marker"><b>02</b> / three areas where measurement matters</p>
+      <div class="prose">
+        <h2>What to build.</h2>
+        <p class="lead">Three areas, three questions: how much paid physical work robots can do, how much of AI's own build-and-maintain loop they can close, and whether any of it is legible to people outside a lab. The examples anchor the idea &mdash; proposals in the same spirit are welcome.</p>
+      </div>
+
+      <div class="cats reveal">
+        <div class="cat-row">
+          <div class="cat-head">
+            <div class="cat-idx">A</div>
+            <h3>Impact on jobs</h3>
+            <p>Economically meaningful, contact-rich manipulation: the work robots would be paid to do. It's a direct signal of where automation is moving from demo to deployment, and how fast that frontier is expanding.</p>
+          </div>
+          <ul class="idea-list">
+            <li><b>CableBench</b>: seat multiple cables and barrel/RJ connectors into a port panel; randomize port position, orientation, panel tilt, connector type, cable slack.</li>
+            <li><b>TorqueBench</b>: drive fasteners to a specified torque without cross-threading; randomize size, head type, hole location, approach angle.</li>
+            <li><b>FoldBench</b>: fold a laid-out garment to a target footprint; randomize fabric, size, and initial crumple state.</li>
+            <li><b>ClutterPick</b>: retrieve a named item from a bin under heavy occlusion; randomize clutter density, item pose, distractors.</li>
+            <li><b>HarnessRoute</b>: route a flexible wire harness through a sequence of clips and channels; randomize clip positions, order, stiffness.</li>
+            <li><b>PlateBench</b>: portion and arrange food-like items to a target layout; randomize count, size, start positions.</li>
+          </ul>
+        </div>
+
+        <div class="cat-row">
+          <div class="cat-head">
+            <div class="cat-idx">B</div>
+            <h3>AI timelines</h3>
+            <p>How much of the physical loop behind AI progress robots can close without people. Every step a machine takes unassisted &mdash; building robots, servicing compute, running experiments &mdash; removes a human bottleneck from the feedback loop, so the trend line here is direct evidence about how fast takeoff could go.</p>
+          </div>
+          <ul class="idea-list">
+            <li><b>SelfBuildBench</b>: assemble a working copy of a reference arm from printed parts and stock hardware; randomize part presentation, fastener set, assembly order.</li>
+            <li><b>MechanicBench</b>: restore another robot to working order &mdash; swap a battery, replace a worn part, tighten loose fixtures; randomize the fault set and component positions.</li>
+            <li><b>RackBench</b>: mount a compute unit into rails and connect power and data; randomize rail height, unit depth, cable dressing.</li>
+            <li><b>HotSwapBench</b>: remove and re-seat a hot-swappable module in a live rack; randomize bay, latch mechanism, insertion force.</li>
+            <li><b>LabBench</b>: execute a wet-lab protocol step &mdash; pipette, weigh, transfer &mdash; to a stated tolerance; randomize vessel layout, volumes, tool positions.</li>
+            <li><b>ReloadBench</b>: replace a depleted consumable (spool, filter, cartridge) and confirm restored operation; randomize type, seating depth.</li>
+          </ul>
+        </div>
+
+        <div class="cat-row">
+          <div class="cat-head">
+            <div class="cat-idx">C</div>
+            <h3>Societal awareness</h3>
+            <p>Tasks anyone can watch and judge as done or not done, no expertise required. When capability is legible, it is far harder to over- or under-state how fast things are moving.</p>
+          </div>
+          <ul class="idea-list">
+            <li><b>CoffeeBench</b>: find a cup, load a pod, operate the machine, deliver the cup to a target zone (the Wozniak coffee test, made reproducible); randomize machine layout, cup/pod positions, target.</li>
+            <li><b>GroceryBench</b>: unpack a bag of mixed groceries and shelve each item correctly; randomize item set, packing order, shelf layout.</li>
+            <li><b>TableBench</b>: lay a place setting to a target arrangement; randomize starting positions, orientation, setting style.</li>
+            <li><b>DishBench</b>: load mixed dishware into a rack without collisions or breakage; randomize dish types, counts, poses.</li>
+            <li><b>TidyBench</b>: return scattered household objects to designated storage; randomize object set, clutter, target bins.</li>
+            <li><b>PourBench</b>: pour a target volume into a specified vessel without overshoot or spill; randomize vessel, fill target, placement.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
   <!-- ================= PROBLEM ================= -->
+  <!-- ================= HARNESS ================= -->
+  <div class="harness" id="harness">
+    <div class="wrap">
+      <div class="harness-t">
+        <b>Everything is built on Inspect Robots.</b>
+        <p>The shared evaluation harness for this program. Define a benchmark once, run any policy on any supported robot or sim, and get logs anyone can reproduce. <em>All funded work ships as an Inspect Robots task.</em></p>
+      </div>
+      <ul class="harness-p">
+        <li>One task format</li>
+        <li>Any policy, any embodiment</li>
+        <li>Reproducible logs</li>
+      </ul>
+    </div>
+  </div>
+
   <section id="problem" class="band">
     <div class="wrap">
-      <p class="marker"><b>01</b> / why this exists</p>
+      <p class="marker"><b>03</b> / why this exists</p>
       <div class="prose">
         <h2>There's no standard way to measure a robot's real capabilities.</h2>
         <p class="lead">Every frontier lab scores its own systems on its own private tasks, then ships the demo that looks best. There's no shared, reproducible way to compare them, so no one outside the labs can say how capable robots really are, or how fast that's changing.</p>
@@ -610,11 +738,9 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
       </div>
     </div>
   </section>
-
-  <!-- ================= METHOD / SAMPLER ================= -->
   <section id="method" class="band">
     <div class="wrap">
-      <p class="marker"><b>02</b> / the rule that defines this program</p>
+      <p class="marker"><b>04</b> / the rule that defines this program</p>
 
       <section class="cb reveal" aria-labelledby="cb-title">
         <header class="cb__head">
@@ -676,11 +802,10 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
       </div>
     </div>
   </section>
-
   <!-- ================= MISSION ================= -->
   <section id="mission" class="band">
     <div class="wrap">
-      <p class="marker"><b>03</b> / what we're building</p>
+      <p class="marker"><b>05</b> / what we're building</p>
       <div class="split">
         <div class="prose">
           <h2>A public repository of reproducible robotics evaluations.</h2>
@@ -705,112 +830,6 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
       </div>
     </div>
   </section>
-
-  <!-- ================= BENCHMARKS ================= -->
-  <section id="benchmarks" class="band">
-    <div class="wrap">
-      <p class="marker"><b>04</b> / three areas where measurement matters</p>
-      <div class="prose">
-        <h2>What to build.</h2>
-        <p class="lead">We fund benchmarks in three areas, each targeting a different question: how much economically valuable physical work robots can do, whether machines can keep their own systems running, and whether progress is legible to the people it affects. Each lists a few example benchmarks to anchor your thinking. Strong proposals in the same spirit are welcome.</p>
-      </div>
-
-      <div class="cats reveal">
-        <div class="cat-row">
-          <div class="cat-head">
-            <div class="cat-idx">A</div>
-            <h3>Impact on jobs</h3>
-            <p>Economically meaningful, contact-rich manipulation: the work robots would be paid to do. It's a direct signal of where automation is moving from demo to deployment, and how fast that frontier is expanding.</p>
-          </div>
-          <ul class="idea-list">
-            <li><b>CableBench</b>: seat multiple cables and barrel/RJ connectors into a port panel; randomize port position, orientation, panel tilt, connector type, cable slack.</li>
-            <li><b>TorqueBench</b>: drive fasteners to a specified torque without cross-threading; randomize size, head type, hole location, approach angle.</li>
-            <li><b>FoldBench</b>: fold a laid-out garment to a target footprint; randomize fabric, size, and initial crumple state.</li>
-            <li><b>ClutterPick</b>: retrieve a named item from a bin under heavy occlusion; randomize clutter density, item pose, distractors.</li>
-            <li><b>HarnessRoute</b>: route a flexible wire harness through a sequence of clips and channels; randomize clip positions, order, stiffness.</li>
-            <li><b>PlateBench</b>: portion and arrange food-like items to a target layout; randomize count, size, start positions.</li>
-          </ul>
-        </div>
-
-        <div class="cat-row">
-          <div class="cat-head">
-            <div class="cat-idx">B</div>
-            <h3>Infrastructure &amp; self-maintenance</h3>
-            <p>Whether machines can build, maintain, and keep running the systems they depend on. A robot that can repair and reload another robot is a different kind of system than one that needs a technician on call.</p>
-          </div>
-          <ul class="idea-list">
-            <li><b>MechanicBench</b>: restore another robot to working order by swapping a battery, replacing a worn part, or tightening loose fixtures; randomize the fault set and component positions.</li>
-            <li><b>HotSwapBench</b>: remove and re-seat a hot-swappable module in a live rack; randomize bay, latch mechanism, insertion force.</li>
-            <li><b>RackBench</b>: mount a unit into rails and connect power and data; randomize rail height, unit depth, cable dressing.</li>
-            <li><b>ReseatBench</b>: locate and re-seat a dislodged connector, card, or belt to restore function; randomize which component faulted.</li>
-            <li><b>ReloadBench</b>: replace a depleted consumable (spool, filter, cartridge) and confirm restored operation; randomize type, seating depth.</li>
-            <li><b>BeltBench</b>: replace and tension a drive belt to a target tension; randomize axis, starting tension, pulley position.</li>
-          </ul>
-        </div>
-
-        <div class="cat-row">
-          <div class="cat-head">
-            <div class="cat-idx">C</div>
-            <h3>Societal legibility</h3>
-            <p>Tasks anyone can watch and instantly judge as done or not done. When capability is easy to see, it is much harder to over- or under-state how fast things are moving, for the public and decision-makers alike.</p>
-          </div>
-          <ul class="idea-list">
-            <li><b>CoffeeBench</b>: find a cup, load a pod, operate the machine, deliver the cup to a target zone (the Wozniak coffee test, made reproducible); randomize machine layout, cup/pod positions, target.</li>
-            <li><b>GroceryBench</b>: unpack a bag of mixed groceries and shelve each item correctly; randomize item set, packing order, shelf layout.</li>
-            <li><b>TableBench</b>: lay a place setting to a target arrangement; randomize starting positions, orientation, setting style.</li>
-            <li><b>DishBench</b>: load mixed dishware into a rack without collisions or breakage; randomize dish types, counts, poses.</li>
-            <li><b>TidyBench</b>: return scattered household objects to designated storage; randomize object set, clutter, target bins.</li>
-            <li><b>PourBench</b>: pour a target volume into a specified vessel without overshoot or spill; randomize vessel, fill target, placement.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= TRACKS ================= -->
-  <section id="tracks" class="band">
-    <div class="wrap">
-      <p class="marker"><b>05</b> / two ways to take part</p>
-      <div class="prose">
-        <h2>Choose your track.</h2>
-        <p class="lead">Grants cover the work: compute, materials, and milestone awards that fund your build from idea to independently replicated benchmark.</p>
-      </div>
-      <div class="tracks reveal">
-        <div class="track">
-          <div class="t-top"><span class="t-label">Track 1 · Simulation</span></div>
-          <h3>Sim benchmarks</h3>
-          <p class="t-scope">Built into Inspect Robots, the shared harness.</p>
-          <div class="prize">$2,000<small>for the delivered benchmark · up to 15 teams</small></div>
-          <ul class="meta">
-            <li><span>Compute credits</span><b>$1,000 on acceptance</b></li>
-          </ul>
-          <ul class="ms">
-            <li><span>Benchmark delivered</span><b>up to $2,000</b></li>
-          </ul>
-          <a class="btn btn-ghost" href="#apply">Apply · Simulation</a>
-        </div>
-        <div class="track feature">
-          <div class="t-top"><span class="t-label">Track 2 · Real-world hardware</span><span class="t-flag">Featured</span></div>
-          <h3>Hardware benchmarks</h3>
-          <p class="t-scope">Runs on a designated reference robot.</p>
-          <div class="prize">$34,000<small>per team · up to 12 teams</small></div>
-          <ul class="meta">
-            <li><span>Reference robots</span><b>2 &times; SO-101, free</b></li>
-            <li><span>Compute credits (upfront)</span><b>$1,000</b></li>
-            <li><span>Materials (against receipts)</span><b>up to $1,000</b></li>
-          </ul>
-          <ul class="ms">
-            <li><span>Spec approved</span><b>$2,000</b></li>
-            <li><span>Working benchmark</span><b>$8,000</b></li>
-            <li><span>Replication + quality tier</span><b>$5,000–$22,000</b></li>
-          </ul>
-          <a class="btn btn-primary" href="#apply">Apply · Hardware</a>
-        </div>
-      </div>
-      <p class="tracks-note">Every figure is a maximum per team. Compute credits and materials reimbursement are on top of milestone awards. Hardware teams also receive two fully assembled SO-101 follower arms at no cost, shipped after selection and yours to keep; they do not count against the $1,000 materials cap. The final quality-tier amount is set by a rubric published on day one.</p>
-    </div>
-  </section>
-
   <!-- ================= HOW IT WORKS ================= -->
   <section id="how" class="band">
     <div class="wrap">
@@ -916,7 +935,6 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
       </div>
     </div>
   </section>
-
   <!-- ================= TIMELINE ================= -->
   <section id="timeline" class="band">
     <div class="wrap">
@@ -933,14 +951,13 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
       </div>
     </div>
   </section>
-
   <!-- ================= FAQ ================= -->
   <section id="faq" class="band">
     <div class="wrap">
       <p class="marker"><b>08</b> / questions</p>
       <div class="prose"><h2>Frequently asked.</h2></div>
       <div class="faq reveal">
-        <details><summary>Who can apply?</summary><p>Teams building robotics evaluations. You pick one of two tracks (Simulation or Real-world hardware) and one of three areas: impact on jobs, infrastructure &amp; self-maintenance, or societal legibility. Strong newcomers and established researchers are both welcome; what matters is a rigorous, reproducible benchmark.</p></details>
+        <details><summary>Who can apply?</summary><p>Teams building robotics evaluations. You pick one of two tracks (Simulation or Real-world hardware) and one of three areas: impact on jobs, AI timelines, or societal awareness. Strong newcomers and established researchers are both welcome; what matters is a rigorous, reproducible benchmark.</p></details>
         <details><summary>What exactly does a Stage 1 submission need to contain?</summary><p>An evaluation proposal that includes one fully specified task instance in our required format: a goal, setup variables each with a stated distribution, a target, and success criteria. The instance must be a distribution (a seeded recipe), not a single fixed scene. Hardware proposals must also run on an accepted reference robot (single-arm or bimanual), stay within the ~$1,000 bill-of-materials cap, and specify environment tolerances, a reset procedure, and a rollout count.</p></details>
         <details><summary>What exactly is due at the end of Stage 2?</summary><p>Everything an independent team would need to rerun your benchmark and reproduce your numbers, due 11 December 2026: the finished benchmark running on Inspect Robots, its task specs and documentation, and the seeded rollout results behind every score you report. Hardware benchmarks must also document the reset procedure and environment tolerances they were run under. Our replication attempt runs against exactly this package and nothing else, so anything a replicator would need has to be in it.</p></details>
         <details><summary>How do payments and milestones work?</summary><p>Stage 1 pays $500 for an accepted proposal that advances (genuine-but-not-selected proposals receive $250, capped at 50; spam or low-effort receives $0). Stage 2 pays by milestone. Simulation: up to $2,000 on delivery, plus $1,000 in compute credits on acceptance. Hardware: $2,000 on spec approval, $8,000 on a working benchmark, and $5,000–$22,000 on passing replication and quality tier, plus $1,000 in compute credits upfront and up to $1,000 in materials reimbursed against receipts. Hardware teams also receive two fully assembled SO-101 follower arms in kind, which do not count against the materials cap. All figures are per-team maximums.</p></details>
@@ -952,6 +969,14 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
       </div>
     </div>
   </section>
+
+  <!-- ================= METHOD / SAMPLER ================= -->
+
+
+
+
+
+
 
   <!-- ================= APPLY ================= -->
   <section id="apply" class="band apply">

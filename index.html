@@ -184,6 +184,16 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
   color:var(--accent);line-height:1;min-width:2.4ch;font-variant-numeric:tabular-nums}
 .stat-row span{font-family:var(--sans);font-size:.95rem;color:var(--ink-muted);line-height:1.4}
 .caption-mono{font-family:var(--mono);font-size:var(--fs-small);color:var(--ink-muted);margin-top:1.25rem}
+.mission-fig{margin:0}
+.mission-fig svg{display:block;width:100%;height:auto;background:var(--surface);border:1px solid var(--line);border-radius:6px}
+.ff-frame{fill:none;stroke:var(--line)}
+.ff-tick{stroke:var(--field-tick)}
+.ff-ghost{fill:var(--ghost);opacity:.55}
+.ff-ell{fill:var(--accent);opacity:.07}
+.ff-pt{fill:var(--accent);opacity:.85}
+.ff-lbl{fill:var(--ink-muted);font-family:var(--mono);font-size:11px;letter-spacing:.02em}
+.ff-cap{fill:var(--ink-muted);font-family:var(--mono);font-size:10px;letter-spacing:.06em}
+.mission-fig figcaption{margin-top:1rem;font-family:var(--sans);font-size:.92rem;color:var(--ink-muted);line-height:1.55;max-width:52ch}
 
 /* ============================================================
    BENCHMARK CATEGORIES + IDEA LISTS
@@ -458,10 +468,10 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
   <!-- ================= STATUS BAR ================= -->
   <div class="statusbar">
     <div class="wrap">
-      <div class="status-cell"><span>Status</span><b>Opening <em>Aug 2026</em></b></div>
-      <div class="status-cell"><span>Grants</span><b>Up to <em>$33,000</em> / team</b></div>
+      <div class="status-cell"><span>Grant pool</span><b>Up to <em>$410,000</em></b></div>
+      <div class="status-cell"><span>Per team</span><b>Up to <em>$33,000</em></b></div>
       <div class="status-cell"><span>Teams funded</span><b>Up to <em>25</em></b></div>
-      <div class="status-cell"><span>Repository</span><b>Open source · <em>Jan 2027</em></b></div>
+      <div class="status-cell"><span>Repository</span><b>Open · <em>Jan 2027</em></b></div>
     </div>
   </div>
 
@@ -581,11 +591,10 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
           <p style="color:var(--ink-muted);margin-top:1rem">RoboCurve funds teams to build open-source benchmarks on the Inspect Robots harness: rigorous enough for frontier labs to trust, open enough for anyone to run, and reproducible enough to compare across systems and over time. Because every task instance is a seeded distribution rather than a fixed scene, the results measure genuine generalization, and the finished repository becomes a shared, public record of where robotics actually stands.</p>
           <p class="caption-mono">Built on Inspect Robots · run by RoboCurve · independent of any lab.</p>
         </div>
-        <div class="stats reveal">
-          <div class="stat-row"><b>0</b><span>public, reproducible measures of general capability today</span></div>
-          <div class="stat-row"><b>3</b><span>areas where measurement matters most</span></div>
-          <div class="stat-row"><b>1</b><span>open repository the whole field can cite</span></div>
-        </div>
+        <figure class="mission-fig reveal">
+          <svg id="field-fig" viewBox="0 0 460 380" role="img" aria-label="Schematic of the task space: several labeled benchmark clusters, each a cloud of sampled instances, scattered across a mostly-empty field of possible physical tasks."></svg>
+          <figcaption>Each benchmark samples a cloud of seeded instances. The repository is the union of those clouds: a growing, measured map across an enormous space of physical tasks.</figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -596,7 +605,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
       <p class="marker"><b>04</b> / three areas where measurement matters</p>
       <div class="prose">
         <h2>What to build.</h2>
-        <p class="lead">We fund benchmarks in three areas, each targeting a different question: how much economically valuable physical work robots can do, whether machines can keep their own systems running, and whether progress is legible to the people it affects. Each ships with a flagship to anchor your thinking. Strong proposals in the same spirit are welcome.</p>
+        <p class="lead">We fund benchmarks in three areas, each targeting a different question: how much economically valuable physical work robots can do, whether machines can keep their own systems running, and whether progress is legible to the people it affects. Each lists a few example benchmarks to anchor your thinking. Strong proposals in the same spirit are welcome.</p>
       </div>
 
       <div class="cats reveal">
@@ -607,7 +616,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
             <p>Economically meaningful, contact-rich manipulation: the work robots would actually be paid to do. It's the clearest signal of where automation is ready to move from demo to deployment, and how fast that frontier is expanding.</p>
           </div>
           <ul class="idea-list">
-            <li class="flagship"><span class="tag">Flagship</span><b>CableBench</b>: seat multiple cables and barrel/RJ connectors into a port panel; randomize port position, orientation, panel tilt, connector type, cable slack.</li>
+            <li><b>CableBench</b>: seat multiple cables and barrel/RJ connectors into a port panel; randomize port position, orientation, panel tilt, connector type, cable slack.</li>
             <li><b>TorqueBench</b>: drive fasteners to a specified torque without cross-threading; randomize size, head type, hole location, approach angle.</li>
             <li><b>FoldBench</b>: fold a laid-out garment to a target footprint; randomize fabric, size, and initial crumple state.</li>
             <li><b>ClutterPick</b>: retrieve a named item from a bin under heavy occlusion; randomize clutter density, item pose, distractors.</li>
@@ -623,7 +632,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
             <p>Whether machines can build, maintain, and keep running the systems they depend on. A robot that can repair and reload another robot is a fundamentally different kind of system than one that needs a technician on call.</p>
           </div>
           <ul class="idea-list">
-            <li class="flagship"><span class="tag">Flagship</span><b>MechanicBench</b>: restore another robot to working order: swap a battery, replace a worn part, tighten loose fixtures; randomize the fault set and component positions.</li>
+            <li><b>MechanicBench</b>: restore another robot to working order: swap a battery, replace a worn part, tighten loose fixtures; randomize the fault set and component positions.</li>
             <li><b>HotSwapBench</b>: remove and re-seat a hot-swappable module in a live rack; randomize bay, latch mechanism, insertion force.</li>
             <li><b>RackBench</b>: mount a unit into rails and connect power and data; randomize rail height, unit depth, cable dressing.</li>
             <li><b>ReseatBench</b>: locate and re-seat a dislodged connector, card, or belt to restore function; randomize which component faulted.</li>
@@ -639,7 +648,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
             <p>Tasks anyone can watch and instantly judge as done or not done. When capability is easy to see, it is much harder to over- or under-state how fast things are actually moving, for the public and decision-makers alike.</p>
           </div>
           <ul class="idea-list">
-            <li class="flagship"><span class="tag">Flagship</span><b>CoffeeBench</b>: find a cup, load a pod, operate the machine, deliver the cup to a target zone (the Wozniak coffee test, made reproducible); randomize machine layout, cup/pod positions, target.</li>
+            <li><b>CoffeeBench</b>: find a cup, load a pod, operate the machine, deliver the cup to a target zone (the Wozniak coffee test, made reproducible); randomize machine layout, cup/pod positions, target.</li>
             <li><b>GroceryBench</b>: unpack a bag of mixed groceries and shelve each item correctly; randomize item set, packing order, shelf layout.</li>
             <li><b>TableBench</b>: lay a place setting to a target arrangement; randomize starting positions, orientation, setting style.</li>
             <li><b>DishBench</b>: load mixed dishware into a rack without collisions or breakage; randomize dish types, counts, poses.</li>
@@ -881,6 +890,34 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
   var FAMILIES=[{name:"CableBench",sub:"port-panel insertion"},{name:"MechanicBench",sub:"fastener / tool use"},{name:"CoffeeBench",sub:"multi-step machine op"},{name:"HotSwapBench",sub:"live-rack module swap"},{name:"HarnessRoute",sub:"deformable routing"},{name:"KitchenBench",sub:"deformable + liquids"}];
   var N_MODELS=5,body=document.getElementById("rg-body");if(!body)return;
   body.innerHTML=FAMILIES.map(function(f){var cells="";for(var c=0;c<N_MODELS;c++){cells+='<td class="rg__cell"><span class="rg__dash" aria-hidden="true">—</span><span class="rg__sr">no public data (n = 0)</span></td>';}return '<tr><th scope="row"><span class="rg__fam">'+f.name+'</span><span class="rg__famsub">'+f.sub+'</span></th>'+cells+'</tr>';}).join("");
+})();
+
+/* ===================== mission "seeded field" coverage figure ===================== */
+(function(){
+  var svg=document.getElementById('field-fig');if(!svg)return;
+  function mulberry32(a){return function(){a|=0;a=(a+0x6D2B79F5)|0;var t=Math.imul(a^(a>>>15),1|a);t=(t+Math.imul(t^(t>>>7),61|t))^t;return ((t^(t>>>14))>>>0)/4294967296;};}
+  var rng=mulberry32(20260726);
+  function gauss(){var u=1-rng(),v=1-rng();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v);}
+  var W=460,H=380,pad=28;
+  function cx(x){return Math.max(pad+5,Math.min(W-pad-5,x));}
+  function cy(y){return Math.max(pad+5,Math.min(H-pad-5,y));}
+  var clusters=[
+    {name:'CableBench',x:132,y:120,sx:24,sy:18,n:15},
+    {name:'CoffeeBench',x:340,y:122,sx:20,sy:24,n:13},
+    {name:'MechanicBench',x:238,y:232,sx:28,sy:20,n:16},
+    {name:'TorqueBench',x:118,y:292,sx:16,sy:16,n:10},
+    {name:'HotSwapBench',x:360,y:288,sx:15,sy:19,n:9}
+  ];
+  var s='<rect class="ff-frame" x="'+pad+'" y="'+pad+'" width="'+(W-2*pad)+'" height="'+(H-2*pad)+'" rx="4"/>';
+  for(var k=0;k<66;k++){var gx=pad+8+rng()*(W-2*pad-16),gy=pad+8+rng()*(H-2*pad-16);s+='<circle class="ff-ghost" cx="'+gx.toFixed(1)+'" cy="'+gy.toFixed(1)+'" r="1.3"/>';}
+  clusters.forEach(function(c){
+    s+='<ellipse class="ff-ell" cx="'+c.x+'" cy="'+c.y+'" rx="'+(c.sx*2)+'" ry="'+(c.sy*2)+'"/>';
+    for(var j=0;j<c.n;j++){s+='<circle class="ff-pt" cx="'+cx(c.x+gauss()*c.sx).toFixed(1)+'" cy="'+cy(c.y+gauss()*c.sy).toFixed(1)+'" r="2.3"/>';}
+    var ly=c.y-c.sy*2-7; if(ly<pad+12) ly=c.y+c.sy*2+16;
+    s+='<text class="ff-lbl" x="'+c.x+'" y="'+ly.toFixed(0)+'" text-anchor="middle">'+c.name+'</text>';
+  });
+  s+='<text class="ff-cap" x="'+(W-pad)+'" y="'+(H-pad+16)+'" text-anchor="end">space of physical tasks</text>';
+  svg.innerHTML=s;
 })();
 </script>
 </body>

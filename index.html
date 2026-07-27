@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Robotics Evaluation Bounty — public benchmarks for physical capability</title>
+<meta name="description" content="A bounty program funding reproducible, open benchmarks for general robotic capability. Up to $33,000 per team.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:opsz,wght@6..72,300..500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0E1114;
+  --paper:#E8E9E3;
+  --card:#F4F4F0;
+  --rule:#C0C3BA;
+  --measured:#1B45D6;
+  --pending:#8C9188;
+
+  --sheet:1180px;
+  --gutter:clamp(1rem,4vw,3.25rem);
+
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+  --display:"Archivo",system-ui,sans-serif;
+  --body:"Newsreader",Georgia,serif;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:clamp(1rem,.97rem + .2vw,1.125rem);
+  line-height:1.62;
+  font-weight:350;
+}
+
+/* ---- drawing sheet frame ---------------------------------------- */
+.sheet{
+  max-width:var(--sheet);
+  margin:0 auto;
+  border-left:1px solid var(--rule);
+  border-right:1px solid var(--rule);
+  position:relative;
+}
+@media (max-width:700px){ .sheet{border-left:0;border-right:0} }
+
+.band{
+  padding:clamp(2.75rem,7vw,5.5rem) var(--gutter);
+  border-bottom:1px solid var(--rule);
+  position:relative;
+}
+.band--tight{padding-top:clamp(1.75rem,4vw,2.75rem);padding-bottom:clamp(1.75rem,4vw,2.75rem)}
+
+/* ---- typography -------------------------------------------------- */
+.label{
+  font-family:var(--mono);
+  font-size:.6875rem;
+  font-weight:500;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--pending);
+  margin:0 0 1.5rem;
+  display:flex;
+  gap:1rem;
+  align-items:baseline;
+  flex-wrap:wrap;
+}
+.label b{color:var(--ink);font-weight:600}
+
+h1{
+  font-family:var(--display);
+  font-variation-settings:"wdth" 118,"wght" 620;
+  font-size:clamp(2.4rem,1.1rem + 6vw,5.25rem);
+  line-height:.94;
+  letter-spacing:-.028em;
+  margin:0 0 1.5rem;
+  max-width:16ch;
+}
+h2{
+  font-family:var(--display);
+  font-variation-settings:"wdth" 112,"wght" 600;
+  font-size:clamp(1.4rem,1.1rem + 1.1vw,2.05rem);
+  line-height:1.08;
+  letter-spacing:-.018em;
+  margin:0 0 1.25rem;
+}
+h3{
+  font-family:var(--mono);
+  font-size:.8125rem;
+  font-weight:600;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  margin:0 0 .6rem;
+}
+.lede{font-size:clamp(1.0625rem,1rem + .45vw,1.375rem);max-width:56ch;margin:0 0 2rem;line-height:1.5}
+p{max-width:62ch}
+a{color:var(--measured);text-decoration:none;border-bottom:1px solid rgba(27,69,214,.32)}
+a:hover{border-bottom-color:var(--measured)}
+:focus-visible{outline:2px solid var(--measured);outline-offset:3px}
+
+/* ---- masthead ---------------------------------------------------- */
+.masthead{
+  display:flex;justify-content:space-between;align-items:baseline;
+  gap:1.5rem;flex-wrap:wrap;
+  padding:1rem var(--gutter);
+  border-bottom:1px solid var(--rule);
+  font-family:var(--mono);font-size:.6875rem;letter-spacing:.12em;text-transform:uppercase;
+}
+.wordmark{font-family:var(--display);font-variation-settings:"wdth" 120,"wght" 700;
+  font-size:.9375rem;letter-spacing:.02em;text-transform:none}
+.masthead nav{display:flex;gap:1.25rem;flex-wrap:wrap}
+.masthead a{color:var(--ink);border:0}
+.masthead a:hover{color:var(--measured)}
+
+/* ---- scoreboard -------------------------------------------------- */
+.scroller{overflow-x:auto;margin:0 calc(-1 * var(--gutter));padding:0 var(--gutter)}
+table.board{border-collapse:collapse;width:100%;min-width:660px;font-family:var(--mono);font-size:.8125rem}
+table.board th,table.board td{
+  border-top:1px solid var(--rule);
+  padding:.85rem 1rem .85rem 0;
+  text-align:left;vertical-align:baseline;white-space:nowrap;
+}
+table.board thead th{
+  border-top:0;font-weight:500;font-size:.6875rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--pending);padding-bottom:.6rem;
+}
+table.board td.task{white-space:normal;font-weight:500;min-width:13rem;padding-right:2rem}
+table.board td.task span{display:block;font-family:var(--body);font-size:.9375rem;
+  color:var(--pending);font-weight:400;letter-spacing:0;text-transform:none;margin-top:.15rem}
+.cell{color:var(--pending);font-variant-numeric:tabular-nums;opacity:0;animation:in .5s ease forwards}
+.cell--val{color:var(--measured);font-weight:600}
+.row-open td{color:var(--pending);font-style:italic;font-family:var(--body);font-size:.9375rem}
+@keyframes in{to{opacity:1}}
+@media (prefers-reduced-motion:reduce){.cell{animation:none;opacity:1}}
+
+.board-note{
+  font-family:var(--mono);font-size:.6875rem;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--pending);margin-top:1rem;padding-top:.85rem;border-top:1px solid var(--ink);
+  display:flex;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;
+}
+
+/* ---- key ---------------------------------------------------------- */
+.key{display:flex;gap:1.75rem;flex-wrap:wrap;margin-top:1.25rem;
+  font-family:var(--mono);font-size:.6875rem;letter-spacing:.08em;text-transform:uppercase;color:var(--pending)}
+.key i{font-style:normal;font-weight:600;margin-right:.5rem}
+.key .m{color:var(--measured)}
+
+/* ---- track cards --------------------------------------------------- */
+.cols{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:2rem}
+@media (min-width:820px){.cols{grid-template-columns:1fr 1fr}}
+.col{background:var(--card);padding:clamp(1.5rem,3vw,2.25rem)}
+.col .amt{font-family:var(--display);font-variation-settings:"wdth" 115,"wght" 650;
+  font-size:clamp(2rem,1.4rem + 2vw,3rem);line-height:1;letter-spacing:-.02em;margin:.25rem 0 .35rem}
+.col .per{font-family:var(--mono);font-size:.6875rem;letter-spacing:.1em;text-transform:uppercase;color:var(--pending)}
+.col p{font-size:1rem;margin:1.1rem 0 0}
+.ms{list-style:none;margin:1.5rem 0 0;padding:0;font-family:var(--mono);font-size:.75rem}
+.ms li{display:flex;justify-content:space-between;gap:1rem;padding:.55rem 0;border-top:1px solid var(--rule)}
+.ms li b{font-weight:600;white-space:nowrap}
+
+/* ---- spec sheet block ---------------------------------------------- */
+.spec{border:1px solid var(--ink);background:var(--card);margin-top:2rem}
+.spec-head{
+  display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  padding:.75rem 1.25rem;border-bottom:1px solid var(--ink);
+  font-family:var(--mono);font-size:.6875rem;letter-spacing:.1em;text-transform:uppercase;
+}
+.spec-head .status{color:var(--pending)}
+.spec pre{
+  margin:0;padding:1.25rem;overflow-x:auto;
+  font-family:var(--mono);font-size:.78125rem;line-height:1.75;
+}
+.spec pre .k{color:var(--pending)}
+.spec pre .v{color:var(--measured)}
+.spec-foot{
+  border-top:1px solid var(--rule);padding:.85rem 1.25rem;
+  font-family:var(--mono);font-size:.6875rem;letter-spacing:.06em;color:var(--pending);
+}
+.realize{display:grid;gap:1px;background:var(--rule);border-top:1px solid var(--ink)}
+@media (min-width:720px){.realize{grid-template-columns:1fr 1fr}}
+.realize div{background:var(--card);padding:1.25rem;font-family:var(--mono);font-size:.75rem;line-height:1.9}
+.realize .seed{color:var(--pending);letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:.6rem}
+
+/* ---- schedule ------------------------------------------------------- */
+table.sched{border-collapse:collapse;width:100%;font-family:var(--mono);font-size:.8125rem;margin-top:1.5rem}
+table.sched td{border-top:1px solid var(--rule);padding:.8rem 1rem .8rem 0;vertical-align:baseline}
+table.sched td:first-child{color:var(--pending);white-space:nowrap;width:9rem}
+table.sched td:last-child{text-align:right;white-space:nowrap;color:var(--pending)}
+table.sched td.w{font-family:var(--body);font-size:1rem}
+
+/* ---- cta ------------------------------------------------------------- */
+.cta{display:inline-block;font-family:var(--mono);font-size:.8125rem;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;
+  background:var(--ink);color:var(--paper);border:1px solid var(--ink);
+  padding:.9rem 1.75rem;margin-top:.5rem}
+.cta:hover{background:var(--measured);border-color:var(--measured)}
+.deadline{font-family:var(--mono);font-size:.6875rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--pending);margin-top:1.25rem}
+
+/* ---- title block ------------------------------------------------------ */
+.titleblock{display:grid;gap:1px;background:var(--rule);border-bottom:1px solid var(--rule)}
+@media (min-width:720px){.titleblock{grid-template-columns:2fr 1fr 1fr 1fr}}
+.titleblock div{background:var(--paper);padding:1rem var(--gutter);font-family:var(--mono);font-size:.75rem}
+.titleblock span{display:block;font-size:.625rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--pending);margin-bottom:.35rem}
+@media (min-width:720px){.titleblock div + div{padding-left:1.25rem;padding-right:1.25rem}}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <header class="masthead">
+    <span class="wordmark">Robotics Evaluation Bounty</span>
+    <nav>
+      <a href="#funding">Funding</a>
+      <a href="#format">Format</a>
+      <a href="#schedule">Schedule</a>
+      <a href="#apply">Apply</a>
+    </nav>
+  </header>
+
+  <!-- ================= HERO / SCOREBOARD ================= -->
+  <section class="band">
+    <p class="label"><b>§ Scope</b> <span>General robotic capability — public results registry</span> <span>Rev 0.1</span></p>
+
+    <h1>Nobody has measured this.</h1>
+    <p class="lede">Frontier robotics models are released with curated demos and scored on private task lists. There is no public number for how capable they are, and no public number for how fast that is changing. We are paying up to $33,000 per team to build one.</p>
+
+    <div class="scroller">
+      <table class="board">
+        <thead>
+          <tr>
+            <th scope="col">Task family</th>
+            <th scope="col">π₀</th>
+            <th scope="col">Gemini Robotics</th>
+            <th scope="col">GR00T</th>
+            <th scope="col">MolmoAct2</th>
+            <th scope="col">Helix</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="task">CableBench <span>Connector insertion under positional variation</span></td>
+            <td class="cell" style="animation-delay:.05s">—</td>
+            <td class="cell" style="animation-delay:.10s">—</td>
+            <td class="cell" style="animation-delay:.15s">—</td>
+            <td class="cell" style="animation-delay:.20s">—</td>
+            <td class="cell" style="animation-delay:.25s">—</td>
+          </tr>
+          <tr>
+            <td class="task">MechanicBench <span>Robots maintaining other robots</span></td>
+            <td class="cell" style="animation-delay:.10s">—</td>
+            <td class="cell" style="animation-delay:.15s">—</td>
+            <td class="cell" style="animation-delay:.20s">—</td>
+            <td class="cell" style="animation-delay:.25s">—</td>
+            <td class="cell" style="animation-delay:.30s">—</td>
+          </tr>
+          <tr>
+            <td class="task">CoffeeBench <span>The Wozniak test, specified</span></td>
+            <td class="cell" style="animation-delay:.15s">—</td>
+            <td class="cell" style="animation-delay:.20s">—</td>
+            <td class="cell" style="animation-delay:.25s">—</td>
+            <td class="cell" style="animation-delay:.30s">—</td>
+            <td class="cell" style="animation-delay:.35s">—</td>
+          </tr>
+          <tr>
+            <td class="task">KitchenBench <span>Bimanual manipulation, 10 tasks — instances not yet validated</span></td>
+            <td class="cell" style="animation-delay:.20s">—</td>
+            <td class="cell" style="animation-delay:.25s">—</td>
+            <td class="cell" style="animation-delay:.30s">—</td>
+            <td class="cell" style="animation-delay:.35s">—</td>
+            <td class="cell" style="animation-delay:.40s">—</td>
+          </tr>
+          <tr class="row-open">
+            <td class="task" colspan="6">Your benchmark here →</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="board-note">
+      <span>n = 0 independent rollouts</span>
+      <span>Last updated 2026-08-15</span>
+    </p>
+
+    <p class="key">
+      <span class="m"><i>0.00</i>Replicated, human-validated</span>
+      <span><i>—</i>No public data</span>
+    </p>
+  </section>
+
+  <!-- ================= FUNDING ================= -->
+  <section class="band" id="funding">
+    <p class="label"><b>§ Funding</b> <span>Two tracks · milestone-based · up to $410,000 total</span></p>
+
+    <h2>What we pay for</h2>
+    <p>Payment is tied to delivery, not effort. A benchmark that does not run end-to-end does not reach Milestone&nbsp;2. A benchmark we cannot independently replicate within its stated tolerance does not reach Milestone&nbsp;3.</p>
+
+    <div class="cols">
+      <div class="col">
+        <p class="per">Track 1 — Simulation</p>
+        <p class="amt">$2,000</p>
+        <p class="per">per team · up to 15 teams</p>
+        <p>Sim benchmarks built into the shared harness. Plus $1,000 in GPU rental credits on acceptance.</p>
+        <ul class="ms">
+          <li><span>Proposal accepted</span><b>$500</b></li>
+          <li><span>Benchmark delivered</span><b>up to $2,000</b></li>
+        </ul>
+      </div>
+      <div class="col">
+        <p class="per">Track 2 — Real hardware</p>
+        <p class="amt">$33,000</p>
+        <p class="per">per team · up to 10 teams</p>
+        <p>Benchmarks on a designated reference embodiment. Plus $2,000 GPU credits and up to $1,000 reimbursed against receipts for materials.</p>
+        <ul class="ms">
+          <li><span>Spec approved</span><b>$2,000</b></li>
+          <li><span>Working benchmark</span><b>$8,000</b></li>
+          <li><span>Replication passed</span><b>$5,000&ndash;$20,000</b></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FORMAT ================= -->
+  <section class="band" id="format">
+    <p class="label"><b>§ Format</b> <span>Required shape for every Stage 1 submission</span></p>
+
+    <h2>A task instance is a distribution, not a scene.</h2>
+    <p>A fixed scene measures memorisation. We fund benchmarks whose instances are recipes: named random variables with stated distributions, realised under seed. Running a policy across realisations estimates an instance success probability, P̂. Every Stage 1 application must include one instance in exactly this form.</p>
+
+    <div class="spec">
+      <div class="spec-head">
+        <span>kitchenbench / pour_pasta / measuring-cup-to-bowl</span>
+        <span class="status">Draft — not human-validated</span>
+      </div>
+<pre><span class="k">TaskInstance</span>(
+    instance_id = <span class="v">"pour_pasta/measuring-cup-to-bowl"</span>,
+    goal        = <span class="v">"pour the dry pasta into the {vessel}"</span>,
+    setup = {
+        <span class="k">"vessel"</span>:         Categorical(("bowl", "cup", "pot")),
+        <span class="k">"fill_g"</span>:         Uniform(80, 200),
+        <span class="k">"pour_height_cm"</span>: Uniform(8, 15),
+        <span class="k">"vessel_x_cm"</span>:    Normal(0.0, 3.0),
+        <span class="k">"vessel_y_cm"</span>:    Normal(0.0, 3.0),
+    },
+    target_kind = <span class="v">"pour_into"</span>,
+)</pre>
+      <div class="realize">
+        <div>
+          <span class="seed">realize(seed=0)</span>
+          vessel &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= bowl<br>
+          fill_g &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 156<br>
+          pour_height_cm = 9.9<br>
+          vessel_x_cm &nbsp;&nbsp;= +0.3<br>
+          vessel_y_cm &nbsp;&nbsp;= &minus;1.6
+        </div>
+        <div>
+          <span class="seed">realize(seed=2)</span>
+          vessel &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= cup<br>
+          fill_g &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 111<br>
+          pour_height_cm = 10.1<br>
+          vessel_x_cm &nbsp;&nbsp;= &minus;7.3<br>
+          vessel_y_cm &nbsp;&nbsp;= +5.4
+        </div>
+      </div>
+      <p class="spec-foot">5 instances per task &nbsp;·&nbsp; 5 realisations per instance &nbsp;·&nbsp; accepted only at ≥ 4/5 from 3 independent raters on representativeness and quality</p>
+    </div>
+  </section>
+
+  <!-- ================= SCHEDULE ================= -->
+  <section class="band" id="schedule">
+    <p class="label"><b>§ Schedule</b> <span>Stage 1 opens mid-August 2026</span></p>
+    <h2>Five months, start to public release.</h2>
+
+    <table class="sched">
+      <tr><td>Mid-Aug 2026</td><td class="w">Submissions open. Rubric, reference embodiment and BOM cap published day one.</td><td>Stage 1</td></tr>
+      <tr><td>Early Sept 2026</td><td class="w">Launch hackathon.</td><td>Stage 1</td></tr>
+      <tr><td>Mid-Sept 2026</td><td class="w">Cohort selected. Ideation payouts issued, credits disbursed.</td><td>Stage 1 → 2</td></tr>
+      <tr><td>Mid-Oct 2026</td><td class="w">Mid-point check-in. First benchmarks integrated.</td><td>Stage 2</td></tr>
+      <tr><td>Late Nov 2026</td><td class="w">Full reproducibility packages due.</td><td>Stage 2</td></tr>
+      <tr><td>Mid-Jan 2027</td><td class="w">Independent replication complete. Public repository released.</td><td>Release</td></tr>
+    </table>
+  </section>
+
+  <!-- ================= APPLY ================= -->
+  <section class="band" id="apply">
+    <p class="label"><b>§ Apply</b> <span>Stage 1 · rolling until close</span></p>
+    <h2>One task instance is the whole application.</h2>
+    <p>Tell us who you are, which track you want, and give us one fully specified instance in the format above. That is the bar. Proposals showing genuine effort but not selected receive $250; accepted proposals receive $500 and a place in Stage 2.</p>
+    <p><a class="cta" href="#">Submit a proposal</a></p>
+    <p class="deadline">Opens mid-August 2026 &nbsp;·&nbsp; questions → hello@example.org</p>
+  </section>
+
+  <!-- ================= TITLE BLOCK ================= -->
+  <footer class="titleblock">
+    <div><span>Programme</span>Robotics Evaluation Bounty</div>
+    <div><span>Partners</span>Robocurve · Constellation · ARIA</div>
+    <div><span>Revision</span>0.1 — 2026-08-15</div>
+    <div><span>Licence</span>MIT · CC-BY-4.0</div>
+  </footer>
+
+</div>
+</body>
+</html>

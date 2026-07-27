@@ -296,9 +296,13 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
 .robots-lead b{color:var(--ink);font-weight:600}
 
 /* --- SO-101 mark --- */
-.arm-fig{margin:1.15rem 0 0;max-width:480px}
+.free-arm{display:flex;align-items:center;gap:clamp(18px,3.5vw,38px);margin-top:1.2rem}
+.free-arm .robots-lead{margin:0;flex:1 1 44%;min-width:0}
+.free-arm .arm-fig{margin:0;flex:0 1 400px;max-width:400px}
+@media (max-width:700px){.free-arm{display:block}.free-arm .arm-fig{max-width:440px;margin-top:1.1rem}}
+.arm-fig{margin:1.15rem 0 0;max-width:400px}
 .arm-card{display:flex;align-items:center;gap:clamp(14px,3vw,24px);background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:clamp(11px,2vw,15px) clamp(14px,2.4vw,18px)}
-.arm-svg{display:block;flex:none;width:clamp(146px,46%,196px);height:auto}
+.arm-svg{display:block;flex:none;width:clamp(120px,42%,156px);height:auto}
 .arm-svg .a-ground{stroke:var(--line);stroke-width:1}
 .arm-svg .a-link{fill:none;stroke:var(--ink-muted);stroke-width:10;stroke-linecap:round;stroke-linejoin:round}
 .arm-svg .a-base{fill:var(--ink-muted)}
@@ -309,6 +313,12 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
 .arm-meta b{display:block;font-family:var(--sans);font-weight:500;font-size:1rem;color:var(--ink);margin-bottom:.3rem}
 .arm-meta span{display:block;font-family:var(--mono);font-size:.66rem;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-muted);line-height:1.75}
 .arm-meta .a{color:var(--accent)}
+.alt-robots{margin:.9rem 0 0;border-top:1px solid var(--line)}
+.alt-robots > div{display:flex;flex-wrap:wrap;align-items:baseline;gap:.35rem 1rem;padding:.8rem 0;border-bottom:1px solid var(--line)}
+.alt-robots dt{flex:none;width:6.2rem;font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.alt-robots dd{margin:0;flex:1 1 260px;min-width:0;font-size:.95rem;color:var(--ink);line-height:1.7}
+.alt-robots i{font-style:normal;color:var(--ghost);padding:0 .3em}
+.alt-robots small{font-family:var(--mono);font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-muted);margin-left:.15em}
 @media (max-width:559px){.arm-card{flex-direction:column;align-items:flex-start;gap:14px}.arm-svg{width:min(196px,72%)}}
 
 /* ============================================================
@@ -802,8 +812,9 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
           <li>Includes a repeatable reset procedure</li>
           <li>States a rollout count, so a score carries an honest error bar</li>
         </ul>
+        <div class="free-arm reveal">
         <p class="robots-lead">You don't need to own a robot to apply. Every Stage 2 hardware team is sent a fully assembled <b>SO-101</b> at no cost, and keeps it.</p>
-        <figure class="arm-fig reveal">
+        <figure class="arm-fig">
           <div class="arm-card">
             <svg class="arm-svg" viewBox="68 102 146 106" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Side view of the SO-101 robot arm: a pedestal base on a work surface carrying a two-segment arm, bent at the elbow, reaching down and forward to an open two-finger gripper.">
               <path class="a-ground" d="M74,200 L208,200"/>
@@ -821,18 +832,22 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
               <b>SO-101</b>
               <span>5 DOF + gripper</span>
               <span>6 × Feetech STS3215</span>
-              <span class="a">provided free, yours to keep</span>
+              <span class="a">provided free</span>
             </div>
           </div>
         </figure>
-        <p class="robots-lead">If you already own one of these, you may propose it as an alternative embodiment instead, subject to approval in your Stage 1 spec.</p>
-        <div class="robots">
-          <div class="robot"><b>YAM</b><span>Arm</span></div>
-          <div class="robot"><b>WidowX AI</b><span>Arm · Trossen</span></div>
-          <div class="robot"><b>Franka Research 3</b><span>Arm</span></div>
-          <div class="robot"><b>AgiBot X1</b><span>Humanoid</span></div>
-          <div class="robot"><b>Unitree G1</b><span>Humanoid</span></div>
         </div>
+        <p class="robots-lead">If you already own one of these, you may propose it as an alternative embodiment instead, subject to approval in your Stage 1 spec.</p>
+        <dl class="alt-robots">
+          <div>
+            <dt>Arms</dt>
+            <dd>YAM <i>·</i> WidowX AI <small>Trossen</small> <i>·</i> Franka Research 3</dd>
+          </div>
+          <div>
+            <dt>Humanoids</dt>
+            <dd>AgiBot X1 <i>·</i> Unitree G1</dd>
+          </div>
+        </dl>
       </div>
     </div>
   </section>

@@ -4,22 +4,22 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Robotics Evaluation Bounty · measure what robots can actually do</title>
-<meta name="description" content="An open bounty funding rigorous, reproducible, open-source benchmarks of general robotic capability. Grants up to $34,500 per hardware team, plus two free SO-101 arms.">
+<meta name="description" content="An open bounty funding rigorous, reproducible, open-source benchmarks of general robotic capability. Awards up to $31,000 per team, two free SO-101 arms, and co-authorship on the joint paper.">
 <meta name="color-scheme" content="light dark">
 <meta property="og:title" content="Robotics Evaluation Bounty">
-<meta property="og:description" content="There is no public, reproducible way to measure how capable robots are, or how fast that's changing. We fund teams to build one. Grants up to $34,500 per hardware team, plus two free SO-101 arms.">
+<meta property="og:description" content="There is no public, reproducible way to measure how capable robots are, or how fast that's changing. We fund teams to build one. Awards up to $31,000 per team, two free SO-101 arms, and co-authorship on the joint paper.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://robotics-evals-website.github.io/Website/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="A call for robotics benchmarks. Up to $500,000, up to 27 teams, applications August 2026.">
+<meta property="og:image:alt" content="A call for robotics benchmarks. Up to $500,000, up to 30 teams, applications August 2026.">
 <meta property="og:locale" content="en_GB">
 <meta property="og:url" content="https://robotics-evals-website.github.io/Website/">
 <meta property="og:site_name" content="Robotics Evaluation Bounty">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://robotics-evals-website.github.io/Website/og.png">
 <meta name="twitter:title" content="Robotics Evaluation Bounty">
-<meta name="twitter:description" content="An open bounty funding reproducible, open-source robotics benchmarks. Grants up to $34,500 per hardware team, plus two free SO-101 arms.">
+<meta name="twitter:description" content="An open bounty funding reproducible, open-source robotics benchmarks. Awards up to $31,000 per team, two free SO-101 arms, and co-authorship on the joint paper.">
 <link rel="canonical" href="https://robotics-evals-website.github.io/Website/">
 <meta name="theme-color" content="#F1F4F3" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0C1412" media="(prefers-color-scheme: dark)">
@@ -286,15 +286,12 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
    HOW IT WORKS
    ============================================================ */
 .stages{display:grid;gap:clamp(1rem,2vw,1.5rem);margin-top:clamp(2rem,4vw,3rem)}
-@media (min-width:820px){.stages{grid-template-columns:1fr 1fr}}
+@media (min-width:640px) and (max-width:899px){.stages{grid-template-columns:1fr 1fr}.stages .stage:last-child{grid-column:1/-1}}
+@media (min-width:900px){.stages{grid-template-columns:repeat(3,1fr)}}
 .stage{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:clamp(1.4rem,2.5vw,1.9rem)}
 .stage .s-num{font-family:var(--mono);font-size:var(--fs-label);letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--accent)}
 .stage h3{margin:.4rem 0 .6rem}
 .stage p{color:var(--ink);font-size:var(--fs-body-sm);text-wrap:pretty}
-.stage .pays{list-style:none;margin:1.1rem 0 0;padding:0;font-family:var(--mono);font-size:var(--fs-data)}
-.stage .pays li{display:flex;justify-content:space-between;gap:1rem;padding:.5rem 0;border-top:1px solid var(--line)}
-.stage .pays li b{color:var(--accent);font-weight:500;font-variant-numeric:tabular-nums;white-space:nowrap}
-.stage .pays li span{color:var(--ink-muted)}
 .reqs{margin-top:clamp(1.5rem,3vw,2rem);background:var(--surface-2);border:1px solid var(--line);border-radius:4px;padding:clamp(1.3rem,2.5vw,1.8rem)}
 .reqs h3{margin-bottom:.9rem}
 .reqs ul{list-style:none;margin:0;padding:0;display:grid;gap:.55rem;color:var(--ink-muted);font-size:var(--fs-body-sm)}
@@ -413,6 +410,7 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
 .faq details[open] summary::after{transform:rotate(45deg)}
 .faq-list{list-style:none;margin:.7rem 0;padding:0;display:grid;gap:.5rem}
 .faq-list li{display:flex;flex-wrap:wrap;gap:.2em .7em;font-size:var(--fs-body-sm);color:var(--ink-muted);line-height:1.55}
+.faq details p .mono{font-family:var(--mono);font-size:.92em;color:var(--ink)}
 .faq-list b{color:var(--ink);font-weight:600;flex:none;font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);text-transform:uppercase;padding-top:.25em}
 .faq details p{color:var(--ink);padding:0 2.5rem 1.3rem 0;font-size:var(--fs-body-sm);max-width:66ch;text-wrap:pretty}
 
@@ -453,7 +451,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 @media (prefers-reduced-motion:reduce){.js .reveal{opacity:1;transform:none;transition:none}body{transition:none}.btn{transition:none}}
 
 /* ============================================================
-   EMBEDDED: CableBench task-instance sampler (.cb)
+   EMBEDDED: KitchenBench task-instance sampler (.cb)
    ============================================================ */
 .cb{max-width:1000px;margin:0 auto;background:var(--surface);border:1px solid var(--line);border-radius:6px;
   overflow:hidden;font-family:var(--sans);color:var(--ink)}
@@ -600,9 +598,9 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
   <!-- ================= STATUS BAR ================= -->
   <div class="statusbar">
     <div class="wrap">
-      <div class="status-cell"><span>Grant pool</span><b>Up to <em>$500,000</em></b></div>
-      <div class="status-cell"><span>Per team</span><b>Up to <em>$34,500</em></b></div>
-      <div class="status-cell"><span>Teams funded</span><b>Up to <em>27</em></b></div>
+      <div class="status-cell"><span>Award pool</span><b>Up to <em>$500,000</em></b></div>
+      <div class="status-cell"><span>Stage 3 award</span><b>Up to <em>$31,000</em></b></div>
+      <div class="status-cell"><span>Teams funded</span><b>Up to <em>30</em></b></div>
       <div class="status-cell"><span>Framework</span><b>All benchmarks on <em>Inspect Robots</em></b></div>
     </div>
   </div>
@@ -765,8 +763,8 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 
         <div class="cb__body">
           <div class="cb__panel">
-            <div class="cb__panelhd"><h3>Recipe</h3><span class="cb__tag">CableBench.v1</span></div>
-<pre class="cb__spec" aria-label="Task specification: CableBench version 1">panel     <span class="d">460 × 300 mm  (fixed)</span>
+            <div class="cb__panelhd"><h3>Recipe</h3><span class="cb__tag">KitchenBench.v1</span></div>
+<pre class="cb__spec" aria-label="Task specification: KitchenBench version 1">panel     <span class="d">460 × 300 mm  (fixed)</span>
 <span class="v">n_ports</span>   ~ Categorical<span class="d">{3, 4, 5}</span>
 <span class="v">pos</span>       ~ Grid<span class="d">(3×2) ⊕ U(±21mm)</span>
 <span class="d">            gap ≥ 96mm</span>
@@ -776,7 +774,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 <span class="v">clutter</span>   ~ Bernoulli<span class="d">(0.4)</span>
 <span class="v">lighting</span>  ~ Uniform<span class="d">(2700, 6500 K)</span>
 <span class="rule">──────────────────────────</span>
-<b>sample</b> = <b>realize</b>(CableBench.v1,
+<b>sample</b> = <b>realize</b>(KitchenBench.v1,
                    <span class="a">seed</span>)</pre>
           </div>
 
@@ -824,7 +822,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
       <p class="marker"><b>05</b> / what we're building</p>
       <div class="split">
         <div class="prose">
-          <h2>A public repository of reproducible robotics evaluations.</h2>
+          <h2>WorldEvals: a public repository of reproducible robotics evaluations.</h2>
           <p style="margin-top:1rem">We fund teams to build open-source benchmarks on Inspect Robots: rigorous enough for frontier labs to trust, open enough for anyone to run, and reproducible enough to compare across systems and over time.</p>
           <p class="caption-mono">Built on Inspect Robots · independent of any frontier lab.</p>
         </div>
@@ -841,7 +839,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
               <span><svg width="20" height="14" viewBox="0 0 20 14"><path class="lg-reach" d="M1,12 A11,11 0 0 1 19,12"/></svg>reach envelope</span>
             </div>
           </div>
-          <figcaption>Nine seeds of one recipe. Every benchmark in the repository works this way: anyone can re-draw the task, run a policy, and check the score.</figcaption>
+          <figcaption>Nine seeds of one recipe. Every benchmark in WorldEvals works this way: anyone can re-draw the task, run a policy, and check the score.</figcaption>
         </figure>
       </div>
     </div>
@@ -850,105 +848,24 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
   <section id="how" class="band">
     <div class="wrap">
       <p class="marker"><b>06</b> / how the program runs</p>
-      <div class="prose"><h2>Two stages, from idea to delivered benchmark.</h2></div>
+      <div class="prose"><h2>Three stages, from proposal to replicated benchmark.</h2></div>
       <div class="stages reveal">
         <div class="stage">
-          <span class="s-num">Stage 1 · ~5 weeks</span>
-          <h3>Ideation</h3>
-          <p>Submit an evaluation proposal, including one fully specified task instance. Reviewed on a rolling basis until the final deadline, 18 September 2026.</p>
-          <ul class="pays">
-            <li><span>Spam or low-effort</span><b>$0</b></li>
-            <li><span>Genuine effort, not selected</span><b>$250</b></li>
-            <li><span>Accepted, advancing to Stage 2</span><b>$500</b></li>
-          </ul>
+          <span class="s-num">Stage 1 &middot; Aug 12 to Sep 13</span>
+          <h3>Proposal</h3>
+          <p>The benchmark you want to build, the area it addresses, your background, and one fully specified task instance in the published format. Scored on team capability, idea quality, and relevance.</p>
         </div>
         <div class="stage">
-          <span class="s-num">Stage 2 · ~11 weeks</span>
-          <h3>Benchmark building</h3>
-          <p>Accepted teams build and deliver against milestone-gated payments that vary by track. Compute credits are disbursed on selection, with a mid-point check-in. Final deliverables are due 11 December 2026.</p>
-          <ul class="pays">
-            <li><span>Spec / proposal approved</span><b>Milestone 1</b></li>
-            <li><span>Working benchmark delivered</span><b>Milestone 2</b></li>
-            <li><span>Independent replication passed</span><b>Milestone 3</b></li>
-          </ul>
+          <span class="s-num">Stage 2 &middot; Sep 21 to Oct 9</span>
+          <h3>Simulated benchmark</h3>
+          <p>Up to 30 teams. A working simulated benchmark in Inspect Robots on the KitchenBench pattern, installing clean and passing CI. No physics simulation required yet: this stage tests whether you can specify a benchmark rigorously.</p>
+        </div>
+        <div class="stage">
+          <span class="s-num">Stage 3 &middot; Oct 21 to Dec 18</span>
+          <h3>Physics sim and hardware</h3>
+          <p>Up to 12 teams, roughly 40% of Stage 2. Both halves of the deliverable: a physics simulation of the task family and the hardware benchmark itself, each running end to end with a baseline evaluated.</p>
         </div>
       </div>
-
-      <div class="reqs reveal">
-        <div class="reqs-body">
-        <h3>Hardware submission requirements</h3>
-        <ul role="list">
-          <li>Runs on an accepted reference robot; the SO-101 by default, single-arm or bimanual</li>
-          <li>Stays within a ~$1,000 bill-of-materials cap, excluding the robot, reimbursed against receipts</li>
-          <li>Specifies precise environment tolerances and success criteria</li>
-          <li>Includes a repeatable reset procedure</li>
-          <li>States a rollout count, so a score carries an honest error bar</li>
-        </ul>
-        <p class="robots-lead">You don't need to own a robot to apply: every Stage 2 hardware team is sent <b>two fully assembled SO-101 follower arms</b>, free, and keeps them.</p>
-        <p class="robots-lead">If you already own one of these, you may propose it instead, subject to approval in your Stage 1 spec.</p>
-        <dl class="alt-robots">
-          <div>
-            <dt>Arms</dt>
-            <dd><span class="rn">YAM</span> <i>·</i> <span class="rn">WidowX AI <small>Trossen</small></span> <i>·</i> <span class="rn">Franka Research 3</span></dd>
-          </div>
-          <div>
-            <dt>Humanoids</dt>
-            <dd><span class="rn">AgiBot X1</span> <i>·</i> <span class="rn">Unitree G1</span></dd>
-          </div>
-        </dl>
-        </div>
-        <figure class="arm-fig">
-          <svg class="arm-svg" id="arm-svg" viewBox="0 0 196 111" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-            <path class="a-ground" d="M4,104 L192,104"/>
-            <rect class="a-blk blk-s" x="69.5" y="95" width="9" height="9" rx="1"/>
-            <rect class="a-blk blk-e" x="117.5" y="95" width="9" height="9" rx="1" opacity="0"/>
-            <g class="al">
-              <rect class="a-plate" x="12" y="100" width="24" height="4" rx="1"/>
-              <path class="a-base" d="M18,100 L20.5,62 L27.5,62 L30,100 Z"/>
-              <g class="j1">
-                <path class="a-link" d="M24,60 L19.7,10.2"/>
-                <circle class="a-joint" cx="24" cy="60" r="4"/>
-                <g class="j2">
-                  <path class="a-link" d="M19.7,10.2 L59.7,9"/>
-                  <circle class="a-joint" cx="19.7" cy="10.2" r="3.6"/>
-                  <g class="j3">
-                    <path class="a-link" d="M59.7,9 L66,18"/>
-                    <circle class="a-joint" cx="59.7" cy="9" r="3.2"/>
-                    <path class="a-tool" d="M62.3,20.6 L69.7,15.4"/>
-                    <rect class="a-blk blk-l" x="64" y="24.8" width="9" height="9" rx="1" opacity="0"/>
-                    <g class="ja"><path class="a-tool" d="M62.3,20.6 L65.7,28.9"/></g>
-                    <g class="jb"><path class="a-tool" d="M69.7,15.4 L76.4,21.4"/></g>
-                  </g>
-                </g>
-              </g>
-            </g>
-            <g class="ar">
-              <rect class="a-plate" x="160" y="100" width="24" height="4" rx="1"/>
-              <path class="a-base" d="M166,100 L168.5,62 L175.5,62 L178,100 Z"/>
-              <g class="j1">
-                <path class="a-link" d="M172,60 L176.3,10.2"/>
-                <circle class="a-joint" cx="172" cy="60" r="4"/>
-                <g class="j2">
-                  <path class="a-link" d="M176.3,10.2 L136.3,9"/>
-                  <circle class="a-joint" cx="176.3" cy="10.2" r="3.6"/>
-                  <g class="j3">
-                    <path class="a-link" d="M136.3,9 L130,18"/>
-                    <circle class="a-joint" cx="136.3" cy="9" r="3.2"/>
-                    <path class="a-tool" d="M126.3,15.4 L133.7,20.6"/>
-                    <rect class="a-blk blk-r" x="117.3" y="25.1" width="9" height="9" rx="1" opacity="0"/>
-                    <g class="ja"><path class="a-tool" d="M126.3,15.4 L119.6,21.4"/></g>
-                    <g class="jb"><path class="a-tool" d="M133.7,20.6 L130.3,28.9"/></g>
-                  </g>
-                </g>
-              </g>
-            </g>
-          </svg>
-          <figcaption class="arm-cap">
-            <b>2 &times; SO-101</b>
-            <span>5 DOF + gripper</span>
-            <button class="arm-replay" type="button" id="arm-replay" aria-pressed="false">pause</button>
-          </figcaption>
-        </figure>
       </div>
     </div>
   </section>
@@ -956,15 +873,17 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
   <section id="timeline" class="band">
     <div class="wrap">
       <p class="marker"><b>07</b> / key dates</p>
-      <div class="prose"><h2>From launch to public release.</h2></div>
+      <div class="prose"><h2>From proposal to published suite.</h2></div>
       <div class="timeline reveal">
-        <div class="tl now"><span class="d">Mid-Aug 2026</span><b>Program announced, submissions open</b><p>Rubric, reference robots, and BOM cap published on day one.</p></div>
-        <div class="tl"><span class="d">Early Sep 2026</span><b>Launch hackathon</b><p>Meet collaborators, form a team, draft a first proposal.</p></div>
-        <div class="tl"><span class="d">Sep 18 2026</span><b>Stage 1 submissions close</b><p>Reviewed on a rolling basis until then.</p></div>
-        <div class="tl"><span class="d">Late Sep 2026</span><b>Stage 2 cohort selected</b><p>Ideation payouts issued; compute credits and SO-101 arms sent. Materials reimbursable from here.</p></div>
-        <div class="tl"><span class="d">Late Oct 2026</span><b>Mid-point check-in</b><p>First benchmarks integrated into Inspect Robots.</p></div>
-        <div class="tl"><span class="d">Dec 11 2026</span><b>Stage 2 deliverables due</b><p>Finished benchmarks, documentation, and rollout results.</p></div>
-        <div class="tl"><span class="d">Mid-Jan 2027</span><b>Replication complete, final payments</b><p>Quality tiers settled; the public repository is released open source.</p></div>
+        <div class="tl now"><span class="d">Aug 12 2026</span><b>Stage 1 opens</b><p>Entry form opens. Rubric, replication procedure, reference embodiment, and BOM cap published on day one.</p></div>
+        <div class="tl"><span class="d">Sep 5&ndash;6 2026</span><b>Launch hackathon</b><p>Virtual, with Apart Research. Meet collaborators, form a team, draft a first proposal.</p></div>
+        <div class="tl"><span class="d">Sep 13 2026</span><b>Stage 1 closes</b><p>Proposals due, each including one fully specified task instance.</p></div>
+        <div class="tl"><span class="d">Sep 21 2026</span><b>Stage 2 cohort selected</b><p>Up to 30 teams advance. Compute credits disbursed.</p></div>
+        <div class="tl"><span class="d">Oct 9 2026</span><b>Stage 2 entries due</b><p>Working simulated benchmarks in Inspect Robots, green CI, self-scored against the rubric.</p></div>
+        <div class="tl"><span class="d">Oct 21 2026</span><b>Stage 3 cohort selected</b><p>Up to 12 teams advance. SO-101 arms ordered the same day and delivered within a week; BOM budgets open.</p></div>
+        <div class="tl"><span class="d">Dec 18 2026</span><b>Stage 3 entries due</b><p>Physics simulation and hardware benchmark, with the full reproducibility package. Accepted on a rolling basis from Dec 1. $11,000 per verified delivery is paid before year end.</p></div>
+        <div class="tl"><span class="d">Feb 2027</span><b>Replication complete</b><p>Spot-check reruns finish and quality tiers are assigned. The $8,000 to $20,000 tier awards are disbursed and the benchmark repository is released in WorldEvals.</p></div>
+        <div class="tl"><span class="d">Q1 2027</span><b>Joint paper</b><p>The full collected suite, paired simulations, and sim-to-real gap results, written up with Stage 3 teams as co-authors. Preprint posted on submission.</p></div>
       </div>
     </div>
   </section>
@@ -974,31 +893,33 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
       <p class="marker"><b>08</b> / questions</p>
       <div class="prose"><h2>Frequently asked.</h2></div>
       <div class="faq reveal">
-        <details><summary>Who can apply?</summary><p>Teams building robotics evaluations. You pick one of two tracks (Simulation or Real-world hardware) and one of three areas: impact on jobs, AI timelines, or societal awareness. Strong newcomers and established researchers are both welcome; what matters is a rigorous, reproducible benchmark.</p></details>
-        <details><summary>What exactly does a Stage 1 submission need to contain?</summary><p>An evaluation proposal that includes one fully specified task instance in our required format: a goal, setup variables each with a stated distribution, a target, and success criteria. The instance must be a distribution, not a fixed scene. Hardware proposals must also run on an accepted reference robot (single-arm or bimanual), stay within the ~$1,000 bill-of-materials cap, and specify environment tolerances, a reset procedure, and a rollout count.</p></details>
-        <details><summary>What exactly is due at the end of Stage 2?</summary><p>Everything an independent team would need to rerun your benchmark and reproduce your numbers, due 11 December 2026: the finished benchmark running on Inspect Robots, its task specs and documentation, and the seeded rollout results behind every score you report. Hardware benchmarks must also document the reset procedure and environment tolerances they were run under. Our replication attempt runs against exactly this package and nothing else.</p></details>
-        <details><summary>How do payments and milestones work?</summary><p>Stage 1 pays $500 for an accepted proposal that advances (genuine-but-not-selected proposals receive $250, capped at 50; spam or low-effort receives $0). Stage 2 pays by milestone. Simulation: up to $2,000 on delivery, plus $1,000 in compute credits on selection. Hardware: $2,000 on spec approval, $8,000 on a working benchmark, and $5,000–$22,000 on passing replication and quality tier, plus $1,000 in compute credits on selection and bill-of-materials spend reimbursed against receipts up to that same cap. Hardware teams also receive two SO-101 arms in kind, outside the materials cap. All figures are per-team maximums: at most $3,500 for a simulation team, and $34,500 plus the two arms for a hardware team.</p></details>
-        <details><summary>How is the final hardware quality-tier amount decided?</summary><p>By a rubric published on the first day of the program, so you know the scoring standard before you build. The replication-plus-quality-tier milestone pays between $5,000 and $22,000, with the $5,000 base approved as soon as our rerun lands within your stated tolerance. The rubric scores task-family difficulty, documentation quality, stochasticity of instances, and rollout count.</p></details>
-        <details><summary>Which robots can I use for a hardware benchmark?</summary><p>An accepted reference robot:</p>
+        <details><summary>Who can apply?</summary><p>Open worldwide, to individuals and teams, students included. You do not need to own a robot: every team that reaches Stage&nbsp;3 is sent a fully assembled SO-101 at no cost and keeps it. Everyone enters the same way, with a Stage&nbsp;1 proposal.</p></details>
+        <details><summary>Is this a job, a contract, or a grant?</summary><p>None of those. These are competition awards, not payment for services: no employment or contracting relationship, no supervision, no hours reporting, and no work assigned by us. You choose your own task, method, and schedule, and are judged against criteria published on day one. Awards are flat amounts tied to deliverables, not to time spent.</p></details>
+        <details><summary>I hold a student visa. Can I enter?</summary><p>We believe this structure is compatible with the visa status of international students, who are a large share of the robotics research community. Rules vary by institution and by circumstance, so confirm with your international student office before entering. Better to check and enter with confidence than find a problem later.</p></details>
+        <details><summary>How does the funnel work, and what are the odds?</summary><p>One funnel, three stages, entered the same way by everyone: a proposal at Stage&nbsp;1, a simulated benchmark at Stage&nbsp;2 (up to 30 teams), then the physics simulation and the hardware benchmark at Stage&nbsp;3 (up to 12 teams). Roughly 40% of Stage&nbsp;2 teams advance to Stage&nbsp;3. We state that rate up front so teams can plan. Accepted Stage&nbsp;2 benchmarks are published whether or not the team advances.</p></details>
+        <details><summary>What does a Stage 1 entry need to contain?</summary><p>A proposal: the benchmark you want to build, the target area it addresses (jobs impact, AI timelines, or societal relatability), and your background. Plus one fully specified task instance in the published format: a stochastic setup with named random variables and their distributions, not one fixed scene; a goal written as a natural-language success criterion; a reset procedure; and a success scorer. Due 13 September 2026. Scored on team capability, idea quality, and relevance. Spam, AI slop, and harmful eval proposals are rejected without review.</p></details>
+        <details><summary>What is due at Stage 2 and Stage 3?</summary>
         <ul class="faq-list">
-          <li><b>Arms</b> YAM, SO-101, WidowX AI (Trossen), Franka Research 3</li>
+          <li><b>Stage 2</b> A working simulated benchmark in Inspect Robots, on the KitchenBench pattern: instances as distributions, realizations by seed, a scorer, a mock embodiment. The repository must install clean, run end to end, pass CI, and carry a self-score against the published rubric. No physics simulation needed.</li>
+          <li><b>Stage 3</b> Both halves: a physics simulation of the task family and the hardware benchmark, each running end to end in Inspect Robots, with a baseline model evaluated and a full reproducibility package covering environment specs with tolerances, the eval protocol, the reset procedure, and rollout counts. Due 18 December 2026, accepted on a rolling basis from 1 December.</li>
+        </ul></details>
+        <details><summary>What does each stage pay?</summary><p>Stage&nbsp;1 pays nothing. Stage&nbsp;2 pays $1,000, plus $500 for each team member beyond the first, to a maximum of $3,000 per team, with $500 in compute credits. Stage&nbsp;3 pays $11,000 in December on verified delivery, and $8,000 to $20,000 in February on passing replication, set by a rubric published at launch, plus $1,000 in compute credits, up to $1,000 for a bill of materials against receipts, and the SO-101 arms.</p></details>
+        <details><summary>How are awards paid out?</summary><p>To the team, by international transfer, split as the team directs. Teams affiliated with a university may instead request payment as a research gift to their institution. Ask for that route at Stage&nbsp;2 selection, since institutional contracting takes several weeks.</p></details>
+        <details><summary>How are awards taxed?</summary><p>Awards may be reported to tax authorities. Awards to recipients outside the United States may be subject to withholding at the applicable rate, recoverable only by filing a US return the following year. Recipients inside the United States receive awards without withholding and may owe estimated tax. We collect tax forms at Stage&nbsp;3 selection, before any award is disbursed. If you are unsure of the effect, take advice before entering.</p></details>
+        <details><summary>Which robot do I build on?</summary><p>The SO-101 is the default reference embodiment. Every Stage&nbsp;3 team is sent a fully assembled set of two follower arms, ordered on selection day and delivered within a week, free and with no return obligation. They sit outside the $1,000 bill-of-materials cap, which covers task materials and 3D-printable fixtures, files included. Teams may instead propose an alternative embodiment they already own, approved at Stage&nbsp;2:</p>
+        <ul class="faq-list">
+          <li><b>Arms</b> YAM, WidowX AI (Trossen), Franka Research 3</li>
           <li><b>Humanoids</b> AgiBot X1, Unitree G1</li>
-        </ul>
-        <p>The accepted reference robots are confirmed on day one.</p></details>
-        <details><summary>How are benchmarks licensed and released?</summary><p>Code is licensed under MIT; data and documentation under CC-BY. QA and independent replication checks run after final deliverables are due on 11 December 2026; the full public repository is released in mid-January 2027.</p></details>
-        <details><summary>What does "an instance is a distribution" actually mean?</summary><p>Instead of one rehearsed scene, you define named random variables with stated distributions, realized under a seed. Each seed produces a new but fair sample of the same task, and a score is an expectation over many seeded rollouts: a measure of generalization, not memorization.</p></details>
-        <details><summary>What is Inspect Robots, and who runs the program?</summary><p><a href="https://inspectrobots.org/" target="_blank" rel="noopener noreferrer">Inspect Robots</a> is an open-source evaluation framework for benchmarking AI and robots in the physical world, made by RoboCurve. This bounty is a joint effort of ARIA, Constellation, and RoboCurve.</p></details>
+        </ul></details>
+        <details><summary>Do I need to teleoperate the arm or collect demonstrations?</summary><p>No. Teams drive the arms through <span class="mono">inspect-robots-so101</span>, which wraps LeRobot checkpoints (ACT, SmolVLA, &pi;0, diffusion) as an Inspect Robots policy and the SO-ARM follower as an embodiment. A public checkpoint such as <span class="mono">lerobot/smolvla_base</span> is enough to produce a baseline. No teleoperation or demo collection is required, and no leader arms are supplied.</p></details>
+        <details><summary>How does replication work?</summary><p>We do not rerun every rollout. We spot-check, by a procedure published on day one: 2 rollouts on each of 5 instances, sampled at random and not announced in advance. The test is whether an independent operator can arrange each scene from your written setup alone, without contacting you, and get a result consistent with your claim. It passes if observed successes fall inside the 90% binomial interval implied by your claimed per-instance success rate, and if every sampled instance is realizable from the written spec. Where a rerun falls outside tolerance, we iterate with you before assigning a final tier. This tests reproducibility. It is not a re-estimate of your success rate.</p></details>
+        <details><summary>Who checks that the task instances are any good?</summary><p>We commission that separately, rather than assuming teams have done it. Three experts rate each instance on representativeness and quality. An instance is accepted only if both scores are at least 4.</p></details>
+        <details><summary>Who owns the benchmark I build?</summary><p>You do. Copyright stays with the authors. Entering grants us a licence to publish the benchmark in WorldEvals under the MIT licence, with your team credited, and to reproduce and report results from it. You keep publication rights in full: write up your own benchmark, submit it anywhere, present it however you like, without clearing anything with us.</p></details>
+        <details><summary>What is the joint paper?</summary><p>After replication closes in February we write up the full collected suite: the hardware benchmarks, their paired physics simulations, the measured sim-to-real gap across them, and baseline results for current VLA policies. Submission is targeted for Q1 2027, with a preprint at the same time. Every Stage&nbsp;3 team that passes replication is offered co-authorship. Teams may decline and be acknowledged instead. Author order and the contribution statement are settled with participating teams beforehand.</p></details>
+        <details><summary>What are Inspect Robots, KitchenBench, and WorldEvals?</summary><p><a href="https://inspectrobots.org/" target="_blank" rel="noopener noreferrer">Inspect Robots</a> is RoboCurve's open-source framework for evaluating AI and robots in the physical world. <a href="https://github.com/robocurve/kitchenbench" target="_blank" rel="noopener noreferrer">KitchenBench</a> is the worked reference build, published on day one. WorldEvals is the public repository where finished benchmarks are released. The program is a joint effort of ARIA, Constellation, and RoboCurve.</p></details>
       </div>
     </div>
   </section>
-
-  <!-- ================= METHOD / SAMPLER ================= -->
-
-
-
-
-
-
 
   <!-- ================= APPLY ================= -->
   <section id="apply" class="band apply">
@@ -1024,10 +945,10 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
       </div>
       <div class="foot-col">
         <h3>Explore</h3>
-        <a href="#problem">Problem</a>
+        <a href="#benchmarks">What to build</a>
+        <a href="#problem">Why this exists</a>
         <a href="#method">Method</a>
-        <a href="#benchmarks">Benchmarks</a>
-        <a href="#tracks">Tracks</a>
+        <a href="#mission">WorldEvals</a>
         <a href="#timeline">Timeline</a>
         <a href="#faq">FAQ</a>
       </div>
@@ -1035,7 +956,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
         <h3>Get involved</h3>
         <a href="https://inspectrobots.org/" target="_blank" rel="noopener noreferrer">Inspect Robots</a>
         <a href="https://github.com/robocurve/kitchenbench" target="_blank" rel="noopener noreferrer">Example benchmark</a>
-        <a href="#apply">Apply for a grant</a>
+        <a href="#apply">Apply</a>
         <a href="mailto:hello@example.org">Email the organizers</a>
       </div>
     </div>
@@ -1046,7 +967,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
       <a href="https://robocurve.org/" target="_blank" rel="noopener noreferrer">RoboCurve</a>
     </div>
     <div class="foot-meta">
-      <span>Benchmarks released open source: code MIT, data &amp; docs CC-BY.</span>
+      <span>Benchmarks published in WorldEvals under the MIT licence.</span>
       <span>© 2026 RoboCurve · per-team figures are maximums</span>
     </div>
   </div>
@@ -1074,7 +995,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
   }else{document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in');});}
 })();
 
-/* ===================== CableBench task-instance sampler ===================== */
+/* ===================== KitchenBench task-instance sampler ===================== */
 (function(){
   "use strict";
   function mulberry32(a){return function(){a|=0;a=(a+0x6D2B79F5)|0;var t=Math.imul(a^(a>>>15),1|a);t=(t+Math.imul(t^(t>>>7),61|t))^t;return ((t^(t>>>14))>>>0)/4294967296;};}
@@ -1090,7 +1011,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
   function portSVG(p){var g='<g class="port" style="--i:'+p.i+'">';g+='<g transform="translate('+p.x+','+p.y+') rotate('+p.theta+')">'+glyph(p.type)+'</g>';g+='<text class="lbl" x="'+p.x+'" y="'+(p.y-34)+'" text-anchor="middle"><tspan class="idx">'+p.i+'</tspan> '+p.type+'</text>';g+='<text class="ang" x="'+p.x+'" y="'+(p.y+42)+'" text-anchor="middle">θ='+fmtDeg(p.theta)+'</text>';g+='</g>';return g;}
   function clutterSVG(inst){var c=inst.clutterSlot;if(!c)return "";var w=104,h=78,x=c.x-w/2,y=c.y-h/2;return '<g class="clutter" style="--i:'+inst.n+'"><rect class="clutter-fill" x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="4"/><rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="4" fill="url(#cb-hatch)"/><rect class="clutter-edge" x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="4"/><text class="clutter-lbl" x="'+c.x+'" y="'+c.y+'" dy="3" text-anchor="middle">CLUTTER</text></g>';}
   function readout(inst){var L=[];L.push('<span class="hd">n_ports  = </span>'+inst.n+'   <span class="hd">lighting = </span>'+inst.lighting+' K   <span class="hd">clutter = </span><span class="a">'+inst.clutter+'</span>');L.push('<span class="hd">idx type    x     y      θ</span>');inst.ports.forEach(function(p){var xl=p.x-PANEL.x,yl=p.y-PANEL.y;L.push('<span class="a">'+p.i+'</span>   '+pad(p.type,7)+' '+pad(xl,5)+' '+pad(yl,6)+' '+(p.theta>=0?"+":"−")+pad(Math.abs(p.theta)+"°",4));});return L.join("\n");}
-  function summary(inst){var parts=inst.ports.map(function(p){return p.type+" at "+(p.x-PANEL.x)+","+(p.y-PANEL.y)+" mm, "+fmtDeg(p.theta);});return "Realized CableBench sample, seed "+inst.seed+": "+inst.n+" ports: "+parts.join("; ")+". Lighting "+inst.lighting+" kelvin. Clutter "+(inst.clutter?"present":"absent")+".";}
+  function summary(inst){var parts=inst.ports.map(function(p){return p.type+" at "+(p.x-PANEL.x)+","+(p.y-PANEL.y)+" mm, "+fmtDeg(p.theta);});return "Realized KitchenBench sample, seed "+inst.seed+": "+inst.n+" ports: "+parts.join("; ")+". Lighting "+inst.lighting+" kelvin. Clutter "+(inst.clutter?"present":"absent")+".";}
   var svg=document.getElementById("cb-svg");if(!svg)return;
   var frame=document.getElementById("cb-frame"),dyn=document.getElementById("cb-dynamic"),btn=document.getElementById("cb-resample"),autoCb=document.getElementById("cb-auto"),seedEl=document.getElementById("cb-seed"),valsEl=document.getElementById("cb-vals"),tagEl=document.getElementById("cb-realtag"),liveEl=document.getElementById("cb-live");
   frame.innerHTML=buildFrame();

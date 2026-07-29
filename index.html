@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Robotics Evaluation Bounty · measure what robots can actually do</title>
-<meta name="description" content="An open bounty funding rigorous, reproducible, open-source benchmarks of general robotic capability. Awards up to $28,000 per team, two free SO-101 arms, and co-authorship on the joint paper.">
+<meta name="description" content="An open bounty funding rigorous, reproducible, open-source benchmarks of general robotic capability. Stage 3 awards up to $28,000, two free SO-101 arms, and co-authorship on the joint paper.">
 <meta name="color-scheme" content="light dark">
 <meta property="og:title" content="Robotics Evaluation Bounty">
-<meta property="og:description" content="There is no public, reproducible way to measure how capable robots are, or how fast that's changing. We fund teams to build one. Awards up to $28,000 per team, two free SO-101 arms, and co-authorship on the joint paper.">
+<meta property="og:description" content="There is no public, reproducible way to measure how capable robots are, or how fast that's changing. We fund teams to build one. Stage 3 awards up to $28,000, two free SO-101 arms, and co-authorship on the joint paper.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://robotics-evals-website.github.io/Website/og.png">
 <meta property="og:image:width" content="1200">
@@ -19,7 +19,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://robotics-evals-website.github.io/Website/og.png">
 <meta name="twitter:title" content="Robotics Evaluation Bounty">
-<meta name="twitter:description" content="An open bounty funding reproducible, open-source robotics benchmarks. Awards up to $28,000 per team, two free SO-101 arms, and co-authorship on the joint paper.">
+<meta name="twitter:description" content="An open bounty funding reproducible, open-source robotics benchmarks. Stage 3 awards up to $28,000, two free SO-101 arms, and co-authorship on the joint paper.">
 <link rel="canonical" href="https://robotics-evals-website.github.io/Website/">
 <meta name="theme-color" content="#F1F4F3" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0C1412" media="(prefers-color-scheme: dark)">
@@ -267,8 +267,6 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
    ============================================================ */
 .tracks{display:grid;align-items:start;gap:clamp(1rem,2vw,1.5rem);margin-top:clamp(2rem,4vw,3rem)}
 @media (min-width:960px){.tracks{grid-template-columns:repeat(3,1fr)}}
-.track .prize-none{color:var(--ghost);font-size:clamp(1.5rem,1.1rem + 1.3vw,2rem)}
-.track .prize-none small{color:var(--ink-muted)}
 .cta-row-tight{margin-top:clamp(1.6rem,3vw,2.2rem)}
 .track{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:clamp(1.5rem,3vw,2.2rem);display:flex;flex-direction:column}
 .track.feature{border-color:var(--line-strong)}
@@ -478,7 +476,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 @media (prefers-reduced-motion:reduce){.js .reveal{opacity:1;transform:none;transition:none}body{transition:none}.btn{transition:none}}
 
 /* ============================================================
-   EMBEDDED: KitchenBench task-instance sampler (.cb)
+   EMBEDDED: CableBench task-instance sampler (.cb)
    ============================================================ */
 .cb{max-width:1000px;margin:0 auto;background:var(--surface);border:1px solid var(--line);border-radius:6px;
   overflow:hidden;font-family:var(--sans);color:var(--ink)}
@@ -906,8 +904,8 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 
         <div class="cb__body">
           <div class="cb__panel">
-            <div class="cb__panelhd"><h3>Recipe</h3><span class="cb__tag">KitchenBench.v1</span></div>
-<pre class="cb__spec" aria-label="Task specification: KitchenBench version 1">panel     <span class="d">460 × 300 mm  (fixed)</span>
+            <div class="cb__panelhd"><h3>Recipe</h3><span class="cb__tag">CableBench.v1</span></div>
+<pre class="cb__spec" aria-label="Task specification: CableBench version 1">panel     <span class="d">460 × 300 mm  (fixed)</span>
 <span class="v">n_ports</span>   ~ Categorical<span class="d">{3, 4, 5}</span>
 <span class="v">pos</span>       ~ Grid<span class="d">(3×2) ⊕ U(±21mm)</span>
 <span class="d">            gap ≥ 96mm</span>
@@ -917,7 +915,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 <span class="v">clutter</span>   ~ Bernoulli<span class="d">(0.4)</span>
 <span class="v">lighting</span>  ~ Uniform<span class="d">(2700, 6500 K)</span>
 <span class="rule">──────────────────────────</span>
-<b>sample</b> = <b>realize</b>(KitchenBench.v1,
+<b>sample</b> = <b>realize</b>(CableBench.v1,
                    <span class="a">seed</span>)</pre>
           </div>
 
@@ -991,14 +989,14 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
         <details><summary>What goes in a Stage 1 entry?</summary><p>A proposal: the benchmark you want to build, the area it addresses, and your background. Plus one fully specified task instance in the published format, which is a stochastic setup with named variables and their distributions, a goal, a reset procedure, and a success scorer. Due 13 September 2026, 23:59 Pacific. Scored on team capability, idea quality, and relevance. Spam, AI slop, and harmful eval proposals are rejected without review.</p></details>
         <details><summary>What is due at Stage 2 and Stage 3?</summary>
         <ul class="faq-list">
-          <li><b>Stage 2</b> A working simulated benchmark in Inspect Robots, on the KitchenBench pattern: instances as distributions, realizations by seed, a scorer, a mock embodiment. It must install clean, run end to end, pass CI, and carry a self-score against the published rubric.</li>
+          <li><b>Stage 2</b> A working simulated benchmark in Inspect Robots, on the KitchenBench pattern: instances as distributions, realizations by seed, a scorer, a mock embodiment. It must install clean, run end to end, pass CI, and carry a self-score against the published rubric. No physics simulation needed at this stage.</li>
           <li><b>Stage 3</b> A physics simulation of the task family and the hardware benchmark, each running end to end with a baseline evaluated, plus a reproducibility package covering environment specs with tolerances, the eval protocol, the reset procedure, and rollout counts. Due 18 December 2026, 23:59 Pacific, rolling from 1 December.</li>
         </ul></details>
 
         <p class="faq-group">Terms</p>
-        <details><summary>Is this a job, a contract, or a grant?</summary><p>None of those. These are competition awards, not payment for services: no employment relationship, no supervision, no hours reporting, and no work assigned by us. You choose your own task, method, and schedule, and are judged against criteria published on day one.</p></details>
+        <details><summary>Is this a job, a contract, or a grant?</summary><p>None of those. These are competition awards, not payment for services: no employment or contracting relationship, no supervision, no hours reporting, and no work assigned by us. You choose your own task, method, and schedule, and are judged against criteria published on day one. Awards are flat amounts tied to deliverables, not to time spent.</p></details>
         <details><summary>I hold a student visa. Can I enter?</summary><p>We believe the structure above is compatible with the visa status of international students, who are a large share of the robotics research community. Rules vary by institution and by circumstance, so confirm with your international student office before entering.</p></details>
-        <details><summary>What does each stage pay?</summary><p>Stage&nbsp;1 pays nothing. Stage&nbsp;2 pays $1,000, plus $500 for each member beyond the first to a cap of $3,000, which is a team of five. There is no hard limit on team size; if you are larger, get in touch. Stage&nbsp;3 pays a flat $10,000 in December on verified delivery, then $8,000 to $18,000 in February on passing replication, set by a rubric published at launch.</p></details>
+        <details><summary>What does each stage pay?</summary><p>Stage&nbsp;1 pays nothing. Stage&nbsp;2 pays $1,000, plus $500 for each member beyond the first to a cap of $3,000, which is a team of five. There is no hard limit on team size; if you are larger, get in touch. Stage&nbsp;3 pays a flat $10,000 in December on verified delivery, then $8,000 to $18,000 in February on passing replication, set by a rubric published at launch, plus $1,000 in compute credits, up to $1,000 for materials, and the two SO-101 arms.</p></details>
         <details><summary>How are awards paid and taxed?</summary><p>To the team, by international transfer, split as the team directs. University-affiliated teams may instead request payment as a research gift to their institution; ask at Stage&nbsp;2 selection, since institutional contracting takes weeks. Awards may be reported to tax authorities, and awards outside the United States may be subject to withholding, recoverable by filing a US return the following year. We collect tax forms at Stage&nbsp;3 selection.</p></details>
 
         <p class="faq-group">Building</p>
@@ -1069,122 +1067,6 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 </footer>
 
 <script>
-(function(){
-  var root=document.documentElement, btn=document.getElementById('themeToggle');
-  function stored(){try{return localStorage.getItem('reb-theme');}catch(e){return null;}}
-  function isDark(){var c=root.getAttribute('data-theme');if(!c)c=(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches)?'dark':'light';return c==='dark';}
-  function syncAria(){var d=isDark();btn.setAttribute('aria-pressed',d);btn.setAttribute('aria-label',d?'Switch to light theme':'Switch to dark theme');}
-  var s=stored(); if(s) root.setAttribute('data-theme',s);
-  syncAria();
-  btn.addEventListener('click',function(){
-    var next=isDark()?'light':'dark';
-    root.setAttribute('data-theme',next);
-    try{localStorage.setItem('reb-theme',next);}catch(e){}
-    syncAria();
-  });
-
-  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-  if('IntersectionObserver' in window && !reduce){
-    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px',threshold:.06});
-    document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
-  }else{document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in');});}
-})();
-
-/* ===================== KitchenBench task-instance sampler ===================== */
-(function(){
-  "use strict";
-  function mulberry32(a){return function(){a|=0;a=(a+0x6D2B79F5)|0;var t=Math.imul(a^(a>>>15),1|a);t=(t+Math.imul(t^(t>>>7),61|t))^t;return ((t^(t>>>14))>>>0)/4294967296;};}
-  var PANEL={x:60,y:34,w:460,h:300}, INSET=80, JITTER=21, TYPES=["USB-C","Barrel","XLR","RJ45","BNC"];
-  function slotGrid(){var xs=[PANEL.x+INSET,PANEL.x+PANEL.w/2,PANEL.x+PANEL.w-INSET],ys=[PANEL.y+INSET,PANEL.y+PANEL.h-INSET],s=[];for(var yi=0;yi<ys.length;yi++)for(var xi=0;xi<xs.length;xi++)s.push({x:xs[xi],y:ys[yi]});return s;}
-  function shuffle(arr,rng){for(var i=arr.length-1;i>0;i--){var j=Math.floor(rng()*(i+1));var t=arr[i];arr[i]=arr[j];arr[j]=t;}return arr;}
-  function realize(seed){var rng=mulberry32(seed>>>0);var n=[3,4,5][Math.floor(rng()*3)];var slots=shuffle(slotGrid(),rng);var ports=[];for(var i=0;i<n;i++){var c=slots[i];ports.push({i:i,x:Math.round(c.x+(rng()*2-1)*JITTER),y:Math.round(c.y+(rng()*2-1)*JITTER),theta:Math.round(rng()*60-30),type:TYPES[Math.floor(rng()*TYPES.length)]});}var clutter=rng()<0.4;var clutterSlot=(clutter&&n<slots.length)?slots[n]:null;var lighting=Math.round(2700+rng()*(6500-2700));return {seed:seed>>>0,n:n,ports:ports,clutter:clutter,clutterSlot:clutterSlot,lighting:lighting};}
-  function pins(){var out="",R=9;for(var k=0;k<3;k++){var a=-Math.PI/2+k*(2*Math.PI/3);out+='<circle class="det-fill" cx="'+(R*Math.cos(a)).toFixed(1)+'" cy="'+(R*Math.sin(a)).toFixed(1)+'" r="3.4"/>';}return out;}
-  function glyph(type){var g;switch(type){case "USB-C":g='<rect class="foot" x="-24" y="-9" width="48" height="18" rx="9"/><line class="det" x1="-13" y1="0" x2="13" y2="0"/>';break;case "Barrel":g='<circle class="foot" r="23"/><circle class="foot" r="14"/><circle class="det-fill" r="6"/>';break;case "XLR":g='<circle class="foot" r="24"/>'+pins();break;case "RJ45":g='<rect class="foot" x="-22" y="-16" width="44" height="32" rx="3"/><rect class="det-fill" x="-8" y="12" width="16" height="8" rx="1.5"/>';break;case "BNC":g='<circle class="foot" r="22"/><circle class="det-fill" r="6"/><rect class="det-fill" x="-25" y="-3.5" width="6" height="7"/><rect class="det-fill" x="19" y="-3.5" width="6" height="7"/>';break;}var tick='<line class="tick" x1="0" y1="0" x2="40" y2="0"/><path class="tick-head" d="M39,-4 L48,0 L39,4 Z"/>';return g+tick;}
-  function fmtDeg(d){return (d>=0?"+":"−")+Math.abs(d)+"°";}
-  function pad(s,n){s=String(s);while(s.length<n)s+=" ";return s;}
-  function buildFrame(){var s="",x,y,i;s+='<rect class="panel" x="'+PANEL.x+'" y="'+PANEL.y+'" width="'+PANEL.w+'" height="'+PANEL.h+'" rx="4"/>';for(i=1;i<PANEL.w/50;i++){x=PANEL.x+i*50;s+='<line class="grid-min" x1="'+x+'" y1="'+PANEL.y+'" x2="'+x+'" y2="'+(PANEL.y+PANEL.h)+'"/>';}for(i=1;i<PANEL.h/50;i++){y=PANEL.y+i*50;s+='<line class="grid-min" x1="'+PANEL.x+'" y1="'+y+'" x2="'+(PANEL.x+PANEL.w)+'" y2="'+y+'"/>';}for(i=1;i<PANEL.w/100+1;i++){x=PANEL.x+i*100;if(x>PANEL.x+PANEL.w)break;s+='<line class="grid-maj" x1="'+x+'" y1="'+PANEL.y+'" x2="'+x+'" y2="'+(PANEL.y+PANEL.h)+'"/>';s+='<text class="axt" x="'+x+'" y="'+(PANEL.y+PANEL.h+15)+'" text-anchor="middle">'+(i*100)+'</text>';}for(i=1;i<PANEL.h/100+1;i++){y=PANEL.y+i*100;if(y>PANEL.y+PANEL.h)break;s+='<line class="grid-maj" x1="'+PANEL.x+'" y1="'+y+'" x2="'+(PANEL.x+PANEL.w)+'" y2="'+y+'"/>';s+='<text class="axt" x="'+(PANEL.x-8)+'" y="'+(y+3.5)+'" text-anchor="end">'+(i*100)+'</text>';}s+='<text class="axt" x="'+(PANEL.x-8)+'" y="'+(PANEL.y+13)+'" text-anchor="end">0</text>';s+='<text class="axcap" x="'+(PANEL.x+PANEL.w)+'" y="'+(PANEL.y+PANEL.h+15)+'" text-anchor="end">x / mm →</text>';s+='<text class="axcap" x="'+(PANEL.x-8)+'" y="'+(PANEL.y-10)+'" text-anchor="end">y↓/mm</text>';var sbx=PANEL.x,sby=PANEL.y+PANEL.h+30;s+='<line class="scalebar" x1="'+sbx+'" y1="'+sby+'" x2="'+(sbx+100)+'" y2="'+sby+'"/>';s+='<line class="scalebar" x1="'+sbx+'" y1="'+(sby-4)+'" x2="'+sbx+'" y2="'+(sby+4)+'"/>';s+='<line class="scalebar" x1="'+(sbx+100)+'" y1="'+(sby-4)+'" x2="'+(sbx+100)+'" y2="'+(sby+4)+'"/>';s+='<text class="frame-lbl" x="'+(sbx+112)+'" y="'+(sby+4)+'">100 mm</text>';s+='<text class="frame-lbl" x="'+(PANEL.x+PANEL.w)+'" y="'+(sby+4)+'" text-anchor="end">top-down view</text>';return s;}
-  function portSVG(p){var g='<g class="port" style="--i:'+p.i+'">';g+='<g transform="translate('+p.x+','+p.y+') rotate('+p.theta+')">'+glyph(p.type)+'</g>';g+='<text class="lbl" x="'+p.x+'" y="'+(p.y-34)+'" text-anchor="middle"><tspan class="idx">'+p.i+'</tspan> '+p.type+'</text>';g+='<text class="ang" x="'+p.x+'" y="'+(p.y+42)+'" text-anchor="middle">θ='+fmtDeg(p.theta)+'</text>';g+='</g>';return g;}
-  function clutterSVG(inst){var c=inst.clutterSlot;if(!c)return "";var w=104,h=78,x=c.x-w/2,y=c.y-h/2;return '<g class="clutter" style="--i:'+inst.n+'"><rect class="clutter-fill" x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="4"/><rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="4" fill="url(#cb-hatch)"/><rect class="clutter-edge" x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="4"/><text class="clutter-lbl" x="'+c.x+'" y="'+c.y+'" dy="3" text-anchor="middle">CLUTTER</text></g>';}
-  function readout(inst){var L=[];L.push('<span class="hd">n_ports  = </span>'+inst.n+'   <span class="hd">lighting = </span>'+inst.lighting+' K   <span class="hd">clutter = </span><span class="a">'+inst.clutter+'</span>');L.push('<span class="hd">idx type    x     y      θ</span>');inst.ports.forEach(function(p){var xl=p.x-PANEL.x,yl=p.y-PANEL.y;L.push('<span class="a">'+p.i+'</span>   '+pad(p.type,7)+' '+pad(xl,5)+' '+pad(yl,6)+' '+(p.theta>=0?"+":"−")+pad(Math.abs(p.theta)+"°",4));});return L.join("\n");}
-  function summary(inst){var parts=inst.ports.map(function(p){return p.type+" at "+(p.x-PANEL.x)+","+(p.y-PANEL.y)+" mm, "+fmtDeg(p.theta);});return "Realized KitchenBench sample, seed "+inst.seed+": "+inst.n+" ports: "+parts.join("; ")+". Lighting "+inst.lighting+" kelvin. Clutter "+(inst.clutter?"present":"absent")+".";}
-  var svg=document.getElementById("cb-svg");if(!svg)return;
-  var frame=document.getElementById("cb-frame"),dyn=document.getElementById("cb-dynamic"),btn=document.getElementById("cb-resample"),autoCb=document.getElementById("cb-auto"),seedEl=document.getElementById("cb-seed"),valsEl=document.getElementById("cb-vals"),tagEl=document.getElementById("cb-realtag"),liveEl=document.getElementById("cb-live");
-  frame.innerHTML=buildFrame();
-  function render(seed,announce){var inst=realize(seed);dyn.innerHTML=inst.ports.map(portSVG).join("")+clutterSVG(inst);seedEl.innerHTML='seed = <span class="k">'+inst.seed+'</span>';tagEl.textContent='realize(seed='+inst.seed+')';valsEl.innerHTML=readout(inst);if(announce!==false)liveEl.textContent=summary(inst);}
-  function newSeed(){return (Math.random()*1e6)|0;}
-  btn.addEventListener("click",function(){render(newSeed());});
-  var timer=null,reduceQ=window.matchMedia?window.matchMedia("(prefers-reduced-motion: reduce)"):{matches:false,addEventListener:function(){}};
-  function stopAuto(){if(timer){clearInterval(timer);timer=null;}}
-  function startAuto(){stopAuto();timer=setInterval(function(){render(newSeed(),false);},3800);}
-  autoCb.addEventListener("change",function(){if(autoCb.checked&&!reduceQ.matches)startAuto();else stopAuto();});
-  document.addEventListener("visibilitychange",function(){if(document.hidden)stopAuto();else if(autoCb.checked&&!reduceQ.matches)startAuto();});
-  if(reduceQ.matches){autoCb.disabled=true;autoCb.parentNode.style.opacity=.5;}
-  render(4837,false);
-})();
-
-/* ===================== empty results registry ===================== */
-(function(){
-  "use strict";
-  var FAMILIES=[{name:"CableBench",sub:"port-panel insertion"},{name:"MechanicBench",sub:"robot repair / part swap"},{name:"CoffeeBench",sub:"multi-step machine op"},{name:"HotSwapBench",sub:"live-rack module swap"},{name:"HarnessRoute",sub:"deformable routing"},{name:"PourBench",sub:"liquids / pouring"}];
-  var N_MODELS=5,body=document.getElementById("rg-body");if(!body)return;
-  body.innerHTML=FAMILIES.map(function(f){var cells="";for(var c=0;c<N_MODELS;c++){cells+='<td class="rg__cell"><span class="rg__dash" aria-hidden="true">—</span><span class="rg__sr">no result on this benchmark yet</span></td>';}return '<tr><th scope="row"><span class="rg__fam">'+f.name+'</span><span class="rg__famsub">'+f.sub+'</span></th>'+cells+'</tr>';}).join("");
-})();
-
-/* ===================== mission contact sheet: one recipe, nine seeds ===================== */
-(function(){
-  "use strict";
-  function mulberry32(a){return function(){a|=0;a=(a+0x6D2B79F5)|0;var t=Math.imul(a^(a>>>15),1|a);t=(t+Math.imul(t^(t>>>7),61|t))^t;return((t^(t>>>14))>>>0)/4294967296;};}
-  function shuffle(arr,rng){for(var i=arr.length-1;i>0;i--){var j=Math.floor(rng()*(i+1));var t=arr[i];arr[i]=arr[j];arr[j]=t;}return arr;}
-  function clamp(v,lo,hi){return v<lo?lo:v>hi?hi:v;}
-  function pick(rng,a){return a[Math.floor(rng()*a.length)];}
-  function jit(rng,m){return (rng()*2-1)*m;}
-  var SLOTS=[];
-  [26,50,74].forEach(function(y){[26,50,74].forEach(function(x){SLOTS.push({x:x,y:y});});});
-  var TYPES=["block","bar","puck"];
-  function realize(seed){
-    var rng=mulberry32(seed>>>0);
-    var slots=shuffle(SLOTS.slice(),rng);
-    var goal={x:clamp(slots[0].x+jit(rng,5),20,80),y:clamp(slots[0].y+jit(rng,5),20,80),rot:Math.round(rng()*50-25)};
-    var K=pick(rng,[3,3,4,4,4,5]);
-    var objs=[];
-    for(var i=0;i<K;i++){var s=slots[i+1];objs.push({x:clamp(s.x+jit(rng,4),16,84),y:clamp(s.y+jit(rng,4),16,84),rot:Math.round(rng()*180-90),type:pick(rng,TYPES)});}
-    return {seed:seed>>>0,goal:goal,objs:objs};
-  }
-  var FRAME=(function(){
-    var s='<rect class="surf" x="6" y="6" width="88" height="88" rx="3"/>';
-    [22,36,50,64,78].forEach(function(v){s+='<line class="tick" x1="'+v+'" y1="8" x2="'+v+'" y2="92"/>';s+='<line class="tick" x1="8" y1="'+v+'" x2="92" y2="'+v+'"/>';});
-    s+='<path class="reach" d="M10,32.1 A72,72 0 0 1 90,32.1"/>';
-    s+='<rect class="frame" x="6" y="6" width="88" height="88" rx="3"/>';
-    return s;
-  })();
-  var BASE='<path class="base" d="M43,95 L57,95 L54,89 L46,89 Z"/><circle class="tool" cx="50" cy="89" r="1.9"/>';
-  function objSVG(o){
-    var g='<g transform="translate('+o.x.toFixed(1)+','+o.y.toFixed(1)+') rotate('+o.rot+')">';
-    if(o.type==="block"){g+='<rect class="obj" x="-4.5" y="-4.5" width="9" height="9" rx="1"/><line class="ori" x1="0" y1="0" x2="7" y2="0"/>';}
-    else if(o.type==="bar"){g+='<rect class="obj" x="-6.5" y="-3" width="13" height="6" rx="1.4"/><line class="ori" x1="0" y1="0" x2="8" y2="0"/>';}
-    else{g+='<circle class="obj" r="4.6"/><circle class="oridot" r="1.5"/>';}
-    return g+'</g>';
-  }
-  function goalSVG(gl){
-    var t='translate('+gl.x.toFixed(1)+','+gl.y.toFixed(1)+') rotate('+gl.rot+')';
-    return '<g transform="'+t+'"><rect class="goal-fill" x="-13" y="-9" width="26" height="18" rx="2.5"/><rect class="goal-edge" x="-13" y="-9" width="26" height="18" rx="2.5"/></g>';
-  }
-  function tileSVG(inst){
-    var body=goalSVG(inst.goal);
-    inst.objs.forEach(function(o){body+=objSVG(o);});
-    return '<svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet" role="presentation" focusable="false">'+FRAME+body+BASE+'</svg>';
-  }
-  function hex(n){var h=n.toString(16).toUpperCase();while(h.length<4)h="0"+h;return h.slice(-4);}
-  var grid=document.getElementById("mf-grid");if(!grid)return;
-  var base=mulberry32(20260726),html="";
-  for(var i=0;i<9;i++){
-    var seed=(base()*0xffffffff)>>>0;
-    var inst=realize(seed);
-    var ix=(i+1<10?"0":"")+(i+1);
-    html+='<figure class="mf-tile">'+tileSVG(inst)+'<figcaption class="mf-cap"><span class="ix">'+ix+'</span><span class="sd">seed 0x'+hex(seed)+'</span></figcaption></figure>';
-  }
-  grid.innerHTML=html;
-})();
 </script>
 <script>
 (function(){

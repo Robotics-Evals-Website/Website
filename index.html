@@ -248,12 +248,13 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
    BENCHMARK CATEGORIES + IDEA LISTS
    ============================================================ */
 .cats{margin-top:clamp(1.4rem,2.6vw,2.1rem);border-top:1px solid var(--line)}
-.cat-row{display:grid;gap:var(--col-gutter);padding:clamp(1.75rem,3.5vw,2.75rem) 0;border-bottom:1px solid var(--line)}
+.cat-row{display:grid;gap:var(--col-gutter);padding:clamp(1.4rem,2.8vw,2.1rem) 0;border-bottom:1px solid var(--line)}
 @media (min-width:820px){.cat-row{grid-template-columns:calc(var(--col-break) - var(--col-gutter)) minmax(0,1fr)}}
-.cat-head .cat-idx{font-family:var(--mono);font-size:1rem;font-weight:500;background:var(--accent);color:var(--accent-contrast);border-color:var(--accent);
-  border:1px solid var(--line-strong);border-radius:5px;width:2rem;height:2rem;display:grid;place-items:center;margin-bottom:1rem}
-.cat-head h3{margin-bottom:.6rem}
-.cat-head p{color:var(--ink-muted);font-size:var(--fs-body-sm)}
+.cat-head{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:.7rem;align-items:center;align-content:start}
+.cat-head .cat-idx{font-family:var(--mono);font-size:.95rem;font-weight:500;background:var(--accent);color:var(--accent-contrast);
+  border:1px solid var(--accent);border-radius:5px;width:1.9rem;height:1.9rem;display:grid;place-items:center}
+.cat-head h3{grid-column:2;margin-bottom:0}
+.cat-head p{grid-column:1/-1;margin-top:.7rem;color:var(--ink-muted);font-size:var(--fs-body-sm)}
 .ideas{margin:.9rem 0 0}
 .ideas>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:.55em;font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--accent);padding:.2rem 0}
 .ideas>summary::-webkit-details-marker{display:none}

@@ -284,6 +284,18 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
 .track .btn{margin-top:auto;align-self:flex-start}
 .track .plus{margin:1.5rem 0 0;display:flex;align-items:center;gap:.7em;font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--accent)}
 .track .plus::after{content:"";flex:1;height:1px;background:var(--line)}
+.funnel{margin-top:clamp(2rem,4vw,3rem);border-top:1px solid var(--line)}
+.fstage{display:grid;gap:clamp(.6rem,2vw,2.5rem);padding:clamp(1.6rem,3vw,2.4rem) 0;border-bottom:1px solid var(--line)}
+@media (min-width:820px){.fstage{grid-template-columns:minmax(0,.62fr) minmax(0,1.38fr)}}
+.f-num{font-family:var(--mono);font-size:1rem;font-weight:500;color:var(--accent);display:inline-block;border:1px solid var(--line-strong);border-radius:4px;padding:.15rem .5rem;margin-bottom:.7rem}
+.f-head h3{margin:0 0 .45rem}
+.f-meta{margin:0;font-family:var(--mono);font-size:var(--fs-data);color:var(--ink-muted);letter-spacing:.02em;line-height:1.9}
+.f-cohort{color:var(--accent)}
+.f-body>p{margin:0;color:var(--ink-muted);font-size:var(--fs-body-sm);max-width:62ch}
+.f-pay{list-style:none;margin:1.1rem 0 0;padding:0;font-family:var(--mono);font-size:var(--fs-data)}
+.f-pay li{display:flex;justify-content:space-between;align-items:baseline;gap:1.5rem;padding:.55rem 0;border-top:1px dashed var(--line)}
+.f-pay li span{color:var(--ink-muted)}
+.f-pay li b{color:var(--accent);font-weight:500;font-variant-numeric:tabular-nums;text-align:right}
 .tracks-note{margin-top:1.25rem;font-family:var(--mono);font-size:var(--fs-data);color:var(--ink-muted);letter-spacing:.01em}
 
 /* ============================================================
@@ -416,7 +428,7 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
 .faq-list li{display:flex;flex-wrap:wrap;gap:.2em .7em;font-size:var(--fs-body-sm);color:var(--ink-muted);line-height:1.55}
 .faq details p .mono{font-family:var(--mono);font-size:.92em;color:var(--ink)}
 .faq-list b{color:var(--ink);font-weight:600;flex:none;font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);text-transform:uppercase;padding-top:.25em}
-.faq details p{color:var(--ink);padding:0 2.5rem 1.3rem 0;font-size:var(--fs-body-sm);max-width:66ch;text-wrap:pretty}
+.faq details p{color:var(--ink);padding:0 2.5rem 1.3rem 0;font-size:var(--fs-body-sm);max-width:84ch;text-wrap:pretty}
 
 /* ============================================================
    APPLY
@@ -612,60 +624,64 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
   <!-- ================= TRACKS ================= -->
   <section id="stages" class="band">
     <div class="wrap">
-      <p class="marker"><b>01</b> / one funnel, three stages</p>
+      <p class="marker"><b>01</b> / how it runs</p>
       <div class="prose">
-        <h2>Everyone enters the same way.</h2>
-        <p class="lead">There is no track to choose. The field narrows at each stage, and the award rises as the deliverable grows.</p>
+        <h2>Three stages.</h2>
+        <p class="lead">The field narrows at each stage and the award grows with the deliverable.</p>
       </div>
-      <div class="tracks reveal">
 
-        <div class="track">
-          <div class="t-top"><span class="t-label">Stage 1</span><span class="t-flag">Everyone</span></div>
-          <h3>Proposal</h3>
-          <p class="t-when">Aug 12 &ndash; Sep 13</p>
-          <p class="t-scope">The benchmark you want to build, and one fully specified task instance. Scored on capability, idea, and fit.</p>
-          <div class="prize prize-none">No award<small>entry is open, and free</small></div>
+      <div class="funnel reveal">
+
+        <div class="fstage">
+          <div class="f-head">
+            <span class="f-num">01</span>
+            <h3>Proposal</h3>
+            <p class="f-meta">Aug 12 &ndash; Sep 13<br><span class="f-cohort">Open to everyone</span></p>
+          </div>
+          <div class="f-body">
+            <p>The benchmark you want to build, the area it addresses, and one fully specified task instance in the published format. Scored on team capability, idea quality, and fit.</p>
+          </div>
         </div>
 
-        <div class="track">
-          <div class="t-top"><span class="t-label">Stage 2</span><span class="t-flag">Up to 30</span></div>
-          <h3>Simulated benchmark</h3>
-          <p class="t-when">Sep 21 &ndash; Oct 9</p>
-          <p class="t-scope">A working benchmark in Inspect Robots on the KitchenBench pattern. No physics simulation yet.</p>
-          <div class="prize">$3,000<small>up to, per team</small></div>
-          <ul class="ms">
-            <li><span>Base</span><b>$1,000</b></li>
-            <li><span>Per extra member</span><b>+$500</b></li>
-          </ul>
-          <p class="plus">Plus, on top</p>
-          <ul class="meta">
-            <li><span>Compute</span><b>$500</b></li>
-            <li><span>Publication</span><b>WorldEvals</b></li>
-          </ul>
+        <div class="fstage">
+          <div class="f-head">
+            <span class="f-num">02</span>
+            <h3>Simulated benchmark</h3>
+            <p class="f-meta">Sep 21 &ndash; Oct 9<br><span class="f-cohort">Up to 30 teams</span></p>
+          </div>
+          <div class="f-body">
+            <p>A working benchmark in Inspect Robots on the KitchenBench pattern, installing clean and passing CI. No physics simulation yet.</p>
+            <ul class="f-pay">
+              <li><span>Base award</span><b>$1,000</b></li>
+              <li><span>Each additional member</span><b>+$500, to $3,000</b></li>
+              <li><span>Compute credits</span><b>$500</b></li>
+              <li><span>Published in WorldEvals</span><b>advance or not</b></li>
+            </ul>
+          </div>
         </div>
 
-        <div class="track feature">
-          <div class="t-top"><span class="t-label">Stage 3</span><span class="t-flag">Up to 13</span></div>
-          <h3>Physics sim and hardware</h3>
-          <p class="t-when">Oct 21 &ndash; Dec 18</p>
-          <p class="t-scope">Both halves of the deliverable, running end to end, then independently replicated.</p>
-          <div class="prize">$28,000<small>up to, per team</small></div>
-          <ul class="ms">
-            <li><span>Delivery</span><b>$10,000</b></li>
-            <li><span>Replication</span><b>$8,000&ndash;$18,000</b></li>
-          </ul>
-          <p class="plus">Plus, on top</p>
-          <ul class="meta">
-            <li><span>Two SO-101 arms</span><b>free</b></li>
-            <li><span>Compute</span><b>$1,000</b></li>
-            <li><span>Materials</span><b>up to $1,000</b></li>
-            <li><span>Joint paper</span><b>co-author</b></li>
-          </ul>
+        <div class="fstage">
+          <div class="f-head">
+            <span class="f-num">03</span>
+            <h3>Physics sim and hardware</h3>
+            <p class="f-meta">Oct 21 &ndash; Dec 18<br><span class="f-cohort">Up to 13 teams</span></p>
+          </div>
+          <div class="f-body">
+            <p>A physics simulation of the task family and the hardware benchmark itself, each running end to end with a baseline evaluated, then independently replicated.</p>
+            <ul class="f-pay">
+              <li><span>Delivery, December</span><b>$10,000</b></li>
+              <li><span>Replication tier, February</span><b>$8,000 &ndash; $18,000</b></li>
+              <li><span>Two SO-101 arms</span><b>free, yours to keep</b></li>
+              <li><span>Compute credits</span><b>$1,000</b></li>
+              <li><span>Bill of materials</span><b>up to $1,000</b></li>
+              <li><span>Joint paper</span><b>co-authorship</b></li>
+            </ul>
+          </div>
         </div>
 
       </div>
-      <p class="tracks-note">Every figure is a maximum. Delivery is paid in December and the replication tier in February, set by a rubric published at launch. Roughly 40% of Stage 2 teams advance to Stage 3; we state that up front so teams can plan. Arms, credits, and the materials budget sit on top of the award and are not deducted from it.</p>
-      <div class="cta-row cta-row-tight"><a class="btn btn-primary btn-lg" href="#apply">Enter at Stage 1</a></div>
+      <p class="tracks-note">The Stage 2 base award, both compute credits, and the $10,000 delivery award are flat. Only the $3,000 team cap, the replication tier, and the materials budget vary. Roughly 40% of Stage 2 teams advance.</p>
+      <div class="cta-row cta-row-tight"><a class="btn btn-primary btn-lg" href="#apply">Apply</a></div>
     </div>
   </section>
   <!-- ================= BENCHMARKS ================= -->
@@ -863,25 +879,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
   <!-- ================= HOW IT WORKS ================= -->
   <section id="how" class="band">
     <div class="wrap">
-      <p class="marker"><b>06</b> / how the program runs</p>
-      <div class="prose"><h2>Three stages, from proposal to replicated benchmark.</h2></div>
-      <div class="stages reveal">
-        <div class="stage">
-          <span class="s-num">Stage 1 &middot; Aug 12 to Sep 13</span>
-          <h3>Proposal</h3>
-          <p>The benchmark you want to build, the area it addresses, your background, and one fully specified task instance in the published format. Scored on team capability, idea quality, and relevance.</p>
-        </div>
-        <div class="stage">
-          <span class="s-num">Stage 2 &middot; Sep 21 to Oct 9</span>
-          <h3>Simulated benchmark</h3>
-          <p>Up to 30 teams. A working simulated benchmark in Inspect Robots on the KitchenBench pattern, installing clean and passing CI. No physics simulation required yet: this stage tests whether you can specify a benchmark rigorously.</p>
-        </div>
-        <div class="stage">
-          <span class="s-num">Stage 3 &middot; Oct 21 to Dec 18</span>
-          <h3>Physics sim and hardware</h3>
-          <p>Up to 13 teams, roughly 40% of Stage 2. Both halves of the deliverable: a physics simulation of the task family and the hardware benchmark itself, each running end to end with a baseline evaluated.</p>
-        </div>
-      </div>
+      <p class="marker"><b>06</b> / what Stage 3 must ship</p>
       <div class="reqs reveal">
         <div class="reqs-body">
         <h3>Stage 3 submission requirements</h3>

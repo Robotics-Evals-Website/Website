@@ -428,8 +428,6 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
    FAQ
    ============================================================ */
 .faq{margin-top:clamp(1.4rem,2.6vw,2.1rem);border-top:1px solid var(--line)}
-.faq-group{margin:1.9rem 0 .2rem;font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--accent)}
-.faq-group:first-child{margin-top:0}
 .faq details{border-bottom:1px solid var(--line)}
 .faq summary{list-style:none;cursor:pointer;padding:1.1rem 2.5rem 1.1rem 0;position:relative;
   font-family:var(--sans);font-weight:500;font-size:1.05rem;color:var(--ink);transition:color .18s}
@@ -973,34 +971,22 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
       <p class="marker"><b>07</b> / questions</p>
       <div class="prose"><h2>Terms.</h2></div>
       <div class="faq reveal">
-
-        <p class="faq-group">Entering</p>
         <details><summary>Who can apply?</summary><p>Individuals and teams, students included. You do not need to own a robot: every team that reaches Stage&nbsp;3 is sent a fully assembled SO-101 at no cost and keeps it. Everyone enters the same way, with a Stage&nbsp;1 proposal, and you may submit more than one.</p></details>
-        <details><summary>What goes in a Stage 1 entry?</summary><p>A proposal: the benchmark you want to build, the area it addresses, and your background. Plus one fully specified task instance in the published format, which is a stochastic setup with named variables and their distributions, a goal, a reset procedure, and a success scorer. Due 13 September 2026, 23:59 Pacific. Scored on team capability, idea quality, and relevance. Spam, AI slop, and harmful eval proposals are rejected without review.</p></details>
-        <details><summary>What is due at Stage 2 and Stage 3?</summary>
+        <details><summary>What do I submit at each stage?</summary>
         <ul class="faq-list">
-          <li><b>Stage 2</b> A working simulated benchmark in Inspect Robots, on the KitchenBench pattern: instances as distributions, realizations by seed, a scorer, a mock embodiment. It must install clean, run end to end, pass CI, and carry a self-score against the published rubric. No physics simulation needed at this stage.</li>
-          <li><b>Stage 3</b> A physics simulation of the task family and the hardware benchmark, each running end to end with a baseline evaluated, plus a reproducibility package covering environment specs with tolerances, the eval protocol, the reset procedure, and rollout counts. Due 18 December 2026, 23:59 Pacific, rolling from 1 December.</li>
+          <li><b>Stage 1</b> A proposal: the benchmark you want to build, the area it addresses, your background, and one fully specified task instance in the published format, which is a stochastic setup with named variables and their distributions, a goal, a reset procedure, and a success scorer. Due 13 September 2026, 23:59 Pacific. Scored on team capability, idea quality, and relevance.</li>
+          <li><b>Stage 2</b> A working simulated benchmark in Inspect Robots, on the KitchenBench pattern. It must install clean, run end to end, pass CI, and carry a self-score against the published rubric. No physics simulation needed at this stage.</li>
+          <li><b>Stage 3</b> A physics simulation of the task family and the hardware benchmark, each running end to end with a baseline evaluated, plus a reproducibility package covering environment specs with tolerances, the eval protocol, the reset procedure, and rollout counts. Due 18 December 2026, 23:59 Pacific, rolling from 1 December. We then spot-check a random sample of instances for reproducibility before assigning the tier.</li>
         </ul></details>
-
-        <p class="faq-group">Terms</p>
-        <details><summary>Is this a job, a contract, or a grant?</summary><p>None of those. These are competition awards, not payment for services: no employment or contracting relationship, no supervision, no hours reporting, and no work assigned by us. You choose your own task, method, and schedule, and are judged against criteria published on day one. Awards are flat amounts tied to deliverables, not to time spent.</p></details>
-        <details><summary>I hold a student visa. Can I enter?</summary><p>We believe the structure above is compatible with the visa status of international students, who are a large share of the robotics research community. Rules vary by institution and by circumstance, so confirm with your international student office before entering.</p></details>
-        <details><summary>What does each stage pay?</summary><p>Stage&nbsp;1 pays nothing. Stage&nbsp;2 pays $1,000, plus $500 for each member beyond the first to a cap of $3,000, which is a team of five. There is no hard limit on team size; if you are larger, get in touch. Stage&nbsp;3 pays a flat $10,000 in December on verified delivery, then $8,000 to $18,000 in February on passing replication, set by a rubric published at launch, plus $2,000 in compute credits, up to $1,000 for materials, and the two SO-101 arms.</p></details>
+        <details><summary>Is this a job, a contract, or a grant?</summary><p>None of those. These are competition awards, not payment for services: no employment or contracting relationship, no supervision, no hours reporting, and no work assigned by us. You choose your own task, method, and schedule, and are judged against criteria published on day one. Awards are flat amounts tied to deliverables, not to time spent. If you hold a student visa, confirm with your international student office before entering.</p></details>
         <details><summary>How are awards paid and taxed?</summary><p>To the team, by international transfer, split as the team directs. University-affiliated teams may instead request payment as a research gift to their institution; ask at Stage&nbsp;2 selection, since institutional contracting takes weeks. Awards may be reported to tax authorities, and awards outside the United States may be subject to withholding, recoverable by filing a US return the following year. We collect tax forms at Stage&nbsp;3 selection.</p></details>
-
-        <p class="faq-group">Building</p>
         <details><summary>Which robot do I build on?</summary><p>The SO-101 is the default reference embodiment. Every Stage&nbsp;3 team is sent two fully assembled follower arms, ordered on selection day, free and with no return obligation, including if you withdraw. They sit outside the $1,000 materials budget, which covers task materials and 3D-printable fixtures. You drive them through <span class="mono">inspect-robots-so101</span>, which wraps LeRobot checkpoints as an Inspect Robots policy; a public checkpoint is enough for a baseline, so no teleoperation, demo collection or leader arms are needed. You may instead propose an alternative embodiment you already own, approved at Stage&nbsp;2, and are still offered the arms:</p>
         <ul class="faq-list">
           <li><b>Arms</b> YAM, WidowX AI, Franka Research 3</li>
           <li><b>Humanoids</b> AgiBot X1, Unitree G1</li>
         </ul></details>
-        <details><summary>How is my benchmark checked?</summary><p>We spot-check rather than rerun everything, by a procedure published on day one: 2 rollouts on each of 5 instances, sampled at random and not announced. The test is whether an independent operator can arrange each scene from your written setup alone, without contacting you, and get a result consistent with your claim. It passes if observed successes fall inside the 90% binomial interval implied by your claimed per-instance rate, and every sampled instance is realizable from the spec. Where a rerun falls outside tolerance we iterate with you before assigning a tier; the December delivery award is not reversed. Separately, three experts rate each task instance on representativeness and quality, and an instance is accepted only if both scores are at least 4.</p></details>
-
-        <p class="faq-group">Rights</p>
         <details><summary>What do I keep, and what gets published?</summary><p>You keep copyright, and publication rights in full: write up your own benchmark, submit it anywhere, without clearing anything with us. Entering grants us a licence to publish it in WorldEvals under MIT, with your team credited. After replication closes in February we write up the collected suite, the paired simulations, the measured sim-to-real gap, and baseline results for current VLA policies, targeting submission in Q1 2027. Every Stage&nbsp;3 team that passes replication is offered co-authorship, and may decline and be acknowledged instead.</p></details>
         <details><summary>What are Inspect Robots, KitchenBench, and WorldEvals?</summary><p><a href="https://inspectrobots.org/" target="_blank" rel="noopener noreferrer">Inspect Robots</a> is RoboCurve's open-source framework for evaluating AI and robots in the physical world. <a href="https://github.com/robocurve/kitchenbench" target="_blank" rel="noopener noreferrer">KitchenBench</a> is the worked example of what a Stage&nbsp;2 submission should look like. WorldEvals is the public repository where finished benchmarks are released.</p></details>
-
       </div>
     </div>
   </section>

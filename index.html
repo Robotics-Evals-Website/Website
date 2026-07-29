@@ -261,13 +261,14 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
 .track .plus{margin:1.5rem 0 0;display:flex;align-items:center;gap:.7em;font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--accent)}
 .track .plus::after{content:"";flex:1;height:1px;background:var(--line)}
 .funnel{position:relative;margin-top:clamp(1.4rem,2.6vw,2.1rem);border-top:1px solid var(--line);padding-left:2.2rem}
-.funnel::before{content:"";position:absolute;left:5px;top:2.1rem;bottom:2.1rem;width:1px;background:var(--line)}
-.js .funnel::before{background:repeating-linear-gradient(to bottom,var(--line-strong) 0 3px,transparent 3px 7px)}
-.frail{position:absolute;left:5px;top:2.1rem;width:1px;height:0;background:var(--accent);transition:height .7s var(--ease)}
+.ftrack{position:absolute;left:5px;top:0;width:1px;height:0;background:var(--line)}
+.js .ftrack{background:repeating-linear-gradient(to bottom,var(--line-strong) 0 3px,transparent 3px 7px)}
+.ffill{display:block;width:1px;height:100%;background:var(--accent)}
+.js .ffill{height:0}
 .fstage{position:relative;display:grid;gap:clamp(.6rem,2vw,2.5rem);padding:clamp(1.6rem,3vw,2.4rem) 0;border-bottom:1px solid var(--line)}
 .fstage::before{content:"";position:absolute;left:-2.2rem;top:2.05rem;width:11px;height:11px;border-radius:50%;background:var(--accent);border:1.5px solid var(--accent);transform:translateX(0);transition:background .4s var(--ease),border-color .4s var(--ease)}
 .js .fstage:not(.on)::before{background:var(--bg);border-color:var(--line-strong);border-style:dashed}
-@media (prefers-reduced-motion:reduce){.frail,.fstage::before{transition:none}}
+@media (prefers-reduced-motion:reduce){.fstage::before{transition:none}}
 @media (max-width:560px){.funnel{padding-left:1.5rem}.fstage::before{left:-1.5rem}}
 @media (min-width:820px){.fstage{grid-template-columns:minmax(0,.62fr) minmax(0,1.38fr)}}
 .f-num{font-family:var(--mono);font-size:1rem;font-weight:500;color:var(--accent);display:inline-block;border:1px solid var(--line-strong);border-radius:4px;padding:.15rem .5rem;margin-bottom:.7rem}
@@ -617,7 +618,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
       </div>
 
       <div class="funnel reveal" id="funnel">
-        <span class="frail" aria-hidden="true"></span>
+        <span class="ftrack" aria-hidden="true"><span class="ffill"></span></span>
 
         <div class="fstage">
           <div class="f-head">
@@ -1149,23 +1150,33 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 <script>
 (function(){
   var f=document.getElementById("funnel"); if(!f)return;
-  var st=[].slice.call(f.querySelectorAll(".fstage")), fill=f.querySelector(".frail");
-  if(!st.length||!fill)return;
-  function paint(){
-    var last=-1;
-    for(var i=0;i<st.length;i++){ if(st[i].classList.contains("on")) last=i; }
-    if(last<0){fill.style.height="0px";return;}
-    var base=st[0].offsetTop+33;                 // first dot centre
-    fill.style.height=Math.max(0,(st[last].offsetTop+33)-base)+"px";
+  var st=[].slice.call(f.querySelectorAll(".fstage"));
+  var track=f.querySelector(".ftrack"), fill=f.querySelector(".ffill");
+  if(!st.length||!track||!fill)return;
+  var DOT=40, first=0, span=0, ticking=false;
+
+  function measure(){
+    first=st[0].offsetTop+DOT;
+    span=(st[st.length-1].offsetTop+DOT)-first;
+    track.style.top=first+"px";
+    track.style.height=span+"px";
   }
-  if("IntersectionObserver" in window){
-    var io=new IntersectionObserver(function(es){
-      es.forEach(function(e){ if(e.isIntersecting){e.target.classList.add("on");io.unobserve(e.target);} });
-      paint();
-    },{rootMargin:"0px 0px -40% 0px"});
-    st.forEach(function(x){io.observe(x);});
-  } else { st.forEach(function(x){x.classList.add("on");}); paint(); }
-  var t; window.addEventListener("resize",function(){clearTimeout(t);t=setTimeout(paint,120);});
+  function update(){
+    ticking=false;
+    var top=f.getBoundingClientRect().top;
+    var play=window.innerHeight*0.55;          // the reading line
+    var h=Math.max(0,Math.min(span,(play-top)-first));
+    fill.style.height=h+"px";
+    for(var i=0;i<st.length;i++){
+      var y=(st[i].offsetTop+DOT)-first;
+      st[i].classList.toggle("on", h>=y-1);
+    }
+  }
+  function onScroll(){ if(!ticking){ticking=true;requestAnimationFrame(update);} }
+  measure(); update();
+  addEventListener("scroll",onScroll,{passive:true});
+  addEventListener("resize",function(){measure();update();});
+  if(window.ResizeObserver) new ResizeObserver(function(){measure();update();}).observe(f);
 })();
 </script>
 <script>

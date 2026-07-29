@@ -236,8 +236,8 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
 .statusbar .wrap{background:color-mix(in srgb,var(--accent-contrast) 20%,var(--accent))}
 .status-cell span,.status-cell b{color:color-mix(in srgb,var(--accent-contrast) 78%,var(--accent))}
 .status-cell b em{color:var(--accent-contrast);font-weight:500}
-:root[data-theme="dark"] .statusbar,:root[data-theme="dark"] .status-cell{background:color-mix(in srgb,var(--accent) 14%,var(--surface-2))}:root[data-theme="dark"] .statusbar{border-color:var(--line)}:root[data-theme="dark"] .statusbar .wrap{background:color-mix(in srgb,var(--accent) 30%,var(--surface-2))}:root[data-theme="dark"] .status-cell span,:root[data-theme="dark"] .status-cell b{color:var(--ink-muted)}:root[data-theme="dark"] .status-cell b em{color:var(--accent)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .statusbar,:root:not([data-theme="light"]) .status-cell{background:color-mix(in srgb,var(--accent) 14%,var(--surface-2))}:root:not([data-theme="light"]) .statusbar{border-color:var(--line)}:root:not([data-theme="light"]) .statusbar .wrap{background:color-mix(in srgb,var(--accent) 30%,var(--surface-2))}:root:not([data-theme="light"]) .status-cell span,:root:not([data-theme="light"]) .status-cell b{color:var(--ink-muted)}:root:not([data-theme="light"]) .status-cell b em{color:var(--accent)}}
+:root[data-theme="dark"] .statusbar,:root[data-theme="dark"] .status-cell{background:color-mix(in srgb,var(--accent) 14%,var(--surface-2))}:root[data-theme="dark"] .statusbar{border-color:var(--line)}:root[data-theme="dark"] .statusbar .wrap{background:color-mix(in srgb,var(--accent) 30%,var(--surface-2))}:root[data-theme="dark"] .status-cell span,:root[data-theme="dark"] .status-cell b{color:color-mix(in srgb,var(--ink-muted) 74%,var(--accent))}:root[data-theme="dark"] .status-cell b em{color:var(--accent)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .statusbar,:root:not([data-theme="light"]) .status-cell{background:color-mix(in srgb,var(--accent) 14%,var(--surface-2))}:root:not([data-theme="light"]) .statusbar{border-color:var(--line)}:root:not([data-theme="light"]) .statusbar .wrap{background:color-mix(in srgb,var(--accent) 30%,var(--surface-2))}:root:not([data-theme="light"]) .status-cell span,:root:not([data-theme="light"]) .status-cell b{color:color-mix(in srgb,var(--ink-muted) 74%,var(--accent))}:root:not([data-theme="light"]) .status-cell b em{color:var(--accent)}}
 
 /* ============================================================
    PROBLEM
@@ -286,15 +286,15 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
 .f-meta{margin:0;font-family:var(--mono);font-size:var(--fs-data);color:var(--ink-muted);letter-spacing:.02em;line-height:1.9}
 .f-cohort{color:var(--accent)}
 .f-body>p{margin:0;color:var(--ink-muted);font-size:var(--fs-body-sm);max-width:62ch}
-.f-pay{list-style:none;margin:1.1rem 0 0;padding:0;font-family:var(--mono);font-size:var(--fs-data)}
-.f-pay li{display:flex;justify-content:space-between;align-items:baseline;gap:1.5rem;padding:.55rem 0;border-top:1px dashed var(--line)}
+.f-pay{list-style:none;margin:1.1rem 0 0;padding:.35rem 0 0;font-family:var(--mono);font-size:var(--fs-data);border-top:1px solid var(--line)}
+.f-pay li{display:flex;justify-content:space-between;align-items:baseline;gap:1.5rem;padding:.42rem 0}
 .f-pay li span{color:var(--ink-muted)}
-.f-pay li b{color:var(--accent);font-weight:500;font-variant-numeric:tabular-nums;text-align:right}
+.f-pay li b{color:var(--ink);font-weight:500;font-variant-numeric:tabular-nums;text-align:right}
 
 /* ============================================================
    HOW IT WORKS
    ============================================================ */
-.reqs{margin-top:clamp(1.5rem,3vw,2rem);background:var(--surface-2);border:1px solid var(--line);border-radius:4px;padding:clamp(1.3rem,2.5vw,1.8rem)}
+.reqs{margin-top:clamp(1.5rem,3vw,2rem);background:var(--surface-2);border:0;border-radius:4px;padding:clamp(1.3rem,2.5vw,1.8rem)}
 .reqs h3{margin-bottom:.9rem}
 .reqs ul{list-style:none;margin:0;padding:0;display:grid;gap:.55rem;color:var(--ink-muted);font-size:var(--fs-body-sm);max-width:62ch}
 .reqs li{display:flex;gap:.7rem}
@@ -579,6 +579,13 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 @media (prefers-reduced-motion:reduce){
   .btn,.cb__resample,.theme,.menu-btn,.arm-replay,.brand .dot,.cb__auto{transition:none}
 }
+/* Refactoring UI pass. */
+.cb__resample{background:transparent;color:var(--ink);border-color:var(--ink-muted)}
+.cb__resample:hover{background:transparent;border-color:var(--accent);color:var(--accent)}
+.rg__org,.rg__famsub{font-weight:400}
+.lead b{font-weight:600}
+.cat-row:last-child,.faq details:last-child,.fstage:last-child{border-bottom:0}
+.ideas>summary{font-size:var(--fs-label)}
 </style>
 </head>
 <body>

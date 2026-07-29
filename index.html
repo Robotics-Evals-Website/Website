@@ -7,7 +7,7 @@
 <meta name="description" content="An open bounty funding reproducible, open-source robotics benchmarks. Up to $500,000 in awards, Stage 3 up to $28,000. Applications open 12 August 2026.">
 <meta name="color-scheme" content="light dark">
 <meta property="og:title" content="Robotics Evaluation Bounty">
-<meta property="og:description" content="There is no shared, replicated benchmark of what robots can actually do, or how fast that's changing. We fund teams to build one. Stage 3 awards up to $28,000, two free SO-101 arms, and co-authorship on the joint paper.">
+<meta property="og:description" content="There is no shared, replicated benchmark of what robots can actually do, or how fast that’s changing. We fund teams to build one. Stage 3 awards up to $28,000, two free SO-101 arms, and co-authorship on the joint paper.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://robotics-evals-website.github.io/Website/og.png">
 <meta property="og:image:width" content="1200">
@@ -89,7 +89,7 @@
   --fs-small:.9rem;
   --fs-label:.75rem;
   --fs-label-sm:.65rem;
-  --fs-body-sm:.9375rem;
+  --fs-body-sm:1rem;
   --fs-data:.8rem;
   --tr-label:.1em;
   --measure:62ch;
@@ -262,7 +262,7 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
 .ideas>summary:hover,.ideas>summary:focus-visible{color:var(--accent-strong)}
 .idea-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.7rem}
 .ideas .idea-list{margin-top:.8rem}
-.idea-list li{position:relative;padding-left:1.4rem;font-size:var(--fs-body-sm);color:var(--ink);line-height:1.6;text-wrap:pretty}
+.idea-list li{position:relative;padding-left:1.4rem;font-size:var(--fs-body-sm);color:var(--ink);line-height:1.6;text-wrap:pretty;max-width:62ch}
 .idea-list li::before{content:"–" / "";position:absolute;left:0;top:0;color:var(--accent);font-family:var(--mono);font-weight:500}
 .idea-list li b{color:var(--ink);font-weight:600;font-family:var(--sans)}
 
@@ -296,7 +296,7 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
    ============================================================ */
 .reqs{margin-top:clamp(1.5rem,3vw,2rem);background:var(--surface-2);border:1px solid var(--line);border-radius:4px;padding:clamp(1.3rem,2.5vw,1.8rem)}
 .reqs h3{margin-bottom:.9rem}
-.reqs ul{list-style:none;margin:0;padding:0;display:grid;gap:.55rem;color:var(--ink-muted);font-size:var(--fs-body-sm)}
+.reqs ul{list-style:none;margin:0;padding:0;display:grid;gap:.55rem;color:var(--ink-muted);font-size:var(--fs-body-sm);max-width:62ch}
 .reqs li{display:flex;gap:.7rem}
 .reqs li::before{content:"›" / "";color:var(--accent);font-weight:600}
 .robots-lead{margin:1.2rem 0 .6rem;color:var(--ink-muted);font-size:var(--fs-body-sm);max-width:62ch}
@@ -438,7 +438,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 .foot-col a:hover{color:var(--accent)}
 .foot-partners{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 1.4rem;margin-top:clamp(1.6rem,3vw,2.2rem);padding-top:1.2rem;border-top:1px solid var(--line);font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);text-transform:uppercase}
 .foot-partners span{color:var(--ink-muted)}
-.foot-partners a{text-transform:none;font-size:.72rem;color:var(--accent);text-decoration:none;border-bottom:1px solid transparent}
+.foot-partners a{text-transform:none;letter-spacing:normal;font-size:.72rem;color:var(--accent);text-decoration:none;border-bottom:1px solid transparent}
 .foot-partners a:hover,.foot-partners a:focus-visible{border-bottom-color:var(--accent)}
 .foot-meta{margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--line);display:flex;justify-content:space-between;
   gap:1rem;flex-wrap:wrap;font-family:var(--mono);font-size:var(--fs-label);letter-spacing:.03em;color:var(--ink-muted)}
@@ -615,7 +615,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
   <section class="hero">
     <div class="wrap">
       <h1>A call for robotics benchmarks.</h1>
-      <p class="lead">We fund open, reproducible benchmarks on <b><a href="https://inspectrobots.org/" target="_blank" rel="noopener noreferrer">Inspect Robots</a></b>: a public measure of what robots can do, and how fast that's changing.</p>
+      <p class="lead">We fund open, reproducible benchmarks on <b><a href="https://inspectrobots.org/" target="_blank" rel="noopener noreferrer">Inspect Robots</a></b>: a public measure of what robots can do, and how fast that’s changing.</p>
       <div class="cta-row">
         <a class="btn btn-primary btn-lg" href="#apply">Apply to build a benchmark</a>
         <a class="btn btn-ghost btn-lg" href="#benchmarks">See what to build</a>
@@ -710,7 +710,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
           <li>Includes a repeatable reset procedure</li>
           <li>States a rollout count &mdash; how many scored attempts per instance &mdash; so every score carries an error bar</li>
         </ul>
-        <p class="robots-lead">You don't need to own a robot to apply: every team that reaches <b>Stage 3</b> is sent two fully assembled SO-101 follower arms, ordered on selection day, free and yours to keep even if you withdraw.</p>
+        <p class="robots-lead">You don’t need to own a robot to apply: every team that reaches <b>Stage 3</b> is sent two fully assembled SO-101 follower arms, ordered on selection day, free and yours to keep even if you withdraw.</p>
         </div>
         <figure class="arm-fig">
           <svg class="arm-svg" id="arm-svg" viewBox="0 0 196 111" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
@@ -849,7 +849,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
     <div class="wrap">
       <p class="marker"><b>04</b> / why this exists</p>
       <div class="prose">
-        <h2>There's no standard way to measure a robot's real capabilities.</h2>
+        <h2>There’s no standard way to measure a robot’s real capabilities.</h2>
         <p class="accent-line">No shared task suite. No replicated baselines. Nobody outside the labs can compare them.</p>
       </div>
 
@@ -981,13 +981,13 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
         </ul></details>
         <details><summary>Is this a job, a contract, or a grant?</summary><p>None of those. These are competition awards, not payment for services: no employment or contracting relationship, no supervision, no hours reporting, and no work assigned by us. You choose your own task, method, and schedule, and are judged against criteria published on day one. Awards are flat amounts tied to deliverables, not to time spent. If you hold a student visa, confirm with your international student office before entering.</p></details>
         <details><summary>How are awards paid and taxed?</summary><p>To the team, by international transfer, split as the team directs. University-affiliated teams may instead request payment as a research gift to their institution; ask at Stage&nbsp;2 selection, since institutional contracting takes weeks. Awards may be reported to tax authorities, and awards paid to teams outside the United States may be subject to US withholding, which may be recoverable by filing a US return the following year. We collect tax forms at Stage&nbsp;3 selection.</p></details>
-        <details><summary>Which robot do I build on?</summary><p>The SO-101 is the default reference embodiment. Every Stage&nbsp;3 team is sent two fully assembled follower arms, ordered on selection day, free and with no return obligation, including if you withdraw. They sit outside the $1,000 materials budget, which covers task materials and 3D-printable fixtures. You drive them through <span class="mono">inspect-robots-so101</span>, which wraps policy checkpoints from LeRobot, Hugging Face's robot-learning library, as an Inspect Robots policy; a public checkpoint is enough for a baseline, so no teleoperation, demo collection, or leader arms are needed. You may instead propose an alternative embodiment you already own, approved at Stage&nbsp;2, and still receive the arms:</p>
+        <details><summary>Which robot do I build on?</summary><p>The SO-101 is the default reference embodiment. Every Stage&nbsp;3 team is sent two fully assembled follower arms, ordered on selection day, free and with no return obligation, including if you withdraw. They sit outside the $1,000 materials budget, which covers task materials and 3D-printable fixtures. You drive them through <span class="mono">inspect-robots-so101</span>, which wraps policy checkpoints from LeRobot, Hugging Face’s robot-learning library, as an Inspect Robots policy; a public checkpoint is enough for a baseline, so no teleoperation, demo collection, or leader arms are needed. You may instead propose an alternative embodiment you already own, approved at Stage&nbsp;2, and still receive the arms:</p>
         <ul class="faq-list">
           <li><b>Arms</b> YAM, WidowX AI, Franka Research 3</li>
           <li><b>Humanoids</b> AgiBot X1, Unitree G1</li>
         </ul></details>
         <details><summary>What do I keep, and what gets published?</summary><p>You keep copyright and publication rights in full: write up your own benchmark, submit it anywhere, without clearing anything with us. Entering grants us a licence to publish it in WorldEvals under MIT, with your team credited. After replication closes in February we write up the collected suite, the paired simulations, the measured sim-to-real gap, and baseline results for current vision-language-action (VLA) policies, targeting submission in Q1 2027. Every Stage&nbsp;3 team that passes replication is offered co-authorship, and may decline and be acknowledged instead.</p></details>
-        <details><summary>What are Inspect Robots, KitchenBench, and WorldEvals?</summary><p><a href="https://inspectrobots.org/" target="_blank" rel="noopener noreferrer">Inspect Robots</a> is RoboCurve's open-source framework for evaluating AI and robots in the physical world. <a href="https://github.com/robocurve/kitchenbench" target="_blank" rel="noopener noreferrer">KitchenBench</a> is the worked example of what a Stage&nbsp;2 submission should look like. WorldEvals is the public repository where finished benchmarks will be released.</p></details>
+        <details><summary>What are Inspect Robots, KitchenBench, and WorldEvals?</summary><p><a href="https://inspectrobots.org/" target="_blank" rel="noopener noreferrer">Inspect Robots</a> is RoboCurve’s open-source framework for evaluating AI and robots in the physical world. <a href="https://github.com/robocurve/kitchenbench" target="_blank" rel="noopener noreferrer">KitchenBench</a> is the worked example of what a Stage&nbsp;2 submission should look like. WorldEvals is the public repository where finished benchmarks will be released.</p></details>
       </div>
     </div>
   </section>

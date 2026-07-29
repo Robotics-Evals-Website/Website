@@ -249,6 +249,13 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
   border:1px solid var(--line-strong);border-radius:5px;width:2rem;height:2rem;display:grid;place-items:center;margin-bottom:1rem}
 .cat-head h3{margin-bottom:.6rem}
 .cat-head p{color:var(--ink-muted);font-size:var(--fs-body-sm);max-width:40ch}
+.ideas{margin:0}
+.ideas>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:.55em;font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--accent);padding:.2rem 0}
+.ideas>summary::-webkit-details-marker{display:none}
+.ideas>summary::after{content:"+";font-family:var(--mono);font-size:1.1em;line-height:1;transition:transform .2s var(--ease)}
+.ideas[open]>summary::after{transform:rotate(45deg)}
+.ideas>summary:hover,.ideas>summary:focus-visible{color:var(--accent-strong)}
+.ideas .idea-list{margin-top:.9rem}
 .idea-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.7rem}
 .idea-list li{position:relative;padding-left:1.4rem;font-size:var(--fs-body-sm);color:var(--ink);line-height:1.5;text-wrap:pretty}
 .idea-list li::before{content:"+" / "";position:absolute;left:0;top:0;color:var(--accent);font-family:var(--mono);font-weight:500}
@@ -323,7 +330,8 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
   .top,.skip,.theme,nav.main,.arm-replay,.cb__resample,.cb__auto,.arm-fig{display:none!important}
   .reveal,.js .reveal{opacity:1!important;transform:none!important;transition:none!important}
   details>*{display:block!important}
-  .faq summary::after{display:none}
+  .faq summary::after,.ideas>summary::after{display:none}
+  .ideas>.idea-list{display:block!important}
   .band{padding:14pt 0!important}
   section,.track,.stage,.tl,.cat-row,details,.rg,.cb{break-inside:avoid}
   h1,h2,h3,.marker{break-after:avoid}
@@ -455,7 +463,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 .foot-col a:hover{color:var(--accent)}
 .foot-partners{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 1.4rem;margin-top:clamp(1.6rem,3vw,2.2rem);padding-top:1.2rem;border-top:1px solid var(--line);font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);text-transform:uppercase}
 .foot-partners span{color:var(--ink-muted)}
-.foot-partners a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent}
+.foot-partners a{text-transform:none;font-size:.72rem;color:var(--accent);text-decoration:none;border-bottom:1px solid transparent}
 .foot-partners a:hover,.foot-partners a:focus-visible{border-bottom-color:var(--accent)}
 .foot-meta{margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--line);display:flex;justify-content:space-between;
   gap:1rem;flex-wrap:wrap;font-family:var(--mono);font-size:var(--fs-label);letter-spacing:.03em;color:var(--ink-muted)}
@@ -617,7 +625,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
       <div class="status-cell"><span>Award pool</span><b>Up to <em>$500,000</em></b></div>
       <div class="status-cell"><span>Stage 3 award</span><b>Up to <em>$28,000</em></b></div>
       <div class="status-cell"><span>Teams funded</span><b>Up to <em>30</em></b></div>
-      <div class="status-cell"><span>Framework</span><b>All benchmarks on <em>Inspect Robots</em></b></div>
+      <div class="status-cell"><span>Framework</span><b><em>Inspect Robots</em></b></div>
     </div>
   </div>
 
@@ -634,7 +642,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 
         <div class="fstage">
           <div class="f-head">
-            <span class="f-num">01</span>
+            <span class="f-num">Stage 1</span>
             <h3>Proposal</h3>
             <p class="f-meta">Aug 12 &ndash; Sep 13<br><span class="f-cohort">Open to everyone</span></p>
           </div>
@@ -645,7 +653,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 
         <div class="fstage">
           <div class="f-head">
-            <span class="f-num">02</span>
+            <span class="f-num">Stage 2</span>
             <h3>Simulated benchmark</h3>
             <p class="f-meta">Sep 21 &ndash; Oct 9<br><span class="f-cohort">Up to 30 teams</span></p>
           </div>
@@ -653,7 +661,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
             <p>A working benchmark in Inspect Robots on the KitchenBench pattern, installing clean and passing CI.</p>
             <ul class="f-pay">
               <li><span>Base award</span><b>$1,000</b></li>
-              <li><span>Each additional member</span><b>+$500, to $3,000</b></li>
+              <li><span>Each additional member</span><b>+$500, cap $3,000</b></li>
               <li><span>Compute credits</span><b>$500</b></li>
             </ul>
           </div>
@@ -661,7 +669,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 
         <div class="fstage">
           <div class="f-head">
-            <span class="f-num">03</span>
+            <span class="f-num">Stage 3</span>
             <h3>Physics sim and hardware</h3>
             <p class="f-meta">Oct 21 &ndash; Dec 18<br><span class="f-cohort">Up to 13 teams</span></p>
           </div>
@@ -669,10 +677,10 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
             <p>A physics simulation of the task family and the hardware benchmark, each running end to end with a baseline evaluated, then independently replicated.</p>
             <ul class="f-pay">
               <li><span>Delivery, December</span><b>$10,000</b></li>
-              <li><span>Replication tier, February</span><b>$8,000 &ndash; $18,000</b></li>
-              <li><span>Two SO-101 arms</span><b>free, yours to keep</b></li>
+              <li><span>Replication, February</span><b>$8,000 &ndash; $18,000</b></li>
+              <li><span>SO-101 arms</span><b>2, free to keep</b></li>
               <li><span>Compute credits</span><b>$1,000</b></li>
-              <li><span>Bill of materials</span><b>up to $1,000</b></li>
+              <li><span>Materials budget</span><b>up to $1,000</b></li>
               <li><span>Joint paper</span><b>co-authorship</b></li>
             </ul>
           </div>
@@ -699,14 +707,14 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
             <h3>Impact on jobs</h3>
             <p>Economically meaningful, contact-rich manipulation: the work robots would be paid to do. Measuring it shows when automation crosses from demo to deployment.</p>
           </div>
-          <ul class="idea-list">
+          <details class="ideas"><summary>Six example benchmarks</summary><ul class="idea-list">
             <li><b>CableBench</b>: seat multiple cables and barrel/RJ connectors into a port panel; randomize port position, orientation, panel tilt, connector type, cable slack.</li>
             <li><b>TorqueBench</b>: drive fasteners to a specified torque without cross-threading; randomize size, head type, hole location, approach angle.</li>
             <li><b>FoldBench</b>: fold a laid-out garment to a target footprint; randomize fabric, size, and initial crumple state.</li>
             <li><b>ClutterPick</b>: retrieve a named item from a bin under heavy occlusion; randomize clutter density, item pose, distractors.</li>
             <li><b>HarnessRoute</b>: route a flexible wire harness through a sequence of clips and channels; randomize clip positions, order, stiffness.</li>
             <li><b>PlateBench</b>: portion and arrange food-like items to a target layout; randomize count, size, start positions.</li>
-          </ul>
+          </ul></details>
         </div>
 
         <div class="cat-row">
@@ -715,14 +723,14 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
             <h3>AI timelines</h3>
             <p>The physical work behind AI progress that still needs human hands: building robots, servicing compute, running experiments. Every step a machine takes unassisted removes a bottleneck from the loop.</p>
           </div>
-          <ul class="idea-list">
+          <details class="ideas"><summary>Six example benchmarks</summary><ul class="idea-list">
             <li><b>SelfBuildBench</b>: assemble a working copy of a reference arm from printed parts and stock hardware; randomize part presentation, fastener set, assembly order.</li>
             <li><b>MechanicBench</b>: restore another robot to working order by swapping a battery, replacing a worn part, or tightening loose fixtures; randomize the fault set and component positions.</li>
             <li><b>RackBench</b>: mount a compute unit into rails and connect power and data; randomize rail height, unit depth, cable dressing.</li>
             <li><b>HotSwapBench</b>: remove and re-seat a hot-swappable module in a live rack; randomize bay, latch mechanism, insertion force.</li>
             <li><b>LabBench</b>: execute a wet-lab protocol step (pipette, weigh, transfer) to a stated tolerance; randomize vessel layout, volumes, tool positions.</li>
             <li><b>ReloadBench</b>: replace a depleted consumable (spool, filter, cartridge) and confirm restored operation; randomize type, seating depth.</li>
-          </ul>
+          </ul></details>
         </div>
 
         <div class="cat-row">
@@ -731,14 +739,14 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
             <h3>Societal awareness</h3>
             <p>Tasks anyone can watch and judge as done or not done, no expertise required. Legible capability is far harder to over- or under-state.</p>
           </div>
-          <ul class="idea-list">
+          <details class="ideas"><summary>Six example benchmarks</summary><ul class="idea-list">
             <li><b>CoffeeBench</b>: find a cup, load a pod, operate the machine, deliver the cup to a target zone (the Wozniak coffee test, made reproducible); randomize machine layout, cup/pod positions, target.</li>
             <li><b>GroceryBench</b>: unpack a bag of mixed groceries and shelve each item correctly; randomize item set, packing order, shelf layout.</li>
             <li><b>TableBench</b>: lay a place setting to a target arrangement; randomize starting positions, orientation, setting style.</li>
             <li><b>DishBench</b>: load mixed dishware into a rack without collisions or breakage; randomize dish types, counts, poses.</li>
             <li><b>TidyBench</b>: return scattered household objects to designated storage; randomize object set, clutter, target bins.</li>
             <li><b>PourBench</b>: pour a target volume into a specified vessel without overshoot or spill; randomize vessel, fill target, placement.</li>
-          </ul>
+          </ul></details>
         </div>
       </div>
     </div>
@@ -775,7 +783,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
           </div>
           <footer class="rg__foot">
             <p class="rg__caption"><span class="a">n = 0</span> today &nbsp;·&nbsp; the registry fills as benchmarks are built and independently replicated</p>
-            <span class="rg__badge">First results · Jan 2027</span>
+            <span class="rg__badge">First results · Feb 2027</span>
           </footer>
         </section>
       </div>
@@ -824,7 +832,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
             </div>
             <div class="cb__real">
               <div class="cb__controls">
-                <button class="cb__resample" id="cb-resample" type="button">Re-sample <span class="arw" aria-hidden="true">→</span></button>
+                <button class="cb__resample" id="cb-resample" type="button">Re-seed <span class="arw" aria-hidden="true">→</span></button>
                 <label class="cb__auto"><input type="checkbox" id="cb-auto"> auto</label>
                 <span class="cb__seed" id="cb-seed">seed = <span class="k">—</span></span>
               </div>
@@ -837,44 +845,17 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 
       <div class="method-foot reveal">
         <ul class="needlist">
-          <li><b>Goal</b><span>What success looks like, in plain terms.</span></li>
-          <li><b>Setup vars</b><span>Each named, each with a stated distribution.</span></li>
-          <li><b>Target</b><span>The end state a rollout must reach.</span></li>
-          <li><b>Success criteria</b><span>How a rollout is scored.</span></li>
+          <li><b>Setup variables</b><span>Every variable named, with a stated distribution.</span></li>
+          <li><b>Goal</b><span>What success looks like, in plain language.</span></li>
+          <li><b>Reset procedure</b><span>How the scene returns to a start state.</span></li>
+          <li><b>Success scorer</b><span>How a rollout is scored.</span></li>
         </ul>
         <p class="callout">Every Stage 1 application must include one fully specified task instance in exactly this format.</p>
-        <p class="worked">A complete benchmark written this way: <a href="https://github.com/robocurve/kitchenbench" target="_blank" rel="noopener noreferrer">kitchenbench</a>.</p>
+        <p class="worked">A complete benchmark written this way: <a href="https://github.com/robocurve/kitchenbench" target="_blank" rel="noopener noreferrer">KitchenBench</a>.</p>
       </div>
     </div>
   </section>
   <!-- ================= MISSION ================= -->
-  <section id="mission" class="band">
-    <div class="wrap">
-      <p class="marker"><b>05</b> / what we're building</p>
-      <div class="split">
-        <div class="prose">
-          <h2>WorldEvals: one public record for robotics.</h2>
-          <p style="margin-top:1rem">We fund teams to build open-source benchmarks on Inspect Robots: rigorous enough for frontier labs to trust, open enough for anyone to run, reproducible enough to compare across systems and over time.</p>
-          <p class="caption-mono">Built on Inspect Robots · independent of any frontier lab.</p>
-        </div>
-        <figure class="mission-fig reveal">
-          <div class="mf-sheet" role="img" aria-label="Contact sheet of one benchmark recipe, TidyBench version 1, realized under nine different random seeds. Each of the nine top-down tabletop schematics shows the same robot workcell (a fixed base, a reach envelope, and a gridded work surface) but with a differently sampled goal zone and a differently sampled set of objects at random positions and orientations. The nine samples are visibly different, illustrating that one recipe defines a whole distribution of tasks rather than a single fixed scene.">
-            <div class="mf-head">
-              <span class="mf-recipe">TidyBench.v1 &nbsp;<span class="op">·</span>&nbsp; <span class="op">realize(</span>recipe, seed<span class="op">)</span></span>
-              <span class="mf-count">9 of &#8734; samples</span>
-            </div>
-            <div class="mf-grid" id="mf-grid" aria-hidden="true"></div>
-            <div class="mf-legend" aria-hidden="true">
-              <span><svg width="20" height="14" viewBox="0 0 20 14"><rect class="lg-goal" x="1" y="2" width="18" height="10" rx="2"/><rect class="lg-goal-e" x="1" y="2" width="18" height="10" rx="2"/></svg>goal zone</span>
-              <span><svg width="16" height="14" viewBox="0 0 16 14"><rect class="lg-obj" x="2.5" y="3.5" width="7" height="7" rx="1"/><line class="lg-ori" x1="6" y1="7" x2="12.5" y2="7"/></svg>object &amp; pose</span>
-              <span><svg width="20" height="14" viewBox="0 0 20 14"><path class="lg-reach" d="M1,12 A11,11 0 0 1 19,12"/></svg>reach envelope</span>
-            </div>
-          </div>
-          <figcaption>Nine seeds of one recipe. Every benchmark in WorldEvals works this way: anyone can re-draw the task, run a policy, and check the score.</figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
   <!-- ================= HOW IT WORKS ================= -->
   <section id="how" class="band">
     <div class="wrap">
@@ -896,7 +877,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
         <dl class="alt-robots">
           <div>
             <dt>Arms</dt>
-            <dd><span class="rn">YAM</span> <i>·</i> <span class="rn">WidowX AI <small>Trossen</small></span> <i>·</i> <span class="rn">Franka Research 3</span></dd>
+            <dd><span class="rn">YAM</span> <i>·</i> <span class="rn">WidowX AI</span> <i>·</i> <span class="rn">Franka Research 3</span></dd>
           </div>
           <div>
             <dt>Humanoids</dt>
@@ -965,15 +946,15 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
       <p class="marker"><b>07</b> / key dates</p>
       <div class="prose"><h2>Six months, proposal to published benchmark.</h2></div>
       <div class="timeline reveal">
-        <div class="tl now"><span class="d">Aug 12 2026</span><b>Stage 1 opens</b><p>Entry form opens. Rubric, replication procedure, reference embodiment, and BOM cap published on day one.</p></div>
-        <div class="tl"><span class="d">Sep 5&ndash;6 2026</span><b>Launch hackathon</b><p>Virtual, with Apart Research. Meet collaborators, form a team, draft a first proposal.</p></div>
+        <div class="tl now"><span class="d">Aug 12 2026</span><b>Stage 1 opens</b><p>Entry form opens. Rubric, replication procedure, reference embodiment, and materials cap published on day one.</p></div>
+        <div class="tl"><span class="d">Sep 5&ndash;6 2026</span><b>Proposal hackathon</b><p>Virtual, with Apart Research. Meet collaborators, form a team, draft a first proposal.</p></div>
         <div class="tl"><span class="d">Sep 13 2026</span><b>Stage 1 closes</b><p>Proposals due, each including one fully specified task instance.</p></div>
         <div class="tl"><span class="d">Sep 21 2026</span><b>Stage 2 cohort selected</b><p>Up to 30 teams advance. Compute credits disbursed.</p></div>
         <div class="tl"><span class="d">Oct 9 2026</span><b>Stage 2 entries due</b><p>Working simulated benchmarks in Inspect Robots, green CI, self-scored against the rubric.</p></div>
-        <div class="tl"><span class="d">Oct 21 2026</span><b>Stage 3 cohort selected</b><p>Up to 13 teams advance. SO-101 arms ordered the same day and delivered within a week; BOM budgets open.</p></div>
+        <div class="tl"><span class="d">Oct 21 2026</span><b>Stage 3 cohort selected</b><p>Up to 13 teams advance. SO-101 arms ordered the same day and delivered within a week; materials budgets open.</p></div>
         <div class="tl"><span class="d">Dec 18 2026</span><b>Stage 3 entries due</b><p>Physics simulation and hardware benchmark, with the full reproducibility package. Accepted on a rolling basis from Dec 1. $10,000 per verified delivery is paid before year end.</p></div>
         <div class="tl"><span class="d">Feb 2027</span><b>Replication complete</b><p>Spot-check reruns finish and quality tiers are assigned. The $8,000 to $18,000 tier awards are disbursed and the benchmark repository is released in WorldEvals.</p></div>
-        <div class="tl"><span class="d">Q1 2027</span><b>Joint paper</b><p>The full collected suite, paired simulations, and sim-to-real gap results, written up with Stage 3 teams as co-authors. Preprint posted on submission.</p></div>
+        <div class="tl"><span class="d">Q1 2027</span><b>Joint paper submitted</b><p>The full collected suite, paired simulations, and sim-to-real gap results, written up with Stage 3 teams as co-authors. Preprint posted on submission.</p></div>
       </div>
     </div>
   </section>
@@ -1029,33 +1010,32 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
     <div class="foot-grid">
       <div>
         <div class="foot-brand">Robotics Evaluation Bounty</div>
-        <p class="foot-tag">An open bounty for reproducible robotics benchmarks, built on Inspect Robots.</p>
+        <p class="foot-tag">Open funding for reproducible robotics benchmarks, built on Inspect Robots. Independent of any frontier lab.</p>
       </div>
       <div class="foot-col">
         <h3>Explore</h3>
+        <a href="#stages">Stages</a>
         <a href="#benchmarks">What to build</a>
         <a href="#problem">Why this exists</a>
         <a href="#method">Method</a>
-        <a href="#mission">WorldEvals</a>
         <a href="#timeline">Timeline</a>
         <a href="#faq">FAQ</a>
       </div>
       <div class="foot-col">
         <h3>Get started</h3>
         <a href="https://inspectrobots.org/" target="_blank" rel="noopener noreferrer">Inspect Robots</a>
-        <a href="https://github.com/robocurve/kitchenbench" target="_blank" rel="noopener noreferrer">Example benchmark</a>
-        <a href="#apply">Apply</a>
+        <a href="https://github.com/robocurve/kitchenbench" target="_blank" rel="noopener noreferrer">KitchenBench</a>
         <a href="mailto:hello@example.org">Email the organizers</a>
       </div>
     </div>
     <div class="foot-partners">
-      <span>A joint effort of</span>
+      <span>Run jointly by</span>
       <a href="https://aria.org.uk/opportunity-spaces/trust-everything-everywhere/scaling-trust" target="_blank" rel="noopener noreferrer">ARIA</a>
       <a href="https://constellation.org/" target="_blank" rel="noopener noreferrer">Constellation</a>
       <a href="https://robocurve.org/" target="_blank" rel="noopener noreferrer">RoboCurve</a>
     </div>
     <div class="foot-meta">
-      <span>Benchmarks published in WorldEvals under the MIT licence.</span>
+      <span>Published in WorldEvals under MIT · authors keep copyright</span>
       <span>© 2026 RoboCurve</span>
     </div>
   </div>

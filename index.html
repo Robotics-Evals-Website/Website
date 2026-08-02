@@ -141,6 +141,7 @@ a:hover{color:var(--accent-strong)}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:2px}
 .wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
 .mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+::selection{background:color-mix(in srgb,var(--accent) 24%,transparent);color:var(--ink)}
 
 /* section rhythm + markers */
 .band{padding-block:clamp(52px,6.2vw,96px);border-top:1px solid var(--line)}
@@ -168,8 +169,9 @@ header.top{
 .top .wrap{display:flex;align-items:center;gap:1.25rem;width:100%}
 .brand{display:flex;align-items:center;gap:.55rem;font-family:var(--sans);font-weight:600;font-size:1rem;
   letter-spacing:-.01em;color:var(--ink);white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.brand .bname{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .brand .dot{width:9px;height:9px;border-radius:50%;border:2px solid var(--accent);flex:none;position:relative}
-.brand .dot::after{content:"";position:absolute;inset:2px;border-radius:50%;background:var(--accent)}
+.brand .dot::after{content:"";position:absolute;inset:1px;border-radius:50%;background:var(--accent)}
 nav.main{margin-left:auto;display:flex;align-items:center;gap:1.35rem;flex:none}
 nav.main a.nlink{font-family:var(--mono);font-size:var(--fs-label);letter-spacing:var(--tr-label);text-transform:uppercase;
   color:var(--ink-muted);position:relative;padding:.2rem 0}
@@ -225,12 +227,13 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
 
 /* status bar */
 .statusbar{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--surface-2)}
-.statusbar + .band{border-top:0}
+.statusbar + .band,.partners + .band,#problem + .band{border-top:0}
 .statusbar .wrap{display:grid;gap:1px;background:var(--line-strong);grid-template-columns:repeat(2,1fr);padding-inline:0}
 @media (min-width:760px){.statusbar .wrap{grid-template-columns:repeat(4,1fr)}}
 .status-cell{padding:1rem clamp(1rem,3vw,1.6rem)}
 .status-cell:first-child{padding-left:var(--gutter)}
 .status-cell:last-child{padding-right:var(--gutter)}
+@media (max-width:759px){.status-cell:nth-child(odd){padding-left:var(--gutter)}.status-cell:nth-child(even){padding-right:var(--gutter)}}
 .status-cell span{display:block;font-family:var(--mono);font-size:var(--fs-label);letter-spacing:var(--tr-label);
   text-transform:uppercase;color:var(--ink-muted);margin-bottom:.3rem}
 .status-cell b{font-family:var(--mono);font-weight:500;font-size:1.12rem;color:var(--ink);font-variant-numeric:tabular-nums}
@@ -309,7 +312,7 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
 
 
 @media print{
-  :root,:root[data-theme="dark"]{--bg:#fff;--surface:#fff;--surface-2:#fff;--line:#c4ccc9;--line-strong:#8b9793;--ink:#101010;--ink-muted:#3a3a3a;--accent:#00463D;--accent-contrast:#fff}
+  :root,:root[data-theme="light"],:root[data-theme="dark"]{--bg:#fff;--surface:#fff;--surface-2:#fff;--line:#c4ccc9;--line-strong:#8b9793;--ink:#101010;--ink-muted:#3a3a3a;--ink-faint:#5a5a5a;--accent:#00463D;--accent-strong:#00463D;--accent-contrast:#fff}
   body{background:#fff}
   .top,.skip,.theme,nav.main,.arm-replay,.cb__resample,.cb__auto,.arm-fig{display:none!important}
   .reveal,.js .reveal{opacity:1!important;transform:none!important;transition:none!important}
@@ -317,9 +320,9 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
   .faq summary::after,.ideas>summary::after{display:none}
   .ideas>.idea-list{display:block!important}
   .band{padding:14pt 0!important}
-  section,.tl,.cat-row,details,.rg,.cb{break-inside:avoid}
+  section,.cat-row,details,.rg,.cb{break-inside:avoid}
   h1,h2,h3,.marker{break-after:avoid}
-  .rg__scroll,.cb__vals{overflow:visible!important}
+  .rg__scroll,.cb__spec,.cb__vals{overflow:visible!important}
   .lead a,.faq details p a,.worked a{text-decoration:none}
   a[href^="http"]::after{content:" (" attr(href) ")";font-size:7.5pt;color:#555;word-break:break-all}
 }
@@ -386,19 +389,6 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
 /* ============================================================
    TIMELINE
    ============================================================ */
-.timeline{margin-top:clamp(1.4rem,2.6vw,2.1rem);position:relative;padding-left:1.6rem}
-.timeline::before{content:"";position:absolute;left:4px;top:.5rem;bottom:.5rem;width:1px;background:var(--line)}
-.tl{position:relative;padding:0 0 .8rem 1.5rem;display:grid;align-items:baseline;grid-template-columns:6.9rem minmax(0,calc(var(--col-break) - 6.9rem - 3.1rem - 2.2rem)) minmax(0,1fr);column-gap:1.1rem}
-.tl:last-child{padding-bottom:0}
-.tl::before{content:"";position:absolute;left:-1.6rem;top:.35rem;width:9px;height:9px;border-radius:50%;
-  background:var(--bg);border:1.5px solid var(--line-strong);transform:translateX(-1px)}
-.tl.now .d{color:var(--accent)}
-.tl.now::before{background:var(--accent);border-color:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 18%,transparent)}
-.tl .d{font-family:var(--mono);font-size:var(--fs-data);letter-spacing:.03em;color:var(--ink-muted);font-variant-numeric:tabular-nums}
-.tl b{display:block;margin:0;font-family:var(--serif);font-weight:500;font-size:1.05rem;letter-spacing:-.01em}
-.tl .n{color:var(--ink-muted);font-size:var(--fs-body-sm);text-wrap:pretty}
-@media (max-width:880px){.tl{grid-template-columns:6.9rem minmax(0,1fr)}.tl .n{grid-column:2}}
-@media (max-width:560px){.tl{grid-template-columns:minmax(0,1fr);row-gap:.1rem}.tl .n{grid-column:1}}
 
 /* ============================================================
    FAQ
@@ -409,7 +399,7 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
   font-family:var(--sans);font-weight:500;font-size:1.05rem;color:var(--ink);transition:color .18s}
 .faq summary::-webkit-details-marker{display:none}
 .faq summary:hover{color:var(--accent)}
-.faq summary::after{content:"+" / "";position:absolute;right:.2rem;top:1.05rem;font-family:var(--mono);font-size:1.25rem;
+.faq summary::after{content:"+" / "";position:absolute;right:.2rem;top:1.05rem;font-family:var(--mono);font-size:1.25rem;transform-origin:50% calc(50% + .07em);
   color:var(--accent);transition:transform .2s var(--ease)}
 .faq details[open] summary::after{transform:rotate(45deg)}
 .faq-list{list-style:none;margin:.7rem 0;padding:0;display:grid;gap:.5rem}
@@ -534,7 +524,9 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
    EMBEDDED: empty results registry (.rg)
    ============================================================ */
 .rg{max-width:100%;margin:0 auto;background:var(--surface);border:1px solid var(--line);border-radius:6px;overflow:hidden;font-family:var(--sans);color:var(--ink)}
-.rg__scroll{overflow-x:auto;padding:clamp(12px,2vw,20px) clamp(10px,2vw,18px) 6px}
+.rg__scroll{overflow-x:auto;padding:clamp(12px,2vw,20px) clamp(10px,2vw,18px) 0}
+.rg__table tbody tr:last-child>th,.rg__table tbody tr:last-child .rg__cell{border-bottom:0}
+.rg__scroll,.cb__spec,.cb__vals{scrollbar-width:thin;scrollbar-color:var(--line-strong) transparent}
 .rg__table{border-collapse:separate;border-spacing:0;width:100%;min-width:560px;font-size:.9rem}
 .rg__table caption{caption-side:top;text-align:left;padding:0 6px 12px;font-family:var(--mono);font-weight:500;font-size:var(--fs-label-sm);
   line-height:1.4;letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--ink-muted)}
@@ -557,7 +549,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 .rg__cell:hover{background:color-mix(in srgb,var(--accent) 12%,transparent) !important}
 .rg__cell:hover .rg__dash{color:var(--accent)}
 .rg__foot{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;
-  padding:14px clamp(16px,3vw,26px) clamp(16px,3vw,22px);border-top:1px solid var(--line);margin-top:2px}
+  padding:14px clamp(16px,3vw,26px) clamp(16px,3vw,22px);border-top:1px solid var(--line);margin-top:0}
 .rg__caption{margin:0;font-family:var(--mono);font-size:var(--fs-data);line-height:1.5;color:var(--ink-muted)}
 .rg__caption .a{color:var(--accent);font-weight:500}
 .rg__badge{font-family:var(--mono);font-weight:500;font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--accent);
@@ -625,11 +617,13 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 #problem .rg{background:transparent;border:1px solid var(--line-strong);border-radius:8px}
 #problem .rg__cell{height:74px;font-size:1.5rem}
 #problem .rg__cell::after{opacity:.85}
+:root[data-theme="dark"] #problem .rg__cell::after{opacity:.5}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) #problem .rg__cell::after{opacity:.5}}
 #problem .rg__table thead th,#problem .rg__table tbody th,#problem .rg__corner{background:transparent}
 #problem .rg__caption{display:block;max-width:44ch;font-size:.95rem}
 #problem .rg__caption .a{display:block;font-family:var(--mono);
   font-size:clamp(3.2rem,2.2rem + 4.4vw,6rem);line-height:.92;letter-spacing:-.03em;
-  word-spacing:-.34em;margin-bottom:.3rem;font-weight:500}
+  word-spacing:-.34em;margin-bottom:.3rem;font-weight:500;margin-left:-.08em}
 /* invert the inversion when the page itself is dark, in both dark paths */
 :root[data-theme="dark"] #problem{--bg:#FFFAED;--surface:#FFFDF7;--surface-2:#E3DCCE;
   --line:#D4CBB9;--line-strong:#BFB39A;--ink:#1A1511;--ink-muted:#5E564A;--ink-faint:#797163;
@@ -643,6 +637,14 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 /* #problem inverts to the dark palette while the page is light, so it warms too */
 #problem{--bg:#141009;--surface:#1B1710;--surface-2:#221D14;--line:#332C21;--line-strong:#4B4335;--ink:#F4EEE1;--ink-muted:#A79D8B;--ink-faint:#847C6C;background:var(--bg);color:var(--ink)}
 
+@media print{
+  /* must come last: #problem's own token blocks outrank :root in the print reset above */
+  #problem,:root[data-theme="light"] #problem,:root[data-theme="dark"] #problem{
+    --bg:#fff;--surface:#fff;--surface-2:#fff;--line:#c4ccc9;--line-strong:#8b9793;
+    --ink:#101010;--ink-muted:#3a3a3a;--ink-faint:#5a5a5a;--accent:#00463D;
+    --accent-strong:#00463D;--accent-contrast:#fff;background:#fff;color:#101010}
+  a[href^="mailto:"]::after{content:" (" attr(href) ")";font-size:7.5pt;color:#555;word-break:break-all}
+}
 </style>
 </head>
 <body>
@@ -650,7 +652,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="#top"><span class="dot" aria-hidden="true"></span>Robotics Evaluation Bounty</a>
+    <a class="brand" href="#top"><span class="dot" aria-hidden="true"></span><span class="bname">Robotics Evaluation Bounty</span></a>
     <nav class="main" aria-label="Primary">
       <a class="nlink" href="#stages">Stages</a>
       <a class="nlink" href="#how">What to ship</a>
@@ -1024,9 +1026,6 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
       </div>
     </div>
   </section>
-  <!-- ================= MISSION ================= -->
-  <!-- ================= HOW IT WORKS ================= -->
-  <!-- ================= TIMELINE ================= -->
   <!-- ================= FAQ ================= -->
   <section id="faq" class="band">
     <div class="wrap">

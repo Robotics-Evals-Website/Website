@@ -188,8 +188,8 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
 .mmenu a{font-family:var(--mono);font-size:var(--fs-label);letter-spacing:var(--tr-label);text-transform:uppercase;
   color:var(--ink-muted);padding:.55rem 0}
 .mmenu a:hover{color:var(--ink)}
-@media (max-width:840px){nav.main .nlink{display:none}.menu-btn{display:block}}
-@media (min-width:841px){.mmenu{display:none}}
+@media (max-width:1099px){nav.main .nlink{display:none}.menu-btn{display:block}}
+@media (min-width:1100px){.mmenu{display:none}}
 @media (max-width:440px){.top .wrap{gap:.7rem}.brand{font-size:.82rem}nav.main{gap:.7rem}.btn-sm{padding:.45rem .7rem}}
 @media (max-width:360px){.brand{font-size:.74rem;gap:.4rem}}
 .btn{font-family:var(--sans);font-weight:600;font-size:.9rem;cursor:pointer;border:1px solid transparent;
@@ -653,10 +653,10 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
     <a class="brand" href="#top"><span class="dot" aria-hidden="true"></span>Robotics Evaluation Bounty</a>
     <nav class="main" aria-label="Primary">
       <a class="nlink" href="#stages">Stages</a>
-      <a class="nlink" href="#how">Requirements</a>
+      <a class="nlink" href="#how">What to ship</a>
       <a class="nlink" href="#benchmarks">What to build</a>
-      <a class="nlink" href="#problem">Why this exists</a>
-      <a class="nlink" href="#method">Method</a>
+      <a class="nlink" href="#problem">The gap</a>
+      <a class="nlink" href="#method">Task spec</a>
       <a class="nlink" href="#faq">Questions</a>
       <button class="menu-btn" id="menuToggle" type="button" aria-expanded="false" aria-controls="mobileMenu">Menu</button>
       <button class="theme" id="themeToggle" type="button" aria-label="Toggle light or dark theme">
@@ -668,10 +668,10 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
   </div>
   <div class="mmenu" id="mobileMenu" hidden>
     <a href="#stages">Stages</a>
-    <a href="#how">Requirements</a>
+    <a href="#how">What to ship</a>
     <a href="#benchmarks">What to build</a>
-    <a href="#problem">Why this exists</a>
-    <a href="#method">Method</a>
+    <a href="#problem">The gap</a>
+    <a href="#method">Task spec</a>
     <a href="#faq">Questions</a>
   </div>
 </header>
@@ -715,7 +715,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
   <!-- ================= TRACKS ================= -->
   <section id="stages" class="band">
     <div class="wrap">
-      <p class="marker"><b>01</b> / stages, deliverables, awards</p>
+      <p class="marker"><b>01</b> / stages</p>
       <div class="prose">
         <h2>Three stages.</h2>
       </div>
@@ -776,7 +776,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
   <!-- ================= BENCHMARKS ================= -->
   <section id="how" class="band">
     <div class="wrap">
-      <p class="marker"><b>02</b> / requirements</p>
+      <p class="marker"><b>02</b> / what to ship</p>
       <div class="prose"><h2>What Stage 3 must ship.</h2></div>
       <div class="reqs reveal">
         <div class="reqs-body">
@@ -925,7 +925,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
   <!-- ================= PROBLEM ================= -->
   <section id="problem" class="band">
     <div class="wrap">
-      <p class="marker"><b>04</b> / why this exists</p>
+      <p class="marker"><b>04</b> / the gap</p>
       <div class="prose">
         <h2>There’s no standard way to measure a robot’s real capabilities.</h2>
         <p class="accent-line">No shared task suite. No replicated baselines. Nobody outside the labs can compare them.</p>
@@ -960,7 +960,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
   </section>
   <section id="method" class="band">
     <div class="wrap">
-      <p class="marker"><b>05</b> / task instances</p>
+      <p class="marker"><b>05</b> / task spec</p>
 
       <section class="cb reveal" aria-labelledby="cb-title">
         <header class="cb__head">
@@ -1079,9 +1079,9 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
         <h3>Explore</h3>
         <a href="#stages">Stages</a>
         <a href="#benchmarks">What to build</a>
-        <a href="#problem">Why this exists</a>
-        <a href="#method">Method</a>
-        <a href="#faq">FAQ</a>
+        <a href="#problem">The gap</a>
+        <a href="#method">Task spec</a>
+        <a href="#faq">Questions</a>
       </div>
       <div class="foot-col">
         <h3>Get started</h3>

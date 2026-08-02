@@ -22,8 +22,8 @@
 <meta name="twitter:description" content="An open bounty funding reproducible, open-source robotics benchmarks. Stage 3 awards up to $28,000, two free SO-101 arms, and co-authorship on the joint paper.">
 <meta name="twitter:image:alt" content="A call for robotics benchmarks. Up to $500,000, up to 30 teams, applications August 2026.">
 <link rel="canonical" href="https://robotics-evals-website.github.io/Website/">
-<meta name="theme-color" content="#F1F4F3" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0C1412" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FFFAED" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#141009" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='9' fill='none' stroke='%23005E52' stroke-width='4'/><circle cx='16' cy='16' r='4' fill='%23005E52'/></svg>" type="image/svg+xml">
 <link rel="icon" href="favicon.png" type="image/png" sizes="48x48">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -62,16 +62,17 @@
    THE SEEDED FIELD — tokens
    ============================================================ */
 :root{
-  --bg:#F1F4F3;
-  --surface:#FBFCFC;
-  --surface-2:#DFE8E5;
-  --line:#D2DAD7;
-  --line-strong:#B7C2BE;
-  --ink:#10201C;
-  --ink-muted:#4F615C;
+  --bg:#FFFAED;
+  --surface:#FFFDF7;
+  --surface-2:#E3DCCE;
+  --line:#D4CBB9;
+  --line-strong:#BFB39A;
+  --ink:#1A1511;
+  --ink-muted:#5E564A;
+  --ink-faint:#797163;
   --accent:#005E52;
   --accent-strong:#00463D;
-  --accent-contrast:#F1F4F3;
+  --accent-contrast:#FFFDF7;
   --ease:cubic-bezier(.22,1,.36,1);
 
   --serif:"Newsreader","Newsreader Fallback",Georgia,"Times New Roman",serif;
@@ -99,18 +100,18 @@
 }
 @media (prefers-color-scheme:dark){
   :root{
-    --bg:#0C1412;--surface:#121B18;--surface-2:#16211E;--line:#24312D;--line-strong:#34453F;
-    --ink:#E8EFEC;--ink-muted:#93A49E;--accent:#33C4B0;--accent-strong:#4FD3C0;--accent-contrast:#06100E;
+    --bg:#141009;--surface:#1B1710;--surface-2:#221D14;--line:#332C21;--line-strong:#4B4335;
+    --ink:#F4EEE1;--ink-muted:#A79D8B;--ink-faint:#847C6C;--accent:#33C4B0;--accent-strong:#4FD3C0;--accent-contrast:#06100E;
   }
 }
 :root[data-theme="light"]{
-  --bg:#F1F4F3;--surface:#FBFCFC;--surface-2:#DFE8E5;--line:#D2DAD7;--line-strong:#B7C2BE;
-  --ink:#10201C;--ink-muted:#4F615C;--accent:#005E52;--accent-strong:#00463D;--accent-contrast:#F1F4F3;
+  --bg:#FFFAED;--surface:#FFFDF7;--surface-2:#E3DCCE;--line:#D4CBB9;--line-strong:#BFB39A;
+  --ink:#1A1511;--ink-muted:#5E564A;--ink-faint:#797163;--accent:#005E52;--accent-strong:#00463D;--accent-contrast:#FFFDF7;
   color-scheme:light;
 }
 :root[data-theme="dark"]{
-  --bg:#0C1412;--surface:#121B18;--surface-2:#16211E;--line:#24312D;--line-strong:#34453F;
-  --ink:#E8EFEC;--ink-muted:#93A49E;--accent:#33C4B0;--accent-strong:#4FD3C0;--accent-contrast:#06100E;
+  --bg:#141009;--surface:#1B1710;--surface-2:#221D14;--line:#332C21;--line-strong:#4B4335;
+  --ink:#F4EEE1;--ink-muted:#A79D8B;--ink-faint:#847C6C;--accent:#33C4B0;--accent-strong:#4FD3C0;--accent-contrast:#06100E;
   color-scheme:dark;
 }
 
@@ -616,8 +617,8 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 
 /* R1 — the registry becomes the page's second moment.
    #problem is already a full-width <section>; only .wrap constrained it. */
-#problem{--bg:#0C1412;--surface:#121B18;--surface-2:#16211E;--line:#24312D;--line-strong:#34453F;
-  --ink:#E8EFEC;--ink-muted:#93A49E;--accent:#33C4B0;--accent-strong:#4FD3C0;--accent-contrast:#06100E;
+#problem{--bg:#141009;--surface:#1B1710;--surface-2:#221D14;--line:#332C21;--line-strong:#4B4335;
+  --ink:#F4EEE1;--ink-muted:#A79D8B;--ink-faint:#847C6C;--accent:#33C4B0;--accent-strong:#4FD3C0;--accent-contrast:#06100E;
   background:var(--bg);color:var(--ink);border-top:0;padding-block:clamp(76px,8.5vw,132px)}
 #problem .wrap{max-width:1320px}
 #problem h2{font-size:clamp(2.5rem,1.7rem + 3.4vw,4.2rem);max-width:20ch}
@@ -630,14 +631,18 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
   font-size:clamp(3.2rem,2.2rem + 4.4vw,6rem);line-height:.92;letter-spacing:-.03em;
   word-spacing:-.34em;margin-bottom:.3rem;font-weight:500}
 /* invert the inversion when the page itself is dark, in both dark paths */
-:root[data-theme="dark"] #problem{--bg:#F1F4F3;--surface:#FBFCFC;--surface-2:#DFE8E5;
-  --line:#D2DAD7;--line-strong:#B7C2BE;--ink:#10201C;--ink-muted:#4F615C;
-  --accent:#005E52;--accent-strong:#00463D;--accent-contrast:#F1F4F3}
+:root[data-theme="dark"] #problem{--bg:#FFFAED;--surface:#FFFDF7;--surface-2:#E3DCCE;
+  --line:#D4CBB9;--line-strong:#BFB39A;--ink:#1A1511;--ink-muted:#5E564A;--ink-faint:#797163;
+  --accent:#005E52;--accent-strong:#00463D;--accent-contrast:#FFFDF7}
 @media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]) #problem{--bg:#F1F4F3;--surface:#FBFCFC;--surface-2:#DFE8E5;
-    --line:#D2DAD7;--line-strong:#B7C2BE;--ink:#10201C;--ink-muted:#4F615C;
-    --accent:#005E52;--accent-strong:#00463D;--accent-contrast:#F1F4F3}
+  :root:not([data-theme="light"]) #problem{--bg:#FFFAED;--surface:#FFFDF7;--surface-2:#E3DCCE;
+    --line:#D4CBB9;--line-strong:#BFB39A;--ink:#1A1511;--ink-muted:#5E564A;--ink-faint:#797163;
+    --accent:#005E52;--accent-strong:#00463D;--accent-contrast:#FFFDF7}
 }
+.marker,.cta-note,.f-meta,.rg__org,.rg__famsub,.foot-meta,.arm-cap span,.cb__panelhd h3{color:var(--ink-faint)}
+/* #problem inverts to the dark palette while the page is light, so it warms too */
+#problem{--bg:#141009;--surface:#1B1710;--surface-2:#221D14;--line:#332C21;--line-strong:#4B4335;--ink:#F4EEE1;--ink-muted:#A79D8B;--ink-faint:#847C6C;background:var(--bg);color:var(--ink)}
+
 </style>
 </head>
 <body>
@@ -648,9 +653,11 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
     <a class="brand" href="#top"><span class="dot" aria-hidden="true"></span>Robotics Evaluation Bounty</a>
     <nav class="main" aria-label="Primary">
       <a class="nlink" href="#stages">Stages</a>
+      <a class="nlink" href="#how">Requirements</a>
       <a class="nlink" href="#benchmarks">What to build</a>
+      <a class="nlink" href="#problem">Why this exists</a>
       <a class="nlink" href="#method">Method</a>
-      <a class="nlink" href="#faq">FAQ</a>
+      <a class="nlink" href="#faq">Questions</a>
       <button class="menu-btn" id="menuToggle" type="button" aria-expanded="false" aria-controls="mobileMenu">Menu</button>
       <button class="theme" id="themeToggle" type="button" aria-label="Toggle light or dark theme">
         <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -661,9 +668,11 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
   </div>
   <div class="mmenu" id="mobileMenu" hidden>
     <a href="#stages">Stages</a>
+    <a href="#how">Requirements</a>
     <a href="#benchmarks">What to build</a>
+    <a href="#problem">Why this exists</a>
     <a href="#method">Method</a>
-    <a href="#faq">FAQ</a>
+    <a href="#faq">Questions</a>
   </div>
 </header>
 
@@ -1021,7 +1030,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
   <!-- ================= FAQ ================= -->
   <section id="faq" class="band">
     <div class="wrap">
-      <p class="marker"><b>07</b> / questions</p>
+      <p class="marker"><b>06</b> / questions</p>
       <div class="prose"><h2>Questions.</h2></div>
       <div class="faq reveal">
         <details><summary>Who can apply?</summary><p>Individuals and teams, students included. You do not need to own a robot: every team that reaches Stage&nbsp;3 is sent two fully assembled SO-101 arms at no cost and keeps them. Everyone enters the same way, with a Stage&nbsp;1 proposal, and you may submit more than one.</p></details>
@@ -1100,7 +1109,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
   function stored(){try{return localStorage.getItem('reb-theme');}catch(e){return null;}}
   function isDark(){var c=root.getAttribute('data-theme');if(!c)c=(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches)?'dark':'light';return c==='dark';}
   function syncAria(){var d=isDark();btn.setAttribute('aria-label',d?'Switch to light theme':'Switch to dark theme');
-    if(root.getAttribute('data-theme'))Array.prototype.forEach.call(document.querySelectorAll('meta[name="theme-color"]'),function(m){m.setAttribute('content',d?'#0C1412':'#F1F4F3');});}
+    if(root.getAttribute('data-theme'))Array.prototype.forEach.call(document.querySelectorAll('meta[name="theme-color"]'),function(m){m.setAttribute('content',d?'#141009':'#FFFAED');});}
   var s=stored(); if(s) root.setAttribute('data-theme',s);
   syncAria();
   btn.addEventListener('click',function(){

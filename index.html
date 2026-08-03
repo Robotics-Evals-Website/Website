@@ -1115,7 +1115,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
   <section class="hero">
     <div class="wrap">
       <h1>A call for robotics benchmarks.</h1>
-      <p class="lead">We fund open, reproducible benchmarks on <b><a href="https://inspectrobots.org/" target="_blank" rel="noopener noreferrer">Inspect Robots</a></b>: a public measure of what robots can do, and how fast that’s changing.</p>
+      <p class="lead">We fund open, reproducible benchmarks on <b><a href="https://inspectrobots.org/" target="_blank" rel="noopener noreferrer">Inspect Robots</a></b>. The result is a public measure of what robots can do, and how fast that’s changing.</p>
       <div class="cta-row">
         <a class="btn btn-primary btn-lg" href="#apply">Apply to build a benchmark</a>
         <a class="btn btn-ghost btn-lg" href="#benchmarks">See what to build</a>
@@ -1194,11 +1194,11 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
           </ul>
         </div>
         <div class="sd__body">
-          <p class="sd__p">The benchmark you want to build, the area it addresses, your background, and the list of tasks it contains &mdash; each with an instruction, a goal, a 0&ndash;1 scoring rubric, and a setup. Scored on team capability, idea quality, and relevance. A proposal hackathon runs 5&ndash;6 September with Apart Research.</p>
+          <p class="sd__p">The benchmark you want to build, the area it addresses, your background, and the list of tasks it contains. Each task needs an instruction, a goal, a 0&ndash;1 scoring rubric, and a setup. Scored on team capability, idea quality, and relevance. A proposal hackathon runs 5&ndash;6 September with Apart Research.</p>
   <section class="cb" aria-labelledby="cb-title">
           <header class="cb__head">
             <p class="cb__eyebrow">Instruction · goal · rubric · setup</p>
-            <h4 class="cb__title" id="cb-title">Every task has four features.</h4>
+            <h4 class="cb__title" id="cb-title">Every task has four features</h4>
             <p class="cb__lead">A benchmark is a list of tasks. Each task states what the robot is asked to do, what the finished scene looks like, how one attempt scores between 0 and 1, and how the scene starts. Anything in the setup that varies is named and given a distribution. One task is written out in full below.</p>
           </header>
 
@@ -1791,15 +1791,15 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
           </div>
           <div class="cat-ideas">
           <ul class="idea-list">
-            <li><b>CableBench</b>: seat multiple cables and barrel/RJ connectors into a port panel; randomize port position, orientation, panel tilt, connector type, cable slack.</li>
-            <li><b>TorqueBench</b>: drive fasteners to a specified torque without cross-threading; randomize size, head type, hole location, approach angle.</li>
-            <li><b>FoldBench</b>: fold a laid-out garment to a target footprint; randomize fabric, size, and initial crumple state.</li>
+            <li><b>CableBench</b>: seat multiple cables and barrel/RJ connectors into a port panel. Port position, orientation, panel tilt, connector type and cable slack all vary.</li>
+            <li><b>TorqueBench</b>. Drive fasteners to a specified torque without cross-threading. Vary the size, head type, hole location and approach angle.</li>
+            <li><b>FoldBench</b> asks the robot to fold a laid-out garment to a target footprint. Fabric, size and initial crumple state change between instances.</li>
           </ul>
           <details class="ideas"><summary>Three more<span class="sr-only"> ideas for impact on jobs</span></summary>
             <ul class="idea-list">
-            <li><b>ClutterPick</b>: retrieve a named item from a bin under heavy occlusion; randomize clutter density, item pose, distractors.</li>
-            <li><b>HarnessRoute</b>: route a flexible wire harness through a sequence of clips and channels; randomize clip positions, order, stiffness.</li>
-            <li><b>PlateBench</b>: portion and arrange food-like items to a target layout; randomize count, size, start positions.</li>
+            <li><b>ClutterPick</b>: retrieve a named item from a bin under heavy occlusion, with clutter density, item pose and distractors randomized.</li>
+            <li><b>HarnessRoute</b>. Route a flexible wire harness through a sequence of clips and channels. Randomize the clip positions, their order, and the stiffness of the harness.</li>
+            <li><b>PlateBench</b>. Portion and arrange food-like items to a target layout. Count, size and start positions vary.</li>
             </ul>
           </details>
           </div>
@@ -1813,15 +1813,15 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
           </div>
           <div class="cat-ideas">
           <ul class="idea-list">
-            <li><b>RackBench</b>: mount a compute unit into rails and connect power and data; randomize rail height, unit depth, cable dressing.</li>
-            <li><b>HotSwapBench</b>: remove and re-seat a hot-swappable module in a live rack; randomize bay, latch mechanism, insertion force.</li>
-            <li><b>LabBench</b>: execute a wet-lab protocol step (pipette, weigh, transfer) to a stated tolerance; randomize vessel layout, volumes, tool positions.</li>
+            <li><b>RackBench</b>: mount a compute unit into rails and connect power and data. Rail height, unit depth and cable dressing vary between instances.</li>
+            <li><b>HotSwapBench</b>. Remove and re-seat a hot-swappable module in a live rack, randomizing the bay, the latch mechanism and the insertion force.</li>
+            <li><b>LabBench</b>: execute a wet-lab protocol step (pipette, weigh, transfer) to a stated tolerance. Vessel layout, volumes and tool positions all change.</li>
           </ul>
           <details class="ideas"><summary>Three more<span class="sr-only"> ideas for AI timelines</span></summary>
             <ul class="idea-list">
-            <li><b>PanelBench</b>: terminate conductors into a breaker panel to a wiring diagram; randomize circuit count, conductor gauge, panel orientation.</li>
-            <li><b>CoolingBench</b>: connect a liquid-cooling loop to a server sled and confirm it holds pressure; randomize fitting type, hose routing, sled position.</li>
-            <li><b>MechanicBench</b>: restore another robot to working order by swapping a battery, replacing a worn part, or tightening loose fixtures; randomize the fault set and component positions.</li>
+            <li><b>PanelBench</b>. Terminate conductors into a breaker panel to a wiring diagram. Randomize the circuit count, the conductor gauge and the panel orientation.</li>
+            <li><b>CoolingBench</b>: connect a liquid-cooling loop to a server sled and confirm it holds pressure. Vary the fitting type, the hose routing and the position of the sled.</li>
+            <li><b>MechanicBench</b>: restore another robot to working order by swapping a battery, replacing a worn part, or tightening loose fixtures. The fault set and the component positions are randomized.</li>
             </ul>
           </details>
           </div>
@@ -1835,15 +1835,15 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
           </div>
           <div class="cat-ideas">
           <ul class="idea-list">
-            <li><b>CoffeeBench</b>: find a cup, load a pod, operate the machine, deliver the cup to a target zone (the Wozniak coffee test, made reproducible); randomize machine layout, cup/pod positions, target.</li>
-            <li><b>GroceryBench</b>: unpack a bag of mixed groceries and shelve each item correctly; randomize item set, packing order, shelf layout.</li>
-            <li><b>TableBench</b>: lay a place setting to a target arrangement; randomize starting positions, orientation, setting style.</li>
+            <li><b>CoffeeBench</b>: find a cup, load a pod, operate the machine, deliver the cup to a target zone. This is the Wozniak coffee test, made reproducible. Machine layout, cup and pod positions, and the target all vary.</li>
+            <li><b>GroceryBench</b>. Unpack a bag of mixed groceries and shelve each item correctly. Randomize the item set, the packing order and the shelf layout.</li>
+            <li><b>TableBench</b> is a place setting laid to a target arrangement. Vary the starting positions, the orientation, and the style of the setting.</li>
           </ul>
           <details class="ideas"><summary>Three more<span class="sr-only"> ideas for societal awareness</span></summary>
             <ul class="idea-list">
-            <li><b>DishBench</b>: load mixed dishware into a rack without collisions or breakage; randomize dish types, counts, poses.</li>
-            <li><b>TidyBench</b>: return scattered household objects to designated storage; randomize object set, clutter, target bins.</li>
-            <li><b>PourBench</b>: pour a target volume into a specified vessel without overshoot or spill; randomize vessel, fill target, placement.</li>
+            <li><b>DishBench</b>: load mixed dishware into a rack without collisions or breakage. Dish types, counts and poses vary.</li>
+            <li><b>TidyBench</b>. Return scattered household objects to designated storage. Randomize the object set, how cluttered the room is, and which bins are the targets.</li>
+            <li><b>PourBench</b>: pour a target volume into a specified vessel without overshoot or spill, randomizing the vessel, the fill target and the placement.</li>
             </ul>
           </details>
           </div>
@@ -1893,21 +1893,21 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
       <p class="marker"><b>04</b> / questions</p>
       <div class="prose"><h2>Questions.</h2></div>
       <div class="faq reveal">
-        <details><summary>Who can apply?</summary><p>Individuals and teams, students included. You do not need to own a robot: every team that reaches Stage&nbsp;3 is sent two fully assembled SO-101 arms at no cost and keeps them. Everyone enters the same way, with a Stage&nbsp;1 proposal, and you may submit more than one.</p></details>
+        <details><summary>Who can apply?</summary><p>Individuals and teams, students included. You do not need to own a robot. Every team that reaches Stage&nbsp;3 is sent two fully assembled SO-101 arms at no cost and keeps them. Everyone enters the same way, with a Stage&nbsp;1 proposal, and you may submit more than one.</p></details>
         <details><summary>What do I submit at each stage?</summary>
         <ul class="faq-list">
           <li><b>Stage 1</b> A proposal: the benchmark you want to build, the area it addresses, your background, and the list of tasks it contains. Every task carries four features: an instruction, a description of the goal, a scoring rubric between 0 and 1, and a setup with every random element given a named distribution. Due 13 September 2026, 23:59 Pacific. Scored on team capability, idea quality, and relevance.</li>
           <li><b>Stage 2</b> A physics simulation of the task family, built in a simulator such as Isaac&nbsp;Sim and wired into Inspect Robots on the KitchenBench pattern. It must install clean, run end to end, pass CI, and carry a self-score against the published review criteria. No hardware is needed at this stage.</li>
           <li><b>Stage 3</b> The hardware benchmark running end to end with a baseline evaluated, scored against your Stage&nbsp;2 simulation, plus a reproducibility package covering environment specs with tolerances, the evaluation protocol, the reset procedure, and rollout counts. Due 18 December 2026, 23:59 Pacific, rolling from 1 December. We then spot-check a random sample of instances for reproducibility before assigning the tier.</li>
         </ul></details>
-        <details><summary>Is this a job, a contract, or a grant?</summary><p>None of those. These are competition awards, not payment for services: no employment or contracting relationship, no supervision, no hours reporting, and no work assigned by us. You choose your own task, method, and schedule, and are judged against criteria published on day one. Awards are flat amounts tied to deliverables, not to time spent. If you hold a student visa, confirm with your international student office before entering.</p></details>
+        <details><summary>Is this a job, a contract, or a grant?</summary><p>None of those. These are competition awards rather than payment for services. There is no employment or contracting relationship, no supervision, no hours reporting, and no work assigned by us. You choose your own task, method, and schedule, and are judged against criteria published on day one. Awards are flat amounts tied to deliverables, not to time spent. If you hold a student visa, confirm with your international student office before entering.</p></details>
         <details><summary>How are awards paid and taxed?</summary><p>To the team, by international transfer, split as the team directs. University-affiliated teams may instead request payment as a research gift to their institution; ask at Stage&nbsp;2 selection, since institutional contracting takes weeks. Awards may be reported to tax authorities, and awards paid to teams outside the United States may be subject to US withholding, which may be recoverable by filing a US return the following year. We collect tax forms at Stage&nbsp;3 selection.</p></details>
         <details><summary>Which robot do I build on?</summary><p>The SO-101 is the default reference embodiment. Every Stage&nbsp;3 team is sent two fully assembled follower arms, ordered on selection day, free and with no return obligation, including if you withdraw. They sit outside the $1,000 materials budget, which covers task materials and 3D-printable fixtures. You drive them through <span class="mono">inspect-robots-so101</span>, which wraps policy checkpoints from LeRobot, Hugging Face’s robot-learning library, as an Inspect Robots policy; a public checkpoint is enough for a baseline, so no teleoperation, demo collection, or leader arms are needed. You may instead propose an alternative embodiment you already own, approved at Stage&nbsp;2, and still receive the arms:</p>
         <ul class="faq-list">
           <li><b>Arms</b> YAM, WidowX AI, Franka Research 3</li>
           <li><b>Humanoids</b> AgiBot X1, Unitree G1</li>
         </ul></details>
-        <details><summary>What do I keep, and what gets published?</summary><p>You keep copyright and publication rights in full: write up your own benchmark, submit it anywhere, without clearing anything with us. Entering grants us a licence to publish it in WorldEvals under MIT, with your team credited. After replication closes in February we write up the collected suite, the paired simulations, the measured sim-to-real gap, and baseline results for current vision-language-action (VLA) policies, targeting submission in Q1 2027. Every Stage&nbsp;3 team that passes replication is offered co-authorship, and may decline and be acknowledged instead.</p></details>
+        <details><summary>What do I keep, and what gets published?</summary><p>You keep copyright and publication rights in full. Write up your own benchmark and submit it anywhere, without clearing anything with us. Entering grants us a licence to publish it in WorldEvals under MIT, with your team credited. After replication closes in February we write up the collected suite, the paired simulations, the measured sim-to-real gap, and baseline results for current vision-language-action (VLA) policies, targeting submission in Q1 2027. Every Stage&nbsp;3 team that passes replication is offered co-authorship, and may decline and be acknowledged instead.</p></details>
         <details><summary>What are Inspect Robots, KitchenBench, and WorldEvals?</summary><p><a href="https://inspectrobots.org/" target="_blank" rel="noopener noreferrer">Inspect Robots</a> is RoboCurve’s open-source framework for evaluating AI and robots in the physical world. <a href="https://github.com/robocurve/kitchenbench" target="_blank" rel="noopener noreferrer">KitchenBench</a> is the worked example of what a Stage&nbsp;2 submission should look like. WorldEvals is the public repository where finished benchmarks will be released.</p></details>
       </div>
     </div>

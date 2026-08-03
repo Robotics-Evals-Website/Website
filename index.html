@@ -217,8 +217,21 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
    HERO (compact)
    ============================================================ */
 .hero{padding:clamp(64px,9vh,116px) 0 clamp(46px,6vh,72px)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr);align-items:center;
+  column-gap:clamp(2rem,4.5vw,3.6rem)}
+.hero-fig{display:none;margin:0}
+@media (min-width:980px){
+  .hero .wrap{grid-template-columns:minmax(0,1fr) clamp(228px,22vw,292px)}
+  .hero-fig{display:block}
+}
+.hero-fig svg{display:block;width:100%;height:auto}
+.hf-rule{stroke:var(--line);stroke-width:1}
+.hf-rule--top{stroke:var(--line-strong)}
+.hf-hd{font-family:var(--mono);font-size:10.5px;letter-spacing:.11em;fill:var(--ink-faint)}
+.hf-lg{font-family:var(--mono);font-size:11px;letter-spacing:.1em;fill:var(--ink-faint)}
+.hf-lv{font-family:var(--serif);font-size:23px;font-weight:500;fill:var(--ink)}
+.hf-pre{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;fill:var(--ink-faint)}
 .hero h1{max-width:16ch;margin-bottom:2rem}
-.hero .lead{margin-bottom:.5rem}
 .hero .cta-row{margin-top:2.4rem}
 .hero .cta-note{margin-top:1.5rem}
 .cta-row{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2rem;align-items:center}
@@ -1092,13 +1105,18 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
   <!-- ================= HERO ================= -->
   <section class="hero">
     <div class="wrap">
-      <h1>A call for robotics benchmarks.</h1>
+      <div class="hero-copy">
+          <h1>A call for robotics benchmarks.</h1>
       <p class="lead">We fund open, reproducible benchmarks on <b><a href="https://inspectrobots.org/" target="_blank" rel="noopener noreferrer">Inspect Robots</a></b>. The result is a public measure of what robots can do, and how fast that’s changing.</p>
       <div class="cta-row">
         <a class="btn btn-primary btn-lg" href="#apply">Apply to build a benchmark</a>
         <a class="btn btn-ghost btn-lg" href="#benchmarks">See what to build</a>
       </div>
       <p class="cta-note">Applications open 12 August 2026 · no robot needed</p>
+        </div>
+        <figure class="hero-fig">
+          <svg viewBox="0 0 300 300" role="img" aria-label="What a Stage 3 team receives beyond the award: two SO-101 arms, $2,000 of compute, up to $1,000 of materials, and co-authorship on the joint paper."><text class="hf-hd" x="4" y="30">A STAGE 3 TEAM ALSO RECEIVES</text><line class="hf-rule hf-rule--top" x1="4" y1="44" x2="296" y2="44"/><text class="hf-lg" x="4" y="88">HARDWARE</text><text class="hf-lv" x="296" y="88" text-anchor="end">2 SO-101 arms</text><line class="hf-rule" x1="4" y1="106" x2="296" y2="106"/><text class="hf-lg" x="4" y="144">COMPUTE</text><text class="hf-lv" x="296" y="144" text-anchor="end">$2,000</text><line class="hf-rule" x1="4" y1="162" x2="296" y2="162"/><text class="hf-lg" x="4" y="200">MATERIALS</text><text class="hf-lv" x="296" y="200" text-anchor="end"><tspan class="hf-pre">up to&#8202; </tspan>$1,000</text><line class="hf-rule" x1="4" y1="218" x2="296" y2="218"/><text class="hf-lg" x="4" y="256">PAPER</text><text class="hf-lv" x="296" y="256" text-anchor="end">co-author</text><line class="hf-rule" x1="4" y1="274" x2="296" y2="274"/></svg>
+        </figure>
     </div>
   </section>
 
@@ -1106,7 +1124,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
   <div class="statusbar">
     <div class="wrap">
       <div class="status-cell"><span>Award pool</span><b>Up to <em>$500,000</em></b></div>
-      <div class="status-cell"><span>Stage 3 award</span><b>From <em>$15,000</em></b></div>
+      <div class="status-cell"><span>Stage 3 award</span><b>Up to <em>$25,000</em></b></div>
       <div class="status-cell"><span>Framework</span><b><em>Inspect Robots</em></b></div>
       <div class="status-cell"><span>Stage 1 closes</span><b><em>11 Sep 2026</em></b></div>
     </div>

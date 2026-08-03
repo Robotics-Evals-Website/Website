@@ -982,34 +982,47 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 
 /* ===== STAGE 3 PANEL ===== */
 /* ============================================================
-   STAGE 3 PANEL — self-contained block. All classes s3-*.
-   Uses only the site's existing custom properties.
+   STAGE 3 PANEL — self-contained block. New classes are s3-*;
+   .sd__split / .sd__split-body / .sd__fig are the panel contract's
+   own vocabulary. Colours come from the site's custom properties only.
    ============================================================ */
-.s3{padding-top:clamp(1.4rem,3vw,2.2rem);padding-bottom:.5rem}
+.s3{padding:0}
 .s3 p{margin:0}
 .s3-lead{font-size:var(--fs-body-sm);color:var(--ink-muted);max-width:64ch;text-wrap:pretty}
 .s3-lead b{color:var(--ink);font-weight:600}
 
-.s3-sec{margin-top:clamp(1.9rem,4vw,2.9rem)}
+.s3-sec{margin-top:clamp(1.9rem,3.6vw,2.8rem)}
 .s3-sec:first-of-type{margin-top:clamp(1.5rem,3vw,2.1rem)}
-.s3-h{font-family:var(--serif);font-weight:600;font-size:var(--fs-h3);line-height:1.32;
-  letter-spacing:-.015em;margin:0 0 .65rem;color:var(--ink);text-wrap:balance}
-.s3-p{font-size:var(--fs-body-sm);color:var(--ink-muted);max-width:64ch;text-wrap:pretty}
+.s3-h{font-family:var(--serif);font-weight:600;font-size:var(--fs-h3);line-height:1.3;
+  letter-spacing:-.015em;margin:0 0 .8rem;color:var(--ink);text-wrap:balance}
+.s3-p{font-size:var(--fs-body-sm);color:var(--ink-muted);max-width:64ch;text-wrap:pretty;line-height:1.6}
 .s3-p+.s3-p{margin-top:.9rem}
 .s3-p b{color:var(--ink);font-weight:600}
 .s3 sub{font-size:.72em;line-height:0;vertical-align:baseline;position:relative;bottom:-.24em}
-.s3-p code{font-family:var(--mono);font-size:.88em;color:var(--ink)}
-.s3-p a{color:var(--accent);text-decoration:underline;text-underline-offset:.18em;text-decoration-thickness:.06em}
-.s3-p a:hover{color:var(--accent-strong)}
+.s3-p a,.s3-req a{color:var(--accent);text-decoration:underline;text-underline-offset:.18em;
+  text-decoration-thickness:.06em}
+.s3-p a:hover,.s3-req a:hover{color:var(--accent-strong)}
+
+/* ---------- sub-heading inside a section ---------- */
+.s3-sub{margin:clamp(1.4rem,2.6vw,1.9rem) 0 .7rem;padding-top:.85rem;border-top:1px solid var(--line);
+  font-family:var(--mono);font-weight:500;font-size:var(--fs-label);letter-spacing:var(--tr-label);
+  text-transform:uppercase;color:var(--ink-faint)}
+
+/* ---------- requirement list ---------- */
+.s3-req{list-style:none;margin:clamp(1rem,2.2vw,1.4rem) 0 0;padding:0;display:grid;gap:.6rem;
+  color:var(--ink-muted);font-size:var(--fs-body-sm);line-height:1.6;max-width:64ch}
+.s3-req li{display:flex;gap:.7rem}
+.s3-req li::before{content:"›" / "";color:var(--accent);font-weight:600;flex:none}
+.s3-req li>span{min-width:0}
+.s3-req b{color:var(--ink);font-weight:600}
 
 /* ---------- checkpoint table ---------- */
-.s3-ck{margin-top:clamp(1rem,2.2vw,1.5rem);border-top:1px solid var(--line)}
+.s3-ck{margin:clamp(1rem,2.2vw,1.4rem) 0 0;padding:0;border-top:1px solid var(--line)}
 .s3-ck>li{list-style:none;display:grid;grid-template-columns:minmax(0,1fr);gap:.15rem;
   padding:.8rem 0;border-bottom:1px solid var(--line)}
 @media (min-width:660px){
   .s3-ck>li{grid-template-columns:8.5rem minmax(0,1fr);gap:0 1.4rem;align-items:baseline}
 }
-.s3-ck{margin-block-end:0;padding:0}
 .s3-ck .s3-ck__n{font-family:var(--mono);font-size:var(--fs-data);color:var(--ink);letter-spacing:.01em}
 .s3-ck .s3-ck__d{font-size:var(--fs-small);color:var(--ink-muted);text-wrap:pretty;min-width:0}
 .s3-ck a{font-family:var(--mono);font-size:.94em;color:var(--accent);text-decoration:underline;
@@ -1018,7 +1031,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 .s3-ck .s3-ck__d em{font-style:normal;color:var(--ink-faint)}
 
 /* ---------- artefact shell ---------- */
-.s3-art{margin-top:clamp(1.2rem,2.6vw,1.9rem);background:var(--surface);border:1px solid var(--line);
+.s3-art{margin-top:clamp(1.2rem,2.6vw,1.8rem);background:var(--surface);border:1px solid var(--line);
   border-radius:6px;overflow:hidden}
 .s3-art__hd{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap;
   padding:11px clamp(14px,2.4vw,20px);border-bottom:1px solid var(--line)}
@@ -1069,14 +1082,13 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 .s3-mf__v{font-size:var(--fs-small);color:var(--ink-muted);text-wrap:pretty;min-width:0}
 @media (max-width:659px){.s3-mf__v{grid-column:2;margin-top:.15rem}}
 
-/* ---------- note ---------- */
-.s3-note{margin-top:clamp(1.2rem,2.6vw,1.8rem);border:1px dashed var(--line-strong);border-radius:5px;
-  padding:1rem 1.2rem;max-width:62ch}
-.s3-note h5{font-family:var(--mono);font-size:var(--fs-label);letter-spacing:var(--tr-label);
-  text-transform:uppercase;color:var(--ink-faint);font-weight:500;margin:0 0 .55rem}
-.s3-note p{font-size:var(--fs-small);color:var(--ink-muted);text-wrap:pretty}
+/* ---------- closing note ---------- */
+.s3-coda{margin-top:clamp(1.4rem,2.8vw,2rem);padding-top:1rem;border-top:1px solid var(--line);
+  font-size:var(--fs-body-sm);line-height:1.6;color:var(--ink-muted);max-width:64ch;text-wrap:pretty}
+.s3-coda b{color:var(--ink);font-weight:600}
 
 @media (prefers-reduced-motion:reduce){.s3 *{transition:none!important;animation:none!important}}
+
 </style>
 </head>
 <body>
@@ -1128,7 +1140,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
   <div class="statusbar">
     <div class="wrap">
       <div class="status-cell"><span>Award pool</span><b>Up to <em>$500,000</em></b></div>
-      <div class="status-cell"><span>Stage 3 award</span><b>Up to <em>$28,000</em></b></div>
+      <div class="status-cell"><span>Stage 3 award</span><b>From <em>$12,000</em></b></div>
       <div class="status-cell"><span>Framework</span><b><em>Inspect Robots</em></b></div>
       <div class="status-cell"><span>Stage 1 closes</span><b><em>13 Sep 2026</em></b></div>
     </div>
@@ -1177,7 +1189,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
           <span class="sdt__num">Stage 3</span>
           <span class="sdt__name">Real-world hardware benchmark</span>
           <span class="sdt__when">21 Oct &ndash; 18 Dec 2026</span>
-          <span class="sdt__cohort">Up to 13 teams</span>
+          <span class="sdt__cohort">Up to 15 teams</span>
           <span class="sdt__money"><i>Award</i><b>$12,000 &ndash; $20,000</b></span>
           <span class="sdt__more" aria-hidden="true">Details</span>
         </button>
@@ -1496,7 +1508,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
             <li><span>Award</span><b>$3,000</b></li>
             <li><span>Compute credits</span><b>$500</b></li>
           </ul>
-          <p class="sd__note">Up to 13 of the 30 teams go on to Stage&nbsp;3. Selection happens after the 16 October deadline; Stage&nbsp;3 opens on 21 October, and the SO-101 arms are ordered on selection day.</p>
+          <p class="sd__note">Up to 15 of the 30 teams go on to Stage&nbsp;3. Selection happens after the 16 October deadline; Stage&nbsp;3 opens on 21 October, and the SO-101 arms are ordered on selection day.</p>
         </div>
       </section>
 
@@ -1507,27 +1519,31 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
           <p class="sd__lead">The same task family on real arms, paired with the simulation you built in Stage&nbsp;2, each running end to end with a baseline evaluated. Then a team that did not build it runs it again.</p>
           <ul class="sd__facts">
             <li><span>Window</span><b>21 Oct &ndash; 18 Dec 2026</b></li>
-            <li><span>Cohort</span><b>Up to 13 teams</b></li>
-            <li><span>On delivery</span><b>$10,000</b></li>
-            <li><span>On replication</span><b>$8,000 &ndash; $18,000</b></li>
+            <li><span>Cohort</span><b>Up to 15 teams</b></li>
+            <li><span>On delivery</span><b>$12,000</b></li>
+            <li><span>On replication</span><b>$4,000 or $8,000</b></li>
           </ul>
         </div>
         <div class="sd__body">
-          <p class="sd__p">The same task family on real hardware &mdash; every task in your benchmark, across the setups its distributions define &mdash; running end to end with a baseline evaluated, then independently replicated. The Stage&nbsp;2 simulation is scored against it, and the gap between them is a result in its own right.</p>
+          <!-- ================= STAGE 3 CONTENT DROPS IN HERE ================= -->
+          <div class="s3">
 
-          <h4 class="sd__h4">What Stage 3 must ship</h4>
-          <div class="sd__split">
-            <div class="sd__split-body">
-              <ul class="sd__checks" role="list">
-                        <li>Runs on an accepted reference robot: the SO-101 by default, single-arm or bimanual</li>
-                        <li>Ships a physics simulation of the same task family alongside the hardware benchmark</li>
-                        <li>Stays within the $1,000 materials budget (bill of materials, excluding the robot), reimbursed against receipts</li>
-                        <li>Specifies precise environment tolerances, and a 0&ndash;1 scoring rubric for every task</li>
-                        <li>Includes a repeatable reset procedure</li>
-                        <li>States a rollout count &mdash; how many scored attempts per instance &mdash; so every score carries an error bar</li>
-                      </ul>
-              <p class="sd__p">You don’t need to own a robot to apply: every team that reaches <b>Stage 3</b> is sent two fully assembled SO-101 follower arms, ordered on selection day, free and yours to keep even if you withdraw.</p>
-            </div>
+  <p class="s3-lead">Every task in your benchmark runs on real SO-101 arms, across the setups your
+    distributions define. The Stage&nbsp;2 simulation is then scored against those hardware results, and the
+    distance between the two is reported as a finding rather than tuned away.</p>
+
+  <section class="s3-sec">
+    <h4 class="s3-h">What you get</h4>
+
+    <div class="sd__split">
+      <div class="sd__split-body">
+        <p class="s3-p">Every team that reaches Stage&nbsp;3 is sent two fully assembled SO-101 follower arms,
+          ordered on selection day. They are free and yours to keep even if you withdraw, so you do not need to
+          own a robot to apply.</p>
+        <p class="s3-p">Teams also receive $2,000 in compute credits and up to $1,000 of materials reimbursed
+          against receipts. Replication that passes earns co-authorship on the joint paper. The award figures
+          are set out in the ledger at the foot of this panel.</p>
+      </div>
             <figure class="sd__fig">
                       <svg class="arm-svg" id="arm-svg" viewBox="0 0 196 111" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
                         <path class="a-ground" d="M4,104 L192,104"/>
@@ -1580,42 +1596,60 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
                         <button class="arm-replay" type="button" id="arm-replay" aria-label="Pause arm animation">pause</button>
                       </figcaption>
                     </figure>
-          </div>
+    </div>
 
-          <!-- ================= STAGE 3 CONTENT DROPS IN HERE ================= -->
-          <div class="s3">
-
-  <p class="s3-lead">Your benchmark runs on real SO-101 arms, end to end, with policies evaluated against it. The Stage&nbsp;2 simulation is scored on the same tasks, and the distance between the two is reported as a finding rather than tuned away.</p>
+    <h5 class="s3-sub">Cross-embodiment bonuses</h5>
+    <p class="s3-p">The SO-101 arms go to every team, so they are the floor rather than something to earn. A
+      team that <b>already owns</b> other hardware can run the same benchmark across it and is paid per unit:
+      <b>$2,000 for each additional arm</b> and <b>$5,000 for each humanoid</b>. There is no cap on the number
+      of units.</p>
+    <p class="s3-p">This is aimed at labs with hardware already standing in the room, which is how the
+      programme reaches cross-embodiment coverage it could not otherwise afford. Nothing here expects a team to
+      acquire anything.</p>
+  </section>
 
   <section class="s3-sec">
-    <h4 class="s3-h">Baselines across public checkpoints</h4>
-    <p class="s3-p">Stage&nbsp;3 asks for results across the SO-101-compatible checkpoints, and across language models driving the arm directly &mdash; Claude Opus&nbsp;5 in fast mode among them. Every policy runs the same tasks at the rollout count you declared, through <code>inspect-robots-so101</code>. A public checkpoint is enough, so no teleoperation or demo collection is needed to produce a baseline.</p>
+    <h4 class="s3-h">Expected deliverables</h4>
+    <p class="s3-p">Results across the SO-101-compatible checkpoints, and across language models driving the arm
+      directly, Claude Opus&nbsp;5 in fast mode among them. Every policy runs the same tasks at the rollout count
+      you declared. A public checkpoint is enough, so no teleoperation or demonstration collection is
+      needed.</p>
 
     <ul class="s3-ck">
       <li>
         <span class="s3-ck__n">MolmoAct2</span>
-        <span class="s3-ck__d"><a href="https://huggingface.co/allenai/MolmoAct2-SO100_101">allenai/MolmoAct2-SO100_101</a> &mdash; AllenAI&rsquo;s SO-100/101 fine-tune, absolute joint-pose control. <em>The general model is <a href="https://huggingface.co/allenai/MolmoAct2">allenai/MolmoAct2</a>.</em></span>
+        <span class="s3-ck__d"><a href="https://huggingface.co/allenai/MolmoAct2-SO100_101">allenai/MolmoAct2-SO100_101</a>.
+          AllenAI&rsquo;s SO-100/101 fine-tune, absolute joint-pose control.</span>
       </li>
       <li>
         <span class="s3-ck__n">GR00T</span>
-        <span class="s3-ck__d"><a href="https://huggingface.co/robocurve/gr00t-n1.7-so101-molmoact2">robocurve/gr00t-n1.7-so101-molmoact2</a> &mdash; an SO-101 fine-tune of <a href="https://huggingface.co/nvidia/GR00T-N1.7-3B">nvidia/GR00T-N1.7-3B</a>, published with held-out loss but no robot rollouts yet. <em>Stage&nbsp;3 is where those rollouts come from.</em></span>
+        <span class="s3-ck__d"><a href="https://huggingface.co/robocurve/gr00t-n1.7-so101-molmoact2">robocurve/gr00t-n1.7-so101-molmoact2</a>.
+          An SO-101 fine-tune of <a href="https://huggingface.co/nvidia/GR00T-N1.7-3B">nvidia/GR00T-N1.7-3B</a>,
+          published with held-out loss and no robot rollouts. <em>Stage&nbsp;3 is where those rollouts come from.</em></span>
       </li>
       <li>
         <span class="s3-ck__n">&pi;<sub>0.5</sub></span>
-        <span class="s3-ck__d"><a href="https://huggingface.co/lerobot/pi05_base">lerobot/pi05_base</a> &mdash; base weights, which you fine-tune for the SO-101 yourself. <em>No SO-101 &pi;<sub>0.5</sub> checkpoint is published; RoboCurve&rsquo;s is bimanual YAM.</em></span>
+        <span class="s3-ck__d"><a href="https://huggingface.co/lerobot/pi05_base">lerobot/pi05_base</a>, base weights.
+          <em>No SO-101 &pi;<sub>0.5</sub> checkpoint is published. Physical Intelligence&rsquo;s is gated and
+          RoboCurve&rsquo;s release is bimanual YAM, so running &pi;<sub>0.5</sub> on an SO-101 means fine-tuning
+          the base yourself.</em></span>
       </li>
       <li>
         <span class="s3-ck__n">Claude Opus 5</span>
-        <span class="s3-ck__d">Fast mode, driven through Inspect Robots. No checkpoint to load: the model is prompted per step and its actions are logged like any other policy.</span>
+        <span class="s3-ck__d">Fast mode, driven through Inspect Robots. No checkpoint to load. The model is
+          prompted per step and its actions are logged like any other policy.</span>
       </li>
     </ul>
 
-    <p class="s3-p" style="margin-top:1.1rem">Results on further embodiments or further models earn a bonus on top of the delivery award. RoboCurve&rsquo;s <a href="https://huggingface.co/collections/robocurve/worldpolicies-6a4dc8fd556a82aeea0fca37">WorldPolicies</a> collection carries bimanual YAM checkpoints for both GR00T and &pi;<sub>0.5</sub> if you want a second embodiment without sourcing your own; the alternative arms approved at Stage&nbsp;2 also qualify. Nothing caps how many you add.</p>
-  </section>
-
-  <section class="s3-sec">
-    <h4 class="s3-h">What one rollout has to carry</h4>
-    <p class="s3-p">A success rate on its own is not a result, because nobody can check it. Each rollout you report comes with five records, and they have to agree with each other: the transcript, the camera logs, the Inspect Robots log, the grading, and a video of the run shot from a camera mounted on neither the robot nor the rig.</p>
+    <ul class="s3-req" role="list">
+      <li><span>Every reported rollout carries its records: the transcript, the camera logs, the Inspect Robots
+        log, and the grading.</span></li>
+      <li><span>A camera recording of every rollout, from a camera that is <b>neither the wrist cam nor the
+        context cam</b>. A phone on a tripod, placed where a bystanding human researcher would stand, recording
+        all rollouts.</span></li>
+      <li><span>Results on further embodiments or models, where a team already has the hardware. This is what
+        the per-unit bonus above pays for.</span></li>
+    </ul>
 
     <div class="s3-art">
       <div class="s3-art__hd">
@@ -1689,7 +1723,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
           <rect class="s3-crop" x="270" y="98" width="160" height="120"/>
 
           <!-- labels -->
-          <text class="s3-lab" x="30" y="30">Bystander camera &mdash; phone on a tripod</text>
+          <text class="s3-lab" x="30" y="30">Bystander camera &middot; phone on a tripod</text>
           <text class="s3-lab s3-lab--a" x="430" y="90" text-anchor="end">Wrist camera</text>
 
           <path class="s3-lead-ln" d="M549,284 V258 H505"/>
@@ -1701,13 +1735,11 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
           <text class="s3-lab" x="157" y="140" text-anchor="middle">Context cam</text>
         </svg>
       </div>
-
       <p class="s3-swipe">Scroll the frame sideways &rarr; the floor and the operator are off to the right</p>
 
-      <p class="s3-art__cap">The tinted rectangle is everything the wrist camera keeps. Both of the things
-        a reader would want explained &mdash; the cloth on the floor and the person who walked in &mdash;
-        happen outside it. <b>The wrist camera records what the policy saw; a camera in the room records
-        what happened.</b> Stage&nbsp;3 requires the second one for every rollout, not for a highlight reel.</p>
+      <p class="s3-art__cap">The tinted rectangle is everything the wrist camera keeps. The cloth on the floor
+        and the person who walked in both fall outside it. <b>The wrist camera records what the policy saw. A
+        camera in the room records what happened.</b></p>
 
       <div class="s3-mf">
         <div class="s3-mf__id">
@@ -1726,30 +1758,16 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
           <li><span class="s3-mf__n">04</span><span class="s3-mf__k">grading</span>
             <span class="s3-mf__v">The 0&ndash;1 score from your rubric, with whoever or whatever applied it named.</span></li>
           <li><span class="s3-mf__n">05</span><span class="s3-mf__k">bystander video</span>
-            <span class="s3-mf__v">The whole rollout from a fixed camera in the room &mdash; not the wrist cam, not the context cam.</span></li>
+            <span class="s3-mf__v">The whole rollout from a fixed camera in the room. Neither the wrist cam nor the context cam.</span></li>
         </ol>
       </div>
     </div>
 
-    <p class="s3-p" style="margin-top:1.2rem">The bystander camera is a phone on a tripod, standing where a
-      visiting researcher would stand, left running for the session. It is the cheapest part of the deliverable
-      and the part that makes the rest checkable: it is the only record that shows the resets between rollouts,
-      the interventions, and the failures the on-robot cameras crop out of frame.</p>
+    <p class="s3-coda"><b>Changing the benchmark is expected.</b> Teams reach a point where part of their own
+      benchmark is worth changing, a rubric that scores the wrong thing or a reset nobody can repeat. We invite
+      those changes, and would rather have the improved benchmark than the original. Record what changed and on
+      what evidence.</p>
   </section>
-
-  <section class="s3-sec">
-    <h4 class="s3-h">Changing the benchmark is part of the work</h4>
-    <p class="s3-p">Teams reach a point where some part of their own benchmark is wrong &mdash; a rubric that
-      scores the wrong thing, a reset nobody can perform the same way twice, a task that turns out to be trivial
-      or impossible on hardware. That is expected at this stage, and it is invited: change it, then record what
-      changed, when, and what the evidence was. A documented change strengthens a submission. Quietly running
-      the old and new versions together is what damages one.</p>
-  </section>
-
-  <div class="s3-note">
-    <h5>Not yet published</h5>
-    <p>The size of the bonus for additional embodiments or models, and how it is assessed.</p>
-  </div>
 
 </div>
           <!-- ================= END STAGE 3 DROP-IN ================= -->

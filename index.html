@@ -459,8 +459,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 .worked a:hover,.worked a:focus-visible{border-bottom-color:var(--accent)}
 .cb__lead{margin:0;color:var(--ink-muted);font-size:var(--fs-body-sm);max-width:66ch;line-height:1.6}
 .cb__lead b{color:var(--ink);font-weight:600}
-.cb__body{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:clamp(14px,2.4vw,26px);padding:clamp(14px,3vw,26px)}
-@media (max-width:720px){.cb__body{grid-template-columns:1fr}}
+.cb__body{display:grid;gap:clamp(14px,2.4vw,22px);padding:clamp(14px,3vw,26px)}
 .cb__panel{background:var(--bg);border:1px solid var(--line);border-radius:5px;display:flex;flex-direction:column;min-width:0}
 .cb__panelhd{display:flex;align-items:baseline;justify-content:space-between;gap:8px;padding:11px 14px;border-bottom:1px solid var(--line)}
 .cb__panelhd h3{margin:0;font-family:var(--mono);font-weight:500;font-size:var(--fs-label);line-height:1;letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--ink-muted)}
@@ -473,24 +472,16 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 .cb__spec .a{color:var(--accent);font-weight:500}
 .cb__figwrap{padding:12px 12px 6px}
 .cb__svg{display:block;width:100%;height:auto;background:var(--bg);border-radius:5px}
-.cb__svg .panel{fill:var(--surface);stroke:var(--line-strong);stroke-width:1.4}
 .cb__svg .grid-min{stroke:var(--line);stroke-width:.6}
 .cb__svg .grid-maj{stroke:var(--line);stroke-width:1}
 .cb__svg .axt{fill:var(--ink-muted);font-family:var(--mono);font-size:10px}
 .cb__svg .axcap{fill:var(--ink-muted);font-family:var(--mono);font-weight:500;font-size:9px;letter-spacing:.08em}
 .cb__svg .frame-lbl{fill:var(--ink-muted);font-family:var(--mono);font-weight:500;font-size:10px}
 .cb__svg .scalebar{stroke:var(--ink);stroke-width:1.4}
-.cb__svg .foot{fill:var(--surface);stroke:var(--ink);stroke-width:1.7;stroke-linejoin:round}
-.cb__svg .det{fill:none;stroke:var(--ink);stroke-width:1.4;stroke-linecap:round}
 .cb__svg .det-fill{fill:var(--accent);stroke:none}
 .cb__svg .tick{stroke:var(--accent);stroke-width:1.7;stroke-linecap:round}
 .cb__svg .tick-head{fill:var(--accent)}
-.cb__svg .lbl{fill:var(--ink);font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.02em}
-.cb__svg .idx{fill:var(--accent);font-family:var(--mono);font-weight:500;font-size:12px}
 .cb__svg .ang{fill:var(--ink-muted);font-family:var(--mono);font-size:10.5px}
-.cb__svg .clutter-fill{fill:var(--ink-muted);opacity:.16}
-.cb__svg .clutter-edge{fill:none;stroke:var(--ink-muted);stroke-width:1.1;stroke-dasharray:4 3}
-.cb__svg .clutter-lbl{fill:var(--ink-muted);font-family:var(--mono);font-weight:500;font-size:9.5px;letter-spacing:.06em}
 .cb__svg #cb-dynamic>g{animation:cb-fade .22s var(--ease) both;animation-delay:calc(var(--i,0) * 22ms)}
 @keyframes cb-fade{from{opacity:0}to{opacity:1}}
 .cb__real{padding:12px 14px 14px;border-top:1px solid var(--line)}
@@ -515,10 +506,94 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 
 .method-foot{max-width:1000px;margin:var(--space-fig) auto 0;display:grid;align-items:start;gap:clamp(1.25rem,3vw,2rem)}
 @media (min-width:820px){.method-foot{grid-template-columns:1.2fr .8fr;align-items:center}}
-.needlist{list-style:none;margin:0;padding:0;display:grid;gap:.6rem}
-.needlist li{display:flex;gap:.8rem;font-size:var(--fs-body-sm);color:var(--ink-muted)}
-.needlist li b{color:var(--ink);font-weight:500;font-family:var(--mono);font-size:.8rem;letter-spacing:.03em;text-transform:uppercase;min-width:9rem;padding-top:.12rem}
 .callout{padding:1rem 1.2rem;border-left:2px solid var(--accent);background:var(--surface);border-radius:0 5px 5px 0;font-size:1rem;color:var(--ink)}
+
+/* ============================================================
+   FOUR-FEATURE TASK CARD (.cb) — instruction / goal / rubric / setup
+   Rules follow the originals above so they win at equal specificity.
+   ============================================================ */
+.cb__body{grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  grid-template-areas:"f1 f2" "f3 f3" "f4 f4"}
+.cb-f1{grid-area:f1}.cb-f2{grid-area:f2}.cb-f3{grid-area:f3}.cb-f4{grid-area:f4}
+@media (max-width:620px){
+  .cb__body{grid-template-columns:minmax(0,1fr);grid-template-areas:"f1" "f2" "f3" "f4"}
+}
+.cb__no{color:var(--accent);font-weight:500;margin-right:.6em}
+.cb__pbody{padding:13px 14px 15px;display:flex;flex-direction:column;gap:.7rem;min-width:0}
+.cb__panel>.cb__pbody:last-child{flex:1}
+.cb__def{margin:0;font-size:var(--fs-small);line-height:1.5;color:var(--ink-muted);max-width:56ch}
+.cb__ex{margin:0;padding-left:.85rem;border-left:2px solid var(--accent);color:var(--ink);
+  font-size:var(--fs-body-sm);line-height:1.55;max-width:56ch}
+.cb__sub{margin:auto 0 0;font-family:var(--mono);font-size:var(--fs-label-sm);
+  line-height:1.5;letter-spacing:.02em;color:var(--ink-faint)}
+
+/* --- 03 rubric: a 0–1 scale with labelled thresholds --- */
+.rb{display:grid;gap:clamp(14px,3vw,28px);grid-template-columns:minmax(0,1fr);align-items:center}
+@media (min-width:700px){.rb{grid-template-columns:minmax(0,.68fr) minmax(0,1fr)}}
+.rb__notes{display:flex;flex-direction:column;gap:.7rem;min-width:0}
+.rb__scale{display:grid;grid-template-columns:13px minmax(0,1fr);grid-template-rows:auto auto;
+  column-gap:.9rem;min-width:0}
+.rb__fill{grid-column:1;grid-row:1;border:1px solid var(--line);border-radius:2px;
+  background:linear-gradient(to top,
+    color-mix(in srgb,var(--accent) 9%,transparent) 0 10%,
+    color-mix(in srgb,var(--accent) 16%,transparent) 10% 20%,
+    color-mix(in srgb,var(--accent) 27%,transparent) 20% 50%,
+    color-mix(in srgb,var(--accent) 41%,transparent) 50% 75%,
+    color-mix(in srgb,var(--accent) 60%,transparent) 75% 100%)}
+.rb__list{grid-column:2;grid-row:1;margin:0;padding:0;list-style:none;min-width:0;
+  display:grid;grid-template-rows:25fr 25fr 30fr 10fr 10fr;height:clamp(238px,25vw,292px)}
+.rb__list li{display:flex;gap:.85rem;align-items:baseline;min-width:0;
+  border-top:1px solid var(--line);padding-top:.3rem}
+.rb__zero{grid-column:1/-1;grid-row:2;display:flex;gap:.85rem;align-items:baseline;margin:0;
+  border-top:1px solid var(--line-strong);padding-top:.3rem}
+.rb__v{flex:none;width:2.5rem;text-align:right;font-family:var(--mono);font-weight:500;
+  font-variant-numeric:tabular-nums;font-size:var(--fs-data);color:var(--accent)}
+.rb__zero .rb__v{width:calc(2.5rem + 13px + .9rem)}
+.rb__t{min-width:0;font-size:var(--fs-small);line-height:1.35;color:var(--ink)}
+
+/* --- 04 setup: spec + controls on the left, drawing on the right --- */
+.cb__setup{display:grid;grid-template-columns:minmax(0,1fr);border-top:1px solid var(--line)}
+.cb__col{padding:14px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.cb__setup>.cb__col+.cb__col{border-top:1px solid var(--line)}
+@media (min-width:941px){
+  .cb__setup{grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr)}
+  .cb__setup>.cb__col+.cb__col{border-top:0;border-left:1px solid var(--line)}
+}
+.cb__col .cb__spec{padding:0}
+.cb__col .cb__real{padding:12px 0 0}
+.cb__col--fig{gap:8px}
+.cb__figwrap{padding:0}
+.cb__svg{background:transparent}
+.cb__cap{margin:0;font-family:var(--mono);font-size:var(--fs-label-sm);line-height:1.6;
+  letter-spacing:.01em;color:var(--ink-faint);max-width:64ch}
+.cb__setup>.cb__note{grid-column:1/-1;margin:0;padding:13px 14px 14px;border-top:1px solid var(--line);
+  font-size:var(--fs-small);line-height:1.55;color:var(--ink-muted);max-width:82ch}
+
+/* --- the drawing --- */
+.cb__svg .tabletop{fill:var(--surface);stroke:var(--line-strong);stroke-width:1.4}
+.cb__svg .axis0{stroke:var(--line-strong);stroke-width:1}
+.cb__svg .sigma{fill:none;stroke:var(--accent);stroke-width:1;stroke-dasharray:3 4;opacity:.55}
+.cb__svg .marg{fill:var(--accent);opacity:.1;stroke:none}
+.cb__svg .marg-line{fill:none;stroke:var(--accent);stroke-width:1;opacity:.5}
+.cb__svg .marg-dot{fill:var(--accent)}
+.cb__svg .cloud{fill:var(--ink-muted);opacity:.4}
+.cb__svg .orig{fill:var(--line-strong)}
+.cb__svg .towel{fill:var(--surface-2);fill-opacity:.92;stroke:var(--ink);stroke-width:1.7;stroke-linejoin:round}
+.cb__svg .hem{fill:none;stroke:var(--ink-muted);stroke-width:.9}
+.cb__svg .stripe{fill:var(--accent);opacity:.15;stroke:none}
+.cb__svg .fold{fill:none;stroke:var(--ink-muted);stroke-width:1;stroke-dasharray:5 4}
+.cb__svg .dimline{fill:none;stroke:var(--accent);stroke-width:1;stroke-dasharray:4 3}
+.cb__svg .dim{fill:var(--accent);font-family:var(--mono);font-weight:500;font-size:10.5px}
+.cb__svg .actor{fill:var(--surface);stroke:var(--ink-muted);stroke-width:1.3;stroke-linejoin:round}
+.cb__svg .siglbl{fill:var(--ink-muted);font-family:var(--mono);font-size:9.5px;letter-spacing:.04em}
+.cb__svg .dim,.cb__svg .ang,.cb__svg .siglbl,.cb__svg .frame-lbl{
+  paint-order:stroke;stroke:var(--surface);stroke-width:3px;stroke-linejoin:round}
+
+/* --- footer under the card --- */
+.method-foot{grid-template-columns:minmax(0,1fr)}
+@media (min-width:820px){.method-foot{grid-template-columns:1fr 1fr;align-items:start}}
+.method-note{margin:0;font-size:var(--fs-body-sm);line-height:1.6;color:var(--ink-muted);max-width:52ch}
+.method-foot .callout{margin:0}
 
 /* ============================================================
    EMBEDDED: empty results registry (.rg)
@@ -712,18 +787,18 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
             <p class="f-meta">12 Aug &ndash; 13 Sep<br><span class="f-cohort">Proposal hackathon 5&ndash;6 Sep, with Apart Research</span></p>
           </div>
           <div class="f-body">
-            <p>The benchmark you want to build, the area it addresses, your background, and one fully specified task instance in the published format. Scored on team capability, idea quality, and relevance.</p>
+            <p>The benchmark you want to build, the area it addresses, your background, and the list of tasks it contains &mdash; each with an instruction, a goal, a 0&ndash;1 scoring rubric, and a setup. Scored on team capability, idea quality, and relevance.</p>
           </div>
         </div>
 
         <div class="fstage">
           <div class="f-head">
             <span class="f-num">Stage 2</span>
-            <h3>Simulated benchmark</h3>
+            <h3>Physics simulation</h3>
             <p class="f-meta">21 Sep &ndash; 9 Oct<br><span class="f-cohort">Up to 30 teams</span></p>
           </div>
           <div class="f-body">
-            <p>A working benchmark in Inspect Robots on the KitchenBench pattern, installing clean and passing automated CI checks.</p>
+            <p>A physics simulation of the task family, built in a simulator such as Isaac&nbsp;Sim and wired into Inspect Robots on the KitchenBench pattern. It installs clean, runs end to end, and passes automated CI checks.</p>
             <ul class="f-pay">
               <li><span>Base award</span><b>$1,000</b></li>
               <li><span>Each additional member</span><b>+$500, to $3,000 total</b></li>
@@ -735,11 +810,11 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
         <div class="fstage">
           <div class="f-head">
             <span class="f-num">Stage 3</span>
-            <h3>Physics sim and hardware</h3>
+            <h3>Hardware benchmark</h3>
             <p class="f-meta">21 Oct &ndash; 18 Dec<br><span class="f-cohort">Up to 13 teams</span></p>
           </div>
           <div class="f-body">
-            <p>A physics simulation of the task family &mdash; the full set of task instances your benchmark defines &mdash; and the hardware benchmark, each running end to end with a baseline evaluated, then independently replicated.</p>
+            <p>The same task family on real hardware &mdash; every task in your benchmark, across the setups its distributions define &mdash; running end to end with a baseline evaluated, then independently replicated. The Stage&nbsp;2 simulation is scored against it, and the gap between them is a result in its own right.</p>
             <ul class="f-pay">
               <li><span>Delivery, December</span><b>$10,000</b></li>
               <li><span>Replication, February</span><b>$8,000 to $18,000</b></li>
@@ -766,7 +841,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
           <li>Runs on an accepted reference robot: the SO-101 by default, single-arm or bimanual</li>
           <li>Ships a physics simulation of the same task family alongside the hardware benchmark</li>
           <li>Stays within the $1,000 materials budget (bill of materials, excluding the robot), reimbursed against receipts</li>
-          <li>Specifies precise environment tolerances and success criteria</li>
+          <li>Specifies precise environment tolerances, and a 0&ndash;1 scoring rubric for every task</li>
           <li>Includes a repeatable reset procedure</li>
           <li>States a rollout count &mdash; how many scored attempts per instance &mdash; so every score carries an error bar</li>
         </ul>
@@ -946,66 +1021,112 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 
       <section class="cb reveal" aria-labelledby="cb-title">
         <header class="cb__head">
-          <p class="cb__eyebrow">Task instance = distribution</p>
-          <h2 class="cb__title" id="cb-title">A task instance is a distribution, not a scene.</h2>
-          <p class="cb__lead">A task instance is a <b>recipe</b>: named variables with stated distributions. <b>Realize</b> it under a seed to get one fair sample. Re-seed for a new sample of the <b>same</b> task. That is how you measure generalization, not memorization.</p>
+          <p class="cb__eyebrow">Instruction · goal · rubric · setup</p>
+          <h2 class="cb__title" id="cb-title">Every task has four features.</h2>
+          <p class="cb__lead">A benchmark is a list of tasks. Each task states what the robot is asked to do, what the finished scene looks like, how one attempt scores between 0 and 1, and how the scene starts. Anything in the setup that varies is named and given a distribution. One task is written out in full below.</p>
         </header>
 
         <div class="cb__body">
-          <div class="cb__panel">
-            <div class="cb__panelhd"><h3>Recipe</h3><span class="cb__tag">CableBench.v1</span></div>
-<pre class="cb__spec" tabindex="0" role="region" aria-label="Task specification: CableBench version 1">panel     <span class="d">460 × 300 mm  (fixed)</span>
-<span class="v">n_ports</span>   ~ Categorical<span class="d">{3, 4, 5}</span>
-<span class="v">pos</span>       ~ Grid<span class="d">(3×2) ⊕ U(±21mm)</span>
-<span class="d">            gap ≥ 96mm</span>
-<span class="v">θ</span>         ~ Uniform<span class="d">(−30°, +30°)</span>
-<span class="v">type</span>      ~ Categorical<span class="d">{USB-C,</span>
-            <span class="d">Barrel, XLR, RJ45, BNC}</span>
-<span class="v">clutter</span>   ~ Bernoulli<span class="d">(0.4)</span>
-<span class="v">lighting</span>  ~ Uniform<span class="d">(2700, 6500 K)</span>
-<span class="rule">──────────────────────────</span>
-<b>sample</b> = <b>realize</b>(CableBench.v1,
-                   <span class="a">seed</span>)</pre>
+
+          <div class="cb__panel cb-f1">
+            <div class="cb__panelhd"><h3><span class="cb__no">01</span> Instruction</h3><span class="cb__tag">fold-towel-quarters</span></div>
+            <div class="cb__pbody">
+              <p class="cb__def">What the robot is asked to do, in natural language.</p>
+              <p class="cb__ex">Fold the towel into quarters.</p>
+              <p class="cb__sub">A benchmark holds several tasks. This is one of them.</p>
+            </div>
           </div>
 
-          <div class="cb__panel">
-            <div class="cb__panelhd"><h3>Realized sample</h3><span class="cb__tag" id="cb-realtag">realize(seed=—)</span></div>
-            <div class="cb__figwrap">
-              <svg class="cb__svg" id="cb-svg" viewBox="0 0 560 372" aria-hidden="true" focusable="false">
-                <defs>
-                  <pattern id="cb-hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-                    <line x1="0" y1="0" x2="0" y2="7" class="clutter-edge" style="stroke-dasharray:none;stroke-width:2"/>
-                  </pattern>
-                </defs>
-                <g id="cb-frame"></g>
-                <g id="cb-dynamic"></g>
-              </svg>
-            </div>
-            <div class="cb__real">
-              <div class="cb__controls">
-                <button class="cb__resample" id="cb-resample" type="button">Re-seed <span class="arw" aria-hidden="true">→</span></button>
-                <label class="cb__auto"><input type="checkbox" id="cb-auto" autocomplete="off"> auto<span class="sr-only"> re-seed</span></label>
-                <span class="cb__seed" id="cb-seed">seed = <span class="k">—</span></span>
-              </div>
-              <pre class="cb__vals" id="cb-vals" tabindex="0" role="region" aria-label="Realized sample values, scrolls horizontally"></pre>
-              <p class="cb__sr" id="cb-live" aria-live="polite"></p>
+          <div class="cb__panel cb-f2">
+            <div class="cb__panelhd"><h3><span class="cb__no">02</span> Goal</h3><span class="cb__tag">end state</span></div>
+            <div class="cb__pbody">
+              <p class="cb__def">The finished scene, in natural language, described precisely enough that two people scoring the same attempt agree.</p>
+              <p class="cb__ex">The towel is folded flat into quarters, with edges aligned (no side protruding more than 5%), and the surface is smooth, with no lumps or wrinkles.</p>
             </div>
           </div>
+
+          <div class="cb__panel cb-f3">
+            <div class="cb__panelhd"><h3><span class="cb__no">03</span> Scoring rubric</h3><span class="cb__tag">0 → 1</span></div>
+            <div class="cb__pbody">
+              <div class="rb">
+                <div class="rb__notes">
+                  <p class="cb__def">How much credit one attempt earns, between 0 and 1.</p>
+                  <p class="cb__def">Read from the top. The first line that matches sets the score, so an attempt that only touched the towel scores 0.10.</p>
+                  <p class="cb__def">This rubric is discrete. A continuous one is also allowed, where a measured quantity maps onto the same 0–1 range.</p>
+                </div>
+                <div class="rb__scale">
+                  <span class="rb__fill" aria-hidden="true"></span>
+                  <ol class="rb__list" role="list">
+                    <li><span class="rb__v">1.00</span><span class="rb__t">The goal is met.</span></li>
+                    <li><span class="rb__v">0.75</span><span class="rb__t">Folded into quarters, but with wrinkles, lumps, or protrusion.</span></li>
+                    <li><span class="rb__v">0.50</span><span class="rb__t">Folded at least once.</span></li>
+                    <li><span class="rb__v">0.20</span><span class="rb__t">Grasped and lifted at least once.</span></li>
+                    <li><span class="rb__v">0.10</span><span class="rb__t">Touched.</span></li>
+                  </ol>
+                  <p class="rb__zero"><span class="rb__v">0</span><span class="rb__t">Otherwise.</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cb__panel cb-f4">
+            <div class="cb__panelhd"><h3><span class="cb__no">04</span> Setup</h3><span class="cb__tag" id="cb-realtag">realize(seed=—)</span></div>
+            <div class="cb__pbody">
+              <p class="cb__def">Where everything starts, in natural language. Anything that varies is named and given a distribution.</p>
+              <p class="cb__ex">A towel is placed at (X, Y) on the tabletop relative to the actor. X and Y are independently distributed as N(0, 10 cm).</p>
+            </div>
+
+            <div class="cb__setup">
+              <div class="cb__col">
+<pre class="cb__spec" tabindex="0" role="region" aria-label="Setup specification for the task fold-towel-quarters">benchmark  <span class="d">FoldBench.v1</span>
+task       <span class="d">fold-towel-quarters</span>
+table      <span class="d">1200 × 900 mm    (fixed)</span>
+towel      <span class="d"> 420 × 260 mm    (fixed)</span>
+origin     <span class="d">actor reference point</span>
+<span class="v">X</span>        ~ N<span class="d">(0, 10 cm)</span>
+<span class="v">Y</span>        ~ N<span class="d">(0, 10 cm)      independent</span>
+<span class="v">θ</span>        ~ U<span class="d">(−25°, +25°)</span>
+           <span class="d">redraw if the towel leaves the table</span>
+<span class="rule">────────────────────────────────────</span>
+<b>instance</b> = <b>realize</b>(task, <span class="a">seed</span>)</pre>
+                <div class="cb__real">
+                  <div class="cb__controls">
+                    <button class="cb__resample" id="cb-resample" type="button">Re-seed <span class="arw" aria-hidden="true">→</span></button>
+                    <label class="cb__auto"><input type="checkbox" id="cb-auto" autocomplete="off"> auto<span class="sr-only"> re-seed</span></label>
+                    <span class="cb__seed" id="cb-seed">seed = <span class="k">—</span></span>
+                  </div>
+                  <pre class="cb__vals" id="cb-vals" tabindex="0" role="region" aria-label="Realized setup values, scrolls horizontally"></pre>
+                  <p class="cb__sr" id="cb-live" aria-live="polite"></p>
+                </div>
+              </div>
+
+              <div class="cb__col cb__col--fig">
+                <div class="cb__figwrap">
+                  <svg class="cb__svg" id="cb-svg" viewBox="0 0 560 452" aria-hidden="true" focusable="false">
+                    <g id="cb-frame"></g>
+                    <g id="cb-dynamic"></g>
+                  </svg>
+                </div>
+                <p class="cb__cap">Top&#8209;down. The rings are the 1σ and 2σ contours of the placement distribution; the curves on the near and left edges are the marginal densities of X and Y; the small dots are 96 other draws from it. The dashed cross is the pair of fold axes the goal implies.</p>
+              </div>
+
+              <p class="cb__note">Every seed draws a different setup from the same task. Features 01 to 03 do not change; only the setup does. Scoring a policy across many seeds measures the task rather than one memorized scene.</p>
+            </div>
+          </div>
+
         </div>
       </section>
 
       <div class="method-foot reveal">
-        <ul class="needlist">
-          <li><b>Setup variables</b><span>Every variable named, with a stated distribution.</span></li>
-          <li><b>Goal</b><span>What success looks like, in plain language.</span></li>
-          <li><b>Reset procedure</b><span>How the scene returns to a start state.</span></li>
-          <li><b>Success scorer</b><span>How a rollout is scored.</span></li>
-        </ul>
-        <p class="callout">Every Stage 1 application must include one fully specified task instance in exactly this format.</p>
-        <p class="worked">A complete benchmark written this way: <a href="https://github.com/robocurve/kitchenbench" target="_blank" rel="noopener noreferrer">KitchenBench</a>.</p>
+        <p class="method-note">A Stage 1 proposal lists the tasks your benchmark contains, with all four features written out for each one. Realizing a single task’s setup under different seeds gives the instances that a Stage 3 physics simulation has to cover.</p>
+        <div>
+          <p class="callout">Every Stage 1 proposal must include a list of tasks, each with all four features.</p>
+          <p class="worked">A complete benchmark written this way: <a href="https://github.com/robocurve/kitchenbench" target="_blank" rel="noopener noreferrer">KitchenBench</a>.</p>
+        </div>
       </div>
     </div>
   </section>
+
   <!-- ================= FAQ ================= -->
   <section id="faq" class="band">
     <div class="wrap">
@@ -1015,9 +1136,9 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
         <details><summary>Who can apply?</summary><p>Individuals and teams, students included. You do not need to own a robot: every team that reaches Stage&nbsp;3 is sent two fully assembled SO-101 arms at no cost and keeps them. Everyone enters the same way, with a Stage&nbsp;1 proposal, and you may submit more than one.</p></details>
         <details><summary>What do I submit at each stage?</summary>
         <ul class="faq-list">
-          <li><b>Stage 1</b> A proposal: the benchmark you want to build, the area it addresses, your background, and one fully specified task instance in the published format, which is a stochastic setup with named variables and their distributions, a goal, a reset procedure, and a success scorer. Due 13 September 2026, 23:59 Pacific. Scored on team capability, idea quality, and relevance.</li>
-          <li><b>Stage 2</b> A working simulated benchmark in Inspect Robots, on the KitchenBench pattern. It must install clean, run end to end, pass CI, and carry a self-score against the published rubric. No physics simulation needed at this stage.</li>
-          <li><b>Stage 3</b> A physics simulation of the task family and the hardware benchmark, each running end to end with a baseline evaluated, plus a reproducibility package covering environment specs with tolerances, the evaluation protocol, the reset procedure, and rollout counts. Due 18 December 2026, 23:59 Pacific, rolling from 1 December. We then spot-check a random sample of instances for reproducibility before assigning the tier.</li>
+          <li><b>Stage 1</b> A proposal: the benchmark you want to build, the area it addresses, your background, and the list of tasks it contains. Every task carries four features: an instruction, a description of the goal, a scoring rubric between 0 and 1, and a setup with every random element given a named distribution. Due 13 September 2026, 23:59 Pacific. Scored on team capability, idea quality, and relevance.</li>
+          <li><b>Stage 2</b> A physics simulation of the task family, built in a simulator such as Isaac&nbsp;Sim and wired into Inspect Robots on the KitchenBench pattern. It must install clean, run end to end, pass CI, and carry a self-score against the published review criteria. No hardware is needed at this stage.</li>
+          <li><b>Stage 3</b> The hardware benchmark running end to end with a baseline evaluated, scored against your Stage&nbsp;2 simulation, plus a reproducibility package covering environment specs with tolerances, the evaluation protocol, the reset procedure, and rollout counts. Due 18 December 2026, 23:59 Pacific, rolling from 1 December. We then spot-check a random sample of instances for reproducibility before assigning the tier.</li>
         </ul></details>
         <details><summary>Is this a job, a contract, or a grant?</summary><p>None of those. These are competition awards, not payment for services: no employment or contracting relationship, no supervision, no hours reporting, and no work assigned by us. You choose your own task, method, and schedule, and are judged against criteria published on day one. Awards are flat amounts tied to deliverables, not to time spent. If you hold a student visa, confirm with your international student office before entering.</p></details>
         <details><summary>How are awards paid and taxed?</summary><p>To the team, by international transfer, split as the team directs. University-affiliated teams may instead request payment as a research gift to their institution; ask at Stage&nbsp;2 selection, since institutional contracting takes weeks. Awards may be reported to tax authorities, and awards paid to teams outside the United States may be subject to US withholding, which may be recoverable by filing a US return the following year. We collect tax forms at Stage&nbsp;3 selection.</p></details>
@@ -1037,7 +1158,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
     <div class="wrap">
       <p class="eyebrow">Open call</p>
       <h2>Put one benchmark on the public record.</h2>
-      <p class="lead">Bring a capability worth measuring and one fully specified task instance. No robot or budget needed.</p>
+      <p class="lead">Bring a capability worth measuring and the list of tasks that would measure it. No robot or budget needed.</p>
       <div class="cta-row">
         <a class="btn btn-primary btn-lg" href="mailto:hello@example.org?subject=Robotics%20Evaluation%20Bounty%20Stage%201%20proposal">Start your application</a>
         <a class="btn btn-ghost btn-lg" href="#faq">Read the FAQ</a>
@@ -1119,27 +1240,155 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
   document.addEventListener('click',function(e){if(!menu.hidden&&!menu.contains(e.target)&&!btn.contains(e.target))close();});
 })();
 
-/* ===================== CableBench task-instance sampler ===================== */
+/* ===================== task-setup sampler — FoldBench.v1 ===================== */
 (function(){
   "use strict";
   function mulberry32(a){return function(){a|=0;a=(a+0x6D2B79F5)|0;var t=Math.imul(a^(a>>>15),1|a);t=(t+Math.imul(t^(t>>>7),61|t))^t;return ((t^(t>>>14))>>>0)/4294967296;};}
-  var PANEL={x:60,y:34,w:460,h:300}, INSET=80, JITTER=21, TYPES=["USB-C","Barrel","XLR","RJ45","BNC"];
-  function slotGrid(){var xs=[PANEL.x+INSET,PANEL.x+PANEL.w/2,PANEL.x+PANEL.w-INSET],ys=[PANEL.y+INSET,PANEL.y+PANEL.h-INSET],s=[];for(var yi=0;yi<ys.length;yi++)for(var xi=0;xi<xs.length;xi++)s.push({x:xs[xi],y:ys[yi]});return s;}
-  function shuffle(arr,rng){for(var i=arr.length-1;i>0;i--){var j=Math.floor(rng()*(i+1));var t=arr[i];arr[i]=arr[j];arr[j]=t;}return arr;}
-  function realize(seed){var rng=mulberry32(seed>>>0);var n=[3,4,5][Math.floor(rng()*3)];var slots=shuffle(slotGrid(),rng);var ports=[];for(var i=0;i<n;i++){var c=slots[i];ports.push({i:i,x:Math.round(c.x+(rng()*2-1)*JITTER),y:Math.round(c.y+(rng()*2-1)*JITTER),theta:Math.round(rng()*60-30),type:TYPES[Math.floor(rng()*TYPES.length)]});}var clutter=rng()<0.4;var clutterSlot=(clutter&&n<slots.length)?slots[n]:null;var lighting=Math.round(2700+rng()*(6500-2700));return {seed:seed>>>0,n:n,ports:ports,clutter:clutter,clutterSlot:clutterSlot,lighting:lighting};}
-  function pins(){var out="",R=9;for(var k=0;k<3;k++){var a=-Math.PI/2+k*(2*Math.PI/3);out+='<circle class="det-fill" cx="'+(R*Math.cos(a)).toFixed(1)+'" cy="'+(R*Math.sin(a)).toFixed(1)+'" r="3.4"/>';}return out;}
-  function glyph(type){var g;switch(type){case "USB-C":g='<rect class="foot" x="-24" y="-9" width="48" height="18" rx="9"/><line class="det" x1="-13" y1="0" x2="13" y2="0"/>';break;case "Barrel":g='<circle class="foot" r="23"/><circle class="foot" r="14"/><circle class="det-fill" r="6"/>';break;case "XLR":g='<circle class="foot" r="24"/>'+pins();break;case "RJ45":g='<rect class="foot" x="-22" y="-16" width="44" height="32" rx="3"/><rect class="det-fill" x="-8" y="12" width="16" height="8" rx="1.5"/>';break;case "BNC":g='<circle class="foot" r="22"/><circle class="det-fill" r="6"/><rect class="det-fill" x="-25" y="-3.5" width="6" height="7"/><rect class="det-fill" x="19" y="-3.5" width="6" height="7"/>';break;}var tick='<line class="tick" x1="0" y1="0" x2="40" y2="0"/><path class="tick-head" d="M39,-4 L48,0 L39,4 Z"/>';return g+tick;}
-  function fmtDeg(d){return (d>=0?"+":"−")+Math.abs(d)+"°";}
-  function pad(s,n){s=String(s);while(s.length<n)s+=" ";return s;}
-  function buildFrame(){var s="",x,y,i;s+='<rect class="panel" x="'+PANEL.x+'" y="'+PANEL.y+'" width="'+PANEL.w+'" height="'+PANEL.h+'" rx="4"/>';for(i=1;i<PANEL.w/50;i++){x=PANEL.x+i*50;s+='<line class="grid-min" x1="'+x+'" y1="'+PANEL.y+'" x2="'+x+'" y2="'+(PANEL.y+PANEL.h)+'"/>';}for(i=1;i<PANEL.h/50;i++){y=PANEL.y+i*50;s+='<line class="grid-min" x1="'+PANEL.x+'" y1="'+y+'" x2="'+(PANEL.x+PANEL.w)+'" y2="'+y+'"/>';}for(i=1;i<PANEL.w/100+1;i++){x=PANEL.x+i*100;if(x>PANEL.x+PANEL.w)break;s+='<line class="grid-maj" x1="'+x+'" y1="'+PANEL.y+'" x2="'+x+'" y2="'+(PANEL.y+PANEL.h)+'"/>';s+='<text class="axt" x="'+x+'" y="'+(PANEL.y+PANEL.h+15)+'" text-anchor="middle">'+(i*100)+'</text>';}for(i=1;i<PANEL.h/100+1;i++){y=PANEL.y+i*100;if(y>PANEL.y+PANEL.h)break;s+='<line class="grid-maj" x1="'+PANEL.x+'" y1="'+y+'" x2="'+(PANEL.x+PANEL.w)+'" y2="'+y+'"/>';s+='<text class="axt" x="'+(PANEL.x-8)+'" y="'+(y+3.5)+'" text-anchor="end">'+(i*100)+'</text>';}s+='<text class="axt" x="'+(PANEL.x-8)+'" y="'+(PANEL.y+13)+'" text-anchor="end">0</text>';s+='<text class="axcap" x="'+(PANEL.x+PANEL.w)+'" y="'+(PANEL.y+PANEL.h+15)+'" text-anchor="end">x / mm →</text>';s+='<text class="axcap" x="'+(PANEL.x-8)+'" y="'+(PANEL.y-10)+'" text-anchor="end">y↓/mm</text>';var sbx=PANEL.x,sby=PANEL.y+PANEL.h+30;s+='<line class="scalebar" x1="'+sbx+'" y1="'+sby+'" x2="'+(sbx+100)+'" y2="'+sby+'"/>';s+='<line class="scalebar" x1="'+sbx+'" y1="'+(sby-4)+'" x2="'+sbx+'" y2="'+(sby+4)+'"/>';s+='<line class="scalebar" x1="'+(sbx+100)+'" y1="'+(sby-4)+'" x2="'+(sbx+100)+'" y2="'+(sby+4)+'"/>';s+='<text class="frame-lbl" x="'+(sbx+112)+'" y="'+(sby+4)+'">100 mm</text>';s+='<text class="frame-lbl" x="'+(PANEL.x+PANEL.w)+'" y="'+(sby+4)+'" text-anchor="end">top-down view</text>';return s;}
-  function portSVG(p){var g='<g class="port" style="--i:'+p.i+'">';g+='<g transform="translate('+p.x+','+p.y+') rotate('+p.theta+')">'+glyph(p.type)+'</g>';g+='<text class="lbl" x="'+p.x+'" y="'+(p.y-34)+'" text-anchor="middle"><tspan class="idx">'+p.i+'</tspan> '+p.type+'</text>';g+='<text class="ang" x="'+p.x+'" y="'+(p.y+42)+'" text-anchor="middle">θ='+fmtDeg(p.theta)+'</text>';g+='</g>';return g;}
-  function clutterSVG(inst){var c=inst.clutterSlot;if(!c)return "";var w=104,h=78,x=c.x-w/2,y=c.y-h/2;return '<g class="clutter" style="--i:'+inst.n+'"><rect class="clutter-fill" x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="4"/><rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="4" fill="url(#cb-hatch)"/><rect class="clutter-edge" x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="4"/><text class="clutter-lbl" x="'+c.x+'" y="'+c.y+'" dy="3" text-anchor="middle">CLUTTER</text></g>';}
-  function readout(inst){var L=[];L.push('<span class="hd">n_ports  = </span>'+inst.n+'   <span class="hd">lighting = </span>'+inst.lighting+' K   <span class="hd">clutter = </span><span class="a">'+inst.clutter+'</span>');L.push('<span class="hd">idx type    x     y      θ</span>');inst.ports.forEach(function(p){var xl=p.x-PANEL.x,yl=p.y-PANEL.y;L.push('<span class="a">'+p.i+'</span>   '+pad(p.type,7)+' '+pad(xl,5)+' '+pad(yl,6)+' '+(p.theta>=0?"+":"−")+pad(Math.abs(p.theta)+"°",4));});return L.join("\n");}
-  function summary(inst){var parts=inst.ports.map(function(p){return p.type+" at "+(p.x-PANEL.x)+","+(p.y-PANEL.y)+" mm, "+fmtDeg(p.theta);});return "Realized CableBench sample, seed "+inst.seed+": "+inst.n+" ports: "+parts.join("; ")+". Lighting "+inst.lighting+" kelvin. Clutter "+(inst.clutter?"present":"absent")+".";}
+  /* world units are millimetres, actor reference point at (0,0), +y away from the actor */
+  var K=0.40, TAB={w:1200,h:900}, TOW={w:420,h:260}, SIG=100, THMAX=25;
+  var TX=64, TY=26, TW=TAB.w*K, TH=TAB.h*K, OX=TX+TW/2, OY=TY+TH/2, BASE=TY+TH, MPK=38;
+  var HW=TOW.w*K/2, HH=TOW.h*K/2;
+  function sx(mm){return +(OX+mm*K).toFixed(1);}
+  function sy(mm){return +(OY-mm*K).toFixed(1);}
+  function dens(mm){return Math.exp(-0.5*(mm/SIG)*(mm/SIG));}
+  function gauss(rng){var u=0,v=0;while(u===0)u=rng();while(v===0)v=rng();
+    return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v);}
+  function halfExt(deg){var t=deg*Math.PI/180,c=Math.abs(Math.cos(t)),s=Math.abs(Math.sin(t));
+    return {x:(TOW.w/2)*c+(TOW.h/2)*s, y:(TOW.w/2)*s+(TOW.h/2)*c};}
+  function realize(seed){
+    var rng=mulberry32(seed>>>0),X,Y,th,he,n=0;
+    do{ X=gauss(rng)*SIG; Y=gauss(rng)*SIG; th=Math.round((rng()*2-1)*THMAX); he=halfExt(th); n++; }
+    while(n<64 && (Math.abs(X)+he.x>TAB.w/2 || Math.abs(Y)+he.y>TAB.h/2));
+    X=Math.max(-(TAB.w/2-he.x),Math.min(TAB.w/2-he.x,X));
+    Y=Math.max(-(TAB.h/2-he.y),Math.min(TAB.h/2-he.y,Y));
+    return {seed:seed>>>0,X:X,Y:Y,theta:th};
+  }
+  function cm(v){return (v<0?"−":"+")+(Math.abs(v)/10).toFixed(1)+" cm";}
+  function zed(v){return (v<0?"−":"+")+Math.abs(v/SIG).toFixed(2)+" σ";}
+  function deg(d){return (d>=0?"+":"−")+Math.abs(d)+"°";}
+  function padL(s,n){s=String(s);while(s.length<n)s=" "+s;return s;}
+
+  function bell(axis){                     /* filled marginal density along a table edge */
+    var d="",i,t,lo,hi;
+    if(axis==="x"){ lo=-TAB.w/2; hi=TAB.w/2;
+      d="M"+sx(lo)+","+BASE;
+      for(t=lo;t<=hi;t+=15) d+="L"+sx(t)+","+(BASE-MPK*dens(t)).toFixed(1);
+      d+="L"+sx(hi)+","+BASE+"Z";
+    } else { lo=-TAB.h/2; hi=TAB.h/2;
+      d="M"+TX+","+sy(lo);
+      for(t=lo;t<=hi;t+=15) d+="L"+(TX+MPK*dens(t)).toFixed(1)+","+sy(t);
+      d+="L"+TX+","+sy(hi)+"Z";
+    }
+    return d;
+  }
+
+  function buildFrame(){
+    var s="",i,x,y,rng,c,pts=[],he,X,Y,n;
+    s+='<rect class="tabletop" x="'+TX+'" y="'+TY+'" width="'+TW+'" height="'+TH+'" rx="4"/>';
+    /* marginal densities of X and Y, drawn on the near and left edges */
+    s+='<path class="marg" d="'+bell("x")+'"/><path class="marg-line" d="'+bell("x")+'"/>';
+    s+='<path class="marg" d="'+bell("y")+'"/><path class="marg-line" d="'+bell("y")+'"/>';
+    /* grid, 100 mm minor / 200 mm major */
+    for(i=-500;i<=500;i+=100){ if(i===0)continue; x=sx(i);
+      s+='<line class="'+(i%200===0?"grid-maj":"grid-min")+'" x1="'+x+'" y1="'+TY+'" x2="'+x+'" y2="'+BASE+'"/>'; }
+    for(i=-400;i<=400;i+=100){ if(i===0)continue; y=sy(i);
+      s+='<line class="'+(i%200===0?"grid-maj":"grid-min")+'" x1="'+TX+'" y1="'+y+'" x2="'+(TX+TW)+'" y2="'+y+'"/>'; }
+    s+='<line class="axis0" x1="'+OX+'" y1="'+TY+'" x2="'+OX+'" y2="'+BASE+'"/>';
+    s+='<line class="axis0" x1="'+TX+'" y1="'+OY+'" x2="'+(TX+TW)+'" y2="'+OY+'"/>';
+    for(i=-400;i<=400;i+=200){
+      s+='<text class="axt" x="'+sx(i)+'" y="'+(BASE+15)+'" text-anchor="middle">'+(i/10)+'</text>';
+      s+='<text class="axt" x="'+(TX-8)+'" y="'+(sy(i)+3.5)+'" text-anchor="end">'+(i/10)+'</text>';
+    }
+    s+='<text class="axcap" x="'+(TX+TW)+'" y="'+(BASE+15)+'" text-anchor="end">x / cm →</text>';
+    s+='<text class="axcap" x="'+(TX-8)+'" y="'+(TY-9)+'" text-anchor="end">↑ y / cm</text>';
+    /* isodensity rings: X and Y share σ, so the contours are circles */
+    s+='<circle class="sigma" cx="'+OX+'" cy="'+OY+'" r="'+(SIG*K)+'"/>';
+    s+='<circle class="sigma" cx="'+OX+'" cy="'+OY+'" r="'+(2*SIG*K)+'"/>';
+    s+='<text class="siglbl" x="'+(TX+TW)+'" y="'+(TY-9)+'" text-anchor="end">rings = 1σ, 2σ   (σ = 10 cm)</text>';
+    /* 96 further draws from the same distribution */
+    rng=mulberry32(7);
+    for(c=0;c<96;c++){ n=0;
+      do{ X=gauss(rng)*SIG; Y=gauss(rng)*SIG; he=halfExt(Math.round((rng()*2-1)*THMAX)); n++; }
+      while(n<64 && (Math.abs(X)+he.x>TAB.w/2 || Math.abs(Y)+he.y>TAB.h/2));
+      pts.push('<circle class="cloud" cx="'+sx(X)+'" cy="'+sy(Y)+'" r="1.7"/>');
+    }
+    s+=pts.join("");
+    /* the actor, at the near edge, facing the origin */
+    s+='<line class="axis0" x1="'+OX+'" y1="'+BASE+'" x2="'+OX+'" y2="411"/>';
+    s+='<path class="actor" d="M284,431 L292,417 L316,417 L324,431 Z"/>';
+    s+='<circle class="actor" cx="'+OX+'" cy="413" r="3.6"/>';
+    s+='<text class="frame-lbl" x="'+OX+'" y="444" text-anchor="middle">actor</text>';
+    /* scale bar */
+    s+='<line class="scalebar" x1="'+TX+'" y1="433" x2="'+(TX+200*K)+'" y2="433"/>';
+    s+='<line class="scalebar" x1="'+TX+'" y1="429" x2="'+TX+'" y2="437"/>';
+    s+='<line class="scalebar" x1="'+(TX+200*K)+'" y1="429" x2="'+(TX+200*K)+'" y2="437"/>';
+    s+='<text class="frame-lbl" x="'+(TX+200*K+12)+'" y="437">200 mm</text>';
+    s+='<text class="frame-lbl" x="'+(TX+TW)+'" y="437" text-anchor="end">top-down view</text>';
+    return s;
+  }
+
+  function towelSVG(inst){
+    var px=sx(inst.X), py=sy(inst.Y), t=inst.theta*Math.PI/180;
+    var eY=HW*Math.abs(Math.sin(t))+HH*Math.abs(Math.cos(t));
+    var g='<g class="tw" style="--i:0">';
+    g+='<g transform="translate('+px+','+py+') rotate('+(-inst.theta)+')">';
+    g+='<rect class="towel" x="'+(-HW)+'" y="'+(-HH)+'" width="'+(HW*2)+'" height="'+(HH*2)+'" rx="3"/>';
+    g+='<rect class="hem" x="'+(-HW+4)+'" y="'+(-HH+4)+'" width="'+(HW*2-8)+'" height="'+(HH*2-8)+'" rx="2"/>';
+    g+='<rect class="stripe" x="'+(-HW+9)+'" y="'+(-HH+4)+'" width="7" height="'+(HH*2-8)+'"/>';
+    g+='<rect class="stripe" x="'+(HW-16)+'" y="'+(-HH+4)+'" width="7" height="'+(HH*2-8)+'"/>';
+    g+='<line class="fold" x1="0" y1="'+(-HH)+'" x2="0" y2="'+HH+'"/>';
+    g+='<line class="fold" x1="'+(-HW)+'" y1="0" x2="'+HW+'" y2="0"/>';
+    g+='<line class="tick" x1="0" y1="0" x2="'+(HW+5)+'" y2="0"/>';
+    g+='<path class="tick-head" d="M'+(HW+4)+',-3.4 L'+(HW+12)+',0 L'+(HW+4)+',3.4 Z"/>';
+    g+='<circle class="det-fill" r="2.4"/>';
+    g+='</g>';
+    g+='<text class="dim" x="'+px+'" y="'+(py-eY-6).toFixed(1)+'" text-anchor="middle">θ = '+deg(inst.theta)+'</text>';
+    return g+'</g>';
+  }
+
+  function dimsSVG(inst){
+    var px=sx(inst.X), py=sy(inst.Y);
+    var g='<g class="dims" style="--i:1">';
+    g+='<path class="dimline" d="M'+OX+','+OY+' L'+px+','+OY+' L'+px+','+py+'"/>';
+    g+='<circle class="orig" cx="'+OX+'" cy="'+OY+'" r="2.4"/>';
+    g+='<text class="siglbl" x="'+(OX-7)+'" y="'+(OY+14)+'" text-anchor="end">(0, 0)</text>';
+    if(Math.abs(px-OX)>28)
+      g+='<text class="dim" x="'+((OX+px)/2).toFixed(1)+'" y="'+(OY-12)+'" text-anchor="middle">X = '+cm(inst.X)+'</text>';
+    if(Math.abs(py-OY)>28)
+      g+='<text class="dim" x="'+(px>OX?px+7:px-7)+'" y="'+((OY+py)/2+3.5).toFixed(1)+'" text-anchor="'+(px>OX?"start":"end")+'">Y = '+cm(inst.Y)+'</text>';
+    g+='<circle class="marg-dot" cx="'+px+'" cy="'+(BASE-MPK*dens(inst.X)).toFixed(1)+'" r="2.6"/>';
+    g+='<circle class="marg-dot" cx="'+(TX+MPK*dens(inst.Y)).toFixed(1)+'" cy="'+py+'" r="2.6"/>';
+    return g+'</g>';
+  }
+
+  function readout(inst){
+    return ['<span class="hd">'+padL("value",17)+padL("z-score",11)+'</span>',
+      '<span class="a">X</span>'+padL(cm(inst.X),16)+padL(zed(inst.X),11),
+      '<span class="a">Y</span>'+padL(cm(inst.Y),16)+padL(zed(inst.Y),11),
+      '<span class="a">θ</span>'+padL(deg(inst.theta),16)+padL("—",11)].join("\n");
+  }
+  function summary(inst){
+    return "Setup realized for seed "+inst.seed+". The towel centre is "+
+      (Math.abs(inst.X)/10).toFixed(1)+" centimetres to the "+(inst.X<0?"left":"right")+
+      " of the actor reference point and "+(Math.abs(inst.Y)/10).toFixed(1)+" centimetres "+
+      (inst.Y<0?"toward the actor":"away from the actor")+", turned "+Math.abs(inst.theta)+
+      " degrees "+(inst.theta<0?"clockwise":"anticlockwise")+".";
+  }
+
   var svg=document.getElementById("cb-svg");if(!svg)return;
-  var frame=document.getElementById("cb-frame"),dyn=document.getElementById("cb-dynamic"),btn=document.getElementById("cb-resample"),autoCb=document.getElementById("cb-auto"),seedEl=document.getElementById("cb-seed"),valsEl=document.getElementById("cb-vals"),tagEl=document.getElementById("cb-realtag"),liveEl=document.getElementById("cb-live");
+  var frame=document.getElementById("cb-frame"),dyn=document.getElementById("cb-dynamic"),
+      btn=document.getElementById("cb-resample"),autoCb=document.getElementById("cb-auto"),
+      seedEl=document.getElementById("cb-seed"),valsEl=document.getElementById("cb-vals"),
+      tagEl=document.getElementById("cb-realtag"),liveEl=document.getElementById("cb-live");
   frame.innerHTML=buildFrame();
-  function render(seed,announce){var inst=realize(seed);dyn.innerHTML=inst.ports.map(portSVG).join("")+clutterSVG(inst);seedEl.innerHTML='seed = <span class="k">'+inst.seed+'</span>';tagEl.textContent='realize(seed='+inst.seed+')';valsEl.innerHTML=readout(inst);if(announce!==false)liveEl.textContent=summary(inst);}
+  function render(seed,announce){
+    var inst=realize(seed);
+    dyn.innerHTML=towelSVG(inst)+dimsSVG(inst);
+    seedEl.innerHTML='seed = <span class="k">'+inst.seed+'</span>';
+    tagEl.textContent='realize(seed='+inst.seed+')';
+    valsEl.innerHTML=readout(inst);
+    if(announce!==false)liveEl.textContent=summary(inst);
+  }
   function newSeed(){return (Math.random()*1e6)|0;}
   btn.addEventListener("click",function(){render(newSeed());});
   var timer=null,reduceQ=window.matchMedia?window.matchMedia("(prefers-reduced-motion: reduce)"):{matches:false,addEventListener:function(){}};
@@ -1152,7 +1401,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
     if(e.matches){stopAuto();autoCb.checked=false;autoCb.disabled=true;autoCb.parentNode.style.opacity=.5;}
     else{autoCb.disabled=false;autoCb.parentNode.style.opacity="";}
   });
-  render(4837,false);
+  render(1160,false);
   if(autoCb.checked&&!reduceQ.matches)startAuto();
 })();
 

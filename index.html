@@ -609,40 +609,20 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 
 /* R1 — the registry becomes the page's second moment.
    #problem is already a full-width <section>; only .wrap constrained it. */
-#problem{--bg:#191611;--surface:#211E17;--surface-2:#2A251D;--line:#3C382F;--line-strong:#5A554A;
-  --ink:#F3EFE6;--ink-muted:#A79F91;--ink-faint:#8B8478;--accent:#8FADD9;--accent-strong:#B4C9E9;--accent-contrast:#0E0B07;
-  background:var(--bg);color:var(--ink);border-top:0;padding-block:clamp(76px,8.5vw,132px)}
+#problem{background:var(--surface-2);border-top:0;padding-block:clamp(76px,8.5vw,132px)}
 #problem .wrap{max-width:1320px}
 #problem h2{font-size:clamp(2.5rem,1.7rem + 3.4vw,4.2rem);max-width:20ch}
 #problem .rg{background:transparent;border:1px solid var(--line-strong);border-radius:8px}
 #problem .rg__cell{height:74px;font-size:1.5rem}
-#problem .rg__cell::after{opacity:.85}
-:root[data-theme="dark"] #problem .rg__cell::after{opacity:.5}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) #problem .rg__cell::after{opacity:.5}}
 #problem .rg__table thead th,#problem .rg__table tbody th,#problem .rg__corner{background:transparent}
 #problem .rg__caption{display:block;max-width:44ch;font-size:.95rem}
 #problem .rg__caption .a{display:block;font-family:var(--mono);
   font-size:clamp(3.2rem,2.2rem + 4.4vw,6rem);line-height:.92;letter-spacing:-.03em;
   word-spacing:-.34em;margin-bottom:.3rem;font-weight:500;margin-left:-.08em}
-/* invert the inversion when the page itself is dark, in both dark paths */
-:root[data-theme="dark"] #problem{--bg:#FCFAF6;--surface:#FEFEFB;--surface-2:#F7F2E5;
-  --line:#C5C0B4;--line-strong:#8F8A7D;--ink:#231F19;--ink-muted:#656057;--ink-faint:#716C63;
-  --accent:#14294A;--accent-strong:#0C1B33;--accent-contrast:#F4F7FC}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]) #problem{--bg:#FCFAF6;--surface:#FEFEFB;--surface-2:#F7F2E5;
-    --line:#C5C0B4;--line-strong:#8F8A7D;--ink:#231F19;--ink-muted:#656057;--ink-faint:#716C63;
-    --accent:#14294A;--accent-strong:#0C1B33;--accent-contrast:#F4F7FC}
-}
 .marker,.cta-note,.f-meta,.rg__org,.rg__famsub,.foot-meta,.arm-cap span,.cb__panelhd h3{color:var(--ink-faint)}
-/* #problem inverts to the dark palette while the page is light, so it warms too */
-#problem{--bg:#191611;--surface:#211E17;--surface-2:#2A251D;--line:#3C382F;--line-strong:#5A554A;--ink:#F3EFE6;--ink-muted:#A79F91;--ink-faint:#8B8478;background:var(--bg);color:var(--ink)}
 
 @media print{
-  /* must come last: #problem's own token blocks outrank :root in the print reset above */
-  #problem,:root[data-theme="light"] #problem,:root[data-theme="dark"] #problem{
-    --bg:#fff;--surface:#fff;--surface-2:#fff;--line:#c4ccc9;--line-strong:#8b9793;
-    --ink:#101010;--ink-muted:#3a3a3a;--ink-faint:#5a5a5a;--accent:#123A6B;
-    --accent-strong:#123A6B;--accent-contrast:#fff;background:#fff;color:#101010}
+  #problem{background:#fff}
   a[href^="mailto:"]::after{content:" (" attr(href) ")";font-size:7.5pt;color:#555;word-break:break-all}
 }
 </style>

@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Robotics Evaluation Bounty · a call for robotics benchmarks</title>
-<meta name="description" content="An open bounty funding reproducible, open-source robotics benchmarks. Up to $500,000 in awards, Stage 3 up to $28,000. Applications open 12 August 2026.">
+<meta name="description" content="An open bounty funding reproducible, open-source robotics benchmarks. Up to $500,000 in awards, Stage 3 up to $25,000. Applications open 12 August 2026.">
 <meta name="color-scheme" content="light dark">
 <meta property="og:title" content="Robotics Evaluation Bounty">
-<meta property="og:description" content="There is no shared, replicated benchmark of what robots can actually do, or how fast that’s changing. We fund teams to build one. Stage 3 awards up to $28,000, two free SO-101 arms, and co-authorship on the joint paper.">
+<meta property="og:description" content="There is no shared, replicated benchmark of what robots can actually do, or how fast that’s changing. We fund teams to build one. Stage 3 awards up to $25,000, two free SO-101 arms, and co-authorship on the joint paper.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://robotics-evals-website.github.io/Website/og.png">
 <meta property="og:image:width" content="1200">
@@ -19,7 +19,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://robotics-evals-website.github.io/Website/og.png">
 <meta name="twitter:title" content="Robotics Evaluation Bounty">
-<meta name="twitter:description" content="An open bounty funding reproducible, open-source robotics benchmarks. Stage 3 awards up to $28,000, two free SO-101 arms, and co-authorship on the joint paper.">
+<meta name="twitter:description" content="An open bounty funding reproducible, open-source robotics benchmarks. Stage 3 awards up to $25,000, two free SO-101 arms, and co-authorship on the joint paper.">
 <meta name="twitter:image:alt" content="A call for robotics benchmarks. Up to $500,000, up to 25 teams, applications August 2026.">
 <link rel="canonical" href="https://robotics-evals-website.github.io/Website/">
 <meta name="theme-color" content="#FCFAF6" media="(prefers-color-scheme: light)">
@@ -1271,10 +1271,10 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
           </div>
         </section>
   <div class="method-foot">
-          <p class="method-note">A Stage 1 proposal lists the tasks your benchmark contains, with all four features written out for each one. Realizing a single task’s setup under different seeds gives the instances that a Stage 3 physics simulation has to cover.</p>
+          <p class="method-note">A Stage 1 proposal lists the tasks your benchmark contains, with all four features written out for each one. Realizing a single task’s setup under different seeds gives the instances that a Stage 2 physics simulation has to cover.</p>
           <div>
             <p class="callout">Every Stage 1 proposal must include a list of tasks, each with all four features.</p>
-            <p class="worked">A complete benchmark written this way: <a href="https://github.com/robocurve/kitchenbench" target="_blank" rel="noopener noreferrer">KitchenBench</a>.</p>
+            <p class="worked">A benchmark of this shape, on Inspect Robots: <a href="https://github.com/robocurve/kitchenbench" target="_blank" rel="noopener noreferrer">KitchenBench</a>.</p>
           </div>
         </div>
         </div>
@@ -1294,69 +1294,6 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
         </div>
         <div class="sd__body">
           <p class="sd__p">A physics simulation of the task family, built in a simulator such as Isaac&nbsp;Sim and wired into Inspect Robots on the KitchenBench pattern. It installs clean, runs end to end, and passes automated CI checks. No hardware is needed at this stage.</p>
-
-          <!-- ==========================================================================
-           STAGE PANEL CONTRACT  ·  read before writing Stage 2 / Stage 3 content
-           ==========================================================================
-           One stage = one .sdt__card in the strip above + one .sdt__panel below.
-           The card and the panel are wired by id only:
-
-               <button class="sdt__card" id="sdt-tab-N" aria-controls="stage-N"
-                       aria-expanded="false"> ... </button>
-               <section class="sdt__panel" id="stage-N" data-stage="N"
-                        aria-labelledby="sd-title-N"> ... </section>
-
-           The widget reads nothing else. It never inspects panel content, so a panel
-           may contain any markup, any inline SVG, and any script.
-
-           A panel is exactly:
-             .sd__head   — fixed shape, do not restyle:
-                             p.sd__eyebrow      "Stage N · deliverable"
-                             h3.sd__title#sd-title-N   the stage name
-                             p.sd__lead         one or two sentences
-                             ul.sd__facts       EXACTLY FOUR <li>, each
-                                                <li><span>Label</span><b>Value</b></li>
-                                                (four is required: the grid is 4/2/1
-                                                columns, and any other count leaves a
-                                                half-empty row showing the rule colour)
-             .sd__body   — free content. Direct children are spaced automatically.
-
-           Vocabulary available inside .sd__body (all already styled, all theme-aware):
-             h4.sd__h4     section heading inside a panel   (h5 below it, never h3)
-             p.sd__p       body paragraph, 62ch measure
-             ul.sd__checks marker list  (<li>, optional <b> lead-in)
-             ul.sd__pay    money ledger <li><span>Item</span><b>Amount</b></li>
-             p.sd__note    small mono footnote
-             p.callout     accent-ruled emphasis line
-             .sd__split    two columns: div.sd__split-body + figure.sd__fig
-                           (stacks under 860px; the figure column is 186–258px)
-             figure.sd__art  full-width artefact:
-                           div.sd__art-hd  (h4.sd__h4 + span.sd__art-tag)
-                           div.sd__art-body
-                           figcaption.sd__art-cap
-
-           Rules:
-             1. HEADINGS. The panel title is the h3. Everything inside .sd__body starts
-                at h4. Never emit an h1, h2 or h3 inside a panel.
-             2. IDS must be unique page-wide. Prefix everything: s2-*, s3-*.
-             3. NO JS REQUIRED TO READ. Without JavaScript all three panels render
-                stacked and visible; the strip is hidden. Content must be legible in
-                that state. Do not hide anything behind a script-driven control unless
-                a static fallback is present.
-             4. SCRIPTS run while the panel is display:none. Do not measure layout at
-                load time — getBoundingClientRect() returns zeros in a closed panel.
-                Compute geometry from constants (the Stage 1 sampler does this), or
-                defer measurement until the panel opens.
-             5. ANIMATION must honour prefers-reduced-motion, and must not autoplay
-                while closed. Gate on IntersectionObserver, which will not fire until
-                the panel is opened (the SO-101 figure below does this).
-             6. NO SHADOWS, no elevation. Hairline rules only, colours from the
-                variables — never a literal hex.
-             7. WIDTH. A panel is 1080px max minus gutters. Anything wider than the
-                measure must scroll inside its own overflow-x:auto box.
-             8. The award ledger at the foot of the panel and the .sd__head above are
-                owned by this file. Replace only what sits between the two markers.
-           ========================================================================== -->
 
           <!-- ================= STAGE 2 CONTENT DROPS IN HERE ================= -->
 <div class="s2panel">
@@ -1573,8 +1510,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
     <h5 class="s3-sub">Cross-embodiment bonuses</h5>
     <p class="s3-p">The SO-101 arms go to every team, so they are the floor rather than something to earn. A
       team that <b>already owns</b> other hardware can run the same benchmark across it and is paid per unit:
-      <b>$2,000 for each additional arm</b> and <b>$5,000 for each humanoid</b>. There is no cap on the number
-      of units.</p>
+      <b>$2,000 for each additional arm</b> and <b>$5,000 for each humanoid</b>. Confirm the units you intend to run with us in advance.</p>
     <p class="s3-p">This is aimed at labs with hardware already standing in the room, which is how the
       programme reaches cross-embodiment coverage it could not otherwise afford. Nothing here expects a team to
       acquire anything.</p>
@@ -1583,8 +1519,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
   <section class="s3-sec">
     <h4 class="s3-h">Expected deliverables</h4>
     <p class="s3-p">Results across the SO-101-compatible checkpoints, and across language models driving the arm
-      directly, Claude Opus&nbsp;5 in fast mode among them. Every policy runs the same tasks at the rollout count
-      you declared. A public checkpoint is enough, so no teleoperation or demonstration collection is
+      directly, Claude Opus&nbsp;5 in fast mode among them. Every policy runs the same tasks at the rollout count you declare in your reproducibility package. A public checkpoint is enough, so no teleoperation or demonstration collection is
       needed.</p>
 
     <ul class="s3-ck">
@@ -1881,7 +1816,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
         <ul class="faq-list">
           <li><b>Stage 1</b> A proposal: the benchmark you want to build, the area it addresses, your background, and the list of tasks it contains. Every task carries four features: an instruction, a description of the goal, a scoring rubric between 0 and 1, and a setup with every random element given a named distribution. Due 11 September 2026, 23:59 Pacific. Scored on team capability, idea quality, and relevance.</li>
           <li><b>Stage 2</b> A physics simulation of the task family, built in a simulator such as Isaac&nbsp;Sim and wired into Inspect Robots on the KitchenBench pattern. It must install clean, run end to end, pass CI, and carry a self-score against the published review criteria. No hardware is needed at this stage.</li>
-          <li><b>Stage 3</b> The hardware benchmark running end to end with a baseline evaluated, scored against your Stage&nbsp;2 simulation, plus a reproducibility package covering environment specs with tolerances, the evaluation protocol, the reset procedure, and rollout counts. Due 18 December 2026, 23:59 Pacific, rolling from 1 December. We then spot-check a random sample of instances for reproducibility before assigning the tier.</li>
+          <li><b>Stage 3</b> The hardware benchmark running end to end with a baseline evaluated, scored against your Stage&nbsp;2 simulation, plus a reproducibility package covering environment specs with tolerances, the evaluation protocol, the reset procedure, and rollout counts. Due 18 December 2026, 23:59 Pacific, rolling from 1 December. We then spot-check a random sample of instances for reproducibility before the replication bonus is released.</li>
         </ul></details>
         <details><summary>Is this a job, a contract, or a grant?</summary><p>None of those. These are competition awards rather than payment for services. There is no employment or contracting relationship, no supervision, no hours reporting, and no work assigned by us. You choose your own task, method, and schedule, and are judged against criteria published on day one. Awards are flat amounts tied to deliverables, not to time spent. If you hold a student visa, confirm with your international student office before entering.</p></details>
         <details><summary>How are awards paid and taxed?</summary><p>To the team, by international transfer, split as the team directs. University-affiliated teams may instead request payment as a research gift to their institution; ask at Stage&nbsp;2 selection, since institutional contracting takes weeks. Awards may be reported to tax authorities, and awards paid to teams outside the United States may be subject to US withholding, which may be recoverable by filing a US return the following year. We collect tax forms at Stage&nbsp;3 selection.</p></details>
@@ -1891,7 +1826,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
           <li><b>Humanoids</b> AgiBot X1, Unitree G1</li>
         </ul></details>
         <details><summary>What do I keep, and what gets published?</summary><p>You keep copyright and publication rights in full. Write up your own benchmark and submit it anywhere, without clearing anything with us. Entering grants us a licence to publish it in WorldEvals under MIT, with your team credited. After replication closes in February we write up the collected suite, the paired simulations, the measured sim-to-real gap, and baseline results for current vision-language-action (VLA) policies, targeting submission in Q1 2027. Every Stage&nbsp;3 team that passes replication is offered co-authorship, and may decline and be acknowledged instead.</p></details>
-        <details><summary>What are Inspect Robots, KitchenBench, and WorldEvals?</summary><p><a href="https://inspectrobots.org/" target="_blank" rel="noopener noreferrer">Inspect Robots</a> is RoboCurve’s open-source framework for evaluating AI and robots in the physical world. <a href="https://github.com/robocurve/kitchenbench" target="_blank" rel="noopener noreferrer">KitchenBench</a> is the worked example of what a Stage&nbsp;2 submission should look like. WorldEvals is the public repository where finished benchmarks will be released.</p></details>
+        <details><summary>What are Inspect Robots, KitchenBench, and WorldEvals?</summary><p><a href="https://inspectrobots.org/" target="_blank" rel="noopener noreferrer">Inspect Robots</a> is RoboCurve’s open-source framework for evaluating AI and robots in the physical world. <a href="https://github.com/robocurve/kitchenbench" target="_blank" rel="noopener noreferrer">KitchenBench</a> is the worked example of how a benchmark is wired into Inspect Robots. WorldEvals is the public repository where finished benchmarks will be released.</p></details>
       </div>
     </div>
   </section>
@@ -1936,7 +1871,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
     </div>
     <div class="foot-partners">
       <span>Run jointly by</span>
-      <a href="https://aria.org.uk/opportunity-spaces/trust-everything-everywhere/scaling-trust" target="_blank" rel="noopener noreferrer">ARIA</a>
+      <a href="https://aria.org.uk/" target="_blank" rel="noopener noreferrer">ARIA</a>
       <a href="https://constellation.org/" target="_blank" rel="noopener noreferrer">Constellation</a>
       <a href="https://robocurve.org/" target="_blank" rel="noopener noreferrer">RoboCurve</a>
     </div>

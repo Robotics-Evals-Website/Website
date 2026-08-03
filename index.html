@@ -364,12 +364,10 @@ html:not(.js) .sdt__panel+.sdt__panel,.sdt--degraded .sdt__panel+.sdt__panel{
   font-size:clamp(1.5rem,1.2rem + 1.2vw,2.1rem);margin:0;max-width:24ch}
 .sd__lead{margin:.85rem 0 0;font-size:var(--fs-lead);line-height:1.5;color:var(--ink-muted);max-width:60ch}
 .sd__facts{list-style:none;margin:clamp(1.1rem,2.2vw,1.6rem) 0 0;padding:0;
-  display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+  display:flex;flex-wrap:wrap;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:4px;overflow:hidden}
 /* the facts row is always exactly four cells, so 4 / 2 / 1 columns never leave a
    half-empty row showing the rule colour through the 1px grid gap */
-@media (min-width:430px){.sd__facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (min-width:960px){.sd__facts{grid-template-columns:repeat(4,minmax(0,1fr))}}
-.sd__facts li{background:var(--bg);padding:.75rem .95rem;display:flex;flex-direction:column;gap:.3rem}
+.sd__facts li{flex:1 1 10.5rem;background:var(--bg);padding:.75rem .95rem;display:flex;flex-direction:column;gap:.3rem}
 .sd__facts span{font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);
   text-transform:uppercase;color:var(--ink-faint)}
 .sd__facts b{font-family:var(--mono);font-weight:500;font-size:.95rem;color:var(--ink);
@@ -1167,14 +1165,14 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
         <div class="sd__head">
           <p class="sd__eyebrow">Stage 1 &middot; deliverable</p>
           <h3 class="sd__title" id="sd-title-1">Benchmark proposal</h3>
-          <p class="sd__lead">A written document. No code, no robot, no simulation. Anyone may enter, and there is no cap on the number of proposals accepted.</p>
+          <p class="sd__lead">Tell us what capability you want to measure, in natural language.</p>
           <ul class="sd__facts">
             <li><span>Window</span><b>12 Aug &ndash; 11 Sep 2026</b></li>
             <li><span>Closes</span><b>11 Sep, 23:59 Pacific</b></li>
           </ul>
         </div>
         <div class="sd__body">
-          <p class="sd__p">The benchmark you want to build, the area it addresses, your background, and the list of tasks it contains. Each task needs an instruction, a goal, a 0&ndash;1 scoring rubric, and a setup. Scored on team capability, idea quality, and relevance. A proposal hackathon runs 5&ndash;6 September with Apart Research.</p>
+          <p class="sd__p">The benchmark you want to build, the area it addresses, your background, and the list of tasks it contains. Scored on team capability, idea quality, and relevance. A proposal hackathon runs 5&ndash;6 September with Apart Research.</p>
   <section class="cb" aria-labelledby="cb-title">
           <header class="cb__head">
             <p class="cb__eyebrow">Instruction · goal · rubric · setup</p>
@@ -1286,7 +1284,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
         <div class="sd__head">
           <p class="sd__eyebrow">Stage 2 &middot; deliverable</p>
           <h3 class="sd__title" id="sd-title-2">Simulation benchmark</h3>
-          <p class="sd__lead">The proposal becomes running code: a physics simulation of your task family, wired into Inspect Robots, that builds any task on your list from a seed and scores the result with nobody in the loop.</p>
+          <p class="sd__lead">Turn that into a physics simulation that scores itself.</p>
           <ul class="sd__facts">
             <li><span>Window</span><b>18 Sep &ndash; 15 Oct 2026</b></li>
             <li><span>Cohort</span><b>Up to 25 teams</b></li>
@@ -1490,12 +1488,12 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
         <div class="sd__head">
           <p class="sd__eyebrow">Stage 3 &middot; deliverable</p>
           <h3 class="sd__title" id="sd-title-3">Real-world hardware benchmark</h3>
-          <p class="sd__lead">The same task family on real arms, paired with the simulation you built in Stage&nbsp;2, each running end to end with a baseline evaluated. Then a team that did not build it runs it again.</p>
+          <p class="sd__lead">Run it on real arms. Then we run it again ourselves.</p>
           <ul class="sd__facts">
             <li><span>Window</span><b>23 Oct &ndash; 18 Dec 2026</b></li>
             <li><span>Cohort</span><b>Up to 12 teams</b></li>
             <li><span>On delivery</span><b>$15,000</b></li>
-            <li><span>On successful replication</span><b>$10,000</b></li>
+            <li><span>Bonus on successful replication</span><b>+$10,000</b></li>
           </ul>
         </div>
         <div class="sd__body">
@@ -1744,7 +1742,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
           <h4 class="sd__h4">Award</h4>
           <ul class="sd__pay">
             <li><span>On delivery</span><b>$15,000</b></li>
-            <li><span>On successful replication</span><b>$10,000</b></li>
+            <li><span>Bonus on successful replication</span><b>+$10,000</b></li>
             <li><span>Each additional arm you own</span><b>+$2,000</b></li>
             <li><span>Each humanoid you own</span><b>+$5,000</b></li>
             <li><span>SO-101 arms</span><b>2, free to keep</b></li>

@@ -299,7 +299,8 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
    shown stacked, each with its own heading. Nothing is behind a control
    that cannot work.
    ============================================================ */
-.cta-row-tight{margin-top:clamp(1.6rem,3vw,2.2rem)}
+.cta-row-tight{margin-top:clamp(1.6rem,3vw,2.2rem);justify-content:center}
+.cta-row-tight .btn{padding:.95rem 2rem;font-size:1.06rem}
 .sdt{margin-top:clamp(1.4rem,2.6vw,2.1rem)}
 
 /* --- the strip ------------------------------------------------ */
@@ -711,7 +712,9 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 
 /* --- footer under the card --- */
 .method-foot{grid-template-columns:minmax(0,1fr)}
-@media (min-width:820px){.method-foot{grid-template-columns:1fr 1fr;align-items:start}}
+@media (min-width:820px){.method-foot{grid-template-columns:1fr 1fr;align-items:start}
+  /* the note that held column 1 is gone; keep the callout in its own column */
+  .method-foot>div{grid-column:2}}
 .method-note{margin:0;font-size:var(--fs-body-sm);line-height:1.6;color:var(--ink-muted);max-width:52ch}
 .method-foot .callout{margin:0}
 
@@ -1303,7 +1306,6 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
             </div>
           </section>
           <div class="method-foot">
-            <p class="method-note">Each task, realized under different seeds, gives the instances a Stage 2 physics simulation has to cover.</p>
             <div>
               <p class="callout">Every Stage 1 proposal must include a list of tasks, each with all four features.</p>
               <p class="worked">A benchmark of this shape, on Inspect Robots: <a href="https://github.com/robocurve/kitchenbench" target="_blank" rel="noopener noreferrer">KitchenBench</a>.</p>

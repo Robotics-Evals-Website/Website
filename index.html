@@ -217,14 +217,6 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
    HERO (compact)
    ============================================================ */
 .hero{padding:clamp(64px,9vh,116px) 0 clamp(46px,6vh,72px)}
-.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr);align-items:center;
-  column-gap:clamp(2rem,4.5vw,3.6rem)}
-.hero-fig{display:none;margin:0}
-@media (min-width:980px){
-  .hero .wrap{grid-template-columns:minmax(0,1fr) clamp(228px,22vw,292px)}
-  .hero-fig{display:block}
-}
-.hero-fig svg{display:block;width:100%;height:auto}
 .hero h1{max-width:16ch;margin-bottom:2rem}
 .hero .cta-row{margin-top:2.4rem}
 .hero .cta-note{margin-top:1.5rem}
@@ -1080,13 +1072,6 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 @media (prefers-reduced-motion:reduce){.s3 *{transition:none!important;animation:none!important}}
 
 /* ---- hero plate: SO-101 orthographic ------------------------------ */
-.hf2-obj{fill:none;stroke:var(--ink-muted);stroke-width:1.15;stroke-linejoin:round;stroke-linecap:round}
-.hf2-obj-o{fill:var(--bg);stroke:var(--ink-muted);stroke-width:1.15;stroke-linejoin:round}
-.hf2-thin{fill:none;stroke:var(--line-strong);stroke-width:.75;stroke-linecap:round}
-.hf2-hid{fill:none;stroke:var(--line-strong);stroke-width:.75;stroke-dasharray:3.5 2.5}
-.hf2-acc-f{fill:var(--accent);stroke:none}
-.hf2-t{font-family:var(--mono);font-size:9px;letter-spacing:.09em;fill:var(--ink-faint)}
-.hf2-s *{vector-effect:non-scaling-stroke}
 </style>
 </head>
 <body>
@@ -1124,8 +1109,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
   <!-- ================= HERO ================= -->
   <section class="hero">
     <div class="wrap">
-      <div class="hero-copy">
-          <h1>A call for robotics benchmarks.</h1>
+      <h1>A call for robotics benchmarks.</h1>
       <p class="lead">We fund open, reproducible benchmarks on <b><a href="https://inspectrobots.org/" target="_blank" rel="noopener noreferrer">Inspect Robots</a></b>. The result is a public measure of what robots can do, and how fast that’s changing.</p>
       <div class="cta-row">
         <a class="btn btn-primary btn-lg" href="#apply">Apply to build a benchmark</a>
@@ -1133,7 +1117,6 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
       </div>
       <p class="cta-note">Applications open 12 August 2026 · no robot needed</p>
         </div>
-        <figure class="hero-fig"><svg viewBox="0 0 300 300" role="img" aria-label="Technical elevation of the SO-101 follower arm, a five degree of freedom arm with a parallel gripper."><text class="hf2-t" x="2" y="11">SO-101 FOLLOWER ARM</text><text class="hf2-t" x="298" y="11" text-anchor="end">5 DOF + GRIPPER</text><line class="hf2-thin" x1="2" y1="19" x2="298" y2="19"/><g class="hf2-s" transform="translate(-64.60,-206.62) scale(1.85)"><line class="hf2-obj" x1="56" y1="246" x2="176" y2="246"/><line class="hf2-thin" x1="63" y1="246" x2="59.04" y2="249.96"/><line class="hf2-thin" x1="70" y1="246" x2="66.04" y2="249.96"/><line class="hf2-thin" x1="77" y1="246" x2="73.04" y2="249.96"/><line class="hf2-thin" x1="84" y1="246" x2="80.04" y2="249.96"/><line class="hf2-thin" x1="91" y1="246" x2="87.04" y2="249.96"/><line class="hf2-thin" x1="98" y1="246" x2="94.04" y2="249.96"/><line class="hf2-thin" x1="105" y1="246" x2="101.04" y2="249.96"/><line class="hf2-thin" x1="112" y1="246" x2="108.04" y2="249.96"/><line class="hf2-thin" x1="119" y1="246" x2="115.04" y2="249.96"/><line class="hf2-thin" x1="126" y1="246" x2="122.04" y2="249.96"/><line class="hf2-thin" x1="133" y1="246" x2="129.04" y2="249.96"/><line class="hf2-thin" x1="140" y1="246" x2="136.04" y2="249.96"/><line class="hf2-thin" x1="147" y1="246" x2="143.04" y2="249.96"/><line class="hf2-thin" x1="154" y1="246" x2="150.04" y2="249.96"/><line class="hf2-thin" x1="161" y1="246" x2="157.04" y2="249.96"/><line class="hf2-thin" x1="168" y1="246" x2="164.04" y2="249.96"/><line class="hf2-thin" x1="175" y1="246" x2="171.04" y2="249.96"/><rect class="hf2-obj-o" x="59" y="238" width="38" height="8"/><line class="hf2-hid" x1="65" y1="238" x2="65" y2="246"/><line class="hf2-hid" x1="91" y1="238" x2="91" y2="246"/><path class="hf2-obj-o" d="M64,216 L92,216 L96,238 L60,238 Z"/><path class="hf2-obj-o" d="M83.68,219.16 L113.68,165.16 A6.5,6.5 0 0 0 102.32,158.84 L72.32,212.84 A6.5,6.5 0 0 0 83.68,219.16 Z"/><path class="hf2-obj-o" d="M106.55,167.31 L150.55,179.31 A5.5,5.5 0 0 0 153.45,168.69 L109.45,156.69 A5.5,5.5 0 0 0 106.55,167.31 Z"/><path class="hf2-obj-o" d="M147.63,175.09 L151.63,191.09 A4.5,4.5 0 0 0 160.37,188.91 L156.37,172.91 A4.5,4.5 0 0 0 147.63,175.09 Z"/><rect class="hf2-obj-o" x="149" y="189" width="14" height="8" rx="1.5"/><path class="hf2-obj-o" d="M151,197 L151,210 L155,210 L155,197 Z"/><path class="hf2-obj-o" d="M157,197 L157,210 L161,210 L161,197 Z"/><circle class="hf2-obj-o" cx="78" cy="216" r="6"/><circle class="hf2-acc-f" cx="78" cy="216" r="1.3"/><circle class="hf2-obj-o" cx="108" cy="162" r="5.5"/><circle class="hf2-acc-f" cx="108" cy="162" r="1.3"/><circle class="hf2-obj-o" cx="152" cy="174" r="4.8"/><circle class="hf2-acc-f" cx="152" cy="174" r="1.3"/><circle class="hf2-obj-o" cx="156" cy="190" r="4"/><circle class="hf2-acc-f" cx="156" cy="190" r="1.3"/></g></svg></figure>
     </div>
   </section>
 

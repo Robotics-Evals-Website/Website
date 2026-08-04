@@ -348,7 +348,7 @@ html:not(.js) .sdt__strip,.sdt--degraded .sdt__strip{display:none}
    them, so without this the accessible name runs them together */
 .sdt__money i::after{content:"\00a0"}
 .sdt__money b{font-weight:500;color:var(--ink);font-variant-numeric:tabular-nums;text-align:right}
-.sdt__more{display:inline-flex;align-items:center;gap:.45em;margin-top:.9rem;
+.sdt__more{display:inline-flex;align-items:center;gap:.45em;margin-top:auto;padding-top:.9rem;
   font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);
   text-transform:uppercase;color:var(--accent)}
 .sdt__more::after{content:"+";font-size:1.35em;line-height:1;
@@ -377,10 +377,14 @@ html:not(.js) .sdt__panel+.sdt__panel,.sdt--degraded .sdt__panel+.sdt__panel{
   font-size:clamp(1.5rem,1.2rem + 1.2vw,2.1rem);margin:0;max-width:24ch}
 .sd__lead{margin:.85rem 0 0;font-size:var(--fs-lead);line-height:1.5;color:var(--ink-muted);max-width:60ch}
 .sd__facts{list-style:none;margin:clamp(1.1rem,2.2vw,1.6rem) 0 0;padding:0;
-  display:flex;flex-wrap:wrap;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:4px;overflow:hidden}
+@media (min-width:760px){.sd__facts{grid-template-columns:repeat(4,minmax(0,1fr))}
+  /* stage 1 carries two facts, not the four the other panels have */
+  #stage-1 .sd__facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* the facts row is always exactly four cells, so 4 / 2 / 1 columns never leave a
    half-empty row showing the rule colour through the 1px grid gap */
-.sd__facts li{flex:1 1 10.5rem;background:var(--bg);padding:.75rem .95rem;display:flex;flex-direction:column;gap:.3rem}
+.sd__facts li{background:var(--bg);padding:.75rem .95rem;display:flex;flex-direction:column;gap:.3rem}
 .sd__facts span{font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);
   text-transform:uppercase;color:var(--ink-faint)}
 .sd__facts b{font-family:var(--mono);font-weight:500;font-size:.95rem;color:var(--ink);
@@ -404,7 +408,7 @@ html:not(.js) .sdt__panel+.sdt__panel,.sdt--degraded .sdt__panel+.sdt__panel{
   padding:.5rem 0;border-bottom:1px solid var(--line)}
 .sd__pay li span{color:var(--ink-muted)}
 .sd__pay li b{color:var(--ink);font-weight:500;font-variant-numeric:tabular-nums;text-align:right}
-.sd__note{margin:0;font-family:var(--mono);font-size:var(--fs-label-sm);line-height:1.7;
+.sd__note{margin:clamp(1.1rem,2.2vw,1.6rem) 0 0;font-family:var(--mono);font-size:var(--fs-label-sm);line-height:1.7;
   letter-spacing:.02em;color:var(--ink-faint);max-width:70ch}
 /* body text beside a figure; stacks under 860px */
 .sd__split{display:flex;align-items:flex-start;gap:clamp(20px,3.2vw,44px);
@@ -564,7 +568,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 /* ============================================================
    EMBEDDED: CableBench task-instance sampler (.cb)
    ============================================================ */
-.cb{max-width:1000px;margin:0 auto;background:var(--surface);border:1px solid var(--line);border-radius:6px;
+.cb{max-width:1000px;margin-inline:auto;background:var(--surface);border:1px solid var(--line);border-radius:6px;
   overflow:hidden;font-family:var(--sans);color:var(--ink)}
 .cb__head{padding:clamp(16px,3vw,26px) clamp(16px,3vw,28px) 6px}
 .cb__eyebrow{font-family:var(--mono);font-weight:500;font-size:var(--fs-label);line-height:1;letter-spacing:var(--tr-label);
@@ -834,7 +838,6 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
   --s2-run-bg:color-mix(in srgb,var(--accent) 7%,transparent);
   --s2-run-bd:color-mix(in srgb,var(--accent) 55%,var(--line));
   --s2-open:color-mix(in srgb,var(--ink-faint) 65%,var(--line));
-  margin-inline:calc(-1 * var(--s2-bleed));
   font-family:var(--sans);font-size:var(--fs-body);line-height:1.62;color:var(--ink);
   container-type:inline-size;container-name:s2}
 .s2panel p{margin:0;max-width:var(--s2-measure)}
@@ -864,8 +867,8 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 
 /* ---------- the figure ---------- */
 .s2sprite{position:absolute;width:0;height:0;overflow:hidden}
-.s2fig{margin:clamp(1.6rem,3vw,2.3rem) 0 0;border:1px solid var(--line-strong);border-radius:8px;
-  background:transparent;overflow:hidden}
+.s2fig{margin:clamp(1.2rem,2.6vw,1.8rem) 0 0;border:1px solid var(--line);border-radius:6px;
+  background:transparent;overflow:hidden;margin-inline:calc(-1 * var(--s2-bleed))}
 .s2fig__hd{display:flex;align-items:baseline;justify-content:space-between;gap:.7rem 1.2rem;
   flex-wrap:wrap;padding:clamp(12px,2.2vw,16px) clamp(14px,2.4vw,20px)}
 .s2fig__title{font-family:var(--sans);font-weight:600;font-size:var(--fs-body-sm);color:var(--ink);margin:0}
@@ -941,6 +944,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 .s2k--open{width:26px;height:13px;border:1px solid var(--s2-open)}
 
 .s2fig__cap{margin:0 !important;padding:clamp(12px,2.2vw,15px) clamp(14px,2.4vw,20px);
+  padding-right:max(clamp(14px,2.4vw,20px),calc(100% - 78ch));
   border-top:1px solid var(--line);background:var(--surface-2);
   font-size:var(--fs-small);line-height:1.55;color:var(--ink-muted);max-width:none !important}
 
@@ -967,6 +971,8 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
    ============================================================ */
 .s3{padding:0}
 .s3 p{margin:0}
+/* .s3 p is (0,1,1) and outranks .sd__note's (0,1,0), so restate the note's own spacing here */
+.s3 .sd__note{margin-top:clamp(1.1rem,2.2vw,1.6rem)}
 .s3-lead{font-size:var(--fs-body-sm);color:var(--ink-muted);max-width:64ch;text-wrap:pretty}
 .s3-lead b{color:var(--ink);font-weight:600}
 
@@ -988,6 +994,14 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
   text-transform:uppercase;color:var(--ink-faint)}
 
 /* ---------- requirement list ---------- */
+.s3-rate{list-style:none;margin:clamp(1rem,2.2vw,1.4rem) 0 0;padding:0;display:grid;
+  grid-template-columns:minmax(0,1fr);gap:1px;background:var(--line);border:1px solid var(--line);
+  border-radius:4px;overflow:hidden;max-width:32rem}
+@media (min-width:640px){.s3-rate{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.s3-rate li{background:var(--bg);padding:.75rem .95rem;display:flex;flex-direction:column;gap:.3rem}
+.s3-rate b{font-family:var(--mono);font-size:var(--fs-data);color:var(--ink);font-weight:500}
+.s3-rate span{font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);
+  text-transform:uppercase;color:var(--ink-faint)}
 .s3-req{list-style:none;margin:clamp(1rem,2.2vw,1.4rem) 0 0;padding:0;display:grid;gap:.6rem;
   color:var(--ink-muted);font-size:var(--fs-body-sm);line-height:1.6;max-width:64ch}
 .s3-req li{display:flex;gap:.7rem}
@@ -1018,7 +1032,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
   letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--ink-muted)}
 .s3-art__tag{font-family:var(--mono);font-weight:500;font-size:var(--fs-label-sm);letter-spacing:.06em;
   color:var(--accent)}
-.s3-art__cap{padding:11px clamp(14px,2.4vw,20px);border-top:1px solid var(--line);font-family:var(--mono);
+.s3-art__cap{padding:11px clamp(14px,2.4vw,20px);padding-right:max(clamp(14px,2.4vw,20px),calc(100% - 78ch));border-top:1px solid var(--line);font-family:var(--mono);
   font-size:var(--fs-data);line-height:1.55;color:var(--ink-muted)}
 .s3-art__cap b{color:var(--ink);font-weight:500}
 
@@ -1191,66 +1205,66 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
         </div>
         <div class="sd__body">
           <p class="sd__p">The benchmark you want to build, the area it addresses, your background, and the list of tasks it contains. Scored on team capability, idea quality, and relevance.</p>
-  <section class="cb" aria-labelledby="cb-title">
-          <header class="cb__head">
-            <p class="cb__eyebrow">Instruction · goal · rubric · setup</p>
-            <h4 class="cb__title" id="cb-title">Every task has four features</h4>
-            <p class="cb__lead">A benchmark is a list of tasks. Each task states what the robot is asked to do, what the finished scene looks like, how one attempt scores between 0 and 1, and how the scene starts. Anything in the setup that varies is named and given a distribution. One task is written out in full below.</p>
-          </header>
+          <section class="cb" aria-labelledby="cb-title">
+            <header class="cb__head">
+              <p class="cb__eyebrow">Instruction · goal · rubric · setup</p>
+              <h4 class="cb__title" id="cb-title">Every task has four features</h4>
+              <p class="cb__lead">A benchmark is a list of tasks. Each task states what the robot is asked to do, what the finished scene looks like, how one attempt scores between 0 and 1, and how the scene starts. Anything in the setup that varies is named and given a distribution. One task is written out in full below.</p>
+            </header>
 
-          <div class="cb__body">
+            <div class="cb__body">
 
-            <div class="cb__panel cb-f1">
-              <div class="cb__panelhd"><h5><span class="cb__no">01</span> Instruction</h5><span class="cb__tag">fold-towel-quarters</span></div>
-              <div class="cb__pbody">
-                <p class="cb__def">What the robot is asked to do, in natural language.</p>
-                <p class="cb__ex">Fold the towel into quarters.</p>
-                <p class="cb__sub">A benchmark holds several tasks. This is one of them.</p>
+              <div class="cb__panel cb-f1">
+                <div class="cb__panelhd"><h5><span class="cb__no">01</span> Instruction</h5><span class="cb__tag">fold-towel-quarters</span></div>
+                <div class="cb__pbody">
+                  <p class="cb__def">What the robot is asked to do, in natural language.</p>
+                  <p class="cb__ex">Fold the towel into quarters.</p>
+                  <p class="cb__sub">A benchmark holds several tasks. This is one of them.</p>
+                </div>
               </div>
-            </div>
 
-            <div class="cb__panel cb-f2">
-              <div class="cb__panelhd"><h5><span class="cb__no">02</span> Goal</h5><span class="cb__tag">end state</span></div>
-              <div class="cb__pbody">
-                <p class="cb__def">The finished scene, in natural language, described precisely enough that two people scoring the same attempt agree.</p>
-                <p class="cb__ex">The towel is folded flat into quarters, with edges aligned (no side protruding more than 5%), and the surface is smooth, with no lumps or wrinkles.</p>
+              <div class="cb__panel cb-f2">
+                <div class="cb__panelhd"><h5><span class="cb__no">02</span> Goal</h5><span class="cb__tag">end state</span></div>
+                <div class="cb__pbody">
+                  <p class="cb__def">The finished scene, in natural language, described precisely enough that two people scoring the same attempt agree.</p>
+                  <p class="cb__ex">The towel is folded flat into quarters, with edges aligned (no side protruding more than 5%), and the surface is smooth, with no lumps or wrinkles.</p>
+                </div>
               </div>
-            </div>
 
-            <div class="cb__panel cb-f3">
-              <div class="cb__panelhd"><h5><span class="cb__no">03</span> Scoring rubric</h5><span class="cb__tag">0 → 1</span></div>
-              <div class="cb__pbody">
-                <div class="rb">
-                  <div class="rb__notes">
-                    <p class="cb__def">How much credit one attempt earns, between 0 and 1.</p>
-                    <p class="cb__def">Read from the top. The first line that matches sets the score, so an attempt that only touched the towel scores 0.10.</p>
-                    <p class="cb__def">This rubric is discrete. A continuous one is also allowed, where a measured quantity maps onto the same 0–1 range.</p>
-                  </div>
-                  <div class="rb__scale">
-                    <span class="rb__fill" aria-hidden="true"></span>
-                    <ol class="rb__list" role="list">
-                      <li><span class="rb__v">1.00</span><span class="rb__t">The goal is met.</span></li>
-                      <li><span class="rb__v">0.75</span><span class="rb__t">Folded into quarters, but with wrinkles, lumps, or protrusion.</span></li>
-                      <li><span class="rb__v">0.50</span><span class="rb__t">Folded at least once.</span></li>
-                      <li><span class="rb__v">0.20</span><span class="rb__t">Grasped and lifted at least once.</span></li>
-                      <li><span class="rb__v">0.10</span><span class="rb__t">Touched.</span></li>
-                    </ol>
-                    <p class="rb__zero"><span class="rb__v">0</span><span class="rb__t">Otherwise.</span></p>
+              <div class="cb__panel cb-f3">
+                <div class="cb__panelhd"><h5><span class="cb__no">03</span> Scoring rubric</h5><span class="cb__tag">0 → 1</span></div>
+                <div class="cb__pbody">
+                  <div class="rb">
+                    <div class="rb__notes">
+                      <p class="cb__def">How much credit one attempt earns, between 0 and 1.</p>
+                      <p class="cb__def">Read from the top. The first line that matches sets the score, so an attempt that only touched the towel scores 0.10.</p>
+                      <p class="cb__def">This rubric is discrete. A continuous one is also allowed, where a measured quantity maps onto the same 0–1 range.</p>
+                    </div>
+                    <div class="rb__scale">
+                      <span class="rb__fill" aria-hidden="true"></span>
+                      <ol class="rb__list" role="list">
+                        <li><span class="rb__v">1.00</span><span class="rb__t">The goal is met.</span></li>
+                        <li><span class="rb__v">0.75</span><span class="rb__t">Folded into quarters, but with wrinkles, lumps, or protrusion.</span></li>
+                        <li><span class="rb__v">0.50</span><span class="rb__t">Folded at least once.</span></li>
+                        <li><span class="rb__v">0.20</span><span class="rb__t">Grasped and lifted at least once.</span></li>
+                        <li><span class="rb__v">0.10</span><span class="rb__t">Touched.</span></li>
+                      </ol>
+                      <p class="rb__zero"><span class="rb__v">0</span><span class="rb__t">Otherwise.</span></p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <div class="cb__panel cb-f4">
-              <div class="cb__panelhd"><h5><span class="cb__no">04</span> Setup</h5><span class="cb__tag" id="cb-realtag">realize(seed=—)</span></div>
-              <div class="cb__pbody">
-                <p class="cb__def">Where everything starts, in natural language. Anything that varies is named and given a distribution.</p>
-                <p class="cb__ex">A towel is placed at (X, Y) on the tabletop relative to the actor. X and Y are independently distributed as N(0, 10 cm).</p>
-              </div>
+              <div class="cb__panel cb-f4">
+                <div class="cb__panelhd"><h5><span class="cb__no">04</span> Setup</h5><span class="cb__tag" id="cb-realtag">realize(seed=—)</span></div>
+                <div class="cb__pbody">
+                  <p class="cb__def">Where everything starts, in natural language. Anything that varies is named and given a distribution.</p>
+                  <p class="cb__ex">A towel is placed at (X, Y) on the tabletop relative to the actor. X and Y are independently distributed as N(0, 10 cm).</p>
+                </div>
 
-              <div class="cb__setup">
-                <div class="cb__col">
-  <pre class="cb__spec" tabindex="0" role="region" aria-label="Setup specification for the task fold-towel-quarters">benchmark  <span class="d">FoldBench.v1</span>
+                <div class="cb__setup">
+                  <div class="cb__col">
+                  <pre class="cb__spec" tabindex="0" role="region" aria-label="Setup specification for the task fold-towel-quarters">benchmark  <span class="d">FoldBench.v1</span>
   task       <span class="d">fold-towel-quarters</span>
   table      <span class="d">1200 × 900 mm    (fixed)</span>
   towel      <span class="d"> 420 × 260 mm    (fixed)</span>
@@ -1261,40 +1275,40 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
              <span class="d">redraw if the towel leaves the table</span>
   <span class="rule">────────────────────────────────────</span>
   <b>instance</b> = <b>realize</b>(task, <span class="a">seed</span>)</pre>
-                  <div class="cb__real">
-                    <div class="cb__controls">
-                      <button class="cb__resample" id="cb-resample" type="button">Re-seed <span class="arw" aria-hidden="true">→</span></button>
-                      <label class="cb__auto"><input type="checkbox" id="cb-auto" autocomplete="off"> auto<span class="sr-only"> re-seed</span></label>
-                      <span class="cb__seed" id="cb-seed">seed = <span class="k">—</span></span>
+                    <div class="cb__real">
+                      <div class="cb__controls">
+                        <button class="cb__resample" id="cb-resample" type="button">Re-seed <span class="arw" aria-hidden="true">→</span></button>
+                        <label class="cb__auto"><input type="checkbox" id="cb-auto" autocomplete="off"> auto<span class="sr-only"> re-seed</span></label>
+                        <span class="cb__seed" id="cb-seed">seed = <span class="k">—</span></span>
+                      </div>
+                      <pre class="cb__vals" id="cb-vals" tabindex="0" role="region" aria-label="Realized setup values, scrolls horizontally"></pre>
+                      <p class="cb__sr" id="cb-live" aria-live="polite"></p>
                     </div>
-                    <pre class="cb__vals" id="cb-vals" tabindex="0" role="region" aria-label="Realized setup values, scrolls horizontally"></pre>
-                    <p class="cb__sr" id="cb-live" aria-live="polite"></p>
                   </div>
-                </div>
 
-                <div class="cb__col cb__col--fig">
-                  <div class="cb__figwrap">
-                    <svg class="cb__svg" id="cb-svg" viewBox="0 0 560 452" aria-hidden="true" focusable="false">
-                      <g id="cb-frame"></g>
-                      <g id="cb-dynamic"></g>
-                    </svg>
+                  <div class="cb__col cb__col--fig">
+                    <div class="cb__figwrap">
+                      <svg class="cb__svg" id="cb-svg" viewBox="0 0 560 452" aria-hidden="true" focusable="false">
+                        <g id="cb-frame"></g>
+                        <g id="cb-dynamic"></g>
+                      </svg>
+                    </div>
+                    <p class="cb__cap">Top&#8209;down. The rings are the 1σ and 2σ contours of the placement distribution; the curves on the near and left edges are the marginal densities of X and Y; the small dots are 96 other draws from it. The dashed cross is the pair of fold axes the goal implies.</p>
                   </div>
-                  <p class="cb__cap">Top&#8209;down. The rings are the 1σ and 2σ contours of the placement distribution; the curves on the near and left edges are the marginal densities of X and Y; the small dots are 96 other draws from it. The dashed cross is the pair of fold axes the goal implies.</p>
-                </div>
 
-                <p class="cb__note">Every seed draws a different setup from the same task. Features 01 to 03 do not change; only the setup does. Scoring a policy across many seeds measures the task rather than one memorized scene.</p>
+                  <p class="cb__note">Every seed draws a different setup from the same task. Features 01 to 03 do not change; only the setup does. Scoring a policy across many seeds measures the task rather than one memorized scene.</p>
+                </div>
               </div>
-            </div>
 
+            </div>
+          </section>
+          <div class="method-foot">
+            <p class="method-note">Each task, realized under different seeds, gives the instances a Stage 2 physics simulation has to cover.</p>
+            <div>
+              <p class="callout">Every Stage 1 proposal must include a list of tasks, each with all four features.</p>
+              <p class="worked">A benchmark of this shape, on Inspect Robots: <a href="https://github.com/robocurve/kitchenbench" target="_blank" rel="noopener noreferrer">KitchenBench</a>.</p>
+            </div>
           </div>
-        </section>
-  <div class="method-foot">
-          <p class="method-note">Each task, realized under different seeds, gives the instances a Stage 2 physics simulation has to cover.</p>
-          <div>
-            <p class="callout">Every Stage 1 proposal must include a list of tasks, each with all four features.</p>
-            <p class="worked">A benchmark of this shape, on Inspect Robots: <a href="https://github.com/robocurve/kitchenbench" target="_blank" rel="noopener noreferrer">KitchenBench</a>.</p>
-          </div>
-        </div>
         </div>
       </section>
 
@@ -1314,120 +1328,120 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
           <p class="sd__p">A physics simulation of the task family, built in a simulator such as Isaac&nbsp;Sim and wired into Inspect Robots on the KitchenBench pattern. It installs clean, runs end to end, and passes automated CI checks. No hardware is needed at this stage.</p>
 
           <!-- ================= STAGE 2 CONTENT DROPS IN HERE ================= -->
-<div class="s2panel">
+          <div class="s2panel">
 
-  <h4 class="s2h">What you hand in</h4>
+            <h4 class="s2h">What you hand in</h4>
 
-  <ol class="s2del">
-    <li>
-      <b>Sim environment with the assets.</b>
-      <span>Meshes, collision geometry, the URDF or USD descriptions, the scene files a task is
-        assembled from. If the environment cannot build a scene without it, it ships in the
-        repository.</span>
-    </li>
-    <li>
-      <b>Results across embodiments and models.</b>
-      <span>At least 5 embodiments. At least 5 models. Models with cross-embodiment support are
-        fine. At least 50 runs for each embodiment-and-model pair.</span>
-    </li>
-    <li>
-      <b>Transcripts, joint logs and eval results are stored and published.</b>
-      <span>The joint trajectory of every run is kept, so someone else can check it.</span>
-    </li>
-  </ol>
+            <ol class="s2del">
+              <li>
+                <b>Sim environment with the assets.</b>
+                <span>Meshes, collision geometry, the URDF or USD descriptions, the scene files a task is
+                  assembled from. If the environment cannot build a scene without it, it ships in the
+                  repository.</span>
+              </li>
+              <li>
+                <b>Results across embodiments and models.</b>
+                <span>At least 5 embodiments. At least 5 models. Models with cross-embodiment support are
+                  fine. At least 50 runs for each embodiment-and-model pair.</span>
+              </li>
+              <li>
+                <b>Transcripts, joint logs and eval results are stored and published.</b>
+                <span>The joint trajectory of every run is kept, so someone else can check it.</span>
+              </li>
+            </ol>
 
-  <div class="s2after">
-    <p>Five embodiments and five models have to appear, paired however you like. One model per
-      embodiment is five pairs and qualifies. Every pair you run needs its fifty.</p>
-  </div>
+            <div class="s2after">
+              <p>Five embodiments and five models have to appear, paired however you like. One model per
+                embodiment is five pairs and qualifies. Every pair you run needs its fifty.</p>
+            </div>
 
-  <svg class="s2sprite" aria-hidden="true" focusable="false" width="0" height="0"><defs>
-    <pattern id="s2-dots" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
-      <circle class="s2dot" cx="5" cy="5" r="1.9"/>
-    </pattern>
-  </defs></svg>
+            <svg class="s2sprite" aria-hidden="true" focusable="false" width="0" height="0"><defs>
+              <pattern id="s2-dots" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
+                <circle class="s2dot" cx="5" cy="5" r="1.9"/>
+              </pattern>
+            </defs></svg>
 
-  <figure class="s2fig">
-    <div class="s2fig__hd">
-      <h4 class="s2fig__title">Coverage across embodiments and models</h4>
-      <span class="s2fig__tag">Illustrative</span>
-    </div>
+            <figure class="s2fig">
+              <div class="s2fig__hd">
+                <h4 class="s2fig__title">Coverage across embodiments and models</h4>
+                <span class="s2fig__tag">Illustrative</span>
+              </div>
 
-    <div class="s2g__scroll" tabindex="0" role="region"
-         aria-label="Coverage grid, five embodiments by five models. Scrolls horizontally.">
-      <table class="s2g__table">
-        <caption>five embodiments &nbsp;&middot;&nbsp; five models &nbsp;&middot;&nbsp; 50 runs per pair</caption>
-        <thead>
-          <tr>
-            <th class="s2g__corner" scope="col"><span class="s2sr">embodiment</span></th>
-            <th scope="col"><span class="s2g__model">&pi;₀</span><span class="s2g__org">Physical Intelligence</span></th>
-            <th scope="col"><span class="s2g__model">Gemini Robotics</span><span class="s2g__org">Google DeepMind</span></th>
-            <th scope="col"><span class="s2g__model">GR00T N1</span><span class="s2g__org">NVIDIA</span></th>
-            <th scope="col"><span class="s2g__model">Helix</span><span class="s2g__org">Figure</span></th>
-            <th scope="col"><span class="s2g__model">OpenVLA</span><span class="s2g__org">Stanford</span></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row"><span class="s2g__emb">SO-101</span><span class="s2g__embsub">5-DoF, parallel jaw</span></th>
-            <td class="s2g__cell s2run"><svg class="s2g__svg" viewBox="0 0 100 50" aria-hidden="true" focusable="false"><rect width="100" height="50" fill="url(#s2-dots)"/></svg><span class="s2sr">50 runs</span></td>
-            <td class="s2g__cell"></td>
-            <td class="s2g__cell"></td>
-            <td class="s2g__cell"></td>
-            <td class="s2g__cell"></td>
-          </tr>
-          <tr>
-            <th scope="row"><span class="s2g__emb">SO-101 &times;2</span><span class="s2g__embsub">bimanual</span></th>
-            <td class="s2g__cell"></td>
-            <td class="s2g__cell s2run"><svg class="s2g__svg" viewBox="0 0 100 50" aria-hidden="true" focusable="false"><rect width="100" height="50" fill="url(#s2-dots)"/></svg><span class="s2sr">50 runs</span></td>
-            <td class="s2g__cell"></td>
-            <td class="s2g__cell"></td>
-            <td class="s2g__cell"></td>
-          </tr>
-          <tr>
-            <th scope="row"><span class="s2g__emb">6-DoF arm</span><span class="s2g__embsub">suction</span></th>
-            <td class="s2g__cell"></td>
-            <td class="s2g__cell"></td>
-            <td class="s2g__cell s2run"><svg class="s2g__svg" viewBox="0 0 100 50" aria-hidden="true" focusable="false"><rect width="100" height="50" fill="url(#s2-dots)"/></svg><span class="s2sr">50 runs</span></td>
-            <td class="s2g__cell"></td>
-            <td class="s2g__cell"></td>
-          </tr>
-          <tr>
-            <th scope="row"><span class="s2g__emb">7-DoF arm</span><span class="s2g__embsub">parallel jaw</span></th>
-            <td class="s2g__cell"></td>
-            <td class="s2g__cell"></td>
-            <td class="s2g__cell"></td>
-            <td class="s2g__cell s2run"><svg class="s2g__svg" viewBox="0 0 100 50" aria-hidden="true" focusable="false"><rect width="100" height="50" fill="url(#s2-dots)"/></svg><span class="s2sr">50 runs</span></td>
-            <td class="s2g__cell"></td>
-          </tr>
-          <tr>
-            <th scope="row"><span class="s2g__emb">Mobile base + arm</span><span class="s2g__embsub">wheeled</span></th>
-            <td class="s2g__cell"></td>
-            <td class="s2g__cell"></td>
-            <td class="s2g__cell"></td>
-            <td class="s2g__cell"></td>
-            <td class="s2g__cell s2run"><svg class="s2g__svg" viewBox="0 0 100 50" aria-hidden="true" focusable="false"><rect width="100" height="50" fill="url(#s2-dots)"/></svg><span class="s2sr">50 runs</span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="s2g__hint" aria-hidden="true">scroll the grid for the other models &rarr;</p>
+              <div class="s2g__scroll" tabindex="0" role="region"
+                   aria-label="Coverage grid, five embodiments by five models. Scrolls horizontally.">
+                <table class="s2g__table">
+                  <caption>five embodiments &nbsp;&middot;&nbsp; five models &nbsp;&middot;&nbsp; 50 runs per pair</caption>
+                  <thead>
+                    <tr>
+                      <th class="s2g__corner" scope="col"><span class="s2sr">embodiment</span></th>
+                      <th scope="col"><span class="s2g__model">&pi;₀</span><span class="s2g__org">Physical Intelligence</span></th>
+                      <th scope="col"><span class="s2g__model">Gemini Robotics</span><span class="s2g__org">Google DeepMind</span></th>
+                      <th scope="col"><span class="s2g__model">GR00T N1</span><span class="s2g__org">NVIDIA</span></th>
+                      <th scope="col"><span class="s2g__model">Helix</span><span class="s2g__org">Figure</span></th>
+                      <th scope="col"><span class="s2g__model">OpenVLA</span><span class="s2g__org">Stanford</span></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row"><span class="s2g__emb">SO-101</span><span class="s2g__embsub">5-DoF, parallel jaw</span></th>
+                      <td class="s2g__cell s2run"><svg class="s2g__svg" viewBox="0 0 100 50" aria-hidden="true" focusable="false"><rect width="100" height="50" fill="url(#s2-dots)"/></svg><span class="s2sr">50 runs</span></td>
+                      <td class="s2g__cell"></td>
+                      <td class="s2g__cell"></td>
+                      <td class="s2g__cell"></td>
+                      <td class="s2g__cell"></td>
+                    </tr>
+                    <tr>
+                      <th scope="row"><span class="s2g__emb">SO-101 &times;2</span><span class="s2g__embsub">bimanual</span></th>
+                      <td class="s2g__cell"></td>
+                      <td class="s2g__cell s2run"><svg class="s2g__svg" viewBox="0 0 100 50" aria-hidden="true" focusable="false"><rect width="100" height="50" fill="url(#s2-dots)"/></svg><span class="s2sr">50 runs</span></td>
+                      <td class="s2g__cell"></td>
+                      <td class="s2g__cell"></td>
+                      <td class="s2g__cell"></td>
+                    </tr>
+                    <tr>
+                      <th scope="row"><span class="s2g__emb">6-DoF arm</span><span class="s2g__embsub">suction</span></th>
+                      <td class="s2g__cell"></td>
+                      <td class="s2g__cell"></td>
+                      <td class="s2g__cell s2run"><svg class="s2g__svg" viewBox="0 0 100 50" aria-hidden="true" focusable="false"><rect width="100" height="50" fill="url(#s2-dots)"/></svg><span class="s2sr">50 runs</span></td>
+                      <td class="s2g__cell"></td>
+                      <td class="s2g__cell"></td>
+                    </tr>
+                    <tr>
+                      <th scope="row"><span class="s2g__emb">7-DoF arm</span><span class="s2g__embsub">parallel jaw</span></th>
+                      <td class="s2g__cell"></td>
+                      <td class="s2g__cell"></td>
+                      <td class="s2g__cell"></td>
+                      <td class="s2g__cell s2run"><svg class="s2g__svg" viewBox="0 0 100 50" aria-hidden="true" focusable="false"><rect width="100" height="50" fill="url(#s2-dots)"/></svg><span class="s2sr">50 runs</span></td>
+                      <td class="s2g__cell"></td>
+                    </tr>
+                    <tr>
+                      <th scope="row"><span class="s2g__emb">Mobile base + arm</span><span class="s2g__embsub">wheeled</span></th>
+                      <td class="s2g__cell"></td>
+                      <td class="s2g__cell"></td>
+                      <td class="s2g__cell"></td>
+                      <td class="s2g__cell"></td>
+                      <td class="s2g__cell s2run"><svg class="s2g__svg" viewBox="0 0 100 50" aria-hidden="true" focusable="false"><rect width="100" height="50" fill="url(#s2-dots)"/></svg><span class="s2sr">50 runs</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="s2g__hint" aria-hidden="true">scroll the grid for the other models &rarr;</p>
 
-    <div class="s2foot">
-      <ul class="s2keys">
-        <li><span class="s2k s2k--dot"></span>one mark, one run</li>
-        <li><span class="s2k s2k--run"></span>a pair you run</li>
-        <li><span class="s2k s2k--open"></span>open, and optional</li>
-      </ul>
-      <p class="s2eq"><b>5</b> pairs <i>&times;</i> <b>50</b> runs <i>=</i>
-        <b class="s2eq__tot">250</b> runs minimum</p>
-    </div>
+              <div class="s2foot">
+                <ul class="s2keys">
+                  <li><span class="s2k s2k--dot"></span>one mark, one run</li>
+                  <li><span class="s2k s2k--run"></span>a pair you run</li>
+                  <li><span class="s2k s2k--open"></span>open, and optional</li>
+                </ul>
+                <p class="s2eq"><b>5</b> pairs <i>&times;</i> <b>50</b> runs <i>=</i>
+                  <b class="s2eq__tot">250</b> runs minimum</p>
+              </div>
 
-    <figcaption class="s2fig__cap">The filled cells are one possible choice of pairs. Model names
-      are real, and no results exist yet.</figcaption>
-  </figure>
+              <figcaption class="s2fig__cap">The filled cells are one possible choice of pairs. Model names
+                are real, and no results exist yet.</figcaption>
+            </figure>
 
-</div>
+          </div>
           <!-- ================= END STAGE 2 DROP-IN ================= -->
 
           <h4 class="sd__h4">Award</h4>
@@ -1455,241 +1469,235 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
           <!-- ================= STAGE 3 CONTENT DROPS IN HERE ================= -->
           <div class="s3">
 
-  <p class="s3-lead">Every task in your benchmark runs on real SO-101 arms, across the setups your
-    distributions define. The Stage&nbsp;2 simulation is then scored against those hardware results, and the
-    distance between the two is reported as a finding rather than tuned away.</p>
+            <p class="s3-lead">Every task in your benchmark runs on real SO-101 arms, across the setups your
+              distributions define. The Stage&nbsp;2 simulation is then scored against those hardware results, and the
+              distance between the two is reported as a finding rather than tuned away.</p>
 
-  <section class="s3-sec">
-    <h4 class="s3-h">What you get</h4>
+            <section class="s3-sec">
+              <h4 class="s3-h">What you get</h4>
 
-    <div class="sd__split">
-      <div class="sd__split-body">
-        <p class="s3-p">Every team that reaches Stage&nbsp;3 is sent two fully assembled SO-101 follower arms,
-          ordered on selection day. They are free and yours to keep even if you withdraw, so you do not need to
-          own a robot to apply.</p>
-        <p class="s3-p">Teams also receive $2,000 in compute credits and up to $1,000 of materials reimbursed
-          against receipts. Replication that passes earns co-authorship on the joint paper. The award figures
-          are set out in the ledger at the foot of this panel.</p>
-      </div>
-            <figure class="sd__fig">
-                      <svg class="arm-svg" id="arm-svg" viewBox="0 0 196 111" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-                        <path class="a-ground" d="M4,104 L192,104"/>
-                        <rect class="a-blk blk-s" x="69.5" y="95" width="9" height="9" rx="1"/>
-                        <rect class="a-blk blk-e" x="117.5" y="95" width="9" height="9" rx="1" opacity="0"/>
-                        <g class="al">
-                          <rect class="a-plate" x="12" y="100" width="24" height="4" rx="1"/>
-                          <path class="a-base" d="M18,100 L20.5,62 L27.5,62 L30,100 Z"/>
-                          <g class="j1">
-                            <path class="a-link" d="M24,60 L19.7,10.2"/>
-                            <circle class="a-joint" cx="24" cy="60" r="4"/>
-                            <g class="j2">
-                              <path class="a-link" d="M19.7,10.2 L59.7,9"/>
-                              <circle class="a-joint" cx="19.7" cy="10.2" r="3.6"/>
-                              <g class="j3">
-                                <path class="a-link" d="M59.7,9 L66,18"/>
-                                <circle class="a-joint" cx="59.7" cy="9" r="3.2"/>
-                                <path class="a-tool" d="M62.3,20.6 L69.7,15.4"/>
-                                <rect class="a-blk blk-l" x="64" y="24.8" width="9" height="9" rx="1" opacity="0"/>
-                                <g class="ja"><path class="a-tool" d="M62.3,20.6 L65.7,28.9"/></g>
-                                <g class="jb"><path class="a-tool" d="M69.7,15.4 L76.4,21.4"/></g>
-                              </g>
-                            </g>
-                          </g>
-                        </g>
-                        <g class="ar">
-                          <rect class="a-plate" x="160" y="100" width="24" height="4" rx="1"/>
-                          <path class="a-base" d="M166,100 L168.5,62 L175.5,62 L178,100 Z"/>
-                          <g class="j1">
-                            <path class="a-link" d="M172,60 L176.3,10.2"/>
-                            <circle class="a-joint" cx="172" cy="60" r="4"/>
-                            <g class="j2">
-                              <path class="a-link" d="M176.3,10.2 L136.3,9"/>
-                              <circle class="a-joint" cx="176.3" cy="10.2" r="3.6"/>
-                              <g class="j3">
-                                <path class="a-link" d="M136.3,9 L130,18"/>
-                                <circle class="a-joint" cx="136.3" cy="9" r="3.2"/>
-                                <path class="a-tool" d="M126.3,15.4 L133.7,20.6"/>
-                                <rect class="a-blk blk-r" x="117.3" y="25.1" width="9" height="9" rx="1" opacity="0"/>
-                                <g class="ja"><path class="a-tool" d="M126.3,15.4 L119.6,21.4"/></g>
-                                <g class="jb"><path class="a-tool" d="M133.7,20.6 L130.3,28.9"/></g>
-                              </g>
-                            </g>
-                          </g>
-                        </g>
-                      </svg>
-                      <figcaption class="arm-cap">
-                        <b>2 &times; SO-101</b>
-                        <span>5 DOF + gripper</span>
-                        <button class="arm-replay" type="button" id="arm-replay" aria-label="Pause arm animation">pause</button>
-                      </figcaption>
-                    </figure>
-    </div>
+              <div class="sd__split">
+                <div class="sd__split-body">
+                  <p class="s3-p">Every team that reaches Stage&nbsp;3 is sent two fully assembled SO-101 follower arms,
+                    ordered on selection day. They are free and yours to keep even if you withdraw, so you do not need to
+                    own a robot to apply.</p>
+                  <p class="s3-p">Teams also receive $2,000 in compute credits and up to $1,000 of materials reimbursed
+                    against receipts. Replication that passes earns co-authorship on the joint paper. The award figures
+                    are set out in the ledger at the foot of this panel.</p>
+                </div>
+                      <figure class="sd__fig">
+                                <svg class="arm-svg" id="arm-svg" viewBox="0 0 196 111" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                                  <path class="a-ground" d="M4,104 L192,104"/>
+                                  <rect class="a-blk blk-s" x="69.5" y="95" width="9" height="9" rx="1"/>
+                                  <rect class="a-blk blk-e" x="117.5" y="95" width="9" height="9" rx="1" opacity="0"/>
+                                  <g class="al">
+                                    <rect class="a-plate" x="12" y="100" width="24" height="4" rx="1"/>
+                                    <path class="a-base" d="M18,100 L20.5,62 L27.5,62 L30,100 Z"/>
+                                    <g class="j1">
+                                      <path class="a-link" d="M24,60 L19.7,10.2"/>
+                                      <circle class="a-joint" cx="24" cy="60" r="4"/>
+                                      <g class="j2">
+                                        <path class="a-link" d="M19.7,10.2 L59.7,9"/>
+                                        <circle class="a-joint" cx="19.7" cy="10.2" r="3.6"/>
+                                        <g class="j3">
+                                          <path class="a-link" d="M59.7,9 L66,18"/>
+                                          <circle class="a-joint" cx="59.7" cy="9" r="3.2"/>
+                                          <path class="a-tool" d="M62.3,20.6 L69.7,15.4"/>
+                                          <rect class="a-blk blk-l" x="64" y="24.8" width="9" height="9" rx="1" opacity="0"/>
+                                          <g class="ja"><path class="a-tool" d="M62.3,20.6 L65.7,28.9"/></g>
+                                          <g class="jb"><path class="a-tool" d="M69.7,15.4 L76.4,21.4"/></g>
+                                        </g>
+                                      </g>
+                                    </g>
+                                  </g>
+                                  <g class="ar">
+                                    <rect class="a-plate" x="160" y="100" width="24" height="4" rx="1"/>
+                                    <path class="a-base" d="M166,100 L168.5,62 L175.5,62 L178,100 Z"/>
+                                    <g class="j1">
+                                      <path class="a-link" d="M172,60 L176.3,10.2"/>
+                                      <circle class="a-joint" cx="172" cy="60" r="4"/>
+                                      <g class="j2">
+                                        <path class="a-link" d="M176.3,10.2 L136.3,9"/>
+                                        <circle class="a-joint" cx="176.3" cy="10.2" r="3.6"/>
+                                        <g class="j3">
+                                          <path class="a-link" d="M136.3,9 L130,18"/>
+                                          <circle class="a-joint" cx="136.3" cy="9" r="3.2"/>
+                                          <path class="a-tool" d="M126.3,15.4 L133.7,20.6"/>
+                                          <rect class="a-blk blk-r" x="117.3" y="25.1" width="9" height="9" rx="1" opacity="0"/>
+                                          <g class="ja"><path class="a-tool" d="M126.3,15.4 L119.6,21.4"/></g>
+                                          <g class="jb"><path class="a-tool" d="M133.7,20.6 L130.3,28.9"/></g>
+                                        </g>
+                                      </g>
+                                    </g>
+                                  </g>
+                                </svg>
+                                <figcaption class="arm-cap">
+                                  <b>2 &times; SO-101</b>
+                                  <span>5 DOF + gripper</span>
+                                  <button class="arm-replay" type="button" id="arm-replay" aria-label="Pause arm animation">pause</button>
+                                </figcaption>
+                              </figure>
+              </div>
 
-    <h5 class="s3-sub">Cross-embodiment bonuses</h5>
-    <p class="s3-p">The SO-101 arms go to every team, so they are the floor rather than something to earn. A
-      team that <b>already owns</b> other hardware can run the same benchmark across it and is paid per unit:
-      <b>$2,000 for each additional arm</b> and <b>$5,000 for each humanoid</b>. Confirm the units you intend to run with us in advance.</p>
-    <p class="s3-p">This is aimed at labs with hardware already standing in the room, which is how the
-      programme reaches cross-embodiment coverage it could not otherwise afford. Nothing here expects a team to
-      acquire anything.</p>
-  </section>
+              <h5 class="s3-sub">Cross-embodiment bonuses</h5>
+              <p class="s3-p">The SO-101 arms go to every team, so they are the floor rather than something to earn. A
+                team that <b>already owns</b> other hardware is paid per unit to run the same benchmark across it.
+                Nothing here expects a team to acquire anything.</p>
+              <ul class="s3-rate">
+                <li><b>$2,000</b><span>each additional arm</span></li>
+                <li><b>$5,000</b><span>each humanoid</span></li>
+              </ul>
+              <p class="sd__note">Confirm the units you intend to run with us in advance.</p>
+            </section>
 
-  <section class="s3-sec">
-    <h4 class="s3-h">Expected deliverables</h4>
-    <p class="s3-p">Results across the SO-101-compatible checkpoints, and across language models driving the arm
-      directly, Claude Opus&nbsp;5 in fast mode among them. Every policy runs the same tasks at the rollout count you declare in your reproducibility package. A public checkpoint is enough, so no teleoperation or demonstration collection is
-      needed.</p>
+            <section class="s3-sec">
+              <h4 class="s3-h">Expected deliverables</h4>
+              <p class="s3-p">Results across the SO-101-compatible checkpoints below, and across language models driving
+                the arm directly. Every policy runs the same tasks at the rollout count you declare. A public checkpoint
+                is enough, so no teleoperation or demonstration collection is needed.</p>
 
-    <ul class="s3-ck">
-      <li>
-        <span class="s3-ck__n">MolmoAct2</span>
-        <span class="s3-ck__d"><a href="https://huggingface.co/allenai/MolmoAct2-SO100_101">allenai/MolmoAct2-SO100_101</a>.
-          AllenAI&rsquo;s SO-100/101 fine-tune, absolute joint-pose control.</span>
-      </li>
-      <li>
-        <span class="s3-ck__n">GR00T</span>
-        <span class="s3-ck__d"><a href="https://huggingface.co/robocurve/gr00t-n1.7-so101-molmoact2">robocurve/gr00t-n1.7-so101-molmoact2</a>.
-          An SO-101 fine-tune of <a href="https://huggingface.co/nvidia/GR00T-N1.7-3B">nvidia/GR00T-N1.7-3B</a>,
-          published with held-out loss and no robot rollouts. <em>Stage&nbsp;3 is where those rollouts come from.</em></span>
-      </li>
-      <li>
-        <span class="s3-ck__n">&pi;<sub>0.5</sub></span>
-        <span class="s3-ck__d"><a href="https://huggingface.co/lerobot/pi05_base">lerobot/pi05_base</a>, base weights.
-          <em>No SO-101 &pi;<sub>0.5</sub> checkpoint is published. Physical Intelligence&rsquo;s is gated and
-          RoboCurve&rsquo;s release is bimanual YAM, so running &pi;<sub>0.5</sub> on an SO-101 means fine-tuning
-          the base yourself.</em></span>
-      </li>
-      <li>
-        <span class="s3-ck__n">Claude Opus 5</span>
-        <span class="s3-ck__d">Fast mode, driven through Inspect Robots. No checkpoint to load. The model is
-          prompted per step and its actions are logged like any other policy.</span>
-      </li>
-    </ul>
+              <ul class="s3-ck">
+                <li>
+                  <span class="s3-ck__n">MolmoAct2</span>
+                  <span class="s3-ck__d"><a href="https://huggingface.co/allenai/MolmoAct2-SO100_101">allenai/MolmoAct2-SO100_101</a>.
+                    AllenAI&rsquo;s SO-100/101 fine-tune, absolute joint-pose control.</span>
+                </li>
+                <li>
+                  <span class="s3-ck__n">GR00T</span>
+                  <span class="s3-ck__d"><a href="https://huggingface.co/robocurve/gr00t-n1.7-so101-molmoact2">robocurve/gr00t-n1.7-so101-molmoact2</a>.
+                    An SO-101 fine-tune of <a href="https://huggingface.co/nvidia/GR00T-N1.7-3B">nvidia/GR00T-N1.7-3B</a>,
+                    published with held-out loss and no robot rollouts. <em>Stage&nbsp;3 is where those rollouts come from.</em></span>
+                </li>
+                <li>
+                  <span class="s3-ck__n">&pi;<sub>0.5</sub></span>
+                  <span class="s3-ck__d"><a href="https://huggingface.co/lerobot/pi05_base">lerobot/pi05_base</a>, base weights.
+                    <em>No SO-101 &pi;<sub>0.5</sub> checkpoint is published. Physical Intelligence&rsquo;s is gated and
+                    RoboCurve&rsquo;s release is bimanual YAM, so running &pi;<sub>0.5</sub> on an SO-101 means fine-tuning
+                    the base yourself.</em></span>
+                </li>
+              </ul>
 
-    <ul class="s3-req" role="list">
-      <li><span>Every reported rollout carries its records: the transcript, the camera logs, the Inspect Robots
-        log, and the grading.</span></li>
-      <li><span>A camera recording of every rollout, from a camera that is <b>neither the wrist cam nor the
-        context cam</b>. A phone on a tripod, placed where a bystanding human researcher would stand, recording
-        all rollouts.</span></li>
-      <li><span>Results on further embodiments or models, where a team already has the hardware. This is what
-        the per-unit bonus above pays for.</span></li>
-    </ul>
+              <ul class="s3-req" role="list">
+                <li><span>Every rollout carries its records: transcript, camera logs, Inspect Robots log, grading.</span></li>
+                <li><span>A recording of every rollout from a third camera, <b>neither the wrist cam nor the context
+                  cam</b>: a phone on a tripod, where a bystanding researcher would stand.</span></li>
+                <li><span>Results on any further embodiments you already own. This is what the per-unit bonus pays for.</span></li>
+              </ul>
 
-    <div class="s3-art">
-      <div class="s3-art__hd">
-        <h5>One instant, two cameras</h5>
-        <span class="s3-art__tag">illustrative</span>
-      </div>
+              <div class="s3-art">
+                <div class="s3-art__hd">
+                  <h5>One instant, two cameras</h5>
+                  <span class="s3-art__tag">illustrative</span>
+                </div>
 
-      <div class="s3-figwrap">
-        <svg class="s3-fig" viewBox="0 0 760 354" xmlns="http://www.w3.org/2000/svg" role="img"
-             aria-labelledby="s3figT s3figD">
-          <title id="s3figT">The wrist camera's field of view compared with a bystander camera's</title>
-          <desc id="s3figD">A single robot cell drawn in outline. The whole picture is what a phone on a
-            tripod records. A small rectangle inside it marks everything the wrist camera keeps: the
-            gripper and the cloth it is holding. The dropped cloth on the floor and the operator
-            standing at the table both fall outside that rectangle.</desc>
+                <div class="s3-figwrap">
+                  <svg class="s3-fig" viewBox="0 0 760 354" xmlns="http://www.w3.org/2000/svg" role="img"
+                       aria-labelledby="s3figT s3figD">
+                    <title id="s3figT">The wrist camera's field of view compared with a bystander camera's</title>
+                    <desc id="s3figD">A single robot cell drawn in outline. The whole picture is what a phone on a
+                      tripod records. A small rectangle inside it marks everything the wrist camera keeps: the
+                      gripper and the cloth it is holding. The dropped cloth on the floor and the operator
+                      standing at the table both fall outside that rectangle.</desc>
 
-          <defs>
-            <clipPath id="s3crop"><rect x="270" y="98" width="160" height="120"/></clipPath>
+                    <defs>
+                      <clipPath id="s3crop"><rect x="270" y="98" width="160" height="120"/></clipPath>
 
-            <g id="s3scene" transform="translate(-55,-42)">
-              <!-- floor + back wall -->
-              <path d="M28,352 H732" fill="none" stroke-width="1.2"/>
-              <!-- table -->
-              <rect x="170" y="245" width="392" height="6" rx="1.5" fill="none" stroke-width="1.3"/>
-              <path d="M196,251 V352 M536,251 V352" fill="none" stroke-width="1.3"/>
-              <!-- context camera on its stand -->
-              <path d="M212,245 V206" fill="none" stroke-width="1.2"/>
-              <rect x="201" y="191" width="23" height="14" rx="2.5" fill="none" stroke-width="1.2"/>
-              <circle cx="212.5" cy="198" r="3.6" fill="none" stroke-width="1.1"/>
-              <!-- SO-101 arm -->
-              <rect x="276" y="240" width="48" height="5" rx="1" fill="none" stroke-width="1.2"/>
-              <path d="M287,240 L290.5,178 L299.5,178 L303,240 Z" fill="none" stroke-width="1.3"/>
-              <path d="M295,176 L352,120" fill="none" stroke-width="1.6"/>
-              <circle cx="295" cy="176" r="6" fill="none" stroke-width="1.4"/>
-              <path d="M352,120 L392,168" fill="none" stroke-width="1.6"/>
-              <circle cx="352" cy="120" r="5" fill="none" stroke-width="1.4"/>
-              <circle cx="392" cy="168" r="4.4" fill="none" stroke-width="1.4"/>
-              <!-- wrist camera body -->
-              <rect x="357" y="150" width="15" height="10" rx="2" fill="none" stroke-width="1.1"/>
-              <circle cx="364.5" cy="155" r="2.4" fill="none" stroke-width="1"/>
-              <!-- gripper -->
-              <path d="M388,172 L382,196 M397,171 L404,194" fill="none" stroke-width="1.5"/>
-              <!-- cloth held in the gripper, hem rippled so it reads as fabric -->
-              <path d="M383,196 L404,194 L411,229 C405,236 399,225 392,231 C387,235 382,229 377,233 Z"
-                    fill="none" stroke-width="1.3"/>
-              <path d="M387,210 C394,206 400,213 407,208" fill="none" stroke-width="1" opacity=".65"/>
-              <!-- second cloth folded on the table -->
-              <path d="M438,232 L494,232 L494,245 L438,245 Z" fill="none" stroke-width="1.2"/>
-              <path d="M438,238.5 H494" fill="none" stroke-width="1" opacity=".7"/>
-              <!-- dropped cloth on the floor -->
-              <path d="M578,352 C582,334 600,330 612,338 C624,330 640,336 638,352 Z"
-                    fill="none" stroke-width="1.3"/>
-              <path d="M590,348 C598,340 606,346 614,342" fill="none" stroke-width="1" opacity=".65"/>
-              <!-- operator -->
-              <circle cx="700" cy="181" r="13" fill="none" stroke-width="1.3"/>
-              <path d="M700,194 V268" fill="none" stroke-width="1.3"/>
-              <path d="M700,268 L688,352 M700,268 L713,352" fill="none" stroke-width="1.3"/>
-              <path d="M700,214 L671,244 M700,214 L719,250" fill="none" stroke-width="1.3"/>
-            </g>
-          </defs>
+                      <g id="s3scene" transform="translate(-55,-42)">
+                        <!-- floor + back wall -->
+                        <path d="M28,352 H732" fill="none" stroke-width="1.2"/>
+                        <!-- table -->
+                        <rect x="170" y="245" width="392" height="6" rx="1.5" fill="none" stroke-width="1.3"/>
+                        <path d="M196,251 V352 M536,251 V352" fill="none" stroke-width="1.3"/>
+                        <!-- context camera on its stand -->
+                        <path d="M212,245 V206" fill="none" stroke-width="1.2"/>
+                        <rect x="201" y="191" width="23" height="14" rx="2.5" fill="none" stroke-width="1.2"/>
+                        <circle cx="212.5" cy="198" r="3.6" fill="none" stroke-width="1.1"/>
+                        <!-- SO-101 arm -->
+                        <rect x="276" y="240" width="48" height="5" rx="1" fill="none" stroke-width="1.2"/>
+                        <path d="M287,240 L290.5,178 L299.5,178 L303,240 Z" fill="none" stroke-width="1.3"/>
+                        <path d="M295,176 L352,120" fill="none" stroke-width="1.6"/>
+                        <circle cx="295" cy="176" r="6" fill="none" stroke-width="1.4"/>
+                        <path d="M352,120 L392,168" fill="none" stroke-width="1.6"/>
+                        <circle cx="352" cy="120" r="5" fill="none" stroke-width="1.4"/>
+                        <circle cx="392" cy="168" r="4.4" fill="none" stroke-width="1.4"/>
+                        <!-- wrist camera body -->
+                        <rect x="357" y="150" width="15" height="10" rx="2" fill="none" stroke-width="1.1"/>
+                        <circle cx="364.5" cy="155" r="2.4" fill="none" stroke-width="1"/>
+                        <!-- gripper -->
+                        <path d="M388,172 L382,196 M397,171 L404,194" fill="none" stroke-width="1.5"/>
+                        <!-- cloth held in the gripper, hem rippled so it reads as fabric -->
+                        <path d="M383,196 L404,194 L411,229 C405,236 399,225 392,231 C387,235 382,229 377,233 Z"
+                              fill="none" stroke-width="1.3"/>
+                        <path d="M387,210 C394,206 400,213 407,208" fill="none" stroke-width="1" opacity=".65"/>
+                        <!-- second cloth folded on the table -->
+                        <path d="M438,232 L494,232 L494,245 L438,245 Z" fill="none" stroke-width="1.2"/>
+                        <path d="M438,238.5 H494" fill="none" stroke-width="1" opacity=".7"/>
+                        <!-- dropped cloth on the floor -->
+                        <path d="M578,352 C582,334 600,330 612,338 C624,330 640,336 638,352 Z"
+                              fill="none" stroke-width="1.3"/>
+                        <path d="M590,348 C598,340 606,346 614,342" fill="none" stroke-width="1" opacity=".65"/>
+                        <!-- operator -->
+                        <circle cx="700" cy="181" r="13" fill="none" stroke-width="1.3"/>
+                        <path d="M700,194 V268" fill="none" stroke-width="1.3"/>
+                        <path d="M700,268 L688,352 M700,268 L713,352" fill="none" stroke-width="1.3"/>
+                        <path d="M700,214 L671,244 M700,214 L719,250" fill="none" stroke-width="1.3"/>
+                      </g>
+                    </defs>
 
-          <!-- outer frame = the bystander camera's own frame -->
-          <g class="s3-tick">
-            <path d="M14,38 V12 H40 M720,12 H746 V38 M746,314 V340 H720 M40,340 H14 V314"/>
-          </g>
+                    <!-- outer frame = the bystander camera's own frame -->
+                    <g class="s3-tick">
+                      <path d="M14,38 V12 H40 M720,12 H746 V38 M746,314 V340 H720 M40,340 H14 V314"/>
+                    </g>
 
-          <!-- the scene, twice: muted everywhere, full strength inside the wrist crop -->
-          <use href="#s3scene" class="s3-dim"/>
-          <rect class="s3-wash" x="270" y="98" width="160" height="120"/>
-          <g clip-path="url(#s3crop)"><use href="#s3scene" class="s3-hot"/></g>
-          <rect class="s3-crop" x="270" y="98" width="160" height="120"/>
+                    <!-- the scene, twice: muted everywhere, full strength inside the wrist crop -->
+                    <use href="#s3scene" class="s3-dim"/>
+                    <rect class="s3-wash" x="270" y="98" width="160" height="120"/>
+                    <g clip-path="url(#s3crop)"><use href="#s3scene" class="s3-hot"/></g>
+                    <rect class="s3-crop" x="270" y="98" width="160" height="120"/>
 
-          <!-- labels -->
-          <text class="s3-lab" x="30" y="30">Bystander camera &middot; phone on a tripod</text>
-          <text class="s3-lab s3-lab--a" x="430" y="90" text-anchor="end">Wrist camera</text>
+                    <!-- labels -->
+                    <text class="s3-lab" x="30" y="30">Bystander camera &middot; phone on a tripod</text>
+                    <text class="s3-lab s3-lab--a" x="430" y="90" text-anchor="end">Wrist camera</text>
 
-          <path class="s3-lead-ln" d="M549,284 V258 H505"/>
-          <text class="s3-lab" x="501" y="254" text-anchor="end">Cloth dropped, 00:14</text>
+                    <path class="s3-lead-ln" d="M549,284 V258 H505"/>
+                    <text class="s3-lab" x="501" y="254" text-anchor="end">Cloth dropped, 00:14</text>
 
-          <path class="s3-lead-ln" d="M645,118 V94"/>
-          <text class="s3-lab" x="645" y="86" text-anchor="middle">Operator in the cell</text>
+                    <path class="s3-lead-ln" d="M645,118 V94"/>
+                    <text class="s3-lab" x="645" y="86" text-anchor="middle">Operator in the cell</text>
 
-          <text class="s3-lab" x="157" y="140" text-anchor="middle">Context cam</text>
-        </svg>
-      </div>
-      <p class="s3-swipe">Scroll the frame sideways &rarr; the floor and the operator are off to the right</p>
+                    <text class="s3-lab" x="157" y="140" text-anchor="middle">Context cam</text>
+                  </svg>
+                </div>
+                <p class="s3-swipe">Scroll the frame sideways &rarr; the floor and the operator are off to the right</p>
 
-      <p class="s3-art__cap">The tinted rectangle is everything the wrist camera keeps. The cloth on the floor
-        and the person who walked in both fall outside it. <b>The wrist camera records what the policy saw. A
-        camera in the room records what happened.</b></p>
+                <p class="s3-art__cap">The tinted rectangle is everything the wrist camera keeps. The cloth on the floor
+                  and the person who walked in both fall outside it. <b>The wrist camera records what the policy saw. A
+                  camera in the room records what happened.</b></p>
 
-      <div class="s3-mf">
-        <div class="s3-mf__id">
-          <span>Rollout <b>07 of 20</b></span>
-          <span>Task <b>fold-towel-quarters</b></span>
-          <span>Seed <b>4412</b></span>
-          <span>Policy <b>gr00t-n1.7-so101</b></span>
-        </div>
-        <ol>
-          <li><span class="s3-mf__n">01</span><span class="s3-mf__k">transcript</span>
-            <span class="s3-mf__v">What the policy was asked, what it returned, and every action it emitted, in order.</span></li>
-          <li><span class="s3-mf__n">02</span><span class="s3-mf__k">camera logs</span>
-            <span class="s3-mf__v">The wrist and context streams the policy actually conditioned on, timestamped against the run.</span></li>
-          <li><span class="s3-mf__n">03</span><span class="s3-mf__k">inspect robots log</span>
-            <span class="s3-mf__v">The evaluation record the harness writes, including the run that terminated early and why.</span></li>
-          <li><span class="s3-mf__n">04</span><span class="s3-mf__k">grading</span>
-            <span class="s3-mf__v">The 0&ndash;1 score from your rubric, with whoever or whatever applied it named.</span></li>
-          <li><span class="s3-mf__n">05</span><span class="s3-mf__k">bystander video</span>
-            <span class="s3-mf__v">The whole rollout from a fixed camera in the room. Neither the wrist cam nor the context cam.</span></li>
-        </ol>
-      </div>
-    </div>
-  </section>
+                <div class="s3-mf">
+                  <div class="s3-mf__id">
+                    <span>Rollout <b>07 of 20</b></span>
+                    <span>Task <b>fold-towel-quarters</b></span>
+                    <span>Seed <b>4412</b></span>
+                    <span>Policy <b>gr00t-n1.7-so101</b></span>
+                  </div>
+                  <ol>
+                    <li><span class="s3-mf__n">01</span><span class="s3-mf__k">transcript</span>
+                      <span class="s3-mf__v">What the policy was asked, what it returned, and every action it emitted, in order.</span></li>
+                    <li><span class="s3-mf__n">02</span><span class="s3-mf__k">camera logs</span>
+                      <span class="s3-mf__v">The wrist and context streams the policy actually conditioned on, timestamped against the run.</span></li>
+                    <li><span class="s3-mf__n">03</span><span class="s3-mf__k">inspect robots log</span>
+                      <span class="s3-mf__v">The evaluation record the harness writes, including the run that terminated early and why.</span></li>
+                    <li><span class="s3-mf__n">04</span><span class="s3-mf__k">grading</span>
+                      <span class="s3-mf__v">The 0&ndash;1 score from your rubric, with whoever or whatever applied it named.</span></li>
+                    <li><span class="s3-mf__n">05</span><span class="s3-mf__k">bystander video</span>
+                      <span class="s3-mf__v">The whole rollout from a fixed camera in the room. Neither the wrist cam nor the context cam.</span></li>
+                  </ol>
+                </div>
+              </div>
+            </section>
 
-</div>
+          </div>
           <!-- ================= END STAGE 3 DROP-IN ================= -->
 
           <h4 class="sd__h4">Award</h4>

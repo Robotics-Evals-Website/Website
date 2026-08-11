@@ -24,7 +24,7 @@
 <link rel="canonical" href="https://robotics-evals-website.github.io/Website/">
 <meta name="theme-color" content="#FCFAF6" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#191611" media="(prefers-color-scheme: dark)">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='9' fill='none' stroke='%23005E52' stroke-width='4'/><circle cx='16' cy='16' r='4' fill='%23005E52'/></svg>" type="image/svg+xml">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='9' fill='none' stroke='%23005F73' stroke-width='4'/><circle cx='16' cy='16' r='4' fill='%23005F73'/></svg>" type="image/svg+xml">
 <link rel="icon" href="favicon.png" type="image/png" sizes="48x48">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('reb-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
@@ -69,9 +69,9 @@
   --ink:#231F19;
   --ink-muted:#656057;
   --ink-faint:#716C63;
-  --accent:#005E52;
-  --accent-strong:#00463D;
-  --accent-contrast:#F3FAF8;
+  --accent:#005F73;
+  --accent-strong:#003A46;
+  --accent-contrast:#F3F9FA;
   --ease:cubic-bezier(.22,1,.36,1);
 
   --serif:"Newsreader","Newsreader Fallback",Georgia,"Times New Roman",serif;
@@ -100,17 +100,17 @@
 @media (prefers-color-scheme:dark){
   :root{
     --bg:#191611;--surface:#211E17;--surface-2:#2A251D;--line:#3C382F;--line-strong:#5A554A;
-    --ink:#F3EFE6;--ink-muted:#A79F91;--ink-faint:#8B8478;--accent:#33C4B0;--accent-strong:#4FD3C0;--accent-contrast:#0E0B07;
+    --ink:#F3EFE6;--ink-muted:#A79F91;--ink-faint:#8B8478;--accent:#33ABC4;--accent-strong:#4FBCD3;--accent-contrast:#0E0B07;
   }
 }
 :root[data-theme="light"]{
   --bg:#FCFAF6;--surface:#FEFEFB;--surface-2:#F7F2E5;--line:#C5C0B4;--line-strong:#8F8A7D;
-  --ink:#231F19;--ink-muted:#656057;--ink-faint:#716C63;--accent:#005E52;--accent-strong:#00463D;--accent-contrast:#F3FAF8;
+  --ink:#231F19;--ink-muted:#656057;--ink-faint:#716C63;--accent:#005F73;--accent-strong:#003A46;--accent-contrast:#F3F9FA;
   color-scheme:light;
 }
 :root[data-theme="dark"]{
   --bg:#191611;--surface:#211E17;--surface-2:#2A251D;--line:#3C382F;--line-strong:#5A554A;
-  --ink:#F3EFE6;--ink-muted:#A79F91;--ink-faint:#8B8478;--accent:#33C4B0;--accent-strong:#4FD3C0;--accent-contrast:#0E0B07;
+  --ink:#F3EFE6;--ink-muted:#A79F91;--ink-faint:#8B8478;--accent:#33ABC4;--accent-strong:#4FBCD3;--accent-contrast:#0E0B07;
   color-scheme:dark;
 }
 
@@ -418,7 +418,7 @@ html:not(.js) .sdt__panel+.sdt__panel,.sdt--degraded .sdt__panel+.sdt__panel{
 .sd__todo b{color:var(--accent);font-weight:500}
 
 @media print{
-  :root,:root[data-theme="light"],:root[data-theme="dark"]{--bg:#fff;--surface:#fff;--surface-2:#fff;--line:#c4ccc9;--line-strong:#8b9793;--ink:#101010;--ink-muted:#3a3a3a;--ink-faint:#5a5a5a;--accent:#00463D;--accent-strong:#00463D;--accent-contrast:#fff}
+  :root,:root[data-theme="light"],:root[data-theme="dark"]{--bg:#fff;--surface:#fff;--surface-2:#fff;--line:#c4ccc9;--line-strong:#8b9793;--ink:#101010;--ink-muted:#3a3a3a;--ink-faint:#5a5a5a;--accent:#003A46;--accent-strong:#003A46;--accent-contrast:#fff}
   body{background:#fff}
   .top,.skip,.theme,nav.main,.arm-replay,.cb__resample,.cb__auto,.sd__fig,.sdt__strip{display:none!important}
   .js .sdt__panel,.js .sdt__panel.is-open{display:block!important;animation:none!important}

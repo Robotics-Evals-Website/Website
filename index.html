@@ -4,23 +4,23 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Robotics Evaluation Bounty · a call for robotics benchmarks</title>
-<meta name="description" content="An open bounty funding reproducible, open-source robotics benchmarks. Up to $500,000 in awards, Stage 3 up to $25,000. Applications open 12 August 2026.">
+<meta name="description" content="An open bounty funding reproducible, open-source robotics benchmarks. Up to $500,000 in awards, up to $30,000 per team. Applications open 12 August 2026.">
 <meta name="color-scheme" content="light dark">
 <meta property="og:title" content="Robotics Evaluation Bounty">
-<meta property="og:description" content="There is no shared, replicated benchmark of what robots can actually do, or how fast that’s changing. We fund teams to build one. Stage 3 awards up to $25,000, two free SO-101 arms, and co-authorship on the joint paper.">
+<meta property="og:description" content="There is no shared, replicated benchmark of what robots can actually do, or how fast that’s changing. We fund teams to build one. Stage 2 awards up to $30,000, two free SO-101 arms, and co-authorship on the joint paper.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://robotics-evals-website.github.io/Website/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="A call for robotics benchmarks. Up to $500,000, up to 25 teams, applications August 2026.">
+<meta property="og:image:alt" content="A call for robotics benchmarks. Up to $500,000, up to 12 teams, applications August 2026.">
 <meta property="og:locale" content="en_GB">
 <meta property="og:url" content="https://robotics-evals-website.github.io/Website/">
 <meta property="og:site_name" content="Robotics Evaluation Bounty">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://robotics-evals-website.github.io/Website/og.png">
 <meta name="twitter:title" content="Robotics Evaluation Bounty">
-<meta name="twitter:description" content="An open bounty funding reproducible, open-source robotics benchmarks. Stage 3 awards up to $25,000, two free SO-101 arms, and co-authorship on the joint paper.">
-<meta name="twitter:image:alt" content="A call for robotics benchmarks. Up to $500,000, up to 25 teams, applications August 2026.">
+<meta name="twitter:description" content="An open bounty funding reproducible, open-source robotics benchmarks. Stage 2 awards up to $30,000, two free SO-101 arms, and co-authorship on the joint paper.">
+<meta name="twitter:image:alt" content="A call for robotics benchmarks. Up to $500,000, up to 12 teams, applications August 2026.">
 <link rel="canonical" href="https://robotics-evals-website.github.io/Website/">
 <meta name="theme-color" content="#FCFAF6" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#191611" media="(prefers-color-scheme: dark)">
@@ -37,7 +37,7 @@
   "@type": "MonetaryGrant",
   "name": "Robotics Evaluation Bounty",
   "url": "https://robotics-evals-website.github.io/Website/",
-  "description": "An open bounty funding reproducible, open-source benchmarks of general robotic capability, built on Inspect Robots. Applications open 12 August 2026; Stage 1 closes 11 September 2026; first results February 2027.",
+  "description": "An open bounty funding reproducible, open-source benchmarks of general robotic capability, built on Inspect Robots. Applications open 12 August 2026; Stage 1 closes 14 September 2026; first results February 2027.",
   "amount": {
     "@type": "MonetaryAmount",
     "currency": "USD",
@@ -273,14 +273,14 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
 .idea-list li b{color:var(--ink);font-weight:600;font-family:var(--sans)}
 
 /* ============================================================
-   01 · STAGE DETAILS  —  three cards, one panel
+   01 · STAGE DETAILS  —  two stages, one panel each
    ------------------------------------------------------------
    .sdt         widget root
-   .sdt__strip  the three always-visible stage cards (the collapsed state)
+   .sdt__strip  the always-visible stage selector (the collapsed state)
    .sdt__card   one card; <button aria-expanded aria-controls="stage-N">
    .sdt__panel  one panel; <section id="stage-N">, sibling of the strip
    .sd__*       the vocabulary a panel's content is written in
-   No-JS / script failure: the strip is hidden and all three panels are
+   No-JS / script failure: the strip is hidden and both panels are
    shown stacked, each with its own heading. Nothing is behind a control
    that cannot work.
    ============================================================ */
@@ -365,9 +365,7 @@ html:not(.js) .sdt__panel+.sdt__panel,.sdt--degraded .sdt__panel+.sdt__panel{
 .sd__facts{list-style:none;margin:clamp(1.1rem,2.2vw,1.6rem) 0 0;padding:0;
   display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);
   border:1px solid var(--line);border-radius:4px;overflow:hidden}
-@media (min-width:760px){.sd__facts{grid-template-columns:repeat(4,minmax(0,1fr))}
-  /* stage 1 carries two facts, not the four the other panels have */
-  #stage-1 .sd__facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:760px){.sd__facts{grid-template-columns:repeat(4,minmax(0,1fr))}}
 /* the facts row is always exactly four cells, so 4 / 2 / 1 columns never leave a
    half-empty row showing the rule colour through the 1px grid gap */
 .sd__facts li{background:var(--bg);padding:.75rem .95rem;display:flex;flex-direction:column;gap:.3rem}
@@ -798,151 +796,8 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 }
 
 /* ===== STAGE 2 PANEL ===== */
-/* ===== STAGE 2 PANEL ===== */
-/* One drop-in block. Every class is s2*, every colour comes from a token, and
-   there is no JavaScript: nothing in here measures layout, so the panel sitting
-   at display:none until it is opened costs nothing.
-
-   WIDTH. The page measure is .wrap — 1080px minus gutters — which lands panel
-   content at 1000px. Stage 2 pulls itself out to 1280px wherever the viewport
-   has the room and slides back to 1000px where it does not. The 1112px pivot is
-   1080 + 32, so 16px of margin still survives on each side at the moment the
-   bleed reaches zero; that covers the case where 100vw counts a classic
-   scrollbar the layout box does not. */
-.s2panel{
-  --s2-bleed:clamp(0px,(100vw - 1112px)/2,140px);
-  --s2-measure:68ch;
-  --s2-run-bg:color-mix(in srgb,var(--accent) 7%,transparent);
-  --s2-run-bd:color-mix(in srgb,var(--accent) 55%,var(--line));
-  --s2-open:color-mix(in srgb,var(--ink-faint) 65%,var(--line));
-  font-family:var(--sans);font-size:var(--fs-body);line-height:1.62;color:var(--ink);
-  container-type:inline-size;container-name:s2}
-.s2panel p{margin:0;max-width:var(--s2-measure)}
-.s2panel h4.s2h{font-family:var(--serif);font-weight:600;font-size:var(--fs-h3);line-height:1.25;
-  letter-spacing:-.01em;color:var(--ink);margin:0 0 clamp(.9rem,1.8vw,1.2rem);max-width:34ch}
-.s2sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
-  clip:rect(0 0 0 0);white-space:nowrap;border:0}
-
-/* ---------- the three deliverables ---------- */
-/* One column by default. Three across once the panel is wide enough that each
-   column still holds about fifty characters a line. */
-.s2del{list-style:none;margin:0;padding:0;counter-reset:s2d;
-  display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(1rem,2.2vw,1.4rem)}
-@container s2 (min-width:940px){
-  .s2del{grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(24px,2.8vw,40px)}
-}
-.s2del li{counter-increment:s2d;border-top:1px solid var(--line-strong);padding-top:.65rem}
-.s2del li::before{content:counter(s2d,decimal-leading-zero);display:block;
-  font-family:var(--mono);font-weight:500;font-size:var(--fs-label);
-  letter-spacing:var(--tr-label);color:var(--accent);margin-bottom:.5rem}
-.s2del b{display:block;font-weight:600;font-size:var(--fs-body-sm);line-height:1.4;
-  color:var(--ink);margin-bottom:.35rem}
-.s2del span{display:block;font-size:var(--fs-body-sm);line-height:1.55;color:var(--ink-muted)}
-
-.s2after{margin-top:clamp(1.1rem,2.2vw,1.5rem)}
-.s2after p{font-size:var(--fs-body-sm);line-height:1.6;color:var(--ink-muted);text-wrap:pretty}
-
-/* ---------- the figure ---------- */
-.s2sprite{position:absolute;width:0;height:0;overflow:hidden}
-.s2fig{margin:clamp(1.2rem,2.6vw,1.8rem) 0 0;border:1px solid var(--line);border-radius:6px;
-  background:transparent;overflow:hidden;margin-inline:calc(-1 * var(--s2-bleed))}
-.s2fig__hd{display:flex;align-items:baseline;justify-content:space-between;gap:.7rem 1.2rem;
-  flex-wrap:wrap;padding:clamp(12px,2.2vw,16px) clamp(14px,2.4vw,20px)}
-.s2fig__title{font-family:var(--sans);font-weight:600;font-size:var(--fs-body-sm);color:var(--ink);margin:0}
-.s2fig__tag{font-family:var(--mono);font-weight:500;font-size:var(--fs-label-sm);
-  letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--accent);
-  border:1px solid var(--accent);border-radius:2px;padding:.18em .5em}
-/* ---------- the coverage grid ---------- */
-/* The grid takes the whole width of the figure. An earlier draft parked the key
-   and the total in a right-hand rail; at 1440 that left a third of the rail
-   empty, and it cost the cells the width that makes fifty marks countable. */
-.s2g__scroll{overflow-x:auto;border-top:1px solid var(--line);
-  padding:clamp(14px,2.4vw,18px) clamp(14px,2.4vw,20px);
-  scrollbar-width:thin;scrollbar-color:var(--line-strong) transparent}
-.s2g__scroll:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
-.s2g__table{border-collapse:collapse;width:100%;min-width:592px;table-layout:fixed}
-.s2g__table caption{caption-side:top;text-align:left;padding:0 0 .75rem;font-family:var(--mono);
-  font-weight:500;font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);
-  text-transform:uppercase;color:var(--ink-muted)}
-.s2g__table th,.s2g__table td{padding:0;text-align:center}
-.s2g__table thead th{padding:0 6px 9px;vertical-align:bottom}
-/* the corner is empty: the row and column headers name their own axes, and the
-   table caption names both. 18/16.4 keeps "5-DoF, parallel jaw" on one line. */
-.s2g__corner{width:18%}
-.s2g__model{display:block;font-family:var(--sans);font-weight:600;font-size:.82rem;
-  color:var(--ink);line-height:1.2}
-.s2g__org{display:block;margin-top:2px;font-family:var(--mono);font-weight:400;
-  font-size:var(--fs-label-sm);letter-spacing:.03em;color:var(--ink-faint);line-height:1.25}
-.s2g__table tbody th{text-align:left;padding:0 12px 0 0;vertical-align:middle}
-.s2g__emb{display:block;font-family:var(--sans);font-weight:600;font-size:.82rem;
-  color:var(--ink);line-height:1.2}
-.s2g__embsub{display:block;margin-top:1px;font-family:var(--mono);font-weight:400;
-  font-size:var(--fs-label-sm);color:var(--ink-faint);line-height:1.25}
-/* an empty cell means something here, so its rule is an informative graphic and
-   needs 3:1. Bare --line is 1.74 light / 1.55 dark; this mix is 3.34 / 3.31. */
-.s2g__cell{border:1px solid var(--s2-open);padding:7px;vertical-align:middle;width:16.4%}
-.s2g__cell.s2run{background:var(--s2-run-bg);border-color:var(--s2-run-bd)}
-.s2g__svg{display:block;width:100%;height:auto}
-/* one authored circle, tiled to exactly ten across and five down by the rect
-   it fills — the fifty marks in a cell are drawn once, not fifty times */
-.s2dot{fill:var(--accent)}
-.s2g__cell:hover{background:color-mix(in srgb,var(--accent) 14%,transparent)}
-.s2g__table tbody tr:hover .s2g__emb{color:var(--accent)}
-
-/* Scroll affordance. It sits outside the scroller: inside it, the hint would be
-   parked off the right edge of the very overflow it is announcing. */
-.s2g__hint{display:none;margin:0 !important;padding:0 clamp(14px,2.4vw,20px) clamp(12px,2vw,16px);
-  font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:.03em;color:var(--accent)}
-/* the table is 592px plus the scroller's padding, so it starts to clip at a panel
-   width near 626. Stated twice: once against the panel, once against the viewport
-   for browsers without container queries (viewport 680 puts the panel at 626). */
-@container s2 (max-width:640px){.s2g__hint{display:block}}
-@media (max-width:680px){.s2g__hint{display:block}}
-
-/* ---------- key, total, caption ---------- */
-.s2foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
-  gap:.9rem 2rem;padding:clamp(12px,2.2vw,16px) clamp(14px,2.4vw,20px);
-  border-top:1px solid var(--line)}
-.s2keys{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.45rem 1.5rem;
-  font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:.03em;color:var(--ink-muted)}
-.s2keys li{display:flex;align-items:center;gap:.5rem}
-.s2eq{margin:0 !important;max-width:none !important;display:flex;flex-wrap:wrap;
-  align-items:baseline;gap:.2rem .45rem;font-family:var(--mono);font-size:var(--fs-label-sm);
-  letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--ink-muted)}
-.s2eq b{font-size:1.4rem;line-height:1;letter-spacing:-.01em;font-weight:500;color:var(--ink);
-  font-variant-numeric:tabular-nums;text-transform:none}
-.s2eq i{font-style:normal;color:var(--ink-faint);font-size:1rem}
-.s2eq .s2eq__tot{color:var(--accent)}
-.s2k{flex:none;display:block}
-/* the key marks are the figure's marks: same tokens, same 1px rule, so the key
-   never describes a mark the grid does not contain */
-.s2k--dot{width:7px;height:7px;border-radius:50%;background:var(--accent)}
-.s2k--run{width:26px;height:13px;border:1px solid var(--s2-run-bd);background:var(--s2-run-bg)}
-.s2k--open{width:26px;height:13px;border:1px solid var(--s2-open)}
-
-.s2fig__cap{margin:0 !important;padding:clamp(12px,2.2vw,15px) clamp(14px,2.4vw,20px);
-  padding-right:max(clamp(14px,2.4vw,20px),calc(100% - 78ch));
-  border-top:1px solid var(--line);background:var(--surface-2);
-  font-size:var(--fs-small);line-height:1.55;color:var(--ink-muted);max-width:none !important}
-
-/* ---------- changing the benchmark ---------- */
-.s2note{margin-top:clamp(1.5rem,2.8vw,2rem) !important;border-left:2px solid var(--accent);
-  padding:.15rem 0 .15rem 1rem;font-size:var(--fs-body-sm);line-height:1.6;
-  color:var(--ink-muted);max-width:74ch !important}
-.s2note b{color:var(--ink);font-weight:600}
-
-/* prefers-reduced-motion needs no rule here: the panel has no animation, no
-   transition and no script. Keep it that way. */
-@media print{
-  .s2fig,.s2del li,.s2note{break-inside:avoid}
-  .s2g__scroll{overflow:visible !important}
-  .s2g__hint{display:none !important}
-  .s2panel{margin-inline:0}
-}
-
-/* ===== STAGE 3 PANEL ===== */
 /* ============================================================
-   STAGE 3 PANEL — self-contained block. New classes are s3-*;
+   STAGE 2 PANEL — self-contained block. New classes are s3-*;
    .sd__split / .sd__split-body / .sd__fig are the panel contract's
    own vocabulary. Colours come from the site's custom properties only.
    ============================================================ */
@@ -1060,6 +915,80 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 @media (prefers-reduced-motion:reduce){.s3 *{transition:none!important;animation:none!important}}
 
 /* ---- hero plate: SO-101 orthographic ------------------------------ */
+/* ============================================================
+   CANDIDATE A — dateline & lead
+   Stage 1 is a single ruled dateline; Stage 2 is the lead item.
+   Shared folio column at the left; the mass does the ranking.
+   ============================================================ */
+.edA{display:block;background:none;border:0;gap:0}
+.edA .sdt__card{display:grid;background:none;border:0;padding:0;width:100%;text-align:left;
+  color:inherit;font:inherit;column-gap:clamp(1rem,2vw,1.6rem)}
+.edA .sdt__card::after{content:none}
+.edA .sdt__card:hover,.edA .sdt__card[aria-expanded="true"]{background:none}
+/* the open entry is ruled into the panel below it, as the original strip was */
+.edA .sdt__card[aria-expanded="true"]{box-shadow:inset 0 -2px 0 0 var(--accent)}
+.edA .sdt__card[aria-expanded="true"] .edA__nm,
+.edA .sdt__card[aria-expanded="true"] .edA__ttl{color:var(--accent)}
+.edA .sdt__card:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.edA .edA__fol{font-family:var(--serif);font-weight:600;font-size:1.1rem;line-height:1;
+  color:var(--line-strong);font-variant-numeric:lining-nums}
+
+/* --- stage 1 · the dateline ------------------------------- */
+.edA .edA__line{grid-template-columns:3.4rem auto auto 1fr auto;align-items:baseline;
+  padding:.72rem 0 .78rem;border-top:1px solid var(--line-strong);border-bottom:1px solid var(--line)}
+.edA__nm{font-family:var(--serif);font-size:1.1rem;font-weight:600;letter-spacing:-.01em;color:var(--ink)}
+.edA__note{grid-column:4;justify-self:end;font-family:var(--mono);font-size:var(--fs-data);
+  color:var(--ink-faint);letter-spacing:.01em;white-space:nowrap}
+.edA__note b{font-weight:500;color:var(--ink);font-variant-numeric:tabular-nums}
+.edA__date{font-family:var(--mono);font-size:var(--fs-data);color:var(--ink-faint);letter-spacing:.01em;
+  font-variant-numeric:tabular-nums;white-space:nowrap}
+.edA__go{font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);
+  text-transform:uppercase;color:var(--accent);margin-left:clamp(1rem,2.4vw,2rem);white-space:nowrap}
+.edA__go::after{content:" +";font-size:1.2em;line-height:1;display:inline-block;
+  transform-origin:50% 45%;transition:transform .2s var(--ease)}
+.edA .sdt__card[aria-expanded="true"] .edA__go::after{transform:rotate(45deg)}
+.edA .sdt__card:hover .edA__nm,.edA .sdt__card:hover .edA__ttl{color:var(--accent-strong)}
+.edA .sdt__card[aria-expanded="true"] .edA__fol{color:var(--accent)}
+
+/* --- stage 2 · the lead ----------------------------------- */
+.edA .edA__lead{grid-template-columns:3.4rem minmax(0,1fr) auto;
+  padding:clamp(1.5rem,3vw,2.3rem) 0 0;border-bottom:1px solid var(--line-strong)}
+.edA .edA__fol--big{grid-row:1;font-family:var(--serif);font-weight:600;font-size:3.1rem;line-height:.78;
+  color:var(--line-strong);letter-spacing:-.03em}
+.edA__hd{grid-row:1;grid-column:2}
+.edA__ttl{display:block;font-family:var(--serif);font-weight:600;letter-spacing:-.022em;line-height:1.04;
+  font-size:clamp(1.9rem, 1.25rem + 1.9vw, 2.62rem);color:var(--ink);
+  transition:color .2s var(--ease)}
+.edA__deck{display:block;margin-top:.8rem;max-width:34ch;font-family:var(--sans);
+  font-size:var(--fs-body-sm);line-height:1.5;color:var(--ink-muted)}
+.edA__sum{grid-row:1;grid-column:3;justify-self:end;text-align:right;padding-top:.2rem}
+.edA__fig{display:block;font-family:var(--mono);font-weight:500;font-variant-numeric:tabular-nums;
+  font-size:clamp(1.2rem, .85rem + .95vw, 1.62rem);line-height:1;color:var(--ink);white-space:nowrap}
+.edA__figlab{display:block;margin-top:.5rem;font-family:var(--mono);font-size:var(--fs-label-sm);
+  letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--ink-faint)}
+.edA__foot{grid-row:2;grid-column:2/-1;display:flex;align-items:baseline;gap:1.4rem;
+  margin-top:clamp(1.2rem,2.2vw,1.7rem);padding:.7rem 0 .8rem;border-top:1px solid var(--line)}
+.edA__when{font-family:var(--mono);font-size:var(--fs-data);color:var(--ink);letter-spacing:.01em;white-space:nowrap}
+.edA__after{font-family:var(--mono);font-size:var(--fs-data);color:var(--ink-faint);letter-spacing:.01em;
+  flex:1 1 auto;padding-left:1.4rem;border-left:1px solid var(--line)}
+/* below ~1100 the dateline no longer fits on one line: it folds to two,
+   name and control on the first, the record on the second */
+@media (max-width:1100px){
+  .edA .edA__line{grid-template-columns:3.4rem minmax(0,1fr) auto;row-gap:.4rem}
+  .edA__nm{grid-column:2;grid-row:1}
+  .edA .edA__line .edA__go{grid-column:3;grid-row:1;justify-self:end;margin-left:1rem}
+  .edA__date{grid-column:2;grid-row:2}
+  .edA__note{grid-column:3;grid-row:2;justify-self:end}
+}
+@media (max-width:700px){
+  .edA .edA__line{grid-template-columns:2.6rem minmax(0,1fr);row-gap:.3rem}
+  .edA__note,.edA__date{grid-column:2;justify-self:start;white-space:normal}
+  .edA .edA__line .edA__go{grid-column:2;grid-row:3;justify-self:start;margin:.35rem 0 0}
+  .edA .edA__lead{grid-template-columns:2.6rem minmax(0,1fr)}
+  .edA__sum{grid-row:2;grid-column:2;justify-self:start;text-align:left;margin-top:1.1rem}
+  .edA__foot{grid-row:3;grid-column:2;flex-direction:column;gap:.5rem}
+  .edA__after{padding-left:0;border-left:0}
+}
 </style>
 </head>
 <body>
@@ -1084,8 +1013,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
   <div class="mmenu" id="mobileMenu" hidden>
     <a href="#stages">Stages</a>
     <a href="#stage-1">Stage 1 &middot; Proposal</a>
-    <a href="#stage-2">Stage 2 &middot; Simulation</a>
-    <a href="#stage-3">Stage 3 &middot; Hardware</a>
+    <a href="#stage-2">Stage 2 &middot; Hardware</a>
     <a href="#benchmarks">What to build</a>
     <a href="#problem">The gap</a>
     <a href="#faq">Questions</a>
@@ -1114,7 +1042,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
       <div class="status-cell"><span>Award pool</span><b>Up to <em>$500,000</em></b></div>
       <div class="status-cell"><span>Each team</span><b>Up to <em>$30,000</em></b></div>
       <div class="status-cell"><span>Framework</span><b><em>Inspect Robots</em></b></div>
-      <div class="status-cell"><span>Stage 1 closes</span><b><em>11 Sep 2026</em></b></div>
+      <div class="status-cell"><span>Stage 1 closes</span><b><em>14 Sep 2026</em></b></div>
     </div>
   </div>
 
@@ -1123,36 +1051,34 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
     <div class="wrap">
       <p class="marker"><b>01</b> / stages and details</p>
       <div class="prose">
-        <h2>Three stages.</h2>
-        <p class="lead">Each stage runs in its own window and asks for one deliverable. Select a stage to read what that deliverable has to contain.</p>
+        <h2>Two stages.</h2>
+        <p class="lead">The first is a written proposal and is open to everyone. The second is funded, and is where the benchmark actually gets built. Select a stage to read what it asks you to deliver.</p>
       </div>
 
       <div class="sdt reveal" id="details">
-        <div class="sdt__strip" role="group" aria-label="Stage details">
-        <button class="sdt__card" type="button" id="sdt-tab-1" aria-controls="stage-1" aria-expanded="false">
-          <span class="sdt__rail" aria-hidden="true"><span class="sdt__dot"></span></span>
-          <span class="sdt__num">Stage 1</span>
-          <span class="sdt__name">Benchmark proposal</span>
-          <span class="sdt__when">12 Aug &ndash; 11 Sep 2026</span>
-          <span class="sdt__more" aria-hidden="true">Details</span>
+        <div class="sdt__strip edA" role="group" aria-label="Stages">
+        <button class="sdt__card edA__line" type="button" id="sdt-tab-1" aria-controls="stage-1" aria-expanded="false">
+          <span class="edA__fol" aria-hidden="true">1</span>
+          <span class="edA__nm">Benchmark proposal</span>
+          <span class="edA__date">12 Aug &ndash; 14 Sep 2026 &middot; open to all</span>
+          <span class="edA__note"><b>$500</b> if shortlisted, not selected</span>
+          <span class="edA__go" aria-hidden="true">Brief</span>
         </button>
-        <button class="sdt__card" type="button" id="sdt-tab-2" aria-controls="stage-2" aria-expanded="false">
-          <span class="sdt__rail" aria-hidden="true"><span class="sdt__dot"></span></span>
-          <span class="sdt__num">Stage 2</span>
-          <span class="sdt__name">Simulation benchmark</span>
-          <span class="sdt__when">18 Sep &ndash; 15 Oct 2026</span>
-          <span class="sdt__cohort">Up to 25 teams</span>
-          <span class="sdt__money"><i>Award</i><b>$5,000</b></span>
-          <span class="sdt__more" aria-hidden="true">Details</span>
-        </button>
-        <button class="sdt__card" type="button" id="sdt-tab-3" aria-controls="stage-3" aria-expanded="false">
-          <span class="sdt__rail" aria-hidden="true"><span class="sdt__dot"></span></span>
-          <span class="sdt__num">Stage 3</span>
-          <span class="sdt__name">Real-world hardware benchmark</span>
-          <span class="sdt__when">23 Oct &ndash; 18 Dec 2026</span>
-          <span class="sdt__cohort">Up to 12 teams</span>
-          <span class="sdt__money"><i>Award</i><b>$15,000 &ndash; $25,000</b></span>
-          <span class="sdt__more" aria-hidden="true">Details</span>
+        <button class="sdt__card edA__lead" type="button" id="sdt-tab-2" aria-controls="stage-2" aria-expanded="false">
+          <span class="edA__fol edA__fol--big" aria-hidden="true">2</span>
+          <span class="edA__hd">
+            <span class="edA__ttl">Real-world hardware<br>benchmark</span>
+            <span class="edA__deck">Up to 12 teams are funded to build their benchmark and run it on real robots.</span>
+          </span>
+          <span class="edA__sum">
+            <span class="edA__fig">$20,000 &ndash; $30,000</span>
+            <span class="edA__figlab">Award per team</span>
+          </span>
+          <span class="edA__foot">
+            <span class="edA__when">25 Sep &ndash; 18 Dec 2026</span>
+            <span class="edA__after">Delivered benchmarks are re-run in Jan &ndash; Feb 2027 &middot; $10,000 and co-authorship if they pass</span>
+            <span class="edA__go" aria-hidden="true">Brief</span>
+          </span>
         </button>
         </div>
 
@@ -1162,8 +1088,10 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
           <h3 class="sd__title" id="sd-title-1">Benchmark proposal</h3>
           <p class="sd__lead">Tell us what capability you want to measure, in natural language.</p>
           <ul class="sd__facts">
-            <li><span>Window</span><b>12 Aug &ndash; 11 Sep 2026</b></li>
-            <li><span>Closes</span><b>11 Sep, 23:59 Pacific</b></li>
+            <li><span>Window</span><b>12 Aug &ndash; 14 Sep 2026</b></li>
+            <li><span>Closes</span><b>14 Sep, 23:59 Pacific</b></li>
+            <li><span>Open to</span><b>anyone, no robot</b></li>
+            <li><span>Shortlisted, not selected</span><b>$500</b></li>
           </ul>
         </div>
         <div class="sd__body">
@@ -1278,171 +1206,29 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
       <section class="sdt__panel" id="stage-2" data-stage="2" aria-labelledby="sd-title-2">
         <div class="sd__head">
           <p class="sd__eyebrow">Stage 2 &middot; deliverable</p>
-          <h3 class="sd__title" id="sd-title-2">Simulation benchmark</h3>
-          <p class="sd__lead">Turn that into a physics simulation that scores itself.</p>
-          <ul class="sd__facts">
-            <li><span>Window</span><b>18 Sep &ndash; 15 Oct 2026</b></li>
-            <li><span>Cohort</span><b>Up to 25 teams</b></li>
-            <li><span>Award</span><b>$5,000</b></li>
-            <li><span>Compute credits</span><b>$500</b></li>
-          </ul>
-        </div>
-        <div class="sd__body">
-          <p class="sd__p">A physics simulation of the task family, built in a simulator such as Isaac&nbsp;Sim and wired into Inspect Robots. It installs clean, runs end to end, and passes automated CI checks. No hardware is needed at this stage.</p>
-
-          <!-- ================= STAGE 2 CONTENT DROPS IN HERE ================= -->
-          <div class="s2panel">
-
-            <h4 class="s2h">What you hand in</h4>
-
-            <ol class="s2del">
-              <li>
-                <b>Sim environment with the assets.</b>
-                <span>Meshes, collision geometry, the URDF or USD descriptions, the scene files a task is
-                  assembled from. If the environment cannot build a scene without it, it ships in the
-                  repository.</span>
-              </li>
-              <li>
-                <b>Results across embodiments and models.</b>
-                <span>At least 5 embodiments. At least 5 models. Models with cross-embodiment support are
-                  fine. At least 50 runs for each embodiment-and-model pair.</span>
-              </li>
-              <li>
-                <b>Transcripts, joint logs and eval results are stored and published.</b>
-                <span>The joint trajectory of every run is kept, so someone else can check it.</span>
-              </li>
-            </ol>
-
-            <div class="s2after">
-              <p>Five embodiments and five models have to appear, paired however you like. One model per
-                embodiment is five pairs and qualifies. Every pair you run needs its fifty.</p>
-            </div>
-
-            <svg class="s2sprite" aria-hidden="true" focusable="false" width="0" height="0"><defs>
-              <pattern id="s2-dots" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
-                <circle class="s2dot" cx="5" cy="5" r="1.9"/>
-              </pattern>
-            </defs></svg>
-
-            <figure class="s2fig">
-              <div class="s2fig__hd">
-                <h4 class="s2fig__title">Coverage across embodiments and models</h4>
-                <span class="s2fig__tag">Illustrative</span>
-              </div>
-
-              <div class="s2g__scroll" tabindex="0" role="region"
-                   aria-label="Coverage grid, five embodiments by five models. Scrolls horizontally.">
-                <table class="s2g__table">
-                  <caption>five embodiments &nbsp;&middot;&nbsp; five models &nbsp;&middot;&nbsp; 50 runs per pair</caption>
-                  <thead>
-                    <tr>
-                      <th class="s2g__corner" scope="col"><span class="s2sr">embodiment</span></th>
-                      <th scope="col"><span class="s2g__model">&pi;₀</span><span class="s2g__org">Physical Intelligence</span></th>
-                      <th scope="col"><span class="s2g__model">Gemini Robotics</span><span class="s2g__org">Google DeepMind</span></th>
-                      <th scope="col"><span class="s2g__model">GR00T N1</span><span class="s2g__org">NVIDIA</span></th>
-                      <th scope="col"><span class="s2g__model">Helix</span><span class="s2g__org">Figure</span></th>
-                      <th scope="col"><span class="s2g__model">OpenVLA</span><span class="s2g__org">Stanford</span></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row"><span class="s2g__emb">SO-101</span><span class="s2g__embsub">5-DoF, parallel jaw</span></th>
-                      <td class="s2g__cell s2run"><svg class="s2g__svg" viewBox="0 0 100 50" aria-hidden="true" focusable="false"><rect width="100" height="50" fill="url(#s2-dots)"/></svg><span class="s2sr">50 runs</span></td>
-                      <td class="s2g__cell"></td>
-                      <td class="s2g__cell"></td>
-                      <td class="s2g__cell"></td>
-                      <td class="s2g__cell"></td>
-                    </tr>
-                    <tr>
-                      <th scope="row"><span class="s2g__emb">SO-101 &times;2</span><span class="s2g__embsub">bimanual</span></th>
-                      <td class="s2g__cell"></td>
-                      <td class="s2g__cell s2run"><svg class="s2g__svg" viewBox="0 0 100 50" aria-hidden="true" focusable="false"><rect width="100" height="50" fill="url(#s2-dots)"/></svg><span class="s2sr">50 runs</span></td>
-                      <td class="s2g__cell"></td>
-                      <td class="s2g__cell"></td>
-                      <td class="s2g__cell"></td>
-                    </tr>
-                    <tr>
-                      <th scope="row"><span class="s2g__emb">6-DoF arm</span><span class="s2g__embsub">suction</span></th>
-                      <td class="s2g__cell"></td>
-                      <td class="s2g__cell"></td>
-                      <td class="s2g__cell s2run"><svg class="s2g__svg" viewBox="0 0 100 50" aria-hidden="true" focusable="false"><rect width="100" height="50" fill="url(#s2-dots)"/></svg><span class="s2sr">50 runs</span></td>
-                      <td class="s2g__cell"></td>
-                      <td class="s2g__cell"></td>
-                    </tr>
-                    <tr>
-                      <th scope="row"><span class="s2g__emb">7-DoF arm</span><span class="s2g__embsub">parallel jaw</span></th>
-                      <td class="s2g__cell"></td>
-                      <td class="s2g__cell"></td>
-                      <td class="s2g__cell"></td>
-                      <td class="s2g__cell s2run"><svg class="s2g__svg" viewBox="0 0 100 50" aria-hidden="true" focusable="false"><rect width="100" height="50" fill="url(#s2-dots)"/></svg><span class="s2sr">50 runs</span></td>
-                      <td class="s2g__cell"></td>
-                    </tr>
-                    <tr>
-                      <th scope="row"><span class="s2g__emb">Mobile base + arm</span><span class="s2g__embsub">wheeled</span></th>
-                      <td class="s2g__cell"></td>
-                      <td class="s2g__cell"></td>
-                      <td class="s2g__cell"></td>
-                      <td class="s2g__cell"></td>
-                      <td class="s2g__cell s2run"><svg class="s2g__svg" viewBox="0 0 100 50" aria-hidden="true" focusable="false"><rect width="100" height="50" fill="url(#s2-dots)"/></svg><span class="s2sr">50 runs</span></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <p class="s2g__hint" aria-hidden="true">scroll the grid for the other models &rarr;</p>
-
-              <div class="s2foot">
-                <ul class="s2keys">
-                  <li><span class="s2k s2k--dot"></span>one mark, one run</li>
-                  <li><span class="s2k s2k--run"></span>a pair you run</li>
-                  <li><span class="s2k s2k--open"></span>open, and optional</li>
-                </ul>
-                <p class="s2eq"><b>5</b> pairs <i>&times;</i> <b>50</b> runs <i>=</i>
-                  <b class="s2eq__tot">250</b> runs minimum</p>
-              </div>
-
-              <figcaption class="s2fig__cap">The filled cells are one possible choice of pairs. Model names
-                are real, and no results exist yet.</figcaption>
-            </figure>
-
-          </div>
-          <!-- ================= END STAGE 2 DROP-IN ================= -->
-
-          <h4 class="sd__h4">Award</h4>
-          <ul class="sd__pay">
-            <li><span>Award</span><b>$5,000</b></li>
-            <li><span>Compute credits</span><b>$500</b></li>
-          </ul>
-          <p class="sd__note">Up to 12 of the 25 teams go on to Stage&nbsp;3. Selection happens after the 15 October deadline; Stage&nbsp;3 opens on 23 October, and the SO-101 arms are ordered on selection day.</p>
-          <div class="cta-row cta-row-tight"><a class="btn btn-primary btn-lg" href="#apply">Apply</a></div>
-        </div>
-      </section>
-
-      <section class="sdt__panel" id="stage-3" data-stage="3" aria-labelledby="sd-title-3">
-        <div class="sd__head">
-          <p class="sd__eyebrow">Stage 3 &middot; deliverable</p>
-          <h3 class="sd__title" id="sd-title-3">Real-world hardware benchmark</h3>
+          <h3 class="sd__title" id="sd-title-2">Real-world hardware benchmark</h3>
           <p class="sd__lead">Run it on real arms. Then we run it again ourselves.</p>
           <ul class="sd__facts">
-            <li><span>Window</span><b>23 Oct &ndash; 18 Dec 2026</b></li>
+            <li><span>Window</span><b>25 Sep &ndash; 18 Dec 2026</b></li>
             <li><span>Cohort</span><b>Up to 12 teams</b></li>
-            <li><span>On delivery</span><b>$15,000</b></li>
+            <li><span>On delivery</span><b>$20,000</b></li>
             <li><span>Bonus on successful replication</span><b>+$10,000</b></li>
           </ul>
         </div>
         <div class="sd__body">
-          <!-- ================= STAGE 3 CONTENT DROPS IN HERE ================= -->
+          <!-- ================= STAGE 2 CONTENT DROPS IN HERE ================= -->
           <div class="s3">
 
             <p class="s3-lead">Every task in your benchmark runs on real SO-101 arms, across the setups your
-              distributions define. The Stage&nbsp;2 simulation is then scored against those hardware results, and the
-              distance between the two is reported as a finding rather than tuned away.</p>
+              distributions define. Every rollout is recorded, so someone else can check the result rather than take your
+              word for it.</p>
 
             <section class="s3-sec">
               <h4 class="s3-h">What you get</h4>
 
               <div class="sd__split">
                 <div class="sd__split-body">
-                  <p class="s3-p">Every team that reaches Stage&nbsp;3 is sent two fully assembled SO-101 follower arms,
+                  <p class="s3-p">Every team that reaches Stage&nbsp;2 is sent two fully assembled SO-101 follower arms,
                     ordered on selection day. They are free and yours to keep even if you withdraw, so you do not need to
                     own a robot to apply.</p>
                   <p class="s3-p">Teams also receive $1,000 in compute credits and up to $1,000 of materials reimbursed
@@ -1531,7 +1317,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
                   <span class="s3-ck__n">GR00T</span>
                   <span class="s3-ck__d"><a href="https://huggingface.co/robocurve/gr00t-n1.7-so101-molmoact2" target="_blank" rel="noopener noreferrer">robocurve/gr00t-n1.7-so101-molmoact2</a>.
                     An SO-101 fine-tune of <a href="https://huggingface.co/nvidia/GR00T-N1.7-3B" target="_blank" rel="noopener noreferrer">nvidia/GR00T-N1.7-3B</a>,
-                    published with held-out loss and no robot rollouts. <em>Stage&nbsp;3 is where those rollouts come from.</em></span>
+                    published with held-out loss and no robot rollouts. <em>Stage&nbsp;2 is where those rollouts come from.</em></span>
                 </li>
               </ul>
 
@@ -1656,11 +1442,28 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
             </section>
 
           </div>
-          <!-- ================= END STAGE 3 DROP-IN ================= -->
+          <!-- ================= END STAGE 2 DROP-IN ================= -->
+
+          <section class="s3-sec">
+            <h4 class="s3-h">One check-in, four weeks in</h4>
+            <p class="s3-p">By <b>23 October</b> your repository should install and run one task end to end, and your
+              arms should be powered up and moving. Teams that have not started by then leave the programme. You keep
+              the arms either way.</p>
+          </section>
+
+          <section class="s3-sec">
+            <h4 class="s3-h">We run it again</h4>
+            <p class="s3-p">A benchmark is a list of tasks. Each task states a distribution over setups, and each seed
+              realizes one instance of it. In January and February we re-run part of your benchmark on our own arms.
+              We pick one task at random, draw five instances of it, and run three rollouts on each.</p>
+            <p class="s3-p">It passes if we can set up every scene from your written spec alone, and our success rate
+              falls inside the 90% interval your own numbers imply. A pass releases <b>$10,000</b> and co-authorship
+              on the joint paper. Nothing is announced in advance.</p>
+          </section>
 
           <h4 class="sd__h4">Award</h4>
           <ul class="sd__pay">
-            <li><span>On delivery</span><b>$15,000</b></li>
+            <li><span>On delivery</span><b>$20,000</b></li>
             <li><span>Bonus on successful replication</span><b>+$10,000</b></li>
             <li><span>Each additional arm you own</span><b>+$2,000</b></li>
             <li><span>Each humanoid you own</span><b>+$5,000</b></li>
@@ -1795,21 +1598,20 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
       <p class="marker"><b>04</b> / questions</p>
       <div class="prose"><h2>Questions.</h2></div>
       <div class="faq reveal">
-        <details><summary>Who can apply?</summary><p>Individuals and teams, students included. You do not need to own a robot. Every team that reaches Stage&nbsp;3 is sent two fully assembled SO-101 arms at no cost and keeps them. Everyone enters the same way, with a Stage&nbsp;1 proposal, and you may submit more than one.</p></details>
+        <details><summary>Who can apply?</summary><p>Individuals and teams, students included. You do not need to own a robot. Every team that reaches Stage&nbsp;2 is sent two fully assembled SO-101 arms at no cost and keeps them. Everyone enters the same way, with a Stage&nbsp;1 proposal, and you may submit more than one.</p></details>
         <details><summary>What do I submit at each stage?</summary>
         <ul class="faq-list">
-          <li><b>Stage 1</b> A proposal: the benchmark you want to build, the area it addresses, your background, and the list of tasks it contains. Every task carries four features: an instruction, a description of the goal, a scoring rubric between 0 and 1, and a setup with every random element given a named distribution. Due 11 September 2026, 23:59 Pacific. Scored on team capability, idea quality, and relevance.</li>
-          <li><b>Stage 2</b> A physics simulation of the task family, built in a simulator such as Isaac&nbsp;Sim and wired into Inspect Robots. It must install clean, run end to end, pass CI, and carry a self-score against the published review criteria. No hardware is needed at this stage.</li>
-          <li><b>Stage 3</b> The hardware benchmark running end to end with a baseline evaluated, scored against your Stage&nbsp;2 simulation, plus a reproducibility package covering environment specs with tolerances, the evaluation protocol, the reset procedure, and rollout counts. Due 18 December 2026, 23:59 Pacific, rolling from 1 December. We then spot-check a random sample of instances for reproducibility before the replication bonus is released.</li>
+          <li><b>Stage 1</b> A proposal: the benchmark you want to build, the area it addresses, your background, and the list of tasks it contains. Every task carries four features: an instruction, a description of the goal, a scoring rubric between 0 and 1, and a setup with every random element given a named distribution. Due 14 September 2026, 23:59 Pacific. Scored on team capability, idea quality, and relevance.</li>
+          <li><b>Stage 2</b> The hardware benchmark running end to end with a baseline evaluated, plus a reproducibility package covering environment specs with tolerances, the evaluation protocol, the reset procedure, and rollout counts. Due 18 December 2026, 23:59 Pacific, rolling from 1 December. We then spot-check a random sample of instances for reproducibility before the replication bonus is released.</li>
         </ul></details>
         <details><summary>Is this a job, a contract, or a grant?</summary><p>None of those. These are competition awards rather than payment for services. There is no employment or contracting relationship, no supervision, no hours reporting, and no work assigned by us. You choose your own task, method, and schedule, and are judged against criteria published on day one. Awards are flat amounts tied to deliverables, not to time spent. If you hold a student visa, confirm with your international student office before entering.</p></details>
-        <details><summary>How are awards paid and taxed?</summary><p>To the team, by international transfer, split as the team directs. University-affiliated teams may instead request payment as a research gift to their institution; ask at Stage&nbsp;2 selection, since institutional contracting takes weeks. Awards may be reported to tax authorities, and awards paid to teams outside the United States may be subject to US withholding, which may be recoverable by filing a US return the following year. We collect tax forms at Stage&nbsp;3 selection.</p></details>
-        <details><summary>Which robot do I build on?</summary><p>The SO-101 is the default reference embodiment. Every Stage&nbsp;3 team is sent two fully assembled follower arms, ordered on selection day, free and with no return obligation, including if you withdraw. They sit outside the $1,000 materials budget, which covers task materials and 3D-printable fixtures. You drive them through <span class="mono">inspect-robots-so101</span>, which wraps policy checkpoints from LeRobot, Hugging Face’s robot-learning library, as an Inspect Robots policy; a public checkpoint is enough for a baseline, so no teleoperation, demo collection, or leader arms are needed. You may instead propose an alternative embodiment you already own, approved at Stage&nbsp;2, and still receive the arms:</p>
+        <details><summary>How are awards paid and taxed?</summary><p>To the team, by international transfer, split as the team directs. University-affiliated teams may instead request payment as a research gift to their institution; ask at Stage&nbsp;2 selection, since institutional contracting takes weeks. Awards may be reported to tax authorities, and awards paid to teams outside the United States may be subject to US withholding, which may be recoverable by filing a US return the following year. We collect tax forms at Stage&nbsp;2 selection.</p></details>
+        <details><summary>Which robot do I build on?</summary><p>The SO-101 is the default reference embodiment. Every Stage&nbsp;2 team is sent two fully assembled follower arms, ordered on selection day, free and with no return obligation, including if you withdraw. They sit outside the $1,000 materials budget, which covers task materials and 3D-printable fixtures. You drive them through <span class="mono">inspect-robots-so101</span>, which wraps policy checkpoints from LeRobot, Hugging Face’s robot-learning library, as an Inspect Robots policy; a public checkpoint is enough for a baseline, so no teleoperation, demo collection, or leader arms are needed. You may instead propose an alternative embodiment you already own, approved at Stage&nbsp;2, and still receive the arms:</p>
         <ul class="faq-list">
           <li><b>Arms</b> YAM, WidowX AI, Franka Research 3</li>
           <li><b>Humanoids</b> AgiBot X1, Unitree G1</li>
         </ul></details>
-        <details><summary>What do I keep, and what gets published?</summary><p>You keep copyright and publication rights in full. Write up your own benchmark and submit it anywhere, without clearing anything with us. Entering grants us a licence to publish it in WorldEvals under MIT, with your team credited. After replication closes in February we write up the collected suite, the paired simulations, the measured sim-to-real gap, and baseline results for current vision-language-action (VLA) policies, targeting submission in Q1 2027. Every Stage&nbsp;3 team that passes replication is offered co-authorship, and may decline and be acknowledged instead.</p></details>
+        <details><summary>What do I keep, and what gets published?</summary><p>You keep copyright and publication rights in full. Write up your own benchmark and submit it anywhere, without clearing anything with us. Entering grants us a licence to publish it in WorldEvals under MIT, with your team credited. After replication closes in February we write up the collected suite, the replication results, and baseline results for current vision-language-action (VLA) policies, targeting submission in Q1 2027. Every Stage&nbsp;2 team that passes replication is offered co-authorship, and may decline and be acknowledged instead.</p></details>
         <details><summary>What are Inspect Robots, KitchenBench, and WorldEvals?</summary><p><a href="https://inspectrobots.org/" target="_blank" rel="noopener noreferrer">Inspect Robots</a> is RoboCurve’s open-source framework for evaluating AI and robots in the physical world. <a href="https://github.com/robocurve/kitchenbench" target="_blank" rel="noopener noreferrer">KitchenBench</a> is a bimanual kitchen-manipulation benchmark built on it, and the worked example of how tasks, their distributions and their rubrics are written. It runs on bimanual arms rather than the SO-101, so read it for the shape of a benchmark rather than as a template to copy. WorldEvals is the public repository where finished benchmarks will be released.</p></details>
       </div>
     </div>
@@ -1840,8 +1642,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
       <div class="foot-col">
         <h3>Explore</h3>
         <a href="#stage-1">Stage 1 &middot; Benchmark proposal</a>
-        <a href="#stage-2">Stage 2 &middot; Simulation benchmark</a>
-        <a href="#stage-3">Stage 3 &middot; Hardware benchmark</a>
+        <a href="#stage-2">Stage 2 &middot; Hardware benchmark</a>
         <a href="#benchmarks">What to build</a>
         <a href="#problem">The gap</a>
         <a href="#faq">Questions</a>
@@ -2095,8 +1896,8 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 })();
 </script>
 <script>
-/* ===================== stage details — three cards, one panel =====================
-   Progressive enhancement. The markup ships as three stacked <section> panels that
+/* ===================== stage details — two stages, one panel each =====================
+   Progressive enhancement. The markup ships as two stacked <section> panels that
    are readable on their own; CSS hides them only while `.js` is on <html>, which the
    head script sets before first paint. If anything below throws, `sdt--degraded`
    puts the page back into that stacked state rather than leaving content behind a
@@ -2144,7 +1945,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
       }catch(e){}
     }
 
-    /* Only when the panel is entirely below the fold — on a narrow screen the three
+    /* Only when the panel is entirely below the fold — on a narrow screen the
        cards stack, so the panel can open off-screen. Never fires on a swap that is
        already visible, so an ordinary desktop click still moves nothing. */
     function revealIfBelowFold(i){

@@ -7,7 +7,7 @@
 <meta name="description" content="An open bounty funding reproducible, open-source robotics benchmarks. Up to $500,000 in awards, up to $30,000 per team before hardware bonuses. Applications open 17 August 2026.">
 <meta name="color-scheme" content="light dark">
 <meta property="og:title" content="Robotics Evaluation Bounty">
-<meta property="og:description" content="There is no shared, replicated benchmark of what robots can actually do, or how fast that’s changing. We fund teams to build one. Stage 2 awards up to $30,000 before hardware bonuses, two free SO-101 arms, and co-authorship on the joint paper.">
+<meta property="og:description" content="There is no shared, replicated benchmark of what robots can actually do, or how fast that’s changing. We fund teams to build one. Stage 2 awards up to $30,000 before hardware bonuses, two free SO-101 arms, and co-authorship on the joint paper if replication passes.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://robotics-evals-website.github.io/Website/og.png">
 <meta property="og:image:width" content="1200">
@@ -19,7 +19,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://robotics-evals-website.github.io/Website/og.png">
 <meta name="twitter:title" content="Robotics Evaluation Bounty">
-<meta name="twitter:description" content="An open bounty funding reproducible, open-source robotics benchmarks. Stage 2 awards up to $30,000 before hardware bonuses, two free SO-101 arms, and co-authorship on the joint paper.">
+<meta name="twitter:description" content="An open bounty funding reproducible, open-source robotics benchmarks. Stage 2 awards up to $30,000 before hardware bonuses, two free SO-101 arms, and co-authorship on the joint paper if replication passes.">
 <meta name="twitter:image:alt" content="A call for robotics benchmarks. Up to $500,000, up to 12 teams, applications August 2026.">
 <link rel="canonical" href="https://robotics-evals-website.github.io/Website/">
 <meta name="theme-color" content="#FCFAF6" media="(prefers-color-scheme: light)">
@@ -41,7 +41,7 @@
   "amount": {
     "@type": "MonetaryAmount",
     "currency": "USD",
-    "maxValue": 30000
+    "maxValue": 35000
   },
   "sponsor": [
     { "@type": "Organization", "name": "RoboCurve", "url": "https://robocurve.org/" },
@@ -100,7 +100,7 @@
 @media (prefers-color-scheme:dark){
   :root{
     --bg:#191611;--surface:#211E17;--surface-2:#2A251D;--line:#3C382F;--line-strong:#5A554A;
-    --ink:#F3EFE6;--ink-muted:#A79F91;--ink-faint:#8B8478;--accent:#33ABC4;--accent-strong:#4FBCD3;--accent-contrast:#0E0B07;
+    --ink:#F3EFE6;--ink-muted:#A79F91;--ink-faint:#9A9284;--accent:#33ABC4;--accent-strong:#4FBCD3;--accent-contrast:#0E0B07;
   }
 }
 :root[data-theme="light"]{
@@ -110,7 +110,7 @@
 }
 :root[data-theme="dark"]{
   --bg:#191611;--surface:#211E17;--surface-2:#2A251D;--line:#3C382F;--line-strong:#5A554A;
-  --ink:#F3EFE6;--ink-muted:#A79F91;--ink-faint:#8B8478;--accent:#33ABC4;--accent-strong:#4FBCD3;--accent-contrast:#0E0B07;
+  --ink:#F3EFE6;--ink-muted:#A79F91;--ink-faint:#9A9284;--accent:#33ABC4;--accent-strong:#4FBCD3;--accent-contrast:#0E0B07;
   color-scheme:dark;
 }
 
@@ -295,6 +295,7 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
   /* two-line names on one card must not push the date rows of the others out of line */
   .sdt__name{min-height:2.5em}}
 html:not(.js) .sdt__strip,.sdt--degraded .sdt__strip{display:none}
+html:not(.js) .cb__figwrap,html:not(.js) .cb__real{display:none}
 
 .sdt__card{position:relative;display:flex;flex-direction:column;align-items:stretch;
   width:100%;margin:0;text-align:left;cursor:pointer;font:inherit;color:inherit;
@@ -659,7 +660,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 .cb__setup{display:grid;grid-template-columns:minmax(0,1fr);border-top:1px solid var(--line)}
 .cb__col{padding:14px;display:flex;flex-direction:column;gap:12px;min-width:0}
 .cb__setup>.cb__col+.cb__col{border-top:1px solid var(--line)}
-@media (min-width:941px){
+@media (min-width:1060px){
   .cb__setup{grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr)}
   .cb__setup>.cb__col+.cb__col{border-top:0;border-left:1px solid var(--line)}
 }
@@ -982,11 +983,12 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 }
 @media (max-width:700px){
   .edA .edA__line{grid-template-columns:2.6rem minmax(0,1fr);row-gap:.3rem}
-  .edA__note,.edA__date{grid-column:2;justify-self:start;white-space:normal}
-  .edA .edA__line .edA__go{grid-column:2;grid-row:3;justify-self:start;margin:.35rem 0 0}
+  .edA__date{grid-column:2;grid-row:2;justify-self:start;white-space:normal}
+  .edA__note{grid-column:2;grid-row:3;justify-self:start;white-space:normal}
+  .edA .edA__line .edA__go{grid-column:2;grid-row:4;justify-self:start;margin:.35rem 0 0}
   .edA .edA__lead{grid-template-columns:2.6rem minmax(0,1fr)}
   .edA__sum{grid-row:2;grid-column:2;justify-self:start;text-align:left;margin-top:1.1rem}
-  .edA__foot{grid-row:3;grid-column:2;flex-direction:column;gap:.5rem}
+  .edA__foot{grid-row:3;grid-column:2;flex-direction:column;align-items:flex-start;gap:.5rem}
   .edA__after{padding-left:0;border-left:0}
 }
 </style>
@@ -1032,7 +1034,6 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
         <a class="btn btn-ghost btn-lg" href="#benchmarks">See what to build</a>
       </div>
       <p class="cta-note">Applications open 17 August 2026 · no robot needed</p>
-        </div>
     </div>
   </section>
 
@@ -1061,7 +1062,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
           <span class="edA__fol" aria-hidden="true">1</span>
           <span class="edA__nm">Benchmark proposal</span>
           <span class="edA__date">17 Aug &ndash; 14 Sep 2026 &middot; open to all</span>
-          <span class="edA__note"><b>$500</b> if shortlisted, not selected</span>
+          <span class="edA__note"><b>$500</b> if shortlisted, not selected &middot; up to 20 teams</span>
           <span class="edA__go" aria-hidden="true">Brief</span>
         </button>
         <button class="sdt__card edA__lead" type="button" id="sdt-tab-2" aria-controls="stage-2" aria-expanded="false">
@@ -1091,7 +1092,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
             <li><span>Window</span><b>17 Aug &ndash; 14 Sep 2026</b></li>
             <li><span>Closes</span><b>14 Sep, 23:59 Pacific</b></li>
             <li><span>Open to</span><b>anyone, no robot</b></li>
-            <li><span>Shortlisted, not selected</span><b>$500</b></li>
+            <li><span>Shortlisted, not selected, up to 20 teams</span><b>$500</b></li>
           </ul>
         </div>
         <div class="sd__body">
@@ -1118,7 +1119,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
                 <div class="cb__panelhd"><h5><span class="cb__no">02</span> Goal</h5><span class="cb__tag">end state</span></div>
                 <div class="cb__pbody">
                   <p class="cb__def">The finished scene, in natural language, described precisely enough that two people scoring the same attempt agree.</p>
-                  <p class="cb__ex">The towel is folded flat into quarters, with edges aligned (no side protruding more than 5%), and the surface is smooth, with no lumps or wrinkles.</p>
+                  <p class="cb__ex">The towel is folded flat into quarters, with edges aligned (no side protruding more than 5% of the folded edge length), and the surface is smooth, with no lumps or wrinkles.</p>
                 </div>
               </div>
 
@@ -1303,7 +1304,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
             <section class="s3-sec">
               <h4 class="s3-h">Expected deliverables</h4>
               <p class="s3-p">Results across the SO-101-compatible checkpoints below, and across language models driving
-                the arm directly. Every policy runs the same tasks at the rollout count you declare. A public checkpoint
+                the arm directly, prompted per step and logged like any other policy. Every policy runs the same tasks at the rollout count you declare. A public checkpoint
                 is enough, so no teleoperation or demonstration collection is needed.</p>
 
               <ul class="s3-ck">
@@ -1325,6 +1326,12 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
                 <li><span>Every rollout carries its records: transcript, camera logs, Inspect Robots log, grading.</span></li>
                 <li><span>A recording of every rollout from a third camera, <b>neither the wrist cam nor the context
                   cam</b>: a phone on a tripod, where a bystanding researcher would stand.</span></li>
+                <li><span>Environment specs with stated tolerances, precise enough that an operator who has never
+                  seen your rig can build the scene from the document alone.</span></li>
+                <li><span>The full evaluation protocol: the reset procedure between rollouts, and the number of
+                  rollouts per instance.</span></li>
+                <li><span>A bill of materials under the $1,000 cap, covering task materials and any 3D-printable
+                  fixtures, with the print files included.</span></li>
                 <li><span>Results on any further embodiments you already own. This is what the per-unit bonus pays for.</span></li>
               </ul>
 
@@ -1472,7 +1479,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
             <li><span>Materials budget</span><b>up to $1,000</b></li>
             <li><span>Joint paper</span><b>co-authorship if replication passes</b></li>
           </ul>
-          <p class="sd__note">Every line is additive. A team that delivers, passes replication, and runs the benchmark on a humanoid it already owns receives $35,000.</p>
+          <p class="sd__note">The cash lines are additive. A team that delivers, passes replication, and runs the benchmark on a humanoid it already owns receives $35,000, plus the arms, credits and materials.</p>
           <div class="cta-row cta-row-tight"><a class="btn btn-primary btn-lg" href="#apply">Apply</a></div>
         </div>
       </section>
@@ -1582,7 +1589,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
                   <th scope="col"><span class="rg__model">OpenVLA</span><span class="rg__org">Stanford</span></th>
                 </tr>
               </thead>
-              <tbody id="rg-body"></tbody>
+              <tbody id="rg-body"><tr><th scope="row"><span class="rg__fam">CableBench</span><span class="rg__famsub">port-panel insertion</span></th><td class="rg__cell"><span class="rg__dash" aria-hidden="true">&mdash;</span><span class="rg__sr">no result on this benchmark yet</span></td><td class="rg__cell"><span class="rg__dash" aria-hidden="true">&mdash;</span><span class="rg__sr">no result on this benchmark yet</span></td><td class="rg__cell"><span class="rg__dash" aria-hidden="true">&mdash;</span><span class="rg__sr">no result on this benchmark yet</span></td><td class="rg__cell"><span class="rg__dash" aria-hidden="true">&mdash;</span><span class="rg__sr">no result on this benchmark yet</span></td><td class="rg__cell"><span class="rg__dash" aria-hidden="true">&mdash;</span><span class="rg__sr">no result on this benchmark yet</span></td></tr><tr><th scope="row"><span class="rg__fam">MechanicBench</span><span class="rg__famsub">robot repair / part swap</span></th><td class="rg__cell"><span class="rg__dash" aria-hidden="true">&mdash;</span><span class="rg__sr">no result on this benchmark yet</span></td><td class="rg__cell"><span class="rg__dash" aria-hidden="true">&mdash;</span><span class="rg__sr">no result on this benchmark yet</span></td><td class="rg__cell"><span class="rg__dash" aria-hidden="true">&mdash;</span><span class="rg__sr">no result on this benchmark yet</span></td><td class="rg__cell"><span class="rg__dash" aria-hidden="true">&mdash;</span><span class="rg__sr">no result on this benchmark yet</span></td><td class="rg__cell"><span class="rg__dash" aria-hidden="true">&mdash;</span><span class="rg__sr">no result on this benchmark yet</span></td></tr><tr><th scope="row"><span class="rg__fam">CoffeeBench</span><span class="rg__famsub">multi-step machine op</span></th><td class="rg__cell"><span class="rg__dash" aria-hidden="true">&mdash;</span><span class="rg__sr">no result on this benchmark yet</span></td><td class="rg__cell"><span class="rg__dash" aria-hidden="true">&mdash;</span><span class="rg__sr">no result on this benchmark yet</span></td><td class="rg__cell"><span class="rg__dash" aria-hidden="true">&mdash;</span><span class="rg__sr">no result on this benchmark yet</span></td><td class="rg__cell"><span class="rg__dash" aria-hidden="true">&mdash;</span><span class="rg__sr">no result on this benchmark yet</span></td><td class="rg__cell"><span class="rg__dash" aria-hidden="true">&mdash;</span><span class="rg__sr">no result on this benchmark yet</span></td></tr><tr><th scope="row"><span class="rg__fam">HotSwapBench</span><span class="rg__famsub">live-rack module swap</span></th><td class="rg__cell"><span class="rg__dash" aria-hidden="true">&mdash;</span><span class="rg__sr">no result on this benchmark yet</span></td><td class="rg__cell"><span class="rg__dash" aria-hidden="true">&mdash;</span><span class="rg__sr">no result on this benchmark yet</span></td><td class="rg__cell"><span class="rg__dash" aria-hidden="true">&mdash;</span><span class="rg__sr">no result on this benchmark yet</span></td><td class="rg__cell"><span class="rg__dash" aria-hidden="true">&mdash;</span><span class="rg__sr">no result on this benchmark yet</span></td><td class="rg__cell"><span class="rg__dash" aria-hidden="true">&mdash;</span><span class="rg__sr">no result on this benchmark yet</span></td></tr><tr><th scope="row"><span class="rg__fam">HarnessRoute</span><span class="rg__famsub">deformable routing</span></th><td class="rg__cell"><span class="rg__dash" aria-hidden="true">&mdash;</span><span class="rg__sr">no result on this benchmark yet</span></td><td class="rg__cell"><span class="rg__dash" aria-hidden="true">&mdash;</span><span class="rg__sr">no result on this benchmark yet</span></td><td class="rg__cell"><span class="rg__dash" aria-hidden="true">&mdash;</span><span class="rg__sr">no result on this benchmark yet</span></td><td class="rg__cell"><span class="rg__dash" aria-hidden="true">&mdash;</span><span class="rg__sr">no result on this benchmark yet</span></td><td class="rg__cell"><span class="rg__dash" aria-hidden="true">&mdash;</span><span class="rg__sr">no result on this benchmark yet</span></td></tr><tr><th scope="row"><span class="rg__fam">PourBench</span><span class="rg__famsub">liquids / pouring</span></th><td class="rg__cell"><span class="rg__dash" aria-hidden="true">&mdash;</span><span class="rg__sr">no result on this benchmark yet</span></td><td class="rg__cell"><span class="rg__dash" aria-hidden="true">&mdash;</span><span class="rg__sr">no result on this benchmark yet</span></td><td class="rg__cell"><span class="rg__dash" aria-hidden="true">&mdash;</span><span class="rg__sr">no result on this benchmark yet</span></td><td class="rg__cell"><span class="rg__dash" aria-hidden="true">&mdash;</span><span class="rg__sr">no result on this benchmark yet</span></td><td class="rg__cell"><span class="rg__dash" aria-hidden="true">&mdash;</span><span class="rg__sr">no result on this benchmark yet</span></td></tr></tbody>
             </table>
           </div>
           <footer class="rg__foot">
@@ -1603,10 +1610,10 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
         <details><summary>What do I submit at each stage?</summary>
         <ul class="faq-list">
           <li><b>Stage 1</b> A proposal: the benchmark you want to build, the area it addresses, your background, and the list of tasks it contains. Every task carries four features: an instruction, a description of the goal, a scoring rubric between 0 and 1, and a setup with every random element given a named distribution. Due 14 September 2026, 23:59 Pacific. Scored on team capability, idea quality, and relevance.</li>
-          <li><b>Stage 2</b> The hardware benchmark running end to end with a baseline evaluated, plus a reproducibility package covering environment specs with tolerances, the evaluation protocol, the reset procedure, and rollout counts. Due 18 December 2026, 23:59 Pacific, rolling from 1 December. We then spot-check a random sample of instances for reproducibility before the replication bonus is released.</li>
+          <li><b>Stage 2</b> The hardware benchmark running end to end with a baseline evaluated, plus everything listed in the Stage&nbsp;2 brief above: results for each checkpoint, the records and video for every rollout, and the reproducibility package. Due 18 December 2026, 23:59 Pacific, rolling from 1 December 2026. We then re-run part of the benchmark ourselves, and the replication bonus is released if it passes.</li>
         </ul></details>
         <details><summary>Is this a job, a contract, or a grant?</summary><p>None of those. These are competition awards rather than payment for services. There is no employment or contracting relationship, no supervision, no hours reporting, and no work assigned by us. You choose your own task, method, and schedule, and are judged against criteria published on day one. Awards are flat amounts tied to deliverables, not to time spent. If you hold a student visa, confirm with your international student office before entering.</p></details>
-        <details><summary>How are awards paid and taxed?</summary><p>To the team lead, by international transfer, split as the lead directs. University-affiliated teams may instead request payment as a research gift to their institution; ask at Stage&nbsp;2 selection, since institutional contracting takes weeks. Awards may be reported to tax authorities, and awards paid to teams outside the United States may be subject to US withholding, which may be recoverable by filing a US return the following year. We collect tax forms at Stage&nbsp;2 selection.</p></details>
+        <details><summary>How are awards paid and taxed?</summary><p>To the team lead, by international transfer, split as the lead directs. University-affiliated teams may instead request payment as a research gift to their institution; ask at Stage&nbsp;2 selection, since institutional contracting takes weeks. We report awards to tax authorities where required. Awards paid outside the United States may be subject to US withholding; recipients inside the United States receive awards without withholding and may owe estimated tax. We collect tax forms at Stage&nbsp;2 selection.</p></details>
         <details><summary>Which robot do I build on?</summary><p>The SO-101 is the default reference embodiment. Every Stage&nbsp;2 team is sent two fully assembled follower arms, ordered on selection day, free and with no return obligation, including if you withdraw. They sit outside the $1,000 materials budget, which covers task materials and 3D-printable fixtures. You drive them through <span class="mono">inspect-robots-so101</span>, which wraps policy checkpoints from LeRobot, Hugging Face’s robot-learning library, as an Inspect Robots policy; a public checkpoint is enough for a baseline, so no teleoperation, demo collection, or leader arms are needed. You may instead propose an alternative embodiment you already own, approved at Stage&nbsp;2, and still receive the arms:</p>
         <ul class="faq-list">
           <li><b>Arms</b> YAM, WidowX AI, Franka Research 3</li>
@@ -1683,11 +1690,18 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
     syncAria();
   });
 
+})();
+/* reveal: isolated so a throw above can never leave the page at opacity 0 */
+(function(){
+  var els=document.querySelectorAll('.reveal');
   var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-  if('IntersectionObserver' in window && !reduce){
-    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px',threshold:.06});
-    document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
-  }else{document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in');});}
+  function showAll(){Array.prototype.forEach.call(els,function(el){el.classList.add('in');});}
+  try{
+    if('IntersectionObserver' in window && !reduce){
+      var io=new IntersectionObserver(function(es){Array.prototype.forEach.call(es,function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px',threshold:.06});
+      Array.prototype.forEach.call(els,function(el){io.observe(el);});
+    }else{showAll();}
+  }catch(e){showAll();}
 })();
 
 /* ===================== mobile section menu ===================== */
@@ -1873,7 +1887,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 (function(){
   "use strict";
   var FAMILIES=[{name:"CableBench",sub:"port-panel insertion"},{name:"MechanicBench",sub:"robot repair / part swap"},{name:"CoffeeBench",sub:"multi-step machine op"},{name:"HotSwapBench",sub:"live-rack module swap"},{name:"HarnessRoute",sub:"deformable routing"},{name:"PourBench",sub:"liquids / pouring"}];
-  var N_MODELS=5,body=document.getElementById("rg-body");if(!body)return;
+  var N_MODELS=5,body=document.getElementById("rg-body");if(!body||body.children.length)return;
   body.innerHTML=FAMILIES.map(function(f){var cells="";for(var c=0;c<N_MODELS;c++){cells+='<td class="rg__cell"><span class="rg__dash" aria-hidden="true">—</span><span class="rg__sr">no result on this benchmark yet</span></td>';}return '<tr><th scope="row"><span class="rg__fam">'+f.name+'</span><span class="rg__famsub">'+f.sub+'</span></th>'+cells+'</tr>';}).join("");
 })();
 </script>
@@ -1918,7 +1932,6 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
       cards.forEach(function(c,i){
         var sel=(i===open);
         c.setAttribute("aria-expanded",String(sel));
-        c.tabIndex=(open<0?(i===0?0:-1):(sel?0:-1));
         c.classList.toggle("is-reached",open>-1&&i<=open);
         c.classList.toggle("is-past",open>-1&&i<open);
         panels[i].classList.toggle("is-open",sel);

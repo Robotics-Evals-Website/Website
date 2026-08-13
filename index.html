@@ -162,6 +162,7 @@ a:hover{color:var(--accent-strong)}
 .prose h2{margin-bottom:1rem}
 .prose p+p{margin-top:1rem}
 .accent-line{font-family:var(--mono);font-size:var(--fs-small);color:var(--accent);letter-spacing:.01em;margin-top:1.5rem}
+#problem .accent-line span{display:block}
 
 /* ============================================================
    HEADER
@@ -408,10 +409,12 @@ html:not(.js) .sdt__panel~.sdt__panel,.sdt--degraded .sdt__panel~.sdt__panel{
 .sd__h4+*{margin-top:.8rem!important}
 .sd__p{margin:0;color:var(--ink-muted);font-size:var(--fs-body-sm);line-height:1.6;max-width:var(--measure);text-wrap:pretty}
 .sd__p b{color:var(--ink);font-weight:600}
-.sd__checks{list-style:none;margin:0;padding:0;display:grid;gap:.55rem;
+.sd__checks{list-style:none;margin:0;padding:0;display:grid;gap:.7rem;
   color:var(--ink-muted);font-size:var(--fs-body-sm);max-width:var(--measure)}
-.sd__checks li{display:flex;gap:.7rem}
-.sd__checks li::before{content:"›" / "";color:var(--accent);font-weight:600}
+/* A rule down the left edge rather than a glyph: it scales with the item
+   instead of hanging off the first line, and needs no font coverage. */
+.sd__checks li{display:flex;padding-left:.95rem;
+  border-left:2px solid color-mix(in srgb,var(--accent) 70%,transparent)}
 .sd__checks b{color:var(--ink);font-weight:600}
 .sd__pay{list-style:none;margin:0;padding:0;font-family:var(--mono);font-size:var(--fs-data);
   border-top:1px solid var(--line);max-width:46rem}
@@ -497,6 +500,7 @@ html:not(.js) .sdt__panel~.sdt__panel,.sdt--degraded .sdt__panel~.sdt__panel{
 .faq-list{list-style:none;margin:.7rem 0;padding:0;display:grid;gap:.5rem}
 .faq-list li{display:flex;flex-wrap:wrap;max-width:var(--measure);gap:.2em .7em;font-size:var(--fs-body-sm);color:var(--ink-muted);line-height:1.6}
 .faq details p .mono{font-family:var(--mono);font-size:.92em;color:var(--ink)}
+.faq-list--pay b{font-family:var(--sans);font-size:var(--fs-body-sm);font-weight:600;padding-top:0;min-width:4.6em}
 .faq-list b{color:var(--ink);font-weight:500;flex:none;font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);text-transform:none;padding-top:.25em}
 .faq details p{color:var(--ink);padding:0 2.5rem 1.3rem 0;font-size:var(--fs-body-sm);max-width:var(--measure);text-wrap:pretty}
 
@@ -824,10 +828,10 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 .s3-rate b{font-family:var(--mono);font-size:var(--fs-data);color:var(--ink);font-weight:500}
 .s3-rate span{font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);
   text-transform:none;color:var(--ink-faint)}
-.s3-req{list-style:none;margin:clamp(1rem,2.2vw,1.4rem) 0 0;padding:0;display:grid;gap:.6rem;
+.s3-req{list-style:none;margin:clamp(1rem,2.2vw,1.4rem) 0 0;padding:0;display:grid;gap:.75rem;
   color:var(--ink-muted);font-size:var(--fs-body-sm);line-height:1.6;max-width:64ch}
-.s3-req li{display:flex;gap:.7rem}
-.s3-req li::before{content:"›" / "";color:var(--accent);font-weight:600;flex:none}
+.s3-req li{display:flex;padding-left:.95rem;
+  border-left:2px solid color-mix(in srgb,var(--accent) 70%,transparent)}
 .s3-req li>span{min-width:0}
 .s3-req b{color:var(--ink);font-weight:600}
 
@@ -1071,7 +1075,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
     <div class="wrap">
       <div class="prose">
         <h2>Two stages.</h2>
-        <p class="lead">The first is a written proposal, open to everyone. The second is funded, and is where you build the benchmark.</p>
+        <p class="lead">The first is a written proposal and anyone can enter. The second is funded: up to 12 teams build what they proposed.</p>
       </div>
 
       <div class="sdt reveal" id="details">
@@ -1097,7 +1101,6 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
           </ul>
         </div>
         <div class="sd__body">
-          <p class="sd__p">The benchmark you want to build, the area it addresses, your background, and the list of tasks it contains. Scored on team capability, idea quality, and relevance.</p>
           <section class="cb" aria-labelledby="cb-title">
             <header class="cb__head">
               <p class="cb__eyebrow">Instruction · Goal · Rubric · Setup</p>
@@ -1570,9 +1573,6 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
                   seen your rig can build the scene from the document alone.</span></li>
                 <li><span>The full evaluation protocol: the reset procedure between rollouts, and the number of
                   rollouts per instance.</span></li>
-                <li><span>A bill of materials under the $1,000 cap, covering task materials and any 3D-printable
-                  fixtures, with the print files included.</span></li>
-                <li><span>Results on any further embodiments you already own. This is what the per-unit bonus pays for.</span></li>
               </ul>
 
               <div class="s3-art">
@@ -1806,7 +1806,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
     <div class="wrap">
       <div class="prose">
         <h2>There’s no standard way to measure a robot’s real capabilities.</h2>
-        <p class="accent-line">No shared task suite. No replicated baselines. Nobody outside the labs can compare them.</p>
+        <p class="accent-line"><span>No shared task suite. No replicated baselines.</span> <span>Nobody outside the labs can compare them.</span></p>
       </div>
 
 
@@ -1850,14 +1850,20 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
           <li><b>Stage 2</b> The hardware benchmark running end to end with a baseline evaluated, plus everything listed in the Stage&nbsp;2 brief above: results for each checkpoint, the records and video for every rollout, and the reproducibility package. Due 18 December 2026, 23:59 Pacific, rolling from 1 December 2026. We then re-run part of the benchmark ourselves, and the replication bonus is released if it passes.</li>
         </ul></details>
         <details><summary>Is this a job, a contract, or a grant?</summary><p>None of those. These are competition awards rather than payment for services. There is no employment or contracting relationship, no supervision, no hours reporting, and no work assigned by us. You choose your own task, method, and schedule, and are judged against criteria published on day one. Awards are flat amounts tied to deliverables, not to time spent. If you hold a student visa, confirm with your international student office before entering.</p></details>
-        <details><summary>When am I paid?</summary><p>Three times. <b>$5,000</b> at the week-four check-in on 23 October. <b>$15,000</b> on delivery, once your benchmark meets the Stage&nbsp;2 requirements. <b>$10,000</b> in February 2027 if replication passes. We collect payment details and tax forms during onboarding, so the first payment is not waiting on paperwork.</p></details>
-        <details><summary>How are awards paid and taxed?</summary><p>To the team lead, by international transfer, split as the lead directs. University-affiliated teams may instead request payment as a research gift to their institution; ask at Stage&nbsp;2 selection, since institutional contracting takes weeks. We report awards to tax authorities where required. Awards paid outside the United States may be subject to US withholding; recipients inside the United States receive awards without withholding and may owe estimated tax. We collect tax forms at Stage&nbsp;2 selection.</p></details>
-        <details><summary>Which robot do I build on?</summary><p>The SO-101 is the default reference embodiment. Every Stage&nbsp;2 team is sent two fully assembled follower arms, ordered on selection day, free and with no return obligation, including if you withdraw. They sit outside the $1,000 materials budget, which covers task materials and 3D-printable fixtures. You drive them through <span class="mono">inspect-robots-so101</span>, which wraps policy checkpoints from LeRobot, Hugging Face’s robot-learning library, as an Inspect Robots policy; a public checkpoint is enough for a baseline, so no teleoperation, demo collection, or leader arms are needed. You may instead propose an alternative embodiment you already own, approved at Stage&nbsp;2, and still receive the arms:</p>
+        <details><summary>When am I paid?</summary><p>Three times.</p>
+        <ul class="faq-list faq-list--pay">
+          <li><b>$5,000</b> at the week-four check-in, 23 October 2026.</li>
+          <li><b>$15,000</b> on delivery, once your benchmark meets the Stage&nbsp;2 requirements.</li>
+          <li><b>$10,000</b> in February 2027, if replication passes.</li>
+        </ul>
+        <p>We collect payment details and tax forms during onboarding, so the first payment is not waiting on paperwork.</p></details>
+        <details><summary>How are awards paid and taxed?</summary><p>Everything goes to the team lead, by international transfer, and the lead splits it as they see fit. We report awards to tax authorities where required. Awards paid outside the United States may be subject to US withholding; recipients inside the United States receive awards without withholding and may owe estimated tax. We collect tax forms at Stage&nbsp;2 selection.</p></details>
+        <details><summary>Which robot do I build on?</summary><p>The SO-101, by default. Every Stage&nbsp;2 team is sent two assembled follower arms on selection day, free and yours to keep, and they sit outside the $1,000 materials budget. You drive them through <span class="mono">inspect-robots-so101</span>, which wraps LeRobot checkpoints as an Inspect Robots policy, so a public checkpoint is enough for a baseline and you need no teleoperation or leader arms. You may propose an embodiment you already own instead, approved at Stage&nbsp;2, and still receive the arms:</p>
         <ul class="faq-list">
           <li><b>Arms</b> YAM, WidowX AI, Franka Research 3</li>
           <li><b>Humanoids</b> AgiBot X1, Unitree G1</li>
         </ul></details>
-        <details><summary>What do I keep, and what gets published?</summary><p>You keep copyright and publication rights in full. Write up your own benchmark and submit it anywhere, without clearing anything with us. Entering grants us a licence to publish it in WorldEvals under MIT, with your team credited. After replication closes in February we write up the collected suite, the replication results, and baseline results for current vision-language-action (VLA) policies, targeting submission in Q1 2027. Every Stage&nbsp;2 team that passes replication is offered co-authorship, and may decline and be acknowledged instead.</p></details>
+        <details><summary>What do I keep, and what gets published?</summary><p>You keep copyright and publication rights in full. Write up your own benchmark and submit it anywhere, without clearing anything with us. Entering grants us a licence to publish it in WorldEvals under MIT, with your team credited. After replication closes in February we write up the collected suite and the replication results. Every Stage&nbsp;2 team that passes replication is offered co-authorship, and may decline and be acknowledged instead.</p></details>
         <details><summary>What are Inspect Robots, KitchenBench, and WorldEvals?</summary><p><a href="https://inspectrobots.org/" target="_blank" rel="noopener noreferrer">Inspect Robots</a> is RoboCurve’s open-source framework for evaluating AI and robots in the physical world. <a href="https://github.com/robocurve/kitchenbench" target="_blank" rel="noopener noreferrer">KitchenBench</a> is a bimanual kitchen-manipulation benchmark built on it, and the worked example of how tasks, their distributions and their rubrics are written. It runs on bimanual arms rather than the SO-101, so read it for the shape of a benchmark rather than as a template to copy. WorldEvals is the public repository where finished benchmarks will be released.</p></details>
       </div>
     </div>

@@ -939,7 +939,10 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 /* an open panel now sits between the two entries, so the rule that the first
    entry's own border-bottom used to put directly above the second is redrawn
    under the panel instead. Collapsed, the entries still meet on one hairline. */
-.edA .sdt__panel.is-open+.sdt__card{border-top:1px solid var(--line-strong)}
+/* an open panel runs straight into the next card, so give the panel room to
+   finish and the card room to start, either side of the seam */
+.edA .sdt__panel.is-open{padding-bottom:clamp(1.2rem,2.6vw,1.8rem)}
+.edA .sdt__panel.is-open+.sdt__card{border-top:1px solid var(--line-strong);padding-top:clamp(1.4rem,3vw,2.2rem)}
 .edA .sdt__card[aria-expanded="true"] .edA__nm,
 .edA .sdt__card[aria-expanded="true"] .edA__ttl{color:var(--accent)}
 .edA .sdt__card:focus-visible{outline:2px solid var(--accent);outline-offset:4px}

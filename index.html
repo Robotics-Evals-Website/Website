@@ -153,7 +153,8 @@ a:hover{color:var(--accent-strong)}
 .eyebrow{font-family:var(--mono);font-size:var(--fs-label);letter-spacing:var(--tr-label);text-transform:none;
   color:var(--accent);font-weight:500;margin:0}
 .lead{font-size:var(--fs-lead);color:var(--ink-muted);line-height:1.5;max-width:var(--measure)}
-.prose{max-width:var(--measure)}
+.prose{max-width:none}
+.prose>p{max-width:var(--measure)}
 .prose h2{margin-bottom:1rem}
 .prose p+p{margin-top:1rem}
 .accent-line{font-family:var(--mono);font-size:var(--fs-small);color:var(--accent);letter-spacing:.01em;margin-top:1.5rem}
@@ -248,7 +249,7 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
 @media (max-width:759px){.status-cell:nth-child(odd){padding-left:var(--gutter)}.status-cell:nth-child(even){padding-right:var(--gutter)}}
 .status-cell span{display:block;font-family:var(--mono);font-size:var(--fs-label);letter-spacing:var(--tr-label);
   text-transform:none;color:var(--ink-muted);margin-bottom:.3rem}
-.status-cell b{font-family:var(--mono);font-weight:500;font-size:1.12rem;color:var(--ink);font-variant-numeric:tabular-nums}
+.status-cell b{font-family:var(--mono);font-weight:500;font-size:1.25rem;color:var(--ink);font-variant-numeric:tabular-nums}
 .status-cell b em{font-style:normal;color:var(--accent)}
 .statusbar,.status-cell{background:var(--accent)}
 .statusbar{border-color:var(--accent)}
@@ -754,10 +755,6 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 #stages,#benchmarks{padding-block:clamp(64px,7.5vw,116px)}
 #faq{padding-block:clamp(44px,5vw,72px)}
 
-/* R5 — let the headline number be a number */
-.status-cell:first-child b em{font-size:clamp(1.35rem,1rem + 1.5vw,2.15rem);line-height:1;
-  letter-spacing:-.02em;word-spacing:-.08em;display:inline-block;margin-top:.1rem}
-
 /* Partner lockup */
 /* R1 — the registry becomes the page's second moment.
    #problem is already a full-width <section>; only .wrap constrained it. */
@@ -768,7 +765,6 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 #problem>.problem-fig{padding-inline:var(--gutter);margin-top:clamp(1.6rem,3vw,2.4rem)}
 #problem>.problem-fig .rg{max-width:1320px;margin-inline:auto}
 
-#problem .prose{max-width:none}
 #problem h2{font-size:clamp(2.5rem,1.7rem + 3.4vw,4.2rem);max-width:13em}
 #problem .rg{background:transparent;border:1px solid var(--line-strong);border-radius:8px}
 #problem .rg__cell{height:74px;font-size:1.5rem}

@@ -148,11 +148,8 @@ a:hover{color:var(--accent-strong)}
 .mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
 ::selection{background:color-mix(in srgb,var(--accent) 24%,transparent);color:var(--ink)}
 
-/* section rhythm + markers */
+/* section rhythm */
 .band{padding-block:clamp(52px,6.2vw,96px);border-top:1px solid var(--line)}
-.marker{font-family:var(--mono);font-size:var(--fs-label);letter-spacing:var(--tr-label);text-transform:none;
-  color:var(--ink-muted);margin:0 0 clamp(1.1rem,2.2vw,1.9rem)}
-.marker b{color:var(--accent);font-weight:500}
 .eyebrow{font-family:var(--mono);font-size:var(--fs-label);letter-spacing:var(--tr-label);text-transform:none;
   color:var(--accent);font-weight:500;margin:0}
 .lead{font-size:var(--fs-lead);color:var(--ink-muted);line-height:1.5;max-width:var(--measure)}
@@ -455,7 +452,7 @@ html:not(.js) .sdt__panel~.sdt__panel,.sdt--degraded .sdt__panel~.sdt__panel{
   .ideas>.idea-list{display:block!important}
   .band{padding:14pt 0!important}
   section,.cat-row,details,.rg,.cb{break-inside:avoid}
-  h1,h2,h3,h4,.marker{break-after:avoid}
+  h1,h2,h3,h4{break-after:avoid}
   .rg__scroll,.cb__spec,.cb__vals{overflow:visible!important}
   .lead a,.faq details p a,.worked a{text-decoration:none}
   a[href^="http"]::after{content:" (" attr(href) ")";font-size:7.5pt;color:#555;word-break:break-all}
@@ -780,7 +777,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 #problem .rg__caption .a{display:block;font-family:var(--mono);
   font-size:clamp(3.2rem,2.2rem + 4.4vw,6rem);line-height:.92;letter-spacing:-.02em;
   word-spacing:-.06em;margin-bottom:.3rem;font-weight:500;margin-left:-.08em}
-.marker,.cta-note,.sdt__when,.rg__org,.rg__famsub,.foot-meta,.arm-cap span,.cb__panelhd h5{color:var(--ink-faint)}
+.cta-note,.sdt__when,.rg__org,.rg__famsub,.foot-meta,.arm-cap span,.cb__panelhd h5{color:var(--ink-faint)}
 
 @media print{
   #problem{background:#fff}
@@ -1072,7 +1069,6 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
   <!-- ================= 01 · STAGE DETAILS ================= -->
   <section id="stages" class="band">
     <div class="wrap">
-      <p class="marker"><b>1</b> / stages and details</p>
       <div class="prose">
         <h2>Two stages.</h2>
         <p class="lead">The first is a written proposal, open to everyone. The second is funded, and is where you build the benchmark.</p>
@@ -1731,7 +1727,6 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
   </section>
   <section id="benchmarks" class="band">
     <div class="wrap">
-      <p class="marker"><b>2</b> / three areas we fund</p>
       <div class="prose">
         <h2>What to build.</h2>
         <p class="lead">Build a benchmark in one of these three areas. The examples below are there to give you ideas. You can propose something else.</p>
@@ -1809,7 +1804,6 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
   <!-- ================= PROBLEM ================= -->
   <section id="problem" class="band">
     <div class="wrap">
-      <p class="marker"><b>3</b> / the gap</p>
       <div class="prose">
         <h2>There’s no standard way to measure a robot’s real capabilities.</h2>
         <p class="accent-line">No shared task suite. No replicated baselines. Nobody outside the labs can compare them.</p>
@@ -1847,7 +1841,6 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
   <!-- ================= FAQ ================= -->
   <section id="faq" class="band">
     <div class="wrap">
-      <p class="marker"><b>4</b> / questions</p>
       <div class="prose"><h2>Questions.</h2></div>
       <div class="faq reveal">
         <details><summary>Who can apply?</summary><p>Individuals and teams, students included. You do not need to own a robot. Every team that reaches Stage&nbsp;2 is sent two fully assembled SO-101 arms at no cost and keeps them. Everyone enters the same way, with a Stage&nbsp;1 proposal, and you may submit more than one.</p></details>

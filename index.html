@@ -789,6 +789,9 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
    #problem is already a full-width <section>; only .wrap constrained it. */
 #problem{background:var(--surface-2);border-top:0;padding-block:clamp(76px,8.5vw,132px)}
 #problem .wrap{max-width:1320px}
+/* the rest of the page takes the same measure as #problem. The FAQ keeps the
+   narrower 1080 so its question list stays a comfortable reading width. */
+#stages .wrap,#benchmarks .wrap,#apply .wrap{max-width:1320px}
 #problem h2{font-size:clamp(2.5rem,1.7rem + 3.4vw,4.2rem);max-width:20ch}
 #problem .rg{background:transparent;border:1px solid var(--line-strong);border-radius:8px}
 #problem .rg__cell{height:74px;font-size:1.5rem}
@@ -969,9 +972,13 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
   text-transform:uppercase;color:var(--accent);margin-left:clamp(.8rem,1.6vw,1.25rem);white-space:nowrap;
   padding:.55em .8em;border:1px solid var(--accent);border-radius:999px;background:none;
   transition:color .2s var(--ease),background-color .2s var(--ease)}
-.edA__go::after{content:"+";font-size:1.25em;line-height:1;display:inline-block;
-  transform-origin:50% 45%;transition:transform .2s var(--ease)}
-.edA .sdt__card[aria-expanded="true"] .edA__go::after{transform:rotate(45deg)}
+/* a real open/close chevron. Drawn from two borders rather than a glyph so it
+   needs no font coverage, scales with font-size and inherits currentColor,
+   which matters because the pill inverts to a solid fill on hover. */
+.edA__go::after{content:"";width:.4em;height:.4em;flex:0 0 auto;margin-top:-.2em;
+  border-right:2px solid currentColor;border-bottom:2px solid currentColor;
+  transform:rotate(45deg);transform-origin:50% 50%;transition:transform .2s var(--ease),margin .2s var(--ease)}
+.edA .sdt__card[aria-expanded="true"] .edA__go::after{transform:rotate(-135deg);margin-top:.14em}
 .edA .sdt__card:hover .edA__go,.edA .sdt__card:focus-visible .edA__go{
   background:var(--accent);color:var(--accent-contrast)}
 .edA .sdt__card:hover .edA__nm,.edA .sdt__card:hover .edA__ttl{color:var(--accent-strong)}
@@ -1238,8 +1245,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
           <ul class="sd__facts">
             <li><span>Window</span><b>25 Sep &ndash; 18 Dec 2026</b></li>
             <li><span>Cohort</span><b>Up to 12 teams</b></li>
-            <li><span>At the week-four check-in</span><b>$5,000</b></li>
-            <li><span>On delivery</span><b>$15,000</b></li>
+            <li><span>On delivery</span><b>$20,000</b></li>
             <li><span>Bonus on successful replication</span><b>+$10,000</b></li>
           </ul>
         </div>
@@ -1256,12 +1262,13 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 
               <div class="sd__split">
                 <div class="sd__split-body">
-                  <p class="s3-p">Every team that reaches Stage&nbsp;2 is sent two fully assembled SO-101 follower arms,
-                    ordered on selection day. They are free and yours to keep even if you withdraw, so you do not need to
-                    own a robot to apply.</p>
-                  <p class="s3-p">Teams also receive $1,000 in compute credits and up to $1,000 of materials reimbursed
-                    against receipts. Replication that passes earns co-authorship on the joint paper. The award figures
-                    are set out in the ledger at the foot of this panel.</p>
+                  <ul class="sd__checks">
+                    <li><b>Two fully assembled SO-101 follower arms</b>, ordered on selection day. Free, and yours to
+                      keep even if you withdraw, so you do not need to own a robot to apply.</li>
+                    <li><b>$1,000</b> in compute credits.</li>
+                    <li><b>Up to $1,000</b> of materials, reimbursed against receipts.</li>
+                    <li><b>Co-authorship</b> on the joint paper if your benchmark passes replication.</li>
+                  </ul>
                 </div>
                       <figure class="sd__fig">
                                 <svg class="arm-svg" id="arm-svg" viewBox="0 0 196 111" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">

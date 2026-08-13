@@ -1098,7 +1098,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
       <p class="marker"><b>01</b> / stages and details</p>
       <div class="prose">
         <h2>Two stages.</h2>
-        <p class="lead">The first is a written proposal and is open to everyone. The second is funded, and is where the benchmark actually gets built. Select a stage to read what it asks you to deliver.</p>
+        <p class="lead">The first is a written proposal, open to everyone. The second is funded, and is where you build the benchmark.</p>
       </div>
 
       <div class="sdt reveal" id="details">
@@ -1129,7 +1129,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
             <header class="cb__head">
               <p class="cb__eyebrow">Instruction · goal · rubric · setup</p>
               <h4 class="cb__title" id="cb-title">Every task has four parts</h4>
-              <p class="cb__lead">A benchmark is a list of tasks. Each task states what the robot is asked to do, what the finished scene looks like, how one attempt scores between 0 and 1, and how the scene starts. Anything in the setup that varies is named and given a distribution. One task is written out in full below.</p>
+              <p class="cb__lead">A benchmark is a list of tasks. One task is written out in full below.</p>
             </header>
 
             <div class="cb__body">
@@ -1139,7 +1139,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
                 <div class="cb__pbody">
                   <p class="cb__def">What the robot is asked to do, in natural language.</p>
                   <p class="cb__ex">Fold the towel into quarters.</p>
-                  <p class="cb__sub">A benchmark holds several tasks. This is one of them.</p>
+                  
                 </div>
               </div>
 
@@ -1179,7 +1179,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
                 <div class="cb__panelhd"><h5><span class="cb__no">04</span> Setup</h5><span class="cb__tag" id="cb-realtag">realize(seed=—)</span></div>
                 <div class="cb__pbody">
                   <p class="cb__def">Where everything starts, in natural language. Anything that varies is named and given a distribution.</p>
-                  <p class="cb__ex">A towel is placed at (X, Y) on the tabletop relative to the actor. X and Y are independently distributed as N(0, 10 cm).</p>
+                  <p class="cb__ex">A towel is placed at (X, Y) on the tabletop relative to the actor. X and Y are independently distributed as N(0, &sigma; = 10 cm).</p>
                 </div>
 
                 <div class="cb__setup">
@@ -1216,7 +1216,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
                     <p class="cb__cap">Top&#8209;down. The rings are the 1σ and 2σ contours of the placement distribution; the curves on the near and left edges are the marginal densities of X and Y; the small dots are 96 other draws from it. The dashed cross is the pair of fold axes the goal implies.</p>
                   </div>
 
-                  <p class="cb__note">Every seed draws a different setup from the same task. Features 01 to 03 do not change; only the setup does. Scoring a policy across many seeds measures the task rather than one memorized scene.</p>
+                  <p class="cb__note">Every seed draws a different setup from the same task. Features 01 to 03 do not change. Scoring a policy across many seeds tests whether it can do the task, not whether it has memorized one scene.</p>
                 </div>
               </div>
 
@@ -1266,8 +1266,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
           <div class="s3">
 
             <p class="s3-lead">Every task in your benchmark runs on real SO-101 arms, across the setups your
-              distributions define. Every rollout is recorded, so someone else can check the result rather than take your
-              word for it.</p>
+              distributions define. Every rollout is recorded, so someone else can check the result.</p>
 
             <section class="s3-sec">
               <h4 class="s3-h">What you get</h4>
@@ -1337,14 +1336,12 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
               </div>
 
               <h5 class="s3-sub">Cross-embodiment bonuses</h5>
-              <p class="s3-p">The SO-101 arms go to every team, so they are the floor rather than something to earn. A
-                team that <b>already owns</b> other hardware is paid per unit to run the same benchmark across it, on top of the delivery and replication awards.
-                Nothing here expects a team to acquire anything.</p>
+              <p class="s3-p">A team that <b>already owns</b> other hardware is paid per unit to run the same benchmark on it, on top of the delivery and replication awards. You do not need to buy any hardware to take part.</p>
               <ul class="s3-rate">
                 <li><b>$2,000</b><span>each additional arm</span></li>
                 <li><b>$5,000</b><span>each humanoid</span></li>
               </ul>
-              <p class="sd__note">Confirm the units you intend to run with us in advance.</p>
+              <p class="sd__note">Tell us in advance which units you plan to run.</p>
             </section>
 
             <section class="s3-sec">
@@ -1371,7 +1368,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
               <ul class="s3-req" role="list">
                 <li><span>Every rollout carries its records: transcript, camera logs, Inspect Robots log, grading.</span></li>
                 <li><span>A recording of every rollout from a third camera, <b>neither the wrist cam nor the context
-                  cam</b>: a phone on a tripod, where a bystanding researcher would stand.</span></li>
+                  cam</b>: a phone on a tripod, roughly where a person watching would stand.</span></li>
                 <li><span>Environment specs with stated tolerances, precise enough that an operator who has never
                   seen your rig can build the scene from the document alone.</span></li>
                 <li><span>The full evaluation protocol: the reset procedure between rollouts, and the number of
@@ -1504,12 +1501,11 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 
           <section class="s3-sec">
             <h4 class="s3-h">We run it again</h4>
-            <p class="s3-p">A benchmark is a list of tasks. Each task states a distribution over setups, and each seed
-              realizes one instance of it. In January and February we re-run part of your benchmark on our own arms.
+            <p class="s3-p">In January and February we re-run part of your benchmark on our own arms.
               We pick one task at random, draw five instances of it, and run three rollouts on each.</p>
             <p class="s3-p">It passes if we can set up every scene from your written spec alone, and our success rate
               falls inside the 90% interval your own numbers imply. A pass releases <b>$10,000</b> and co-authorship
-              on the joint paper. Nothing is announced in advance.</p>
+              on the joint paper. We do not tell you which task we picked, or when we will run it.</p>
           </section>
 
           <h4 class="sd__h4">Award</h4>
@@ -1538,7 +1534,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
       <p class="marker"><b>02</b> / three areas we fund</p>
       <div class="prose">
         <h2>What to build.</h2>
-        <p class="lead">Build a benchmark in one of these three areas. The examples are inspiration, not a menu; your own idea is just as welcome.</p>
+        <p class="lead">Build a benchmark in one of these three areas. The examples below are there to give you ideas. You can propose something else.</p>
       </div>
 
       <div class="cats reveal">
@@ -1546,7 +1542,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
           <div class="cat-head">
             <div class="cat-idx">A</div>
             <h3>Impact on jobs</h3>
-            <p>Physical work that people are paid to do. Benchmarks here measure how much of it robots can complete today, and how fast that is changing. Workforce planning and industrial policy depend on knowing when that capability arrives.</p>
+            <p>Physical work that people are paid to do. Anyone forecasting the effect on employment has no measured number to work from.</p>
           </div>
           <div class="cat-ideas">
           <ul class="idea-list">
@@ -1568,7 +1564,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
           <div class="cat-head">
             <div class="cat-idx">B</div>
             <h3>AI timelines</h3>
-            <p>AI progress depends on physical work: building data centres, maintaining compute, running experiments. Robots that could do it without people would speed up that buildout, and AI timelines with it. How much can they do today?</p>
+            <p>AI progress depends on physical work: building data centres, maintaining compute, running experiments. Robots that could do that work without people would speed the buildout up, and probably pull AI timelines forward too.</p>
           </div>
           <div class="cat-ideas">
           <ul class="idea-list">
@@ -1590,7 +1586,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
           <div class="cat-head">
             <div class="cat-idx">C</div>
             <h3>Societal awareness</h3>
-            <p>Tasks any person can watch and judge without special expertise. A demo video cannot be checked this way, since a viewer cannot tell a general policy from a narrowly tuned one, or from teleoperation. Results here can be verified by anyone.</p>
+            <p>Tasks any person can watch and judge without special expertise. A demo video cannot be checked this way, since a viewer cannot tell a general policy from a narrowly tuned one, or from teleoperation.</p>
           </div>
           <div class="cat-ideas">
           <ul class="idea-list">

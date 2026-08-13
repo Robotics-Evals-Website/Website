@@ -82,6 +82,10 @@
   --maxw:1080px;
   --hero-bg:#0E2A33;--hero-ink:#F3EFE6;--hero-lead:#9AB8BF;--hero-link:#7FD3E8;
   --hero-btn:#33ABC4;--hero-btn-ink:#0E1B1F;--hero-rule:#6C9BA8;
+  /* Lit from the upper left. Every stop is checked against the four things that
+     sit on it; the lightest is the binding one at 4.79:1 on the lead. Dark needs
+     its own stops because it starts from a lighter ground with less headroom. */
+  --hero-grad:linear-gradient(158deg,#17475A 0%,#0E2A33 52%,#0A1F27 100%);
   /* 1ch is the width of "0" (0.600em in Plex Sans) but this prose averages
      0.443em per character, so every ch cap rendered ~35% wider than written.
      In em the font-size cancels: 31em holds ~70 characters at any size. */
@@ -106,7 +110,7 @@
 @media (prefers-color-scheme:dark){
   :root{
     --bg:#191611;--surface:#211E17;--surface-2:#2A251D;--line:#454036;--line-strong:#777166;
-    --ink:#F3EFE6;--ink-muted:#A79F91;--ink-faint:#9A9284;--accent:#33ABC4;--hero-bg:#153A47;--accent-strong:#4FBCD3;--accent-contrast:#0E0B07;
+    --ink:#F3EFE6;--ink-muted:#A79F91;--ink-faint:#9A9284;--accent:#33ABC4;--hero-bg:#153A47;--hero-grad:linear-gradient(158deg,#1A4757 0%,#153A47 52%,#102C36 100%);--accent-strong:#4FBCD3;--accent-contrast:#0E0B07;
   }
 }
 :root[data-theme="light"]{
@@ -116,7 +120,7 @@
 }
 :root[data-theme="dark"]{
   --bg:#191611;--surface:#211E17;--surface-2:#2A251D;--line:#454036;--line-strong:#777166;
-  --ink:#F3EFE6;--ink-muted:#A79F91;--ink-faint:#9A9284;--accent:#33ABC4;--hero-bg:#153A47;--accent-strong:#4FBCD3;--accent-contrast:#0E0B07;
+  --ink:#F3EFE6;--ink-muted:#A79F91;--ink-faint:#9A9284;--accent:#33ABC4;--hero-bg:#153A47;--hero-grad:linear-gradient(158deg,#1A4757 0%,#153A47 52%,#102C36 100%);--accent-strong:#4FBCD3;--accent-contrast:#0E0B07;
   color-scheme:dark;
 }
 
@@ -219,7 +223,7 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
 /* ============================================================
    HERO (compact)
    ============================================================ */
-.hero{background:var(--hero-bg);color:var(--hero-ink);text-align:center;padding:clamp(64px,9vh,116px) 0 clamp(46px,6vh,72px)}
+.hero{background-color:var(--hero-bg);background-image:var(--hero-grad);color:var(--hero-ink);text-align:center;padding:clamp(64px,9vh,116px) 0 clamp(46px,6vh,72px)}
 /* The header is a dark teal band, centred like the closing call. It is the one
    place the page speaks rather than lists, so it gets its own ground. Lifted a
    step in dark mode, where #0E2A33 would otherwise sit 1.20:1 against the page. */
@@ -884,7 +888,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 .s3-mf li{display:grid;grid-template-columns:1.9rem minmax(0,1fr);gap:0 .5rem;align-items:start;
   padding:.6rem clamp(14px,2.4vw,20px);border-bottom:1px solid var(--line)}
 @media (min-width:660px){
-  .s3-mf li{grid-template-columns:1.9rem 11rem minmax(0,1fr);gap:0 1rem;align-items:baseline}
+  .s3-mf li{grid-template-columns:1.2rem 11rem minmax(0,1fr);gap:0 1rem;align-items:baseline}
 }
 .s3-mf li:last-child{border-bottom:0}
 .s3-mf__n{font-family:var(--mono);font-size:var(--fs-label-sm);color:var(--accent);
@@ -1104,7 +1108,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
             <div class="cb__body">
 
               <div class="cb__panel cb-f1">
-                <div class="cb__panelhd"><h5><span class="cb__no">01</span> Instruction</h5><span class="cb__tag">fold-towel-quarters</span></div>
+                <div class="cb__panelhd"><h5><span class="cb__no">1</span> Instruction</h5><span class="cb__tag">fold-towel-quarters</span></div>
                 <div class="cb__pbody">
                   <p class="cb__def">What the robot is asked to do, in natural language.</p>
                   <p class="cb__ex">Fold the towel into quarters.</p>
@@ -1113,7 +1117,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
               </div>
 
               <div class="cb__panel cb-f2">
-                <div class="cb__panelhd"><h5><span class="cb__no">02</span> Goal</h5><span class="cb__tag">end state</span></div>
+                <div class="cb__panelhd"><h5><span class="cb__no">2</span> Goal</h5><span class="cb__tag">end state</span></div>
                 <div class="cb__pbody">
                   <p class="cb__def">The finished scene, in natural language, described precisely enough that two people scoring the same attempt agree.</p>
                   <p class="cb__ex">The towel is folded flat into quarters, with edges aligned (no side protruding more than 5% of the folded edge length), and the surface is smooth, with no lumps or wrinkles.</p>
@@ -1121,7 +1125,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
               </div>
 
               <div class="cb__panel cb-f3">
-                <div class="cb__panelhd"><h5><span class="cb__no">03</span> Scoring rubric</h5><span class="cb__tag">0 → 1</span></div>
+                <div class="cb__panelhd"><h5><span class="cb__no">3</span> Scoring rubric</h5><span class="cb__tag">0 → 1</span></div>
                 <div class="cb__pbody">
                   <div class="rb">
                     <div class="rb__notes">
@@ -1145,7 +1149,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
               </div>
 
               <div class="cb__panel cb-f4">
-                <div class="cb__panelhd"><h5><span class="cb__no">04</span> Setup</h5><span class="cb__tag" id="cb-realtag">realize(seed=—)</span></div>
+                <div class="cb__panelhd"><h5><span class="cb__no">4</span> Setup</h5><span class="cb__tag" id="cb-realtag">realize(seed=—)</span></div>
                 <div class="cb__pbody">
                   <p class="cb__def">Where everything starts, in natural language. Anything that varies is named and given a distribution.</p>
                   <p class="cb__ex">A towel is placed at (X, Y) on the tabletop relative to the actor. X and Y are independently distributed as N(0, &sigma; = 10 cm).</p>
@@ -1185,7 +1189,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
                     <p class="cb__cap">Top&#8209;down. The rings are the 1σ and 2σ contours of the placement distribution; the curves on the near and left edges are the marginal densities of X and Y; the small dots are 96 other draws from it. The dashed cross is the pair of fold axes the goal implies.</p>
                   </div>
 
-                  <p class="cb__note">Every seed draws a different setup from the same task. Features 01 to 03 do not change. Scoring a policy across many seeds tests whether it can do the task, not whether it has memorized one scene.</p>
+                  <p class="cb__note">Every seed draws a different setup from the same task. Features 1 to 3 do not change. Scoring a policy across many seeds tests whether it can do the task, not whether it has memorized one scene.</p>
                 </div>
               </div>
 
@@ -1663,21 +1667,21 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 
                 <div class="s3-mf">
                   <div class="s3-mf__id">
-                    <span>Rollout <b>07 of 20</b></span>
+                    <span>Rollout <b>7 of 20</b></span>
                     <span>Task <b>fold-towel-quarters</b></span>
                     <span>Seed <b>4412</b></span>
                     <span>Policy <b>gr00t-n1.7-so101</b></span>
                   </div>
                   <ol>
-                    <li><span class="s3-mf__n">01</span><span class="s3-mf__k">transcript</span>
+                    <li><span class="s3-mf__n">1</span><span class="s3-mf__k">Transcript</span>
                       <span class="s3-mf__v">What the policy was asked, what it returned, and every action it emitted, in order.</span></li>
-                    <li><span class="s3-mf__n">02</span><span class="s3-mf__k">camera logs</span>
+                    <li><span class="s3-mf__n">2</span><span class="s3-mf__k">Camera logs</span>
                       <span class="s3-mf__v">The wrist and context streams the policy actually conditioned on, timestamped against the run.</span></li>
-                    <li><span class="s3-mf__n">03</span><span class="s3-mf__k">inspect robots log</span>
+                    <li><span class="s3-mf__n">3</span><span class="s3-mf__k">Inspect Robots log</span>
                       <span class="s3-mf__v">The evaluation record the harness writes, including the run that terminated early and why.</span></li>
-                    <li><span class="s3-mf__n">04</span><span class="s3-mf__k">grading</span>
+                    <li><span class="s3-mf__n">4</span><span class="s3-mf__k">Grading</span>
                       <span class="s3-mf__v">The 0&ndash;1 score from your rubric, with whoever or whatever applied it named.</span></li>
-                    <li><span class="s3-mf__n">05</span><span class="s3-mf__k">bystander video</span>
+                    <li><span class="s3-mf__n">5</span><span class="s3-mf__k">Bystander video</span>
                       <span class="s3-mf__v">The whole rollout from a fixed camera in the room. Neither the wrist cam nor the context cam.</span></li>
                   </ol>
                 </div>

@@ -108,9 +108,11 @@
   --col-break:25rem;
 }
 @media (prefers-color-scheme:dark){
-  :root{
+  /* Guarded, so an explicit light choice still wins on a dark-preferring OS.
+     The light block does not restate every token, so a bare :root here leaks. */
+  :root:not([data-theme="light"]){
     --bg:#191611;--surface:#211E17;--surface-2:#2A251D;--line:#454036;--line-strong:#777166;
-    --ink:#F3EFE6;--ink-muted:#A79F91;--ink-faint:#9A9284;--accent:#33ABC4;--hero-bg:#153A47;--hero-grad:linear-gradient(158deg,#1A4757 0%,#153A47 52%,#102C36 100%);--accent-strong:#4FBCD3;--accent-contrast:#0E0B07;
+    --ink:#F3EFE6;--ink-muted:#A79F91;--ink-faint:#9A9284;--accent:#33ABC4;--hero-bg:#265461;--hero-grad:linear-gradient(158deg,#2E616F 0%,#265461 52%,#1D4551 100%);--hero-lead:#C5D7DB;--hero-link:#9EDEEE;--hero-rule:#92B5BF;--hero-btn:#5CBCD0;--accent-strong:#4FBCD3;--accent-contrast:#0E0B07;
   }
 }
 :root[data-theme="light"]{
@@ -120,7 +122,7 @@
 }
 :root[data-theme="dark"]{
   --bg:#191611;--surface:#211E17;--surface-2:#2A251D;--line:#454036;--line-strong:#777166;
-  --ink:#F3EFE6;--ink-muted:#A79F91;--ink-faint:#9A9284;--accent:#33ABC4;--hero-bg:#153A47;--hero-grad:linear-gradient(158deg,#1A4757 0%,#153A47 52%,#102C36 100%);--accent-strong:#4FBCD3;--accent-contrast:#0E0B07;
+  --ink:#F3EFE6;--ink-muted:#A79F91;--ink-faint:#9A9284;--accent:#33ABC4;--hero-bg:#265461;--hero-grad:linear-gradient(158deg,#2E616F 0%,#265461 52%,#1D4551 100%);--hero-lead:#C5D7DB;--hero-link:#9EDEEE;--hero-rule:#92B5BF;--hero-btn:#5CBCD0;--accent-strong:#4FBCD3;--accent-contrast:#0E0B07;
   color-scheme:dark;
 }
 

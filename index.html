@@ -276,11 +276,12 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
    01 · STAGE DETAILS  —  two stages, one panel each
    ------------------------------------------------------------
    .sdt         widget root
-   .sdt__strip  the always-visible stage selector (the collapsed state)
+   .sdt__strip  the stage list: card 1, panel 1, card 2, panel 2, in that order,
+                so an opened panel reads directly under the card that opened it
    .sdt__card   one card; <button aria-expanded aria-controls="stage-N">
-   .sdt__panel  one panel; <section id="stage-N">, sibling of the strip
+   .sdt__panel  one panel; <section id="stage-N">, next sibling of its card
    .sd__*       the vocabulary a panel's content is written in
-   No-JS / script failure: the strip is hidden and both panels are
+   No-JS / script failure: the cards are hidden and both panels are
    shown stacked, each with its own heading. Nothing is behind a control
    that cannot work.
    ============================================================ */
@@ -294,7 +295,12 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
 @media (min-width:760px){.sdt__strip{grid-template-columns:repeat(3,minmax(0,1fr))}
   /* two-line names on one card must not push the date rows of the others out of line */
   .sdt__name{min-height:2.5em}}
-html:not(.js) .sdt__strip,.sdt--degraded .sdt__strip{display:none}
+/* No JS, or a failed script: the controls go away and the strip stops being a
+   strip — it is then just the block that carries the two panels, in order.
+   `.sdt.sdt--degraded` because a bare `.sdt--degraded .sdt__card` ties with
+   `.edA .sdt__card` on specificity and would lose on source order. */
+html:not(.js) .sdt__strip,.sdt.sdt--degraded .sdt__strip{display:block;gap:0;background:none;border:0}
+html:not(.js) .sdt__card,.sdt.sdt--degraded .sdt__card{display:none}
 html:not(.js) .cb__figwrap,html:not(.js) .cb__real{display:none}
 
 .sdt__card{position:relative;display:flex;flex-direction:column;align-items:stretch;
@@ -348,12 +354,13 @@ html:not(.js) .cb__figwrap,html:not(.js) .cb__real{display:none}
 .js .sdt__panel{display:none}
 .js .sdt__panel.is-open{display:block;animation:sdt-in .24s var(--ease) both}
 .sdt--degraded .sdt__panel{display:block}
-html:not(.js) .sdt__panel+.sdt__panel,.sdt--degraded .sdt__panel+.sdt__panel{
+/* a card sits between the two panels now, so this is `~`, not `+` */
+html:not(.js) .sdt__panel~.sdt__panel,.sdt--degraded .sdt__panel~.sdt__panel{
   margin-top:clamp(1.5rem,3.2vw,2.4rem);border-top:1px solid var(--line)}
 @keyframes sdt-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){
   .js .sdt__panel.is-open{animation:none}
-  .sdt__card,.sdt__dot,.sdt__more::after{transition:none}
+  .sdt__card,.sdt__dot,.sdt__more::after,.edA__go,.edA__go::after{transition:none}
 }
 
 /* --- the panel content vocabulary ----------------------------- */
@@ -421,9 +428,10 @@ html:not(.js) .sdt__panel+.sdt__panel,.sdt--degraded .sdt__panel+.sdt__panel{
 @media print{
   :root,:root[data-theme="light"],:root[data-theme="dark"]{--bg:#fff;--surface:#fff;--surface-2:#fff;--line:#c4ccc9;--line-strong:#8b9793;--ink:#101010;--ink-muted:#3a3a3a;--ink-faint:#5a5a5a;--accent:#003A46;--accent-strong:#003A46;--accent-contrast:#fff}
   body{background:#fff}
-  .top,.skip,.theme,nav.main,.arm-replay,.cb__resample,.cb__auto,.sd__fig,.sdt__strip{display:none!important}
+  .top,.skip,.theme,nav.main,.arm-replay,.cb__resample,.cb__auto,.sd__fig,.sdt__card{display:none!important}
+  .sdt__strip{display:block!important;gap:0!important;background:none!important;border:0!important}
   .js .sdt__panel,.js .sdt__panel.is-open{display:block!important;animation:none!important}
-  .sdt__panel+.sdt__panel{margin-top:14pt;border-top:1px solid var(--line)}
+  .sdt__panel~.sdt__panel{margin-top:14pt;border-top:1px solid var(--line)}
   .reveal,.js .reveal{opacity:1!important;transform:none!important;transition:none!important}
   details>*{display:block!important}
   .faq summary::after,.ideas>summary::after{display:none}
@@ -928,6 +936,10 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 .edA .sdt__card:hover,.edA .sdt__card[aria-expanded="true"]{background:none}
 /* the open entry is ruled into the panel below it, as the original strip was */
 .edA .sdt__card[aria-expanded="true"]{box-shadow:inset 0 -2px 0 0 var(--accent)}
+/* an open panel now sits between the two entries, so the rule that the first
+   entry's own border-bottom used to put directly above the second is redrawn
+   under the panel instead. Collapsed, the entries still meet on one hairline. */
+.edA .sdt__panel.is-open+.sdt__card{border-top:1px solid var(--line-strong)}
 .edA .sdt__card[aria-expanded="true"] .edA__nm,
 .edA .sdt__card[aria-expanded="true"] .edA__ttl{color:var(--accent)}
 .edA .sdt__card:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
@@ -938,16 +950,27 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 .edA .edA__line{grid-template-columns:3.4rem auto auto 1fr auto;align-items:baseline;
   padding:.72rem 0 .78rem;border-top:1px solid var(--line-strong);border-bottom:1px solid var(--line)}
 .edA__nm{font-family:var(--serif);font-size:1.1rem;font-weight:600;letter-spacing:-.01em;color:var(--ink)}
+/* not nowrap: the record is the one flexible cell in the dateline, so it is what
+   gives way if the row ever runs out of width, rather than the row overflowing */
 .edA__note{grid-column:4;justify-self:end;font-family:var(--mono);font-size:var(--fs-data);
-  color:var(--ink-faint);letter-spacing:.01em;white-space:nowrap}
+  color:var(--ink-faint);letter-spacing:.01em}
 .edA__note b{font-weight:500;color:var(--ink);font-variant-numeric:tabular-nums}
 .edA__date{font-family:var(--mono);font-size:var(--fs-data);color:var(--ink-faint);letter-spacing:.01em;
   font-variant-numeric:tabular-nums;white-space:nowrap}
-.edA__go{font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);
-  text-transform:uppercase;color:var(--accent);margin-left:clamp(1rem,2.4vw,2rem);white-space:nowrap}
-.edA__go::after{content:" +";font-size:1.2em;line-height:1;display:inline-block;
+/* the disclosure control. As a bare accent word at the end of a row of metadata
+   it read as one more metadata field, so it now names its action and is drawn as
+   a control — a bordered pill carrying the same + marker the FAQ summaries use,
+   rotating to a x when the entry is open. */
+.edA__go{display:inline-flex;align-items:center;gap:.45em;
+  font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);
+  text-transform:uppercase;color:var(--accent);margin-left:clamp(.8rem,1.6vw,1.25rem);white-space:nowrap;
+  padding:.55em .8em;border:1px solid var(--accent);border-radius:999px;background:none;
+  transition:color .2s var(--ease),background-color .2s var(--ease)}
+.edA__go::after{content:"+";font-size:1.25em;line-height:1;display:inline-block;
   transform-origin:50% 45%;transition:transform .2s var(--ease)}
 .edA .sdt__card[aria-expanded="true"] .edA__go::after{transform:rotate(45deg)}
+.edA .sdt__card:hover .edA__go,.edA .sdt__card:focus-visible .edA__go{
+  background:var(--accent);color:var(--accent-contrast)}
 .edA .sdt__card:hover .edA__nm,.edA .sdt__card:hover .edA__ttl{color:var(--accent-strong)}
 .edA .sdt__card[aria-expanded="true"] .edA__fol{color:var(--accent)}
 
@@ -1063,25 +1086,8 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
           <span class="edA__nm">Benchmark proposal</span>
           <span class="edA__date">17 Aug &ndash; 14 Sep 2026 &middot; open to all</span>
           <span class="edA__note"><b>$500</b> if shortlisted, not selected &middot; up to 20 teams</span>
-          <span class="edA__go" aria-hidden="true">Brief</span>
+          <span class="edA__go" aria-hidden="true">Read the brief</span>
         </button>
-        <button class="sdt__card edA__lead" type="button" id="sdt-tab-2" aria-controls="stage-2" aria-expanded="false">
-          <span class="edA__fol edA__fol--big" aria-hidden="true">2</span>
-          <span class="edA__hd">
-            <span class="edA__ttl">Real-world hardware<br>benchmark</span>
-            <span class="edA__deck">Up to 12 teams are funded to build their benchmark and run it on real robots.</span>
-          </span>
-          <span class="edA__sum">
-            <span class="edA__fig">$20,000 &ndash; $30,000</span>
-            <span class="edA__figlab">Core award per team</span>
-          </span>
-          <span class="edA__foot">
-            <span class="edA__when">25 Sep &ndash; 18 Dec 2026</span>
-            <span class="edA__after">Delivered benchmarks are re-run in Jan &ndash; Feb 2027 &middot; $10,000 and co-authorship if they pass</span>
-            <span class="edA__go" aria-hidden="true">Brief</span>
-          </span>
-        </button>
-        </div>
 
       <section class="sdt__panel" id="stage-1" data-stage="1" aria-labelledby="sd-title-1">
         <div class="sd__head">
@@ -1100,7 +1106,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
           <section class="cb" aria-labelledby="cb-title">
             <header class="cb__head">
               <p class="cb__eyebrow">Instruction · goal · rubric · setup</p>
-              <h4 class="cb__title" id="cb-title">Every task has four features</h4>
+              <h4 class="cb__title" id="cb-title">Every task has four parts</h4>
               <p class="cb__lead">A benchmark is a list of tasks. Each task states what the robot is asked to do, what the finished scene looks like, how one attempt scores between 0 and 1, and how the scene starts. Anything in the setup that varies is named and given a distribution. One task is written out in full below.</p>
             </header>
 
@@ -1197,12 +1203,29 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
           <div class="method-foot">
             <div class="cta-row cta-row-tight"><a class="btn btn-primary btn-lg" href="#apply">Apply</a></div>
             <div>
-              <p class="callout">Every Stage 1 proposal must include a list of tasks, each with all four features, and every quantity that varies given as an explicit distribution with units.</p>
+              <p class="callout">Every Stage 1 proposal must include a list of tasks, each with all four parts, and every quantity that varies given as an explicit distribution with units.</p>
               <p class="worked">A benchmark of this shape, on Inspect Robots: <a href="https://github.com/robocurve/kitchenbench" target="_blank" rel="noopener noreferrer">KitchenBench</a>.</p>
             </div>
           </div>
         </div>
       </section>
+
+        <button class="sdt__card edA__lead" type="button" id="sdt-tab-2" aria-controls="stage-2" aria-expanded="false">
+          <span class="edA__fol edA__fol--big" aria-hidden="true">2</span>
+          <span class="edA__hd">
+            <span class="edA__ttl">Real-world hardware<br>benchmark</span>
+            <span class="edA__deck">Up to 12 teams are funded to build their benchmark and run it on real robots.</span>
+          </span>
+          <span class="edA__sum">
+            <span class="edA__fig">$20,000 &ndash; $30,000</span>
+            <span class="edA__figlab">Core award per team</span>
+          </span>
+          <span class="edA__foot">
+            <span class="edA__when">25 Sep &ndash; 18 Dec 2026</span>
+            <span class="edA__after">Delivered benchmarks are re-run in Jan &ndash; Feb 2027 &middot; $10,000 and co-authorship if they pass</span>
+            <span class="edA__go" aria-hidden="true">Read the brief</span>
+          </span>
+        </button>
 
       <section class="sdt__panel" id="stage-2" data-stage="2" aria-labelledby="sd-title-2">
         <div class="sd__head">
@@ -1212,7 +1235,8 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
           <ul class="sd__facts">
             <li><span>Window</span><b>25 Sep &ndash; 18 Dec 2026</b></li>
             <li><span>Cohort</span><b>Up to 12 teams</b></li>
-            <li><span>On delivery</span><b>$20,000</b></li>
+            <li><span>At the week-four check-in</span><b>$5,000</b></li>
+            <li><span>On delivery</span><b>$15,000</b></li>
             <li><span>Bonus on successful replication</span><b>+$10,000</b></li>
           </ul>
         </div>
@@ -1453,9 +1477,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 
           <section class="s3-sec">
             <h4 class="s3-h">One check-in, four weeks in</h4>
-            <p class="s3-p">By <b>23 October</b> your repository should install and run one task end to end, and your
-              arms should be powered up and moving. Teams that have not started by then leave the programme. You keep
-              the arms either way.</p>
+            <p class="s3-p">By <b>23 October</b> your repository should install and run one task end to end. Teams that pass are paid <b>$5,000</b>. Teams that have not started, or that we cannot reach, are removed from the programme and not paid. You keep the arms either way.</p>
           </section>
 
           <section class="s3-sec">
@@ -1470,7 +1492,8 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 
           <h4 class="sd__h4">Award</h4>
           <ul class="sd__pay">
-            <li><span>On delivery</span><b>$20,000</b></li>
+            <li><span>At the week-four check-in</span><b>$5,000</b></li>
+            <li><span>On delivery</span><b>$15,000</b></li>
             <li><span>Bonus on successful replication</span><b>+$10,000</b></li>
             <li><span>Each additional arm you own</span><b>+$2,000</b></li>
             <li><span>Each humanoid you own</span><b>+$5,000</b></li>
@@ -1483,6 +1506,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
           <div class="cta-row cta-row-tight"><a class="btn btn-primary btn-lg" href="#apply">Apply</a></div>
         </div>
       </section>
+        </div>
       </div>
 
     </div>
@@ -1609,10 +1633,11 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
         <details><summary>Who can apply?</summary><p>Individuals and teams, students included. You do not need to own a robot. Every team that reaches Stage&nbsp;2 is sent two fully assembled SO-101 arms at no cost and keeps them. Everyone enters the same way, with a Stage&nbsp;1 proposal, and you may submit more than one.</p></details>
         <details><summary>What do I submit at each stage?</summary>
         <ul class="faq-list">
-          <li><b>Stage 1</b> A proposal: the benchmark you want to build, the area it addresses, your background, and the list of tasks it contains. Every task carries four features: an instruction, a description of the goal, a scoring rubric between 0 and 1, and a setup with every random element given a named distribution. Due 14 September 2026, 23:59 Pacific. Scored on team capability, idea quality, and relevance.</li>
+          <li><b>Stage 1</b> A proposal: the benchmark you want to build, the area it addresses, your background, and the list of tasks it contains. Every task carries all four parts. Due 14 September 2026, 23:59 Pacific. Scored on team capability, idea quality, and relevance.</li>
           <li><b>Stage 2</b> The hardware benchmark running end to end with a baseline evaluated, plus everything listed in the Stage&nbsp;2 brief above: results for each checkpoint, the records and video for every rollout, and the reproducibility package. Due 18 December 2026, 23:59 Pacific, rolling from 1 December 2026. We then re-run part of the benchmark ourselves, and the replication bonus is released if it passes.</li>
         </ul></details>
         <details><summary>Is this a job, a contract, or a grant?</summary><p>None of those. These are competition awards rather than payment for services. There is no employment or contracting relationship, no supervision, no hours reporting, and no work assigned by us. You choose your own task, method, and schedule, and are judged against criteria published on day one. Awards are flat amounts tied to deliverables, not to time spent. If you hold a student visa, confirm with your international student office before entering.</p></details>
+        <details><summary>When am I paid?</summary><p>Three times. <b>$5,000</b> at the week-four check-in on 23 October. <b>$15,000</b> on delivery, once your benchmark meets the Stage&nbsp;2 requirements. <b>$10,000</b> in February 2027 if replication passes. We collect payment details and tax forms during onboarding, so the first payment is not waiting on paperwork.</p></details>
         <details><summary>How are awards paid and taxed?</summary><p>To the team lead, by international transfer, split as the lead directs. University-affiliated teams may instead request payment as a research gift to their institution; ask at Stage&nbsp;2 selection, since institutional contracting takes weeks. We report awards to tax authorities where required. Awards paid outside the United States may be subject to US withholding; recipients inside the United States receive awards without withholding and may owe estimated tax. We collect tax forms at Stage&nbsp;2 selection.</p></details>
         <details><summary>Which robot do I build on?</summary><p>The SO-101 is the default reference embodiment. Every Stage&nbsp;2 team is sent two fully assembled follower arms, ordered on selection day, free and with no return obligation, including if you withdraw. They sit outside the $1,000 materials budget, which covers task materials and 3D-printable fixtures. You drive them through <span class="mono">inspect-robots-so101</span>, which wraps policy checkpoints from LeRobot, Hugging Face’s robot-learning library, as an Inspect Robots policy; a public checkpoint is enough for a baseline, so no teleoperation, demo collection, or leader arms are needed. You may instead propose an alternative embodiment you already own, approved at Stage&nbsp;2, and still receive the arms:</p>
         <ul class="faq-list">

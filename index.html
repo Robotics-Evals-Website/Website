@@ -79,6 +79,10 @@
   --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
 
   --maxw:1080px;
+  /* 1ch is the width of "0" (0.600em in Plex Sans) but this prose averages
+     0.443em per character, so every ch cap rendered ~35% wider than written.
+     In em the font-size cancels: 31em holds ~70 characters at any size. */
+  --measure:31em;
   --gutter:clamp(18px,4vw,40px);
 
   --fs-display:clamp(2.6rem,1.9rem + 3.6vw,4.7rem);
@@ -92,7 +96,6 @@
   --fs-body-sm:1rem;
   --fs-data:.8rem;
   --tr-label:.1em;
-  --measure:62ch;
   --space-fig:clamp(1.4rem,2.6vw,2.1rem);
   --col-gutter:2.5rem;
   --col-break:25rem;
@@ -149,8 +152,8 @@ a:hover{color:var(--accent-strong)}
 .marker b{color:var(--accent);font-weight:500}
 .eyebrow{font-family:var(--mono);font-size:var(--fs-label);letter-spacing:var(--tr-label);text-transform:uppercase;
   color:var(--accent);font-weight:500;margin:0}
-.lead{font-size:var(--fs-lead);color:var(--ink-muted);line-height:1.5;max-width:60ch}
-.prose{max-width:68ch}
+.lead{font-size:var(--fs-lead);color:var(--ink-muted);line-height:1.5;max-width:var(--measure)}
+.prose{max-width:var(--measure)}
 .prose h2{margin-bottom:1rem}
 .prose p+p{margin-top:1rem}
 .accent-line{font-family:var(--mono);font-size:var(--fs-small);color:var(--accent);letter-spacing:.01em;margin-top:1.5rem}
@@ -268,7 +271,7 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
 .ideas>summary:hover,.ideas>summary:focus-visible{color:var(--accent-strong)}
 .idea-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.7rem}
 .ideas .idea-list{margin-top:.8rem}
-.idea-list li{position:relative;padding-left:1.4rem;font-size:var(--fs-body-sm);color:var(--ink);line-height:1.6;text-wrap:pretty;max-width:62ch}
+.idea-list li{position:relative;padding-left:1.4rem;font-size:var(--fs-body-sm);color:var(--ink);line-height:1.6;text-wrap:pretty;max-width:var(--measure)}
 .idea-list li::before{content:"–" / "";position:absolute;left:0;top:0;color:var(--accent);font-family:var(--mono);font-weight:500}
 .idea-list li b{color:var(--ink);font-weight:600;font-family:var(--sans)}
 
@@ -369,7 +372,7 @@ html:not(.js) .sdt__panel~.sdt__panel,.sdt--degraded .sdt__panel~.sdt__panel{
   text-transform:uppercase;color:var(--accent);margin:0 0 .55rem}
 .sd__title{font-family:var(--serif);font-weight:600;letter-spacing:-.015em;line-height:1.14;
   font-size:clamp(1.5rem,1.2rem + 1.2vw,2.1rem);margin:0;max-width:24ch}
-.sd__lead{margin:.85rem 0 0;font-size:var(--fs-lead);line-height:1.5;color:var(--ink-muted);max-width:60ch}
+.sd__lead{margin:.85rem 0 0;font-size:var(--fs-lead);line-height:1.5;color:var(--ink-muted);max-width:var(--measure)}
 .sd__facts{list-style:none;margin:clamp(1.1rem,2.2vw,1.6rem) 0 0;padding:0;
   display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line-strong);
   border:1px solid var(--line-strong);border-radius:4px;overflow:hidden}
@@ -387,10 +390,10 @@ html:not(.js) .sdt__panel~.sdt__panel,.sdt--degraded .sdt__panel~.sdt__panel{
 .sd__h4{font-family:var(--serif);font-size:var(--fs-h3);font-weight:600;letter-spacing:-.015em;
   line-height:1.3;margin:0}
 .sd__h4+*{margin-top:.8rem!important}
-.sd__p{margin:0;color:var(--ink-muted);font-size:var(--fs-body-sm);line-height:1.6;max-width:62ch;text-wrap:pretty}
+.sd__p{margin:0;color:var(--ink-muted);font-size:var(--fs-body-sm);line-height:1.6;max-width:var(--measure);text-wrap:pretty}
 .sd__p b{color:var(--ink);font-weight:600}
 .sd__checks{list-style:none;margin:0;padding:0;display:grid;gap:.55rem;
-  color:var(--ink-muted);font-size:var(--fs-body-sm);max-width:62ch}
+  color:var(--ink-muted);font-size:var(--fs-body-sm);max-width:var(--measure)}
 .sd__checks li{display:flex;gap:.7rem}
 .sd__checks li::before{content:"›" / "";color:var(--accent);font-weight:600}
 .sd__checks b{color:var(--ink);font-weight:600}
@@ -570,7 +573,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 .worked{margin:1rem 0 0;font-family:var(--mono);font-size:var(--fs-data);color:var(--ink-muted);letter-spacing:.02em}
 .worked a{border-bottom:1px solid transparent}
 .worked a:hover,.worked a:focus-visible{border-bottom-color:var(--accent)}
-.cb__lead{margin:0;color:var(--ink-muted);font-size:var(--fs-body-sm);max-width:66ch;line-height:1.6}
+.cb__lead{margin:0;color:var(--ink-muted);font-size:var(--fs-body-sm);max-width:var(--measure);line-height:1.6}
 .cb__lead b{color:var(--ink);font-weight:600}
 .cb__body{display:grid;gap:clamp(14px,2.4vw,22px);padding:clamp(14px,3vw,26px)}
 .cb__panel{background:var(--bg);border:1px solid var(--line);border-radius:5px;display:flex;flex-direction:column;min-width:0}
@@ -788,7 +791,11 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 /* R1 — the registry becomes the page's second moment.
    #problem is already a full-width <section>; only .wrap constrained it. */
 #problem{background:var(--surface-2);border-top:0;padding-block:clamp(76px,8.5vw,132px)}
-#problem .wrap{max-width:1320px}
+/* one shell everywhere; the registry is the single deliberate exception,
+   because six empty rows across five columns is an argument made by
+   emptiness and it gets stronger the wider it runs */
+#problem>.problem-fig{padding-inline:var(--gutter);margin-top:clamp(1.6rem,3vw,2.4rem)}
+#problem>.problem-fig .rg{max-width:1320px;margin-inline:auto}
 
 #problem h2{font-size:clamp(2.5rem,1.7rem + 3.4vw,4.2rem);max-width:20ch}
 #problem .rg{background:transparent;border:1px solid var(--line-strong);border-radius:8px}
@@ -815,14 +822,14 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 .s3 p{margin:0}
 /* .s3 p is (0,1,1) and outranks .sd__note's (0,1,0), so restate the note's own spacing here */
 .s3 .sd__note{margin-top:clamp(1.1rem,2.2vw,1.6rem)}
-.s3-lead{font-size:var(--fs-body-sm);color:var(--ink-muted);max-width:64ch;text-wrap:pretty}
+.s3-lead{font-size:var(--fs-body-sm);color:var(--ink-muted);max-width:var(--measure);text-wrap:pretty}
 .s3-lead b{color:var(--ink);font-weight:600}
 
 .s3-sec{margin-top:clamp(1.9rem,3.6vw,2.8rem)}
 .s3-sec:first-of-type{margin-top:clamp(1.5rem,3vw,2.1rem)}
 .s3-h{font-family:var(--serif);font-weight:600;font-size:var(--fs-h3);line-height:1.3;
   letter-spacing:-.015em;margin:0 0 .8rem;color:var(--ink);text-wrap:balance}
-.s3-p{font-size:var(--fs-body-sm);color:var(--ink-muted);max-width:64ch;text-wrap:pretty;line-height:1.6}
+.s3-p{font-size:var(--fs-body-sm);color:var(--ink-muted);max-width:var(--measure);text-wrap:pretty;line-height:1.6}
 .s3-p+.s3-p{margin-top:.9rem}
 .s3-p b{color:var(--ink);font-weight:600}
 .s3 sub{font-size:.72em;line-height:0;vertical-align:baseline;position:relative;bottom:-.24em}
@@ -942,8 +949,15 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
    under the panel instead. Collapsed, the entries still meet on one hairline. */
 /* an open panel runs straight into the next card, so give the panel room to
    finish and the card room to start, either side of the seam */
-.edA .sdt__panel.is-open{padding-bottom:clamp(1.2rem,2.6vw,1.8rem)}
-.edA .sdt__panel.is-open+.sdt__card{border-top:1px solid var(--line-strong);padding-top:clamp(1.4rem,3vw,2.2rem)}
+/* An open panel is ~2,000px of section-scale content with no containment:
+   same background, same measure, same rhythm as the page around it. Give it
+   its own plane and an accent spine running its full height, so it reads as
+   belonging to the card that opened it. */
+.edA .sdt__panel.is-open{background:var(--surface-2);border-radius:6px;
+  margin:clamp(1rem,2vw,1.4rem) 0 clamp(1.8rem,3.6vw,2.8rem);
+  padding:clamp(1.8rem,3.6vw,2.8rem) clamp(1.2rem,3vw,2.2rem);
+  box-shadow:inset 3px 0 0 0 var(--accent)}
+.edA .sdt__panel.is-open+.sdt__card{border-top:1px solid var(--line-strong)}
 .edA .sdt__card[aria-expanded="true"] .edA__nm,
 .edA .sdt__card[aria-expanded="true"] .edA__ttl{color:var(--accent)}
 .edA .sdt__card:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
@@ -1605,7 +1619,10 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
         <p class="accent-line">No shared task suite. No replicated baselines. Nobody outside the labs can compare them.</p>
       </div>
 
-      <!-- public results registry — fills as benchmarks are built and replicated -->
+
+      </div>
+
+        <!-- public results registry — fills as benchmarks are built and replicated -->
       <div class="problem-fig reveal">
         <section class="rg" aria-label="Public results registry: every cell empty because no shared, replicated benchmark spans these models yet">
           <div class="rg__scroll" tabindex="0" role="region" aria-label="Results registry table, scrolls horizontally">
@@ -1630,7 +1647,6 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
           </footer>
         </section>
       </div>
-    </div>
   </section>
   <!-- ================= FAQ ================= -->
   <section id="faq" class="band">

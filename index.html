@@ -30,7 +30,7 @@
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('reb-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,600&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -75,10 +75,13 @@
   --ease:cubic-bezier(.22,1,.36,1);
 
   --serif:"Newsreader","Newsreader Fallback",Georgia,"Times New Roman",serif;
-  --sans:"IBM Plex Sans",system-ui,-apple-system,sans-serif;
-  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --sans:"Manrope",system-ui,-apple-system,sans-serif;
+  --mono:"Manrope",system-ui,-apple-system,sans-serif;
+  --code:ui-monospace,"SF Mono",Menlo,monospace;
 
   --maxw:1080px;
+  --hero-bg:#0E2A33;--hero-ink:#F3EFE6;--hero-lead:#9AB8BF;--hero-link:#7FD3E8;
+  --hero-btn:#33ABC4;--hero-btn-ink:#0E1B1F;--hero-rule:#6C9BA8;
   /* 1ch is the width of "0" (0.600em in Plex Sans) but this prose averages
      0.443em per character, so every ch cap rendered ~35% wider than written.
      In em the font-size cancels: 31em holds ~70 characters at any size. */
@@ -95,7 +98,7 @@
   --fs-label-sm:.65rem;
   --fs-body-sm:1rem;
   --fs-data:.8rem;
-  --tr-label:.1em;
+  --tr-label:.005em;
   --space-fig:clamp(1.4rem,2.6vw,2.1rem);
   --col-gutter:2.5rem;
   --col-break:25rem;
@@ -103,7 +106,7 @@
 @media (prefers-color-scheme:dark){
   :root{
     --bg:#191611;--surface:#211E17;--surface-2:#2A251D;--line:#454036;--line-strong:#777166;
-    --ink:#F3EFE6;--ink-muted:#A79F91;--ink-faint:#9A9284;--accent:#33ABC4;--accent-strong:#4FBCD3;--accent-contrast:#0E0B07;
+    --ink:#F3EFE6;--ink-muted:#A79F91;--ink-faint:#9A9284;--accent:#33ABC4;--hero-bg:#153A47;--accent-strong:#4FBCD3;--accent-contrast:#0E0B07;
   }
 }
 :root[data-theme="light"]{
@@ -113,7 +116,7 @@
 }
 :root[data-theme="dark"]{
   --bg:#191611;--surface:#211E17;--surface-2:#2A251D;--line:#454036;--line-strong:#777166;
-  --ink:#F3EFE6;--ink-muted:#A79F91;--ink-faint:#9A9284;--accent:#33ABC4;--accent-strong:#4FBCD3;--accent-contrast:#0E0B07;
+  --ink:#F3EFE6;--ink-muted:#A79F91;--ink-faint:#9A9284;--accent:#33ABC4;--hero-bg:#153A47;--accent-strong:#4FBCD3;--accent-contrast:#0E0B07;
   color-scheme:dark;
 }
 
@@ -147,10 +150,10 @@ a:hover{color:var(--accent-strong)}
 
 /* section rhythm + markers */
 .band{padding-block:clamp(52px,6.2vw,96px);border-top:1px solid var(--line)}
-.marker{font-family:var(--mono);font-size:var(--fs-label);letter-spacing:var(--tr-label);text-transform:uppercase;
+.marker{font-family:var(--mono);font-size:var(--fs-label);letter-spacing:var(--tr-label);text-transform:none;
   color:var(--ink-muted);margin:0 0 clamp(1.1rem,2.2vw,1.9rem)}
 .marker b{color:var(--accent);font-weight:500}
-.eyebrow{font-family:var(--mono);font-size:var(--fs-label);letter-spacing:var(--tr-label);text-transform:uppercase;
+.eyebrow{font-family:var(--mono);font-size:var(--fs-label);letter-spacing:var(--tr-label);text-transform:none;
   color:var(--accent);font-weight:500;margin:0}
 .lead{font-size:var(--fs-lead);color:var(--ink-muted);line-height:1.5;max-width:var(--measure)}
 .prose{max-width:var(--measure)}
@@ -175,13 +178,13 @@ header.top{
 .brand .dot{width:9px;height:9px;border-radius:50%;border:2px solid var(--accent);flex:none;position:relative}
 .brand .dot::after{content:"";position:absolute;inset:1px;border-radius:50%;background:var(--accent)}
 nav.main{margin-left:auto;display:flex;align-items:center;gap:1.35rem;flex:none}
-nav.main a.nlink{font-family:var(--mono);font-size:var(--fs-label);letter-spacing:var(--tr-label);text-transform:uppercase;
+nav.main a.nlink{font-family:var(--mono);font-size:var(--fs-label);letter-spacing:var(--tr-label);text-transform:none;
   color:var(--ink-muted);position:relative;padding:.2rem 0}
 nav.main a.nlink::after{content:"";position:absolute;left:0;bottom:-2px;height:1px;width:0;background:var(--accent);
   transition:width .18s var(--ease)}
 nav.main a.nlink:hover{color:var(--ink)}
 nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
-.menu-btn{display:none;font-family:var(--mono);font-size:var(--fs-label);letter-spacing:var(--tr-label);text-transform:uppercase;
+.menu-btn{display:none;font-family:var(--mono);font-size:var(--fs-label);letter-spacing:var(--tr-label);text-transform:none;
   color:var(--ink-muted);background:none;border:0;padding:.2rem 0;cursor:pointer}
 .menu-btn:hover,.menu-btn[aria-expanded="true"]{color:var(--ink)}
 .mmenu{position:absolute;top:60px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);
@@ -189,7 +192,7 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
 /* display:grid above is an author rule and beats the UA [hidden]{display:none}, so the
    hidden attribute the menu JS toggles does nothing without this. */
 .mmenu[hidden]{display:none}
-.mmenu a{font-family:var(--mono);font-size:var(--fs-label);letter-spacing:var(--tr-label);text-transform:uppercase;
+.mmenu a{font-family:var(--mono);font-size:var(--fs-label);letter-spacing:var(--tr-label);text-transform:none;
   color:var(--ink-muted);padding:.55rem 0}
 .mmenu a:hover{color:var(--ink)}
 @media (max-width:1099px){nav.main .nlink{display:none}.menu-btn{display:block}}
@@ -218,12 +221,23 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
 /* ============================================================
    HERO (compact)
    ============================================================ */
-.hero{padding:clamp(64px,9vh,116px) 0 clamp(46px,6vh,72px)}
+.hero{background:var(--hero-bg);color:var(--hero-ink);text-align:center;padding:clamp(64px,9vh,116px) 0 clamp(46px,6vh,72px)}
+/* The header is a dark teal band, centred like the closing call. It is the one
+   place the page speaks rather than lists, so it gets its own ground. Lifted a
+   step in dark mode, where #0E2A33 would otherwise sit 1.20:1 against the page. */
+.hero .wrap{max-width:44rem}
+.hero h1{margin-left:auto;margin-right:auto}
+.hero .lead{margin-left:auto;margin-right:auto;color:var(--hero-lead)}
+.hero .lead a{color:var(--hero-link)}
+.hero .cta-row{justify-content:center}
+.hero .cta-note{color:var(--hero-lead)}
+.hero .btn-primary{background:var(--hero-btn);color:var(--hero-btn-ink);border-color:var(--hero-btn)}
+.hero .btn-ghost{border-color:var(--hero-rule);color:var(--hero-ink)}
 .hero h1{max-width:16ch;margin-bottom:2rem}
 .hero .cta-row{margin-top:2.4rem}
 .hero .cta-note{margin-top:1.5rem}
 .cta-row{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2rem;align-items:center}
-.cta-note{font-family:var(--mono);font-size:var(--fs-label);letter-spacing:var(--tr-label);text-transform:uppercase;
+.cta-note{font-family:var(--mono);font-size:var(--fs-label);letter-spacing:var(--tr-label);text-transform:none;
   color:var(--ink-muted);margin-top:1.1rem}
 
 /* status bar */
@@ -236,7 +250,7 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
 .status-cell:last-child{padding-right:var(--gutter)}
 @media (max-width:759px){.status-cell:nth-child(odd){padding-left:var(--gutter)}.status-cell:nth-child(even){padding-right:var(--gutter)}}
 .status-cell span{display:block;font-family:var(--mono);font-size:var(--fs-label);letter-spacing:var(--tr-label);
-  text-transform:uppercase;color:var(--ink-muted);margin-bottom:.3rem}
+  text-transform:none;color:var(--ink-muted);margin-bottom:.3rem}
 .status-cell b{font-family:var(--mono);font-weight:500;font-size:1.12rem;color:var(--ink);font-variant-numeric:tabular-nums}
 .status-cell b em{font-style:normal;color:var(--accent)}
 .statusbar,.status-cell{background:var(--accent)}
@@ -264,7 +278,7 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
 .cat-head h3{grid-column:2;margin-bottom:0}
 .cat-head p{grid-column:1/-1;margin-top:.7rem;color:var(--ink-muted);font-size:var(--fs-body-sm)}
 .ideas{margin:.9rem 0 0}
-.ideas>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:.55em;font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--accent);padding:.2rem 0}
+.ideas>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:.55em;font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);text-transform:none;color:var(--accent);padding:.2rem 0}
 .ideas>summary::-webkit-details-marker{display:none}
 .ideas>summary::after{content:"+" / "";font-family:var(--mono);font-size:1.1em;line-height:1;transition:transform .2s var(--ease)}
 .ideas[open]>summary::after{transform:rotate(45deg)}
@@ -346,7 +360,7 @@ html:not(.js) .cb__figwrap,html:not(.js) .cb__real{display:none}
 .sdt__money b{font-weight:500;color:var(--ink);font-variant-numeric:tabular-nums;text-align:right}
 .sdt__more{display:inline-flex;align-items:center;gap:.45em;margin-top:auto;padding-top:.9rem;
   font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);
-  text-transform:uppercase;color:var(--accent)}
+  text-transform:none;color:var(--accent)}
 .sdt__more::after{content:"+";font-size:1.35em;line-height:1;
   transform-origin:50% calc(50% + .06em);transition:transform .2s var(--ease)}
 .sdt__card[aria-expanded="true"] .sdt__more::after{transform:rotate(45deg)}
@@ -369,7 +383,7 @@ html:not(.js) .sdt__panel~.sdt__panel,.sdt--degraded .sdt__panel~.sdt__panel{
 /* --- the panel content vocabulary ----------------------------- */
 .sd__head{max-width:none}
 .sd__eyebrow{font-family:var(--mono);font-size:var(--fs-label);letter-spacing:var(--tr-label);
-  text-transform:uppercase;color:var(--accent);margin:0 0 .55rem}
+  text-transform:none;color:var(--accent);margin:0 0 .55rem}
 .sd__title{font-family:var(--serif);font-weight:600;letter-spacing:-.015em;line-height:1.14;
   font-size:clamp(1.5rem,1.2rem + 1.2vw,2.1rem);margin:0;max-width:24ch}
 .sd__lead{margin:.85rem 0 0;font-size:var(--fs-lead);line-height:1.5;color:var(--ink-muted);max-width:var(--measure)}
@@ -381,7 +395,7 @@ html:not(.js) .sdt__panel~.sdt__panel,.sdt--degraded .sdt__panel~.sdt__panel{
    half-empty row showing the rule colour through the 1px grid gap */
 .sd__facts li{background:var(--bg);padding:.75rem .95rem;display:flex;flex-direction:column;gap:.3rem}
 .sd__facts span{font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);
-  text-transform:uppercase;color:var(--ink-faint)}
+  text-transform:none;color:var(--ink-faint)}
 .sd__facts b{font-family:var(--mono);font-weight:500;font-size:.95rem;color:var(--ink);
   font-variant-numeric:tabular-nums;line-height:1.3}
 .sd__body{margin-top:clamp(1.5rem,3vw,2.2rem)}
@@ -417,9 +431,9 @@ html:not(.js) .sdt__panel~.sdt__panel,.sdt--degraded .sdt__panel~.sdt__panel{
 .sd__art-hd{display:flex;align-items:baseline;justify-content:space-between;gap:10px;
   padding:11px 14px;border-bottom:1px solid var(--line)}
 .sd__art-hd .sd__h4{font-family:var(--mono);font-weight:500;font-size:var(--fs-label);
-  letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--ink-faint)}
+  letter-spacing:var(--tr-label);text-transform:none;color:var(--ink-faint)}
 .sd__art-tag{font-family:var(--mono);font-weight:500;font-size:var(--fs-label-sm);
-  letter-spacing:.06em;color:var(--accent)}
+  letter-spacing:var(--tr-label);color:var(--accent)}
 .sd__art-body{padding:clamp(12px,2vw,18px)}
 .sd__art-cap{margin:0;padding:0 14px 13px;font-family:var(--mono);font-size:var(--fs-label-sm);
   line-height:1.6;color:var(--ink-faint);max-width:78ch}
@@ -497,9 +511,9 @@ html:not(.js) .sdt__panel~.sdt__panel,.sdt--degraded .sdt__panel~.sdt__panel{
 @media (prefers-reduced-motion:reduce){.arm-svg .j1,.arm-svg .j2,.arm-svg .j3,.arm-svg .ja,.arm-svg .jb,.arm-svg .a-blk{animation:none}.arm-replay{display:none}}
 .arm-cap{margin-top:.75rem;display:flex;flex-wrap:wrap;align-items:baseline;gap:.2rem .6rem}
 .arm-cap b{font-family:var(--sans);font-weight:500;font-size:.9rem;color:var(--ink);white-space:nowrap}
-.arm-cap span{font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--ink-muted);white-space:nowrap}
+.arm-cap span{font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);text-transform:none;color:var(--ink-muted);white-space:nowrap}
 .arm-cap .arm-replay{margin-left:auto}
-.arm-replay{flex:none;background:none;border:0;padding:.1rem .2rem;cursor:pointer;font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--accent);border-bottom:1px solid transparent}
+.arm-replay{flex:none;background:none;border:0;padding:.1rem .2rem;cursor:pointer;font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);text-transform:none;color:var(--accent);border-bottom:1px solid transparent}
 .arm-replay:hover,.arm-replay:focus-visible{border-bottom-color:var(--accent)}
 
 /* ============================================================
@@ -521,7 +535,7 @@ html:not(.js) .sdt__panel~.sdt__panel,.sdt--degraded .sdt__panel~.sdt__panel{
 .faq-list{list-style:none;margin:.7rem 0;padding:0;display:grid;gap:.5rem}
 .faq-list li{display:flex;flex-wrap:wrap;max-width:var(--measure);gap:.2em .7em;font-size:var(--fs-body-sm);color:var(--ink-muted);line-height:1.6}
 .faq details p .mono{font-family:var(--mono);font-size:.92em;color:var(--ink)}
-.faq-list b{color:var(--ink);font-weight:500;flex:none;font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);text-transform:uppercase;padding-top:.25em}
+.faq-list b{color:var(--ink);font-weight:500;flex:none;font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);text-transform:none;padding-top:.25em}
 .faq details p{color:var(--ink);padding:0 2.5rem 1.3rem 0;font-size:var(--fs-body-sm);max-width:var(--measure);text-wrap:pretty}
 
 /* ============================================================
@@ -543,11 +557,11 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 @media (min-width:720px){.foot-grid{grid-template-columns:2fr 1fr 1fr}}
 .foot-brand{font-family:var(--serif);font-weight:600;font-size:1.15rem}
 .foot-tag{color:var(--ink-muted);font-size:var(--fs-body-sm);margin-top:.5rem;max-width:40ch}
-.foot-col h3{font-family:var(--mono);font-size:var(--fs-label);letter-spacing:var(--tr-label);text-transform:uppercase;
+.foot-col h3{font-family:var(--mono);font-size:var(--fs-label);letter-spacing:var(--tr-label);text-transform:none;
   color:var(--ink-muted);margin:0 0 .8rem;font-weight:500}
 .foot-col a{display:block;color:var(--ink-muted);font-size:var(--fs-body-sm);padding:.45rem 0}
 .foot-col a:hover{color:var(--accent)}
-.foot-partners{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 1.4rem;margin-top:clamp(1.6rem,3vw,2.2rem);padding-top:1.2rem;border-top:1px solid var(--line);font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);text-transform:uppercase}
+.foot-partners{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 1.4rem;margin-top:clamp(1.6rem,3vw,2.2rem);padding-top:1.2rem;border-top:1px solid var(--line);font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);text-transform:none}
 .foot-partners span{color:var(--ink-muted)}
 .foot-partners a{text-transform:none;letter-spacing:normal;font-size:.72rem;color:var(--accent);text-decoration:none;border-bottom:1px solid transparent}
 .foot-partners a:hover,.foot-partners a:focus-visible{border-bottom-color:var(--accent)}
@@ -568,7 +582,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
   overflow:hidden;font-family:var(--sans);color:var(--ink)}
 .cb__head{padding:clamp(16px,3vw,26px) clamp(16px,3vw,28px) 6px}
 .cb__eyebrow{font-family:var(--mono);font-weight:500;font-size:var(--fs-label);line-height:1;letter-spacing:var(--tr-label);
-  text-transform:uppercase;color:var(--accent);margin:0 0 .8rem}
+  text-transform:none;color:var(--accent);margin:0 0 .8rem}
 .cb__title{font-family:var(--serif);font-size:clamp(1.4rem,1.1rem + 1.3vw,2rem);line-height:1.14;margin:0 0 .6rem;font-weight:600;letter-spacing:-.015em}
 .worked{margin:1rem 0 0;font-family:var(--mono);font-size:var(--fs-data);color:var(--ink-muted);letter-spacing:.02em}
 .worked a{border-bottom:1px solid transparent}
@@ -578,7 +592,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 .cb__body{display:grid;gap:clamp(14px,2.4vw,22px);padding:clamp(14px,3vw,26px)}
 .cb__panel{background:var(--bg);border:1px solid var(--line);border-radius:5px;display:flex;flex-direction:column;min-width:0}
 .cb__panelhd{display:flex;align-items:baseline;justify-content:space-between;gap:8px;padding:11px 14px;border-bottom:1px solid var(--line)}
-.cb__panelhd h5{margin:0;font-family:var(--mono);font-weight:500;font-size:var(--fs-label);line-height:1;letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--ink-muted)}
+.cb__panelhd h5{margin:0;font-family:var(--mono);font-weight:500;font-size:var(--fs-label);line-height:1;letter-spacing:var(--tr-label);text-transform:none;color:var(--ink-muted)}
 .cb__tag{font-family:var(--mono);font-weight:500;font-size:var(--fs-label-sm);line-height:1;letter-spacing:.06em;color:var(--accent)}
 .cb__spec{margin:0;padding:14px;font-family:var(--mono);font-weight:400;font-size:var(--fs-data);line-height:1.75;color:var(--ink);overflow-x:auto}
 .cb__spec .v{color:var(--accent);font-weight:500}
@@ -591,7 +605,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 .cb__svg .grid-min{stroke:var(--line);stroke-width:.6}
 .cb__svg .grid-maj{stroke:var(--line);stroke-width:1}
 .cb__svg .axt{fill:var(--ink-muted);font-family:var(--mono);font-size:10px}
-.cb__svg .axcap{fill:var(--ink-muted);font-family:var(--mono);font-weight:500;font-size:9px;letter-spacing:.08em}
+.cb__svg .axcap{fill:var(--ink-muted);font-family:var(--mono);font-weight:500;font-size:9px;letter-spacing:.01em}
 .cb__svg .frame-lbl{fill:var(--ink-muted);font-family:var(--mono);font-weight:500;font-size:10px}
 .cb__svg .scalebar{stroke:var(--ink);stroke-width:1.4}
 .cb__svg .det-fill{fill:var(--accent);stroke:none}
@@ -701,7 +715,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 .cb__svg .dimline{fill:none;stroke:var(--accent);stroke-width:1;stroke-dasharray:4 3}
 .cb__svg .dim{fill:var(--accent);font-family:var(--mono);font-weight:500;font-size:10.5px}
 .cb__svg .actor{fill:var(--surface);stroke:var(--ink-muted);stroke-width:1.3;stroke-linejoin:round}
-.cb__svg .siglbl{fill:var(--ink-muted);font-family:var(--mono);font-size:9.5px;letter-spacing:.04em}
+.cb__svg .siglbl{fill:var(--ink-muted);font-family:var(--mono);font-size:9.5px;letter-spacing:.01em}
 .cb__svg .dim,.cb__svg .ang,.cb__svg .siglbl,.cb__svg .frame-lbl{
   paint-order:stroke;stroke:var(--surface);stroke-width:3px;stroke-linejoin:round}
 
@@ -722,13 +736,13 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 .rg__scroll,.cb__spec,.cb__vals{scrollbar-width:thin;scrollbar-color:var(--line-strong) transparent}
 .rg__table{border-collapse:separate;border-spacing:0;width:100%;min-width:560px;font-size:.9rem}
 .rg__table caption{caption-side:top;text-align:left;padding:0 6px 12px;font-family:var(--mono);font-weight:500;font-size:var(--fs-label-sm);
-  line-height:1.4;letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--ink-muted)}
+  line-height:1.4;letter-spacing:var(--tr-label);text-transform:none;color:var(--ink-muted)}
 .rg__table th,.rg__table td{padding:0;text-align:center}
 .rg__table thead th{position:sticky;top:0;z-index:2;background:var(--surface);padding:10px 12px 12px;vertical-align:bottom;border-bottom:1.5px solid var(--line-strong)}
 .rg__model{font-family:var(--sans);font-weight:600;font-size:.9rem;color:var(--ink);white-space:nowrap}
-.rg__org{display:block;margin-top:2px;font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:.04em;color:var(--ink-muted)}
+.rg__org{display:block;margin-top:2px;font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);color:var(--ink-muted)}
 .rg__corner{text-align:left !important;background:var(--surface)}
-.rg__corner span{font-family:var(--mono);font-weight:500;font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--ink-muted)}
+.rg__corner span{font-family:var(--mono);font-weight:500;font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);text-transform:none;color:var(--ink-muted)}
 .rg__table tbody th{text-align:left;padding:0 16px;white-space:nowrap;border-bottom:1px solid var(--line);background:var(--surface)}
 .rg__fam{font-family:var(--sans);font-weight:600;font-size:.9rem;color:var(--ink)}
 .rg__famsub{display:block;font-family:var(--mono);font-size:var(--fs-label-sm);color:var(--ink-muted);margin-top:1px}
@@ -745,7 +759,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
   padding:14px clamp(16px,3vw,26px) clamp(16px,3vw,22px);border-top:1px solid var(--line);margin-top:0}
 .rg__caption{margin:0;font-family:var(--mono);font-size:var(--fs-data);line-height:1.5;color:var(--ink-muted)}
 .rg__caption .a{color:var(--accent);font-weight:500}
-.rg__badge{font-family:var(--mono);font-weight:500;font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--accent);
+.rg__badge{font-family:var(--mono);font-weight:500;font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);text-transform:none;color:var(--accent);
   border:1px solid var(--accent);border-radius:999px;padding:.45em .8em;white-space:nowrap}
 .rg__sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 /* Interaction pass. Rules here must follow their originals to win at equal specificity. */
@@ -797,14 +811,16 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 #problem>.problem-fig{padding-inline:var(--gutter);margin-top:clamp(1.6rem,3vw,2.4rem)}
 #problem>.problem-fig .rg{max-width:1320px;margin-inline:auto}
 
-#problem h2{font-size:clamp(2.5rem,1.7rem + 3.4vw,4.2rem);max-width:20ch}
+#problem .prose{max-width:none}
+#problem .accent-line{max-width:var(--measure)}
+#problem h2{font-size:clamp(2.5rem,1.7rem + 3.4vw,4.2rem);max-width:13em}
 #problem .rg{background:transparent;border:1px solid var(--line-strong);border-radius:8px}
 #problem .rg__cell{height:74px;font-size:1.5rem}
 #problem .rg__table thead th,#problem .rg__table tbody th,#problem .rg__corner{background:transparent}
 #problem .rg__caption{display:block;max-width:44ch;font-size:.95rem}
 #problem .rg__caption .a{display:block;font-family:var(--mono);
-  font-size:clamp(3.2rem,2.2rem + 4.4vw,6rem);line-height:.92;letter-spacing:-.03em;
-  word-spacing:-.34em;margin-bottom:.3rem;font-weight:500;margin-left:-.08em}
+  font-size:clamp(3.2rem,2.2rem + 4.4vw,6rem);line-height:.92;letter-spacing:-.02em;
+  word-spacing:-.06em;margin-bottom:.3rem;font-weight:500;margin-left:-.08em}
 .marker,.cta-note,.sdt__when,.rg__org,.rg__famsub,.foot-meta,.arm-cap span,.cb__panelhd h5{color:var(--ink-faint)}
 
 @media print{
@@ -839,8 +855,8 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 
 /* ---------- sub-heading inside a section ---------- */
 .s3-sub{margin:clamp(1.4rem,2.6vw,1.9rem) 0 .7rem;padding-top:.85rem;border-top:1px solid var(--line);
-  font-family:var(--mono);font-weight:500;font-size:var(--fs-label);letter-spacing:var(--tr-label);
-  text-transform:uppercase;color:var(--ink-faint)}
+  font-family:var(--sans);font-weight:600;font-size:1rem;letter-spacing:var(--tr-label);
+  text-transform:none;color:var(--ink)}
 
 /* ---------- requirement list ---------- */
 .s3-rate{list-style:none;margin:clamp(1rem,2.2vw,1.4rem) 0 0;padding:0;display:grid;
@@ -850,7 +866,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 .s3-rate li{background:var(--bg);padding:.75rem .95rem;display:flex;flex-direction:column;gap:.3rem}
 .s3-rate b{font-family:var(--mono);font-size:var(--fs-data);color:var(--ink);font-weight:500}
 .s3-rate span{font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);
-  text-transform:uppercase;color:var(--ink-faint)}
+  text-transform:none;color:var(--ink-faint)}
 .s3-req{list-style:none;margin:clamp(1rem,2.2vw,1.4rem) 0 0;padding:0;display:grid;gap:.6rem;
   color:var(--ink-muted);font-size:var(--fs-body-sm);line-height:1.6;max-width:64ch}
 .s3-req li{display:flex;gap:.7rem}
@@ -878,8 +894,8 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 .s3-art__hd{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap;
   padding:11px clamp(14px,2.4vw,20px);border-bottom:1px solid var(--line)}
 .s3-art__hd h5{margin:0;font-family:var(--mono);font-weight:500;font-size:var(--fs-label);line-height:1;
-  letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--ink-muted)}
-.s3-art__tag{font-family:var(--mono);font-weight:500;font-size:var(--fs-label-sm);letter-spacing:.06em;
+  letter-spacing:var(--tr-label);text-transform:none;color:var(--ink-muted)}
+.s3-art__tag{font-family:var(--mono);font-weight:500;font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);
   color:var(--accent)}
 .s3-art__cap{padding:11px clamp(14px,2.4vw,20px);padding-right:max(clamp(14px,2.4vw,20px),calc(100% - 78ch));border-top:1px solid var(--line);font-family:var(--mono);
   font-size:var(--fs-data);line-height:1.55;color:var(--ink-muted)}
@@ -891,15 +907,15 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 .s3-swipe{display:none}
 @media (max-width:659px){
   .s3-swipe{display:block;padding:.5rem clamp(14px,2.4vw,20px);border-top:1px solid var(--line);
-    background:var(--bg);font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:.05em;
-    text-transform:uppercase;color:var(--ink-faint)}
+    background:var(--bg);font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);
+    text-transform:none;color:var(--ink-faint)}
 }
 .s3-dim{color:var(--ink-faint);stroke:var(--ink-faint)}
 .s3-hot{color:var(--ink);stroke:var(--ink)}
 .s3-wash{fill:var(--accent);opacity:.07}
 .s3-crop{fill:none;stroke:var(--accent);stroke-width:1.6}
 .s3-tick{fill:none;stroke:var(--ink-faint);stroke-width:1.4}
-.s3-lab{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;
+.s3-lab{font-family:var(--mono);font-size:10px;letter-spacing:.01em;text-transform:none;
   fill:var(--ink-faint)}
 .s3-lab--a{fill:var(--accent)}
 .s3-lead-ln{fill:none;stroke:var(--ink-faint);stroke-width:1;stroke-dasharray:2 2.5}
@@ -908,7 +924,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 .s3-mf{border-top:1px solid var(--line)}
 .s3-mf__id{display:flex;flex-wrap:wrap;gap:.3rem 1.2rem;padding:.7rem clamp(14px,2.4vw,20px);
   border-bottom:1px solid var(--line);background:var(--surface-2);
-  font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:.05em;text-transform:uppercase;
+  font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);text-transform:none;
   color:var(--ink-muted)}
 .s3-mf__id b{color:var(--ink);font-weight:500}
 .s3-mf ol{list-style:none;margin:0;padding:0}
@@ -919,7 +935,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 }
 .s3-mf li:last-child{border-bottom:0}
 .s3-mf__n{font-family:var(--mono);font-size:var(--fs-label-sm);color:var(--accent);
-  font-variant-numeric:tabular-nums;letter-spacing:.04em}
+  font-variant-numeric:tabular-nums;letter-spacing:var(--tr-label)}
 .s3-mf__k{font-family:var(--mono);font-size:var(--fs-data);color:var(--ink);white-space:nowrap}
 .s3-mf__v{font-size:var(--fs-small);color:var(--ink-muted);text-wrap:pretty;min-width:0}
 @media (max-width:659px){.s3-mf__v{grid-column:2;margin-top:.15rem}}
@@ -980,15 +996,15 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
    a control — a bordered pill carrying the same + marker the FAQ summaries use,
    rotating to a x when the entry is open. */
 .edA__go{display:inline-flex;align-items:center;gap:.45em;
-  font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);
-  text-transform:uppercase;color:var(--accent);margin-left:clamp(.8rem,1.6vw,1.25rem);white-space:nowrap;
-  padding:.55em .8em;border:1px solid var(--accent);border-radius:999px;background:none;
+  font-family:var(--sans);font-weight:600;font-size:var(--fs-label);letter-spacing:var(--tr-label);
+  text-transform:none;color:var(--accent);margin-left:clamp(.8rem,1.6vw,1.25rem);white-space:nowrap;
+  padding:.6em .95em;border:1.5px solid var(--accent);border-radius:999px;background:none;
   transition:color .2s var(--ease),background-color .2s var(--ease)}
 /* a real open/close chevron. Drawn from two borders rather than a glyph so it
    needs no font coverage, scales with font-size and inherits currentColor,
    which matters because the pill inverts to a solid fill on hover. */
-.edA__go::after{content:"";width:.4em;height:.4em;flex:0 0 auto;margin-top:-.2em;
-  border-right:2px solid currentColor;border-bottom:2px solid currentColor;
+.edA__go::after{content:"";width:.46em;height:.46em;flex:0 0 auto;margin-top:-.22em;
+  border-right:2.5px solid currentColor;border-bottom:2.5px solid currentColor;
   transform:rotate(45deg);transform-origin:50% 50%;transition:transform .2s var(--ease),margin .2s var(--ease)}
 .edA .sdt__card[aria-expanded="true"] .edA__go::after{transform:rotate(-135deg);margin-top:.14em}
 .edA .sdt__card:hover .edA__go,.edA .sdt__card:focus-visible .edA__go{
@@ -1011,7 +1027,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 .edA__fig{display:block;font-family:var(--mono);font-weight:500;font-variant-numeric:tabular-nums;
   font-size:clamp(1.2rem, .85rem + .95vw, 1.62rem);line-height:1;color:var(--ink);white-space:nowrap}
 .edA__figlab{display:block;margin-top:.5rem;font-family:var(--mono);font-size:var(--fs-label-sm);
-  letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--ink-faint)}
+  letter-spacing:var(--tr-label);text-transform:none;color:var(--ink-faint)}
 .edA__foot{grid-row:2;grid-column:2/-1;display:flex;align-items:baseline;gap:1.4rem;
   margin-top:clamp(1.2rem,2.2vw,1.7rem);padding:.7rem 0 .8rem;border-top:1px solid var(--line)}
 .edA__when{font-family:var(--mono);font-size:var(--fs-data);color:var(--ink);letter-spacing:.01em;white-space:nowrap}
@@ -1036,6 +1052,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
   .edA__foot{grid-row:3;grid-column:2;flex-direction:column;align-items:flex-start;gap:.5rem}
   .edA__after{padding-left:0;border-left:0}
 }
+.cb__spec,.cb__vals,.cb__seed,.cb__tag{font-family:var(--code)}
 </style>
 </head>
 <body>
@@ -1095,7 +1112,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
   <!-- ================= 01 · STAGE DETAILS ================= -->
   <section id="stages" class="band">
     <div class="wrap">
-      <p class="marker"><b>01</b> / stages and details</p>
+      <p class="marker"><b>1</b> / stages and details</p>
       <div class="prose">
         <h2>Two stages.</h2>
         <p class="lead">The first is a written proposal, open to everyone. The second is funded, and is where you build the benchmark.</p>
@@ -1113,7 +1130,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 
       <section class="sdt__panel" id="stage-1" data-stage="1" aria-labelledby="sd-title-1">
         <div class="sd__head">
-          <p class="sd__eyebrow">Stage 1 &middot; deliverable</p>
+          <p class="sd__eyebrow">Stage 1 &middot; Deliverable</p>
           <h3 class="sd__title" id="sd-title-1">Benchmark proposal</h3>
           <p class="sd__lead">Tell us what capability you want to measure, in natural language.</p>
           <ul class="sd__facts">
@@ -1127,7 +1144,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
           <p class="sd__p">The benchmark you want to build, the area it addresses, your background, and the list of tasks it contains. Scored on team capability, idea quality, and relevance.</p>
           <section class="cb" aria-labelledby="cb-title">
             <header class="cb__head">
-              <p class="cb__eyebrow">Instruction · goal · rubric · setup</p>
+              <p class="cb__eyebrow">Instruction · Goal · Rubric · Setup</p>
               <h4 class="cb__title" id="cb-title">Every task has four parts</h4>
               <p class="cb__lead">A benchmark is a list of tasks. One task is written out in full below.</p>
             </header>
@@ -1251,7 +1268,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 
       <section class="sdt__panel" id="stage-2" data-stage="2" aria-labelledby="sd-title-2">
         <div class="sd__head">
-          <p class="sd__eyebrow">Stage 2 &middot; deliverable</p>
+          <p class="sd__eyebrow">Stage 2 &middot; Deliverable</p>
           <h3 class="sd__title" id="sd-title-2">Real-world hardware benchmark</h3>
           <p class="sd__lead">Run it on real arms. Then we run it again ourselves.</p>
           <ul class="sd__facts">
@@ -1274,11 +1291,11 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
               <div class="sd__split">
                 <div class="sd__split-body">
                   <ul class="sd__checks">
-                    <li><b>Two fully assembled SO-101 follower arms</b>, ordered on selection day. Free, and yours to
-                      keep even if you withdraw, so you do not need to own a robot to apply.</li>
-                    <li><b>$1,000</b> in compute credits.</li>
-                    <li><b>Up to $1,000</b> of materials, reimbursed against receipts.</li>
-                    <li><b>Co-authorship</b> on the joint paper if your benchmark passes replication.</li>
+                    <li><span><b>Two fully assembled SO-101 follower arms</b>, ordered on selection day. Free, and yours to
+                      keep even if you withdraw, so you do not need to own a robot to apply.</span></li>
+                    <li><span><b>$1,000</b> in compute credits.</span></li>
+                    <li><span><b>Up to $1,000</b> of materials, reimbursed against receipts.</span></li>
+                    <li><span><b>Co-authorship</b> on the joint paper if your benchmark passes replication.</span></li>
                   </ul>
                 </div>
                       <figure class="sd__fig">
@@ -1530,7 +1547,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
   </section>
   <section id="benchmarks" class="band">
     <div class="wrap">
-      <p class="marker"><b>02</b> / three areas we fund</p>
+      <p class="marker"><b>2</b> / three areas we fund</p>
       <div class="prose">
         <h2>What to build.</h2>
         <p class="lead">Build a benchmark in one of these three areas. The examples below are there to give you ideas. You can propose something else.</p>
@@ -1608,7 +1625,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
   <!-- ================= PROBLEM ================= -->
   <section id="problem" class="band">
     <div class="wrap">
-      <p class="marker"><b>03</b> / the gap</p>
+      <p class="marker"><b>3</b> / the gap</p>
       <div class="prose">
         <h2>There’s no standard way to measure a robot’s real capabilities.</h2>
         <p class="accent-line">No shared task suite. No replicated baselines. Nobody outside the labs can compare them.</p>
@@ -1622,10 +1639,10 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
         <section class="rg" aria-label="Public results registry: every cell empty because no shared, replicated benchmark spans these models yet">
           <div class="rg__scroll" tabindex="0" role="region" aria-label="Results registry table, scrolls horizontally">
             <table class="rg__table">
-              <caption>success rate &nbsp;·&nbsp; model × task family</caption>
+              <caption>Success rate &nbsp;·&nbsp; model × task family</caption>
               <thead>
                 <tr>
-                  <th class="rg__corner" scope="col"><span>task family \ model</span></th>
+                  <th class="rg__corner" scope="col"><span>Task family \ model</span></th>
                   <th scope="col"><span class="rg__model">π₀</span><span class="rg__org">Physical Intelligence</span></th>
                   <th scope="col"><span class="rg__model">Gemini Robotics</span><span class="rg__org">Google DeepMind</span></th>
                   <th scope="col"><span class="rg__model">GR00T N1</span><span class="rg__org">NVIDIA</span></th>
@@ -1646,7 +1663,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
   <!-- ================= FAQ ================= -->
   <section id="faq" class="band">
     <div class="wrap">
-      <p class="marker"><b>04</b> / questions</p>
+      <p class="marker"><b>4</b> / questions</p>
       <div class="prose"><h2>Questions.</h2></div>
       <div class="faq reveal">
         <details><summary>Who can apply?</summary><p>Individuals and teams, students included. You do not need to own a robot. Every team that reaches Stage&nbsp;2 is sent two fully assembled SO-101 arms at no cost and keeps them. Everyone enters the same way, with a Stage&nbsp;1 proposal, and you may submit more than one.</p></details>

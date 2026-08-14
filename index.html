@@ -937,23 +937,11 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
   padding:clamp(1.8rem,3.6vw,2.8rem) clamp(1.2rem,3vw,2.2rem);
   box-shadow:inset 3px 0 0 0 var(--accent)}
 .edA .sdt__panel.is-open+.sdt__card{border-top:1px solid var(--line-strong)}
-.edA .sdt__card[aria-expanded="true"] .edA__nm,
 .edA .sdt__card[aria-expanded="true"] .edA__ttl{color:var(--accent)}
 .edA .sdt__card:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
 .edA .edA__fol{font-family:var(--serif);font-weight:600;font-size:1.1rem;line-height:1;
   color:var(--ink-faint);font-variant-numeric:lining-nums}
 
-/* --- stage 1 · the dateline ------------------------------- */
-.edA .edA__line{grid-template-columns:3.4rem auto auto 1fr auto;align-items:baseline;
-  padding:.72rem 0 .78rem;border-top:1px solid var(--line-strong);border-bottom:1px solid var(--line)}
-.edA__nm{font-family:var(--serif);font-size:1.1rem;font-weight:600;letter-spacing:-.01em;color:var(--ink)}
-/* not nowrap: the record is the one flexible cell in the dateline, so it is what
-   gives way if the row ever runs out of width, rather than the row overflowing */
-.edA__note{grid-column:4;justify-self:end;font-family:var(--mono);font-size:var(--fs-data);
-  color:var(--ink-faint);letter-spacing:.01em}
-.edA__note b{font-weight:500;color:var(--ink);font-variant-numeric:tabular-nums}
-.edA__date{font-family:var(--mono);font-size:var(--fs-data);color:var(--ink-faint);letter-spacing:.01em;
-  font-variant-numeric:tabular-nums;white-space:nowrap}
 /* the disclosure control. As a bare accent word at the end of a row of metadata
    it read as one more metadata field, so it now names its action and is drawn as
    a control — a bordered pill carrying the same + marker the FAQ summaries use,
@@ -972,10 +960,11 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 .edA .sdt__card[aria-expanded="true"] .edA__go::after{transform:rotate(-135deg);margin-top:.14em}
 .edA .sdt__card:hover .edA__go,.edA .sdt__card:focus-visible .edA__go{
   background:var(--accent);color:var(--accent-contrast)}
-.edA .sdt__card:hover .edA__nm,.edA .sdt__card:hover .edA__ttl{color:var(--accent-strong)}
+.edA .sdt__card:hover .edA__ttl{color:var(--accent-strong)}
 .edA .sdt__card[aria-expanded="true"] .edA__fol{color:var(--accent)}
 
 /* --- stage 2 · the lead ----------------------------------- */
+.edA .sdt__card:first-child{border-top:1px solid var(--line-strong)}
 .edA .edA__lead{grid-template-columns:3.4rem minmax(0,1fr) auto;
   padding:clamp(1.5rem,3vw,2.3rem) 0 0;border-bottom:1px solid var(--line-strong)}
 .edA .edA__fol--big{grid-row:1;font-family:var(--serif);font-weight:600;font-size:3.1rem;line-height:.78;
@@ -999,17 +988,8 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 /* below ~1100 the dateline no longer fits on one line: it folds to two,
    name and control on the first, the record on the second */
 @media (max-width:1100px){
-  .edA .edA__line{grid-template-columns:3.4rem minmax(0,1fr) auto;row-gap:.4rem}
-  .edA__nm{grid-column:2;grid-row:1}
-  .edA .edA__line .edA__go{grid-column:3;grid-row:1;justify-self:end;margin-left:1rem}
-  .edA__date{grid-column:2;grid-row:2}
-  .edA__note{grid-column:3;grid-row:2;justify-self:end}
 }
 @media (max-width:700px){
-  .edA .edA__line{grid-template-columns:2.6rem minmax(0,1fr);row-gap:.3rem}
-  .edA__date{grid-column:2;grid-row:2;justify-self:start;white-space:normal}
-  .edA__note{grid-column:2;grid-row:3;justify-self:start;white-space:normal}
-  .edA .edA__line .edA__go{grid-column:2;grid-row:4;justify-self:start;margin:.35rem 0 0}
   .edA .edA__lead{grid-template-columns:2.6rem minmax(0,1fr)}
   .edA__sum{grid-row:2;grid-column:2;justify-self:start;text-align:left;margin-top:1.1rem}
   .edA__foot{grid-row:3;grid-column:2;flex-direction:column;align-items:flex-start;gap:.5rem}
@@ -1082,12 +1062,21 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 
       <div class="sdt reveal" id="details">
         <div class="sdt__strip edA" role="group" aria-label="Stages">
-        <button class="sdt__card edA__line" type="button" id="sdt-tab-1" aria-controls="stage-1" aria-expanded="false">
-          <span class="edA__fol" aria-hidden="true">1</span>
-          <span class="edA__nm">Benchmark proposal</span>
-          <span class="edA__date">17 Aug &ndash; 14 Sep 2026 &middot; open to all</span>
-          <span class="edA__note"><b>$500</b> if shortlisted, not selected &middot; up to 20 teams</span>
-          <span class="edA__go" aria-hidden="true">More details</span>
+        <button class="sdt__card edA__lead" type="button" id="sdt-tab-1" aria-controls="stage-1" aria-expanded="false">
+          <span class="edA__fol edA__fol--big" aria-hidden="true">1</span>
+          <span class="edA__hd">
+            <span class="edA__ttl">Benchmark<br>proposal</span>
+            <span class="edA__deck">Tell us what capability you want to measure, and the list of tasks that would measure it.</span>
+          </span>
+          <span class="edA__sum">
+            <span class="edA__fig">$500</span>
+            <span class="edA__figlab">If shortlisted, not selected</span>
+          </span>
+          <span class="edA__foot">
+            <span class="edA__when">17 Aug &ndash; 14 Sep 2026</span>
+            <span class="edA__after">Open to anyone, no robot needed &middot; up to 20 teams shortlisted</span>
+            <span class="edA__go" aria-hidden="true">More details</span>
+          </span>
         </button>
 
       <section class="sdt__panel" id="stage-1" data-stage="1" aria-labelledby="sd-title-1">

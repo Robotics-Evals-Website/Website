@@ -502,8 +502,16 @@ html:not(.js) .sdt__panel~.sdt__panel,.sdt--degraded .sdt__panel~.sdt__panel{
 .faq-list{list-style:none;margin:.7rem 0;padding:0;display:grid;gap:.5rem}
 .faq-list li{display:flex;flex-wrap:wrap;max-width:var(--measure);gap:.2em .7em;font-size:var(--fs-body-sm);color:var(--ink-muted);line-height:1.6}
 .faq details p .mono{font-family:var(--mono);font-size:.92em;color:var(--ink)}
-.faq-list--pay b{font-family:var(--sans);font-size:var(--fs-body-sm);font-weight:600;padding-top:0;min-width:4.6em}
 .faq-list b{color:var(--ink);font-weight:500;flex:none;font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);text-transform:none;padding-top:.25em}
+/* A labelled list whose labels are read rather than scanned, so they take the body
+   size. Two fixed columns rather than a wrapping flex: every row shares the same
+   first column, so the labels line up and the text after them starts on one line.
+   Must come after .faq-list b — same specificity, so source order decides. */
+.faq-list--lg li{display:grid;grid-template-columns:8.5rem minmax(0,1fr);gap:.15rem 1rem;
+  align-items:baseline;max-width:calc(var(--measure) + 9.5rem)}
+.faq-list--lg b{font-family:var(--sans);font-size:var(--fs-body-sm);font-weight:600;
+  letter-spacing:normal;padding-top:0;color:var(--ink)}
+@media (max-width:560px){.faq-list--lg li{grid-template-columns:minmax(0,1fr);gap:.1rem}}
 .faq details p{color:var(--ink);padding:0 2.5rem 1.3rem 0;font-size:var(--fs-body-sm);max-width:var(--measure);text-wrap:pretty}
 
 /* ============================================================
@@ -1842,13 +1850,21 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
         </ul></details>
         <details><summary>Is this a job, a contract, or a grant?</summary><p>None of those. These are competition awards rather than payment for services. There is no employment or contracting relationship, no supervision, no hours reporting, and no work assigned by us. You choose your own task, method, and schedule, and are judged against criteria published on day one. Awards are flat amounts tied to deliverables, not to time spent. If you hold a student visa, confirm with your international student office before entering.</p></details>
         <details><summary>When am I paid?</summary><p>Three times.</p>
-        <ul class="faq-list faq-list--pay">
+        <ul class="faq-list faq-list--lg">
           <li><b>$5,000</b> at the week-four check-in, 23 October 2026.</li>
           <li><b>$15,000</b> on delivery, once your benchmark meets the Stage&nbsp;2 requirements.</li>
           <li><b>$10,000</b> in February 2027, if replication passes.</li>
         </ul>
         <p>We collect payment details and tax forms during onboarding, so the first payment is not waiting on paperwork.</p></details>
-        <details><summary>How are awards paid and taxed?</summary><p>Everything goes to the team lead, by international transfer, and the lead splits it as they see fit. We pay individuals only. We cannot pay a company, an LLC, or a university department, so the lead must be able to receive the award personally. We report awards to tax authorities where required. Awards paid outside the United States may be subject to US withholding; US tax residents receive awards without withholding and may owe estimated tax. Tax forms are issued each January for the previous year, so a 2026 payment is reported in January 2027 and the replication bonus, if it is paid in February 2027, is reported in January 2028. We collect tax forms at Stage&nbsp;2 selection.</p></details>
+        <details><summary>How are awards paid and taxed?</summary>
+        <p>Everything goes to the team lead by international transfer, and the lead splits it as they see fit.</p>
+        <ul class="faq-list faq-list--lg">
+          <li><b>Individuals only</b> We cannot pay a company, an LLC, or a university department. The lead has to be able to receive the award personally.</li>
+          <li><b>Outside the US</b> Awards may be subject to US withholding.</li>
+          <li><b>US tax residents</b> No withholding is applied, and you may owe estimated tax.</li>
+          <li><b>Tax forms</b> Collected at Stage&nbsp;2 selection, before the first payment.</li>
+          <li><b>Reporting</b> We report awards where required. Forms are issued each January for the year before, so a 2026 payment is reported in January 2027 and the replication bonus, if it is paid in February 2027, in January 2028.</li>
+        </ul></details>
         <details><summary>Which robot do I build on?</summary><p>The SO-101, by default. Every Stage&nbsp;2 team is sent two assembled follower arms on selection day, free and yours to keep, and they sit outside the $1,000 materials budget. You drive them through <span class="mono">inspect-robots-so101</span>, which wraps LeRobot checkpoints as an Inspect Robots policy, so a public checkpoint is enough for a baseline and you need no teleoperation or leader arms. You may propose an embodiment you already own instead, approved at Stage&nbsp;2, and still receive the arms:</p>
         <ul class="faq-list">
           <li><b>Arms</b> YAM, WidowX AI, Franka Research 3</li>

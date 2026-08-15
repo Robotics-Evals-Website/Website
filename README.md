@@ -27,12 +27,13 @@ the GitHub Pages URL — update them if the site moves to a custom domain.
 ## Editing notes
 
 - All styling lives in the `<style>` block at the top of `index.html`; design tokens
-  (colors, type scale) are CSS custom properties on `:root`, with light/dark themes
-  driven by `prefers-color-scheme` plus a `data-theme` override persisted in
-  `localStorage`.
-- Interactive pieces (theme toggle, stage-funnel scroll rail, CableBench sampler,
-  results registry, SO-101 arm animation, FAQ accordion, print expansion) are small
-  IIFEs in `<script>` blocks at the bottom of the file. Everything degrades
-  gracefully without JavaScript.
+  (colors, type scale) are CSS custom properties on `:root`. The site ships light
+  only: there is no dark theme and no toggle, and `:root` declares
+  `color-scheme:light` so a dark OS preference cannot repaint form controls or
+  scrollbars. See `design.md` for the full system.
+- Interactive pieces (stage-funnel scroll rail, CableBench sampler, results
+  registry, SO-101 arm animation, FAQ accordion, print expansion) are small IIFEs
+  in `<script>` blocks at the bottom of the file. Everything degrades gracefully
+  without JavaScript.
 - Key dates and award figures appear in several places (hero, status bar, stages,
   timeline, FAQ, meta tags, `og.png`) — when one changes, update all of them.

@@ -100,6 +100,9 @@
   --fs-label-sm:.65rem;
   --fs-body-sm:1rem;
   --fs-data:.8rem;
+  /* The categories are the section's real structure, but --fs-h3 tops out at
+     1.4rem, only 1.3x the body, so they read as run-in labels. .76 of --fs-h2. */
+  --fs-cat:clamp(1.4rem,1.05rem + 1.35vw,1.95rem);
   --tr-label:.005em;
   --space-fig:clamp(1.4rem,2.6vw,2.1rem);
   --col-gutter:2.5rem;
@@ -247,25 +250,90 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
 /* ============================================================
    BENCHMARK CATEGORIES + IDEA LISTS
    ============================================================ */
-.cats{margin-top:clamp(1.4rem,2.6vw,2.1rem);border-top:1px solid var(--line)}
-.cat-row{display:grid;gap:var(--col-gutter);padding:clamp(1.4rem,2.8vw,2.1rem) 0;border-bottom:1px solid var(--line)}
-@media (min-width:820px){.cat-row{grid-template-columns:calc(var(--col-break) - var(--col-gutter)) minmax(0,1fr)}}
-.cat-head{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:.7rem;align-items:center;align-content:start}
-.cat-head .cat-idx{font-family:var(--mono);font-size:.95rem;font-weight:500;background:var(--accent);color:var(--accent-contrast);
-  border:1px solid var(--accent);border-radius:5px;width:1.9rem;height:1.9rem;display:grid;place-items:center}
-.cat-head h3{grid-column:2;margin-bottom:0}
-.cat-head p{grid-column:1/-1;margin-top:.7rem;color:var(--ink-muted);font-size:var(--fs-body-sm)}
-.ideas{margin:.9rem 0 0}
-.ideas>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:.55em;font-family:var(--mono);font-size:var(--fs-label-sm);letter-spacing:var(--tr-label);text-transform:none;color:var(--accent);padding:.2rem 0}
+/* ------------------------------------------------------------------
+   Three rooms. The section is a set of three plates from three places:
+   a bench, a machine room, a counter. Not a sequence, so nothing is
+   numbered; a pair of heavier rules brackets the set instead. The two
+   rows a specialist reads sit close together and the row anybody can
+   read is set apart by a wider band of space.
+   ------------------------------------------------------------------ */
+.cats{margin-top:clamp(2.2rem,4vw,3.4rem);
+  border-top:1px solid var(--line-strong);border-bottom:1px solid var(--line-strong)}
+.cat{display:grid;column-gap:clamp(1.8rem,4vw,3.4rem);row-gap:0}
+.cat + .cat{border-top:1px solid var(--line)}
+.cat--jobs{padding-block:clamp(2.2rem,3.4vw,3rem) clamp(1.9rem,3vw,2.6rem)}
+.cat--time{padding-block:clamp(1.9rem,3vw,2.6rem) clamp(2.6rem,4.6vw,3.9rem)}
+.cat--soc {padding-block:clamp(2.6rem,4.6vw,3.9rem) clamp(2.4rem,3.8vw,3.2rem)}
+
+.cat-head{display:flex;align-items:center;gap:.72rem;margin-bottom:.55rem}
+.cat-head h3{font-family:var(--serif);font-weight:600;margin:0;
+  font-size:var(--fs-cat);line-height:1.2;letter-spacing:-.015em}
+.mark{flex:none;display:block;width:28px;height:28px;overflow:visible}
+.mark path,.mark rect,.mark circle,.mark ellipse{fill:none;stroke:var(--ink);
+  stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.mark .solid{fill:var(--ink);stroke:none}
+.cat-blurb{color:var(--ink-muted);font-size:var(--fs-body-sm);max-width:var(--measure)}
+.idea-list{list-style:none;margin:1.15rem 0 0;padding:0;display:flex;
+  flex-direction:column;gap:.78rem}
+.idea-list li{position:relative;padding-left:1.4rem;font-size:var(--fs-body-sm);
+  color:var(--ink);line-height:1.6;text-wrap:pretty;max-width:var(--measure)}
+.idea-list li::before{content:"\2013" / "";position:absolute;left:0;top:0;
+  color:var(--accent);font-weight:600}
+.idea-list li b{color:var(--ink);font-weight:600}
+.ideas{margin:.55rem 0 0}
+.ideas>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;
+  gap:.55em;font-size:var(--fs-label);letter-spacing:var(--tr-label);
+  color:var(--accent);padding:.45rem 0}
 .ideas>summary::-webkit-details-marker{display:none}
-.ideas>summary::after{content:"+" / "";font-family:var(--mono);font-size:1.1em;line-height:1;transition:transform .2s var(--ease)}
+.ideas>summary::after{content:"+" / "";font-size:1.1em;line-height:1;
+  transition:transform .18s var(--ease)}
 .ideas[open]>summary::after{transform:rotate(45deg)}
 .ideas>summary:hover,.ideas>summary:focus-visible{color:var(--accent-strong)}
-.idea-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.7rem}
-.ideas .idea-list{margin-top:.8rem}
-.idea-list li{position:relative;padding-left:1.4rem;font-size:var(--fs-body-sm);color:var(--ink);line-height:1.6;text-wrap:pretty;max-width:var(--measure)}
-.idea-list li::before{content:"–" / "";position:absolute;left:0;top:0;color:var(--accent);font-family:var(--mono);font-weight:500}
-.idea-list li b{color:var(--ink);font-weight:600;font-family:var(--sans)}
+.ideas .idea-list{margin-top:.55rem}
+
+/* The plates. No frame, no corner marks, no card, no caption: the drawing
+   carries itself, and the prose beside it already names the tasks. */
+.cat-fig{margin:0}
+.plate{display:block;width:100%;height:auto}
+
+/* one stroke language across all three plates */
+.plate g,.plate path,.plate rect,.plate circle,.plate ellipse
+  {stroke-linecap:round;stroke-linejoin:round}
+.plate .a1 {fill:none;stroke:var(--ink);stroke-width:1.8}
+.plate .a1f{fill:var(--surface-2);stroke:var(--ink);stroke-width:1.8}
+.plate .a1p{fill:var(--surface);stroke:var(--ink);stroke-width:1.8}
+.plate .a2 {fill:none;stroke:var(--ink-muted);stroke-width:1.35}
+.plate .a2f{fill:var(--surface-2);stroke:var(--ink-muted);stroke-width:1.35}
+.plate .a3 {fill:none;stroke:var(--ink-faint);stroke-width:1.1}
+.plate .a3f{fill:var(--surface-2);stroke:var(--ink-faint);stroke-width:1.1}
+.plate .tx {fill:none;stroke:var(--line-strong);stroke-width:2.6;stroke-linecap:round}
+.plate .k  {fill:var(--ink);stroke:none}
+.plate .ac {fill:none;stroke:var(--accent);stroke-width:2}
+.plate .acd{fill:none;stroke:var(--accent);stroke-width:1.9;stroke-dasharray:7 5}
+.plate .hole{fill:var(--bg);stroke:none}
+
+@media (min-width:900px){
+  .cat{grid-template-rows:auto auto 1fr auto}
+  .cat--jobs{grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);
+    grid-template-areas:"head fig" "blurb fig" "list fig" "more fig"}
+  .cat--time{grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);
+    grid-template-areas:"fig head" "fig blurb" "fig list" "fig more"}
+  .cat--soc{grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    grid-template-areas:"head fig" "blurb fig" "list fig" "more fig"}
+  .cat-head{grid-area:head}.cat-blurb{grid-area:blurb}
+  .cat>.idea-list{grid-area:list}.cat>.ideas{grid-area:more;align-self:start}
+  .cat-fig{grid-area:fig;align-self:start;margin-top:.3rem}
+}
+/* Under 900px the plate drops in after the sentence that names the category
+   and before the list of benchmarks. It is the fastest way to see what the
+   category physically is, but it is not the heading, so it does not come
+   first. */
+@media (max-width:899.98px){
+  .cat{grid-template-columns:1fr}
+  .cat-head{order:1}.cat-blurb{order:2}.cat-fig{order:3;margin:1.35rem 0 .3rem}
+  .cat>.idea-list{order:4}.cat>.ideas{order:5}
+  .plate{max-width:460px}
+}
 
 /* ============================================================
    01 · STAGE DETAILS  —  two stages, one panel each
@@ -433,8 +501,9 @@ html:not(.js) .sdt__panel~.sdt__panel,.sdt--degraded .sdt__panel~.sdt__panel{
   details>*{display:block!important}
   .faq summary::after,.ideas>summary::after{display:none}
   .ideas>.idea-list{display:block!important}
+  .cat-fig,.idea-list li{break-inside:avoid}
   .band{padding:14pt 0!important}
-  section,.cat-row,details,.rg,.cb{break-inside:avoid}
+  section,.cat,details,.rg,.cb{break-inside:avoid}
   h1,h2,h3,h4{break-after:avoid}
   .rg__scroll,.cb__spec,.cb__vals{overflow:visible!important}
   .lead a,.faq details p a,.worked a{text-decoration:none}
@@ -737,7 +806,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 .cb__resample:hover{background:transparent;border-color:var(--accent);color:var(--accent)}
 .rg__org,.rg__famsub{font-weight:400}
 .lead b{font-weight:600}
-.cat-row:last-child,.faq details:last-child{border-bottom:0}
+.faq details:last-child{border-bottom:0}
 .sd__pay li:last-child{border-bottom:0}
 .ideas>summary{font-size:var(--fs-label)}
 /* ============ REDESIGN PASS ============ */
@@ -1699,71 +1768,329 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
       </div>
 
       <div class="cats reveal">
-        <div class="cat-row">
-          <div class="cat-head">
-            <div class="cat-idx">A</div>
-            <h3>Impact on jobs</h3>
-            <p>Physical work that people are paid to do. Anyone forecasting the effect on employment has no measured number to work from.</p>
-          </div>
-          <div class="cat-ideas">
+
+      <!-- ========================= 1. the bench ========================= -->
+      <article class="cat cat--jobs">
+        <div class="cat-head">
+          <svg class="mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M3.9,17.1 C3.9,5.5 20.1,5.5 20.1,17.1"/>
+            <path d="M9.1,17.1 C9.1,8.5 10.1,6.4 11.1,5.8"/>
+            <path d="M14.9,17.1 C14.9,8.5 13.9,6.4 12.9,5.8"/>
+            <path d="M1.7,17.1 H22.3 a1.55,1.55 0 0 1 0,3.1 H1.7 a1.55,1.55 0 0 1 0,-3.1 Z"/>
+          </svg>
+          <h3>Impact on jobs</h3>
+        </div>
+        <p class="cat-blurb">Physical work that people are paid to do. Anyone forecasting the effect on employment has no measured number to work from.</p>
+
+        <ul class="idea-list">
+          <li><b>CableBench</b>: seat multiple cables and barrel/RJ connectors into a port panel. Port position, orientation, panel tilt, connector type and cable slack all vary.</li>
+          <li><b>TorqueBench</b>. Drive fasteners to a specified torque without cross-threading. Vary the size, head type, hole location and approach angle.</li>
+          <li><b>FoldBench</b> asks the robot to fold a laid-out garment to a target footprint. Fabric, size and initial crumple state change between instances.</li>
+        </ul>
+        <details class="ideas"><summary>Three more<span class="sr-only"> ideas for impact on jobs</span></summary>
           <ul class="idea-list">
-            <li><b>CableBench</b>: seat multiple cables and barrel/RJ connectors into a port panel. Port position, orientation, panel tilt, connector type and cable slack all vary.</li>
-            <li><b>TorqueBench</b>. Drive fasteners to a specified torque without cross-threading. Vary the size, head type, hole location and approach angle.</li>
-            <li><b>FoldBench</b> asks the robot to fold a laid-out garment to a target footprint. Fabric, size and initial crumple state change between instances.</li>
-          </ul>
-          <details class="ideas"><summary>Three more<span class="sr-only"> ideas for impact on jobs</span></summary>
-            <ul class="idea-list">
             <li><b>ClutterPick</b>: retrieve a named item from a bin under heavy occlusion, with clutter density, item pose and distractors randomized.</li>
             <li><b>HarnessRoute</b>. Route a flexible wire harness through a sequence of clips and channels. Randomize the clip positions, their order, and the stiffness of the harness.</li>
             <li><b>PlateBench</b>. Portion and arrange food-like items to a target layout. Count, size and start positions vary.</li>
-            </ul>
-          </details>
-          </div>
-        </div>
-
-        <div class="cat-row">
-          <div class="cat-head">
-            <div class="cat-idx">B</div>
-            <h3>AI timelines</h3>
-            <p>AI progress depends on physical work: building data centres, maintaining compute, running experiments. Robots that could do that work without people would speed the buildout up, and probably pull AI timelines forward too.</p>
-          </div>
-          <div class="cat-ideas">
-          <ul class="idea-list">
-            <li><b>RackBench</b>: mount a compute unit into rails and connect power and data. Rail height, unit depth and cable dressing vary between instances.</li>
-            <li><b>HotSwapBench</b>. Remove and re-seat a hot-swappable module in a live rack, randomizing the bay, the latch mechanism and the insertion force.</li>
-            <li><b>LabBench</b>: execute a wet-lab protocol step (pipette, weigh, transfer) to a stated tolerance. Vessel layout, volumes and tool positions all change.</li>
           </ul>
-          <details class="ideas"><summary>Three more<span class="sr-only"> ideas for AI timelines</span></summary>
-            <ul class="idea-list">
+        </details>
+
+        <figure class="cat-fig">
+          <svg class="plate" viewBox="0 0 600 344" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="t1 d1">
+            <title id="t1">A bench arm holding a USB-A plug in front of the one empty socket on a panel of mixed connectors</title>
+            <desc id="d1">A port panel stands on a workbench. Four sockets run in a line across it, every one a different shape: a wide flat USB-A, a taller RJ45 network socket with a notch in its top edge and eight contacts inside, a small rounded USB-C, and a round barrel jack. The last three have their matching plugs pushed home, and one cable leaves each plug and runs down the panel and behind the bench. The first socket, at the left end, is empty and marked with a dashed outline. A robot arm bolted to the bench holds a plug in its two jaws, level with that empty socket and a short way outside it; the plug&#8217;s end is the same wide flat shape as the socket, its own cable still hangs loose over the front of the bench, and a short arrow spans the gap between plug and socket.</desc>
+
+            <!-- the port panel -->
+            <rect class="a1f" x="196" y="34" width="398" height="210" rx="3"/>
+            <circle class="a3" cx="209" cy="47" r="3.5"/><circle class="a3" cx="581" cy="47" r="3.5"/>
+            <circle class="a3" cx="209" cy="231" r="3.5"/><circle class="a3" cx="581" cy="231" r="3.5"/>
+
+            <!-- one bezel per port, each cut to the shape of its own socket -->
+            <rect class="a2" x="319" y="59" width="95" height="102" rx="6"/>
+            <rect class="a2" x="429" y="89" width="76" height="42" rx="8"/>
+            <circle class="a2" cx="551" cy="110" r="31"/>
+
+            <!-- three plugs already home, one cable each, run down behind the bench -->
+            <path class="a2" d="M366.5,165.5 C375.5,200 387.5,240 387.5,262" style="stroke-width:6.5"/>
+            <path class="a2" d="M467,135.5 C476,196 488,238 488,262" style="stroke-width:6.5"/>
+            <path class="a2" d="M551,145.5 C560,202 572,242 572,262" style="stroke-width:6.5"/>
+            <rect class="a1f" x="352.9" y="150.5" width="27.2" height="16" rx="4"/><rect class="a1f" x="326.5" y="66.5" width="80" height="87" rx="5"/><rect class="a3" x="334" y="73" width="65" height="74" rx="2.5"/><path class="a3" d="M358.5,73 V85 H375.5 V73"/><path class="a3" d="M347.25,106 V124M352.75,106 V124M358.25,106 V124M363.75,106 V124M369.25,106 V124M374.75,106 V124M380.25,106 V124M385.75,106 V124"/>
+            <rect class="a1f" x="456.63" y="120.5" width="20.74" height="16" rx="4"/><rect class="a1f" x="436.5" y="96.5" width="61" height="27" rx="8"/><rect class="a3" x="444" y="103" width="46" height="14" rx="7"/><rect class="a3" x="448.5" y="106.75" width="37" height="6.5" rx="3"/>
+            <rect class="a1f" x="542" y="130.5" width="18" height="16" rx="4"/><circle class="a1f" cx="551" cy="110" r="23.5"/><circle class="a3" cx="551" cy="110" r="15.5"/><circle class="a3" cx="551" cy="110" r="4.5"/>
+
+            <!-- the empty socket -->
+            <rect class="hole" x="223" y="97.5" width="66" height="25" rx="2.5"/><rect class="a3f" x="228.5" y="100.5" width="55" height="10" rx="1"/>
+            <rect class="a1" x="223" y="97.5" width="66" height="25" rx="2.5"/><rect class="a3" x="228.5" y="100.5" width="55" height="10" rx="1"/>
+
+            <!-- bench, drawn over the dressed cables so they tuck away behind it -->
+            <rect class="a1f" x="0" y="244" width="600" height="26" rx="2"/>
+            <rect class="a3f" x="26" y="270" width="548" height="60"/>
+            <path class="a3" d="M0,330 H600"/>
+
+            <!-- the plug on its way in: same drawing, same size, same line.
+                 Its cable is the one still loose, hanging over the front of the bench. -->
+            <path class="a2" d="M146.5,141 C157.5,190 130.5,246 138.5,292 C141.5,314 152.5,330 180.5,330" style="stroke-width:6.5"/>
+            <rect class="a1f" x="132.73" y="126" width="27.54" height="16" rx="4"/><rect class="a1f" x="106" y="91" width="81" height="38" rx="5"/><rect class="a3" x="113.5" y="97.5" width="66" height="25" rx="2.5"/><rect class="a3" x="119" y="100.5" width="55" height="10" rx="1"/>
+
+            <!-- the arm -->
+            <rect class="a1f" x="20" y="232" width="86" height="12" rx="2"/>
+            <path class="a1f" d="M38,232 L42,190 L84,190 L88,232 Z"/>
+            <rect class="a1f" x="0" y="-11" width="55.9" height="22" rx="11" transform="translate(61 188) rotate(-137.2)"/>
+            <rect class="a1f" x="0" y="-10" width="75.5" height="20" rx="10" transform="translate(20 150) rotate(-32.0)"/>
+            <circle class="a1f" cx="61" cy="188" r="13"/><circle class="a2" cx="61" cy="188" r="5"/>
+            <circle class="a1f" cx="20" cy="150" r="11.5"/><circle class="a2" cx="20" cy="150" r="4.2"/>
+            <circle class="a1f" cx="84" cy="110" r="10"/><circle class="a2" cx="84" cy="110" r="3.5"/>
+            <g transform="translate(84 110)">
+              <rect class="k" x="-7" y="-14" width="21" height="28" rx="4"/>
+              <rect class="a1f" x="14" y="-27" width="9" height="54" rx="4.5"/>
+              <rect class="a1f" x="23" y="-27" width="30" height="9" rx="3"/>
+              <rect class="a1f" x="23" y="18" width="30" height="9" rx="3"/>
+            </g>
+
+            <!-- accent: the socket being filled, and the gap still to cross -->
+            <rect class="acd" x="208" y="83.5" width="96" height="53" rx="6"/>
+            <path class="ac" d="M192,110 H218 M209,102.5 L218,110 L209,117.5"/>
+          </svg>
+        </figure>
+      </article>
+
+      <!-- ======================= 2. the machine room ======================= -->
+      <article class="cat cat--time">
+        <div class="cat-head">
+          <svg class="mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <rect x="3.3" y="2.9" width="17.4" height="18.2" rx="1.4"/>
+            <path d="M5.9,3.6 V20.4 M18.1,3.6 V20.4"/>
+            <rect x="7.4" y="5.6" width="9.2" height="3.5" rx="1"/>
+            <rect x="7.4" y="10.25" width="9.2" height="3.5" rx="1"/>
+            <rect x="7.4" y="14.9" width="9.2" height="3.5" rx="1"/>
+            <circle class="solid" cx="14.6" cy="7.35" r="1"/>
+            <circle class="solid" cx="14.6" cy="12" r="1"/>
+            <circle class="solid" cx="14.6" cy="16.65" r="1"/>
+          </svg>
+          <h3>AI timelines</h3>
+        </div>
+        <p class="cat-blurb">AI progress depends on physical work: building data centres, maintaining compute, running experiments. Robots that could do that work without people would speed the buildout up, and probably pull AI timelines forward too.</p>
+
+        <ul class="idea-list">
+          <li><b>RackBench</b>: mount a compute unit into rails and connect power and data. Rail height, unit depth and cable dressing vary between instances.</li>
+          <li><b>HotSwapBench</b>. Remove and re-seat a hot-swappable module in a live rack, randomizing the bay, the latch mechanism and the insertion force.</li>
+          <li><b>LabBench</b>: execute a wet-lab protocol step (pipette, weigh, transfer) to a stated tolerance. Vessel layout, volumes and tool positions all change.</li>
+        </ul>
+        <details class="ideas"><summary>Three more<span class="sr-only"> ideas for AI timelines</span></summary>
+          <ul class="idea-list">
             <li><b>PanelBench</b>. Terminate conductors into a breaker panel to a wiring diagram. Randomize the circuit count, the conductor gauge and the panel orientation.</li>
             <li><b>CoolingBench</b>: connect a liquid-cooling loop to a server sled and confirm it holds pressure. Vary the fitting type, the hose routing and the position of the sled.</li>
             <li><b>MechanicBench</b>: restore another robot to working order by swapping a battery, replacing a worn part, or tightening loose fixtures. The fault set and the component positions are randomized.</li>
-            </ul>
-          </details>
-          </div>
-        </div>
-
-        <div class="cat-row">
-          <div class="cat-head">
-            <div class="cat-idx">C</div>
-            <h3>Societal awareness</h3>
-            <p>Tasks any person can watch and judge without special expertise. A demo video cannot be checked this way, since a viewer cannot tell a general policy from a narrowly tuned one, or from teleoperation.</p>
-          </div>
-          <div class="cat-ideas">
-          <ul class="idea-list">
-            <li><b>CoffeeBench</b>: find a cup, load a pod, operate the machine, deliver the cup to a target zone. This is the Wozniak coffee test, made reproducible. Machine layout, cup and pod positions, and the target all vary.</li>
-            <li><b>GroceryBench</b>. Unpack a bag of mixed groceries and shelve each item correctly. Randomize the item set, the packing order and the shelf layout.</li>
-            <li><b>TableBench</b> is a place setting laid to a target arrangement. Vary the starting positions, the orientation, and the style of the setting.</li>
           </ul>
-          <details class="ideas"><summary>Three more<span class="sr-only"> ideas for societal awareness</span></summary>
-            <ul class="idea-list">
+        </details>
+
+        <figure class="cat-fig">
+          <svg class="plate" viewBox="0 0 390 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="t2 d2">
+            <title id="t2">A rack four times the height of the arm servicing it, with a sled part way into its bay</title>
+            <desc id="d2">A full height rack standing on a floor, with the next rack along cut off by the left edge of the frame. Seven of its eight bays hold sleds. The sixth bay is outlined and an arrow inside it points inwards. A small robot arm, standing on a service cart to the right, is holding a sled by its end and feeding it into that bay. Cable leaves the base of the rack and runs along the floor.</desc>
+
+            <!-- the next rack along, cut by the frame -->
+            <rect class="a3f" x="-34" y="52" width="56" height="400"/>
+            <rect class="a3f" x="-34" y="60" width="52" height="38"/>
+            <rect class="a3f" x="-34" y="108" width="52" height="38"/>
+            <rect class="a3f" x="-34" y="156" width="52" height="38"/>
+            <rect class="a3f" x="-34" y="204" width="52" height="38"/>
+            <rect class="a3f" x="-34" y="252" width="52" height="38"/>
+            <rect class="a3f" x="-34" y="300" width="52" height="38"/>
+            <rect class="a3f" x="-34" y="348" width="52" height="38"/>
+            <rect class="a3f" x="-34" y="396" width="52" height="38"/>
+
+            <!-- the rack -->
+            <rect class="a1f" x="46" y="36" width="160" height="422" rx="2"/>
+            <rect class="a2f" x="52" y="458" width="22" height="11"/>
+            <rect class="a2f" x="178" y="458" width="22" height="11"/>
+            <path class="a2" d="M58,52 V444 M194,52 V444"/>
+            <path class="tx" d="M58,60h0M58,74h0M58,88h0M58,102h0M58,116h0M58,130h0M58,144h0M58,158h0M58,172h0M58,186h0M58,200h0M58,214h0M58,228h0M58,242h0M58,256h0M58,270h0M58,284h0M58,298h0M58,312h0M58,326h0M58,340h0M58,354h0M58,368h0M58,382h0M58,396h0M58,410h0M58,424h0M58,438h0M194,60h0M194,74h0M194,88h0M194,102h0M194,116h0M194,130h0M194,144h0M194,158h0M194,172h0M194,186h0M194,200h0M194,214h0M194,228h0M194,242h0M194,256h0M194,270h0M194,284h0M194,298h0M194,312h0M194,326h0M194,340h0M194,354h0M194,368h0M194,382h0M194,396h0M194,410h0M194,424h0M194,438h0"/>
+
+            <!-- seven seated sleds -->
+            <g>
+              <rect class="a1f" x="66" y="56" width="120" height="38" rx="2"/>
+              <path class="a3" d="M78,70 H132 M78,80 H132"/>
+              <circle class="a2" cx="148" cy="75" r="3.2"/>
+              <rect class="a2f" x="162" y="63" width="10" height="24" rx="2"/>
+            </g>
+            <g>
+              <rect class="a1f" x="66" y="104" width="120" height="38" rx="2"/>
+              <path class="a3" d="M78,118 H132 M78,128 H132"/>
+              <circle class="a2" cx="148" cy="123" r="3.2"/>
+              <rect class="a2f" x="162" y="111" width="10" height="24" rx="2"/>
+            </g>
+            <g>
+              <rect class="a1f" x="66" y="152" width="120" height="38" rx="2"/>
+              <path class="a3" d="M78,166 H132 M78,176 H132"/>
+              <circle class="a2" cx="148" cy="171" r="3.2"/>
+              <rect class="a2f" x="162" y="159" width="10" height="24" rx="2"/>
+            </g>
+            <g>
+              <rect class="a1f" x="66" y="200" width="120" height="38" rx="2"/>
+              <path class="a3" d="M78,214 H132 M78,224 H132"/>
+              <circle class="a2" cx="148" cy="219" r="3.2"/>
+              <rect class="a2f" x="162" y="207" width="10" height="24" rx="2"/>
+            </g>
+            <g>
+              <rect class="a1f" x="66" y="248" width="120" height="38" rx="2"/>
+              <path class="a3" d="M78,262 H132 M78,272 H132"/>
+              <circle class="a2" cx="148" cy="267" r="3.2"/>
+              <rect class="a2f" x="162" y="255" width="10" height="24" rx="2"/>
+            </g>
+            <g>
+              <rect class="a1f" x="66" y="344" width="120" height="38" rx="2"/>
+              <path class="a3" d="M78,358 H132 M78,368 H132"/>
+              <circle class="a2" cx="148" cy="363" r="3.2"/>
+              <rect class="a2f" x="162" y="351" width="10" height="24" rx="2"/>
+            </g>
+            <g>
+              <rect class="a1f" x="66" y="392" width="120" height="38" rx="2"/>
+              <path class="a3" d="M78,406 H132 M78,416 H132"/>
+              <circle class="a2" cx="148" cy="411" r="3.2"/>
+              <rect class="a2f" x="162" y="399" width="10" height="24" rx="2"/>
+            </g>
+
+            <!-- the bay the sled is going back into -->
+            <rect class="hole" x="66" y="296" width="120" height="38" rx="2"/>
+            <path class="a3" d="M78,300 V330 M174,300 V330"/>
+            <rect class="acd" x="66" y="296" width="120" height="38" rx="2"/>
+            <path class="ac" d="M146,315 H104 M111,308 L104,315 L111,322"/>
+
+            <!-- cable out of the rack and along the floor -->
+            <path class="a2" d="M206,424 C226,442 244,462 272,468 H352"/>
+            <path class="a2" d="M206,436 C224,452 244,470 276,474 H352"/>
+            <path class="a3" d="M8,476 H382"/>
+
+            <!-- the sled, part way in -->
+            <g transform="rotate(-1.5 210 315)">
+              <rect class="a1f" x="150" y="296" width="120" height="38" rx="2"/>
+              <path class="a3" d="M162,310 H216 M162,320 H216"/>
+              <circle class="a2" cx="232" cy="315" r="3.2"/>
+              <rect class="a2f" x="246" y="303" width="10" height="24" rx="2"/>
+            </g>
+
+            <!-- service cart -->
+            <rect class="a1f" x="268" y="380" width="128" height="10" rx="2"/>
+            <path class="a2" d="M292,390 V452 M376,390 V452" style="stroke-width:2.4"/>
+            <rect class="a2f" x="276" y="424" width="112" height="8"/>
+            <circle class="a2f" cx="292" cy="464" r="11"/><circle class="a3" cx="292" cy="464" r="4"/>
+            <circle class="a2f" cx="376" cy="464" r="11"/><circle class="a3" cx="376" cy="464" r="4"/>
+
+            <!-- the arm -->
+            <rect class="a1f" x="318" y="371" width="64" height="9" rx="2"/>
+            <path class="a1f" d="M334,371 L337,340 L363,340 L366,371 Z"/>
+            <rect class="a1f" x="0" y="-9" width="62" height="18" rx="9" transform="translate(350 338) rotate(-102.8)"/>
+            <rect class="a1f" x="0" y="-8" width="58" height="16" rx="8" transform="translate(336.3 277.5) rotate(139.7)"/>
+            <circle class="a1f" cx="350" cy="338" r="11"/><circle class="a2" cx="350" cy="338" r="4"/>
+            <circle class="a1f" cx="336.3" cy="277.5" r="9.5"/><circle class="a2" cx="336.3" cy="277.5" r="3.4"/>
+            <circle class="a1f" cx="292" cy="315" r="8"/><circle class="a2" cx="292" cy="315" r="2.8"/>
+            <g transform="translate(292 315) rotate(180)">
+              <rect class="k" x="-4" y="-11" width="15" height="22" rx="3"/>
+              <rect class="a1f" x="11" y="-24" width="6" height="48" rx="3"/>
+              <rect class="a1f" x="17" y="-24" width="18" height="5" rx="2"/>
+              <rect class="a1f" x="17" y="19" width="18" height="5" rx="2"/>
+            </g>
+          </svg>
+        </figure>
+      </article>
+
+      <!-- ========================= 3. the counter ========================= -->
+      <article class="cat cat--soc">
+        <div class="cat-head">
+          <svg class="mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M4.9,8.4 H16.1 L14.9,19.6 C14.8,20.6 14,21.4 13,21.4 H8 C7,21.4 6.2,20.6 6.1,19.6 Z"/>
+            <path d="M16.1,10.9 C20.6,10.9 20.6,17.6 16.1,17.6"/>
+            <path d="M8.6,5.9 C10.1,4.7 8.6,3.6 9.8,2.4"/>
+            <path d="M12.6,5.9 C14.1,4.7 12.6,3.6 13.8,2.4"/>
+          </svg>
+          <h3>Societal awareness</h3>
+        </div>
+        <p class="cat-blurb">Tasks any person can watch and judge without special expertise. A demo video cannot be checked this way, since a viewer cannot tell a general policy from a narrowly tuned one, or from teleoperation.</p>
+
+        <ul class="idea-list">
+          <li><b>CoffeeBench</b>: find a cup, load a pod, operate the machine, deliver the cup to a target zone. This is the Wozniak coffee test, made reproducible. Machine layout, cup and pod positions, and the target all vary.</li>
+          <li><b>GroceryBench</b>. Unpack a bag of mixed groceries and shelve each item correctly. Randomize the item set, the packing order and the shelf layout.</li>
+          <li><b>TableBench</b> is a place setting laid to a target arrangement. Vary the starting positions, the orientation, and the style of the setting.</li>
+        </ul>
+        <details class="ideas"><summary>Three more<span class="sr-only"> ideas for societal awareness</span></summary>
+          <ul class="idea-list">
             <li><b>DishBench</b>: load mixed dishware into a rack without collisions or breakage. Dish types, counts and poses vary.</li>
             <li><b>TidyBench</b>. Return scattered household objects to designated storage. Randomize the object set, how cluttered the room is, and which bins are the targets.</li>
             <li><b>PourBench</b>: pour a target volume into a specified vessel without overshoot or spill, randomizing the vessel, the fill target and the placement.</li>
-            </ul>
-          </details>
-          </div>
-        </div>
+          </ul>
+        </details>
+
+        <figure class="cat-fig">
+          <svg class="plate" viewBox="10 0 540 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="t3 d3">
+            <title id="t3">A counter arm carrying the finished cup to the marked delivery zone</title>
+            <desc id="d3">A kitchen counter seen straight on, with wall cabinets above it and cupboards below. A pod machine stands at the left with its cup space empty and a spare pod on the counter beside it. A small robot arm on a base in the middle of the counter has its two jaws closed on the strap of the cup&#8217;s handle, which faces the arm, and carries the full cup upright and clear of the surface toward a dashed outline further along the counter that marks the delivery zone, with an arrow pointing down into that outline.</desc>
+
+            <!-- wall cabinets -->
+            <rect class="a3f" x="-10" y="-8" width="580" height="46"/>
+            <path class="a3" d="M124,-8 V38 M266,-8 V38 M408,-8 V38"/>
+            <path class="a3" d="M104,29 H116 M246,29 H258 M388,29 H400 M530,29 H542"/>
+
+            <!-- counter, and the cupboards under it -->
+            <rect class="a1f" x="-10" y="268" width="580" height="46"/>
+            <rect class="a3f" x="-10" y="314" width="580" height="12"/>
+            <rect class="a3" x="24" y="336" width="234" height="62"/>
+            <rect class="a3" x="302" y="336" width="234" height="62"/>
+            <path class="a3" d="M24,364 H258 M302,364 H536"/>
+            <path class="a2" d="M96,351 H186 M374,351 H464 M96,382 H186 M374,382 H464"/>
+            <rect class="a3f" x="14" y="402" width="532" height="14"/>
+            <path class="a3" d="M-10,416 H570"/>
+
+            <!-- the pod machine, its cup space now empty -->
+            <rect class="a1f" x="118" y="94" width="68" height="174"/>
+            <rect class="a1f" x="58" y="94" width="62" height="48"/>
+            <path class="a2" d="M152,94 C152,72 184,66 191,84" style="stroke-width:3.2"/>
+            <circle class="a2" cx="152" cy="174" r="13"/><circle class="a3" cx="152" cy="174" r="5"/>
+            <circle class="a2" cx="152" cy="216" r="6"/>
+            <rect class="a2f" x="72" y="142" width="32" height="13"/>
+            <path class="a2" d="M88,155 V168" style="stroke-width:3"/>
+            <path class="a2f" d="M81,168 H95 L92,178 H84 Z"/>
+            <rect class="a2f" x="58" y="248" width="128" height="20"/>
+            <path class="a3" d="M70,253 V263 M84,253 V263 M98,253 V263 M112,253 V263 M126,253 V263 M140,253 V263 M154,253 V263 M168,253 V263"/>
+
+            <!-- a spare pod on the counter -->
+            <path class="a2f" d="M216,296 L220,278 H240 L244,296 Z"/>
+            <ellipse class="a2f" cx="230" cy="278" rx="10" ry="4"/>
+
+            <!-- the zone the cup has to reach -->
+            <ellipse class="acd" cx="474" cy="290" rx="58" ry="15"/>
+            <path class="ac" d="M474,236 V272 M466,265 L474,272 L482,265"/>
+
+            <!-- the arm. The wrist passes behind the handle and the jaws are
+                 turned to the strap, so the cup hangs off its handle. -->
+            <rect class="a1f" x="246" y="258" width="74" height="10" rx="2"/>
+            <path class="a1f" d="M261,258 L264,226 L302,226 L305,258 Z"/>
+            <rect class="a1f" x="0" y="-9" width="95" height="18" rx="9" transform="translate(283 224) rotate(-63.7)"/>
+            <rect class="a1f" x="0" y="-8" width="89" height="16" rx="8" transform="translate(325.1 138.8) rotate(27.6)"/>
+            <circle class="a1f" cx="283" cy="224" r="11.5"/><circle class="a2" cx="283" cy="224" r="4.3"/>
+            <circle class="a1f" cx="325.1" cy="138.8" r="9.5"/><circle class="a2" cx="325.1" cy="138.8" r="3.4"/>
+            <circle class="a1f" cx="404" cy="180" r="8"/><circle class="a2" cx="404" cy="180" r="2.8"/>
+            <g transform="translate(404 180) rotate(-24)">
+              <rect class="k" x="-5" y="-11" width="16" height="22" rx="3"/>
+              <rect class="a1f" x="11" y="-17" width="7" height="34" rx="3"/>
+            </g>
+
+            <!-- the cup, hanging from the handle it is held by -->
+            <path class="a1f" d="M435,160 C403,155 401,222 447,217 L445,205 C420,204 418,175 436,172 Z"/>
+            <path class="a1f" d="M434,158 L444,214 C445,220 451,224 458,224 H490 C497,224 503,220 504,214 L514,158 Z"/>
+            <ellipse class="a1p" cx="474" cy="158" rx="40" ry="10"/>
+            <ellipse class="a2" cx="474" cy="162" rx="31" ry="7"/>
+            <path class="a3" d="M456,146 C450,136 462,130 456,120 M476,142 C470,132 482,126 476,116 M496,146 C490,136 502,130 496,120"/>
+
+            <!-- the two jaws, shut on the strap -->
+            <g transform="translate(404 180) rotate(-24)">
+              <rect class="a1f" x="18" y="-15" width="12" height="7" rx="2"/>
+              <rect class="a1f" x="18" y="8" width="12" height="7" rx="2"/>
+            </g>
+          </svg>
+        </figure>
+      </article>
+
       </div>
     </div>
   </section>

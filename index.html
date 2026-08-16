@@ -314,7 +314,9 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
 
 @media (min-width:900px){
   .cat{grid-template-rows:auto auto 1fr auto}
-  .cat--jobs{grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);
+  /* The port panel and the counter take the same half, so the two rows that
+     face the same way match; only the rack, which is drawn tall, takes more. */
+  .cat--jobs{grid-template-columns:minmax(0,1fr) minmax(0,1fr);
     grid-template-areas:"head fig" "blurb fig" "list fig" "more fig"}
   .cat--time{grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);
     grid-template-areas:"fig head" "fig blurb" "fig list" "fig more"}

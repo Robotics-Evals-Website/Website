@@ -1116,14 +1116,6 @@ html.js .slab:not(.hv-on) .fig{cursor:pointer}
   html.js .slab:not(.hv-on) .fig:focus-within{--k:.52;--ks:.46}
   html.js .slab:not(.hv-on) .fig:focus-within .band path{opacity:calc(var(--bo) * .28)}
 }
-/* the label is for people who cannot hover. on a pointer device the motion is
-   the cue and the text would just be clutter, so it only shows on hover there */
-.slab .fig-hint{position:absolute;left:0;bottom:-1.55rem;font-size:.8rem;color:#9CC4CE;
-  opacity:0;transition:opacity .35s ease-out;pointer-events:none}
-html.js .slab:not(.hv-on) .fig:hover .fig-hint,
-html.js .slab:not(.hv-on) .fig:focus-within .fig-hint{opacity:1}
-@media (hover:none){html.js .slab:not(.hv-on) .fig-hint{opacity:1}}
-html:not(.js) .slab .fig-hint,.slab.hv-on .fig-hint{opacity:0}
 .slab .fig-btn:focus-visible{outline:2px solid #C6EFFB;outline-offset:-3px;box-shadow:inset 0 0 0 6px rgba(3,20,27,.72)}
 @media (prefers-reduced-motion:reduce){.slab .p,.slab .o,.slab .d,.slab .dr,.slab .sh,.slab .band path,.slab .trend path,.slab .glow{animation:none!important}.slab .o,.slab .d{opacity:var(--o)}html.js .slab .p{transform:none}html.js .slab .band path{opacity:var(--bo)}html.js .slab .trend path{stroke-dashoffset:0}html.js .slab .glow{opacity:1}.slab .btn{transition:none}}
 </style>
@@ -1782,7 +1774,6 @@ html:not(.js) .slab .fig-hint,.slab.hv-on .fig-hint{opacity:0}
           </g>
         </svg>
         <button class="fig-btn" type="button" hidden aria-label="Resolve the scattered results into a trend"></button>
-        <span class="fig-hint" aria-hidden="true">Click to resolve</span>
         </div>
       </div>
     </div>
@@ -3335,6 +3326,11 @@ html:not(.js) .slab .fig-hint,.slab.hv-on .fig-hint{opacity:0}
   btn.addEventListener("click",function(e){e.stopPropagation();resolve();});
   /* the owner asked for a click anywhere in the hero, but the real controls
      must keep working, so anything inside a link or button is left alone */
+  /* a touch device cannot hover, so it never sees the invitation. rather
+     than label the thing, resolve it for them shortly after arrival */
+  if(window.matchMedia&&window.matchMedia("(hover:none)").matches){
+    t=setTimeout(resolve,2200);
+  }
   hero.addEventListener("click",function(e){
     if(e.target.closest("a,button,input,select,textarea")) return;
     resolve();

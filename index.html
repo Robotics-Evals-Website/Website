@@ -1102,19 +1102,16 @@ html.js .slab.hv-on .glow{animation:hv-rise 2.1s ease-out .7s both}
 .slab .fig-btn{position:absolute;inset:0;display:block;width:100%;padding:0;margin:0;border:0;background:none;-webkit-appearance:none;appearance:none;cursor:pointer;border-radius:14px}
 /* the ring crosses the brightest part of the field, so it carries its own dark
    backing and clears 3:1 on both sides wherever it lands */
-/* the resting state is a scatter, so nothing tells a reader it can be clicked.
-   hovering pulls the cloud a little way toward the corridor and ghosts the band
-   in behind it: the picture visibly wants to become something, which is a
-   better invitation than a label. --k and --ks are the scatter multipliers, so
-   lowering them on hover IS a partial resolve, using the geometry already there */
+/* the resting scatter gives a reader nothing to suggest it can be clicked, but
+   previewing the answer gave away too much. so the field simply comes into
+   focus under the pointer: a little brighter, a fraction larger, nothing
+   revealed. it reads as alive rather than as an instruction */
 html.js .slab:not(.hv-on) .fig{cursor:pointer}
 @media (prefers-reduced-motion:no-preference){
-  html.js .slab:not(.hv-on) .p{transition:transform .55s cubic-bezier(.22,.72,.24,1)}
-  html.js .slab:not(.hv-on) .band path{transition:opacity .55s ease-out}
-  html.js .slab:not(.hv-on) .fig:hover{--k:.52;--ks:.46}
-  html.js .slab:not(.hv-on) .fig:hover .band path{opacity:calc(var(--bo) * .28)}
-  html.js .slab:not(.hv-on) .fig:focus-within{--k:.52;--ks:.46}
-  html.js .slab:not(.hv-on) .fig:focus-within .band path{opacity:calc(var(--bo) * .28)}
+  html.js .slab:not(.hv-on) .field{opacity:.84;transform:scale(1);
+    transition:opacity .5s ease-out,transform .6s cubic-bezier(.22,.72,.24,1)}
+  html.js .slab:not(.hv-on) .fig:hover .field,
+  html.js .slab:not(.hv-on) .fig:focus-within .field{opacity:1;transform:scale(1.015)}
 }
 .slab .fig-btn:focus-visible{outline:2px solid #C6EFFB;outline-offset:-3px;box-shadow:inset 0 0 0 6px rgba(3,20,27,.72)}
 @media (prefers-reduced-motion:reduce){.slab .p,.slab .o,.slab .d,.slab .dr,.slab .sh,.slab .band path,.slab .trend path,.slab .glow{animation:none!important}.slab .o,.slab .d{opacity:var(--o)}html.js .slab .p{transform:none}html.js .slab .band path{opacity:var(--bo)}html.js .slab .trend path{stroke-dashoffset:0}html.js .slab .glow{opacity:1}.slab .btn{transition:none}}

@@ -1085,8 +1085,8 @@ html.js .slab.hv-on .band path{animation:hv-bandin 1.8s cubic-bezier(.34,0,.2,1)
    to right, so the line is the trend and the band around it is the interval it
    came with. it carries no points and no values - it is a shape, not a reading */
 .slab .trend{pointer-events:none}
-.slab .t-halo{fill:none;stroke:#8CE0F7;stroke-opacity:.16;stroke-width:11;stroke-linecap:round;stroke-linejoin:round}
-.slab .t-line{fill:none;stroke:url(#trendg);stroke-width:2.9;stroke-linecap:round;stroke-linejoin:round}
+.slab .t-halo{fill:none;stroke:#8CE0F7;stroke-opacity:.22;stroke-width:16;stroke-linecap:round;stroke-linejoin:round}
+.slab .t-line{fill:none;stroke:url(#trendg);stroke-width:4.2;stroke-linecap:round;stroke-linejoin:round}
 html.js .slab .trend path{stroke-dasharray:1000;stroke-dashoffset:1000}
 html.js .slab.hv-on .t-halo{animation:hv-draw 1.35s cubic-bezier(.3,.02,.15,1) 1.8s both}
 html.js .slab.hv-on .t-line{animation:hv-draw 1.35s cubic-bezier(.3,.02,.15,1) 1.74s both}
@@ -1107,10 +1107,6 @@ html.js .slab.hv-on .glow{animation:hv-rise 2.1s ease-out .7s both}
    trials it passes over. screen blending means it can only ever add, so it
    cannot dull a point or muddy the ground it crosses */
 html.js .slab .fig{cursor:pointer}
-/* trend line held back for review: the owner wants to see the field resolve
-   into the band on its own. the geometry stays in the markup, so restoring
-   it is deleting this one rule */
-.slab .trend{display:none}
 .slab .fig-light{position:absolute;inset:0;pointer-events:none;opacity:0;border-radius:14px;
   transition:opacity .45s ease-out;mix-blend-mode:screen;
   background:radial-gradient(220px 220px at var(--mx,50%) var(--my,50%),

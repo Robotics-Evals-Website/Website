@@ -236,6 +236,8 @@ nav.main a.nlink:hover::after,nav.main a.nlink:focus-visible::after{width:100%}
 .mark path,.mark rect,.mark circle,.mark ellipse{fill:none;stroke:var(--ink);
   stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
 .mark .solid{fill:var(--ink);stroke:none}
+.cats-note{margin:clamp(1.6rem,3vw,2.4rem) 0 0;color:var(--ink-muted);
+  font-size:var(--fs-body-sm);max-width:var(--measure)}
 .cat-blurb{color:var(--ink-muted);font-size:var(--fs-body-sm);max-width:var(--measure)}
 .idea-list{list-style:none;margin:1.15rem 0 0;padding:0;display:flex;
   flex-direction:column;gap:.78rem}
@@ -2270,9 +2272,8 @@ html.js .slab .fig{cursor:pointer}
 
             <section class="s3-sec">
               <h4 class="s3-h">Expected deliverables</h4>
-              <p class="s3-p">Results across the SO-101-compatible checkpoints below, and across language models driving
-                the arm directly, prompted per step and logged like any other policy. Every policy runs the same tasks at the rollout count you declare. A public checkpoint
-                is enough, so no teleoperation or demonstration collection is needed.</p>
+              <p class="s3-p">Results across the two policies below, one checkpoint and one frontier model. Every policy runs the
+                same tasks at the rollout count you declare. Neither needs teleoperation or demonstration collection.</p>
 
               <ul class="s3-ck">
                 <li>
@@ -2282,10 +2283,9 @@ html.js .slab .fig{cursor:pointer}
                     <em>Runs on an SO-101 as it ships, with no further training.</em></span>
                 </li>
                 <li>
-                  <span class="s3-ck__n">GR00T</span>
-                  <span class="s3-ck__d"><a href="https://huggingface.co/robocurve/gr00t-n1.7-so101-molmoact2" target="_blank" rel="noopener noreferrer">robocurve/gr00t-n1.7-so101-molmoact2</a>.
-                    An SO-101 fine-tune of <a href="https://huggingface.co/nvidia/GR00T-N1.7-3B" target="_blank" rel="noopener noreferrer">nvidia/GR00T-N1.7-3B</a>,
-                    published with held-out loss and no robot rollouts. <em>Stage&nbsp;2 is where those rollouts come from.</em></span>
+                  <span class="s3-ck__n">Gemini</span>
+                  <span class="s3-ck__d">Driven through the <a href="https://inspectrobots.org/" target="_blank" rel="noopener noreferrer">inspect-robots-agent</a> plugin, prompted per step and logged like any other policy.
+                    <em>No fine-tuning: the model reasons about each step and calls tools.</em></span>
                 </li>
               </ul>
 
@@ -2472,15 +2472,15 @@ html.js .slab .fig{cursor:pointer}
         <p class="cat-blurb">Physical work that people are paid to do. If robots get good at it, jobs change, and we want to measure that so people can prepare.</p>
 
         <ul class="idea-list">
-          <li><b>CableBench</b>: seat multiple cables and barrel/RJ connectors into a port panel. Port position, orientation, panel tilt, connector type and cable slack all vary.</li>
-          <li><b>TorqueBench</b>. Drive fasteners to a specified torque without cross-threading. Vary the size, head type, hole location and approach angle.</li>
-          <li><b>FoldBench</b> asks the robot to fold a laid-out garment to a target footprint. Fabric, size and initial crumple state change between instances.</li>
+          <li>Seat cables and barrel or RJ connectors into a port panel. Port position, orientation, panel tilt, connector type and cable slack all vary.</li>
+          <li>Drive fasteners to a specified torque without cross-threading. Size, head type, hole location and approach angle all vary.</li>
+          <li>Fold a laid-out garment to a target footprint. Fabric, size and how crumpled it starts all vary.</li>
         </ul>
         <details class="ideas"><summary>Three more<span class="sr-only"> ideas for impact on jobs</span></summary>
           <ul class="idea-list">
-            <li><b>ClutterPick</b>: retrieve a named item from a bin under heavy occlusion, with clutter density, item pose and distractors randomized.</li>
-            <li><b>HarnessRoute</b>. Route a flexible wire harness through a sequence of clips and channels. Randomize the clip positions, their order, and the stiffness of the harness.</li>
-            <li><b>PlateBench</b>. Portion and arrange food-like items to a target layout. Count, size and start positions vary.</li>
+            <li>Retrieve a named item from a bin under heavy occlusion. Clutter density, item pose and the distractors all vary.</li>
+            <li>Route a flexible wire harness through a sequence of clips and channels. Clip positions, their order and the stiffness of the harness all vary.</li>
+            <li>Portion and arrange items on a plate to a target layout. Count, size and starting positions all vary.</li>
           </ul>
         </details>
 
@@ -2561,15 +2561,15 @@ html.js .slab .fig{cursor:pointer}
         <p class="cat-blurb">Building AI takes physical work: data centres, hardware, experiments in labs. Robots that could do it would make AI itself faster to build.</p>
 
         <ul class="idea-list">
-          <li><b>RackBench</b>: mount a compute unit into rails and connect power and data. Rail height, unit depth and cable dressing vary between instances.</li>
-          <li><b>HotSwapBench</b>. Remove and re-seat a hot-swappable module in a live rack, randomizing the bay, the latch mechanism and the insertion force.</li>
-          <li><b>LabBench</b>: execute a wet-lab protocol step (pipette, weigh, transfer) to a stated tolerance. Vessel layout, volumes and tool positions all change.</li>
+          <li>Assemble a desktop computer from parts laid out on the table. Which parts, where they start and the order they go in all vary.</li>
+          <li>Mount a compute unit into rails and connect power and data. Rail height, unit depth and cable dressing all vary.</li>
+          <li>Remove and re-seat a hot-swappable module in a live rack. The bay, the latch mechanism and the module depth all vary.</li>
         </ul>
         <details class="ideas"><summary>Three more<span class="sr-only"> ideas for AI timelines</span></summary>
           <ul class="idea-list">
-            <li><b>PanelBench</b>. Terminate conductors into a breaker panel to a wiring diagram. Randomize the circuit count, the conductor gauge and the panel orientation.</li>
-            <li><b>CoolingBench</b>: connect a liquid-cooling loop to a server sled and confirm it holds pressure. Vary the fitting type, the hose routing and the position of the sled.</li>
-            <li><b>MechanicBench</b>: restore another robot to working order by swapping a battery, replacing a worn part, or tightening loose fixtures. The fault set and the component positions are randomized.</li>
+            <li>Execute a wet-lab protocol step, pipetting, weighing or transferring, to a stated tolerance. Vessel layout, volumes and tool positions all vary.</li>
+            <li>Terminate conductors into a breaker panel to match a wiring diagram. Circuit count, conductor gauge and panel orientation all vary.</li>
+            <li>Connect a liquid-cooling loop to a server sled and confirm it holds pressure. Fitting type, hose routing and the position of the sled all vary.</li>
           </ul>
         </details>
 
@@ -2698,15 +2698,15 @@ html.js .slab .fig{cursor:pointer}
         <p class="cat-blurb">Ordinary tasks from everyday life. Measuring robots on them is how the public gets a real sense of how fast physical AI is moving.</p>
 
         <ul class="idea-list">
-          <li><b>CoffeeBench</b>: find a cup, load a pod, operate the machine, deliver the cup to a target zone. This is the Wozniak coffee test, made reproducible. Machine layout, cup and pod positions, and the target all vary.</li>
-          <li><b>GroceryBench</b>. Unpack a bag of mixed groceries and shelve each item correctly. Randomize the item set, the packing order and the shelf layout.</li>
-          <li><b>TableBench</b> is a place setting laid to a target arrangement. Vary the starting positions, the orientation, and the style of the setting.</li>
+          <li>Find a cup, load a pod, run the machine and deliver the cup to a target zone. Machine layout, cup and pod positions and the target all vary.</li>
+          <li>Unpack a bag of mixed groceries and put each item where it belongs. The item set, the packing order and the shelf layout all vary.</li>
+          <li>Lay a place setting to a target arrangement. Starting positions, orientation and the style of the setting all vary.</li>
         </ul>
         <details class="ideas"><summary>Three more<span class="sr-only"> ideas for societal awareness</span></summary>
           <ul class="idea-list">
-            <li><b>DishBench</b>: load mixed dishware into a rack without collisions or breakage. Dish types, counts and poses vary.</li>
-            <li><b>TidyBench</b>. Return scattered household objects to designated storage. Randomize the object set, how cluttered the room is, and which bins are the targets.</li>
-            <li><b>PourBench</b>: pour a target volume into a specified vessel without overshoot or spill, randomizing the vessel, the fill target and the placement.</li>
+            <li>Load mixed dishware into a rack without collisions or breakage. Dish types, counts and poses all vary.</li>
+            <li>Return scattered household objects to where they are kept. The object set, how cluttered the room is and which bins are the targets all vary.</li>
+            <li>Pour a target volume into a specified vessel without overshoot or spill. The vessel, the fill target and the placement all vary.</li>
           </ul>
         </details>
 
@@ -2781,6 +2781,7 @@ html.js .slab .fig{cursor:pointer}
       </article>
 
       </div>
+      <p class="cats-note">None of these exist yet. Propose one of them, or something better.</p>
     </div>
   </section>
   <!-- ================= PROBLEM ================= -->

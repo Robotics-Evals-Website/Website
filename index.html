@@ -1107,6 +1107,10 @@ html.js .slab.hv-on .glow{animation:hv-rise 2.1s ease-out .7s both}
    trials it passes over. screen blending means it can only ever add, so it
    cannot dull a point or muddy the ground it crosses */
 html.js .slab .fig{cursor:pointer}
+/* trend line held back for review: the owner wants to see the field resolve
+   into the band on its own. the geometry stays in the markup, so restoring
+   it is deleting this one rule */
+.slab .trend{display:none}
 .slab .fig-light{position:absolute;inset:0;pointer-events:none;opacity:0;border-radius:14px;
   transition:opacity .45s ease-out;mix-blend-mode:screen;
   background:radial-gradient(220px 220px at var(--mx,50%) var(--my,50%),

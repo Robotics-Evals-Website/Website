@@ -1,3 +1,6 @@
 .DS_Store
 .claude/
 scratchpad/
+
+# stray exports; this is a Pages site, anything committed here is public
+*.docx

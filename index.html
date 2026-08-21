@@ -43,7 +43,7 @@
     "maxValue": 35000
   },
   "sponsor": [
-    { "@type": "Organization", "name": "RoboCurve", "url": "https://robocurve.org/" },
+    { "@type": "Organization", "name": "Robocurve", "url": "https://robocurve.org/" },
     { "@type": "Organization", "name": "Generator Residency", "url": "https://generatorresidency.org/" }
   ]
 }
@@ -470,7 +470,7 @@ html:not(.js) .sdt__panel~.sdt__panel,.sdt--degraded .sdt__panel~.sdt__panel{
   .band{padding:14pt 0!important}
   section,.cat,details,.rg,.cb{break-inside:avoid}
   h1,h2,h3,h4{break-after:avoid}
-  .rg__scroll,.cb__spec,.cb__vals{overflow:visible!important}
+  .rg__scroll,.cb__spec,.cb__vals{overflow:visible!important} .slab{background:#fff!important;overflow:visible!important;--off:#101010;--lead:#3a3a3a;--cy:#003A46;--cy-br:#003A46} .slab::before,.slab::after,.slab .glow,.slab .fig{display:none!important} .slab *{color:#101010!important;text-shadow:none!important} .slab .cell b em{color:#003A46!important} .sup{background:#fff!important;color:#101010!important} .sup *{color:#101010!important} .sup__item + .sup__item,.sup__foot{border-color:var(--line)!important} .sup__ph{box-shadow:0 0 0 1px var(--line)!important;filter:none!important}
   .lead a,.faq details p a,.worked a{text-decoration:none}
   a[href^="http"]::after{content:" (" attr(href) ")";font-size:7.5pt;color:#555;word-break:break-all}}
 /* --- SO-101 bimanual mark --- */
@@ -744,7 +744,7 @@ footer.site{border-top:1px solid var(--line);background:var(--surface);padding-b
 /* Interaction pass. Rules here must follow their originals to win at equal specificity. */
 .skip:hover,.skip:focus{color:var(--accent-contrast)}
 #top:focus,#top:focus-visible{outline:none}
-.btn-primary:focus-visible,.cb__resample:focus-visible{outline-color:var(--ink)}
+.btn-primary:focus-visible,.cb__resample:focus-visible{outline-color:var(--ink)} .slab :focus-visible,.sup :focus-visible{outline-color:#C6EFFB}
 .btn,.cb__resample,.menu-btn,.arm-replay{
   transition:background-color .18s var(--ease),border-color .18s var(--ease),
              color .18s var(--ease),transform .1s var(--ease)}
@@ -1101,7 +1101,7 @@ html.js .slab.hv-on .glow{animation:hv-rise 2.1s ease-out .7s both}
 /* the figure is the control: a real button laid over the art, so enter and
    space work with no extra wiring. it stays hidden until js unhides it */
 .slab .fig{position:relative;width:100%}
-.slab .fig-btn{position:absolute;inset:0;display:block;width:100%;padding:0;margin:0;border:0;background:none;-webkit-appearance:none;appearance:none;cursor:pointer;border-radius:14px}
+.slab .fig-btn[hidden]{display:none} .slab .fig-btn{position:absolute;inset:0;display:block;width:100%;padding:0;margin:0;border:0;background:none;-webkit-appearance:none;appearance:none;cursor:pointer;border-radius:14px}
 /* the ring crosses the brightest part of the field, so it carries its own dark
    backing and clears 3:1 on both sides wherever it lands */
 /* the plot now forms on its own, so hover no longer has to advertise a click.
@@ -1118,6 +1118,39 @@ html.js .slab .fig{cursor:pointer}
 }
 .slab .fig-btn:focus-visible{outline:2px solid #C6EFFB;outline-offset:-3px;box-shadow:inset 0 0 0 6px rgba(3,20,27,.72)}
 @media (prefers-reduced-motion:reduce){.slab .p,.slab .o,.slab .d,.slab .dr,.slab .sh,.slab .band path,.slab .trend path,.slab .glow{animation:none!important}.slab .o,.slab .d{opacity:var(--o)}html.js .slab .p{transform:none}html.js .slab .band path{opacity:var(--bo)}html.js .slab .trend path{stroke-dashoffset:0}html.js .slab .glow{opacity:1}.slab .btn{transition:none}}
+
+/* ---------- supporters -----------------------------------------------------
+   The hero's ground, used once more, so the page reads as light with two
+   anchors rather than as stripes. The --hero-* tokens were orphaned when the
+   hero moved to .slab; this section is now their only consumer. Contrast on
+   the gradient's lightest stop (#17475A): ink 8.78:1, lead 4.79:1. */
+.sup{background:var(--hero-grad);color:var(--hero-ink);
+  padding-block:clamp(52px,6.2vw,96px);border-top:0}
+.sup h2{color:var(--hero-ink)}
+.sup__list{margin:clamp(2rem,3.6vw,3rem) 0 0;padding:0;list-style:none}
+.sup__item{display:grid;grid-template-columns:minmax(0,14rem) minmax(0,1fr);
+  gap:0 clamp(1.5rem,3vw,2.8rem);padding-block:clamp(1.4rem,2.4vw,2rem)}
+.sup__item + .sup__item{border-top:1px solid rgba(243,239,230,.16)}
+/* the ring seats three photos shot in three different lights on one ground */
+.sup__ph{display:block;width:52px;height:52px;border-radius:50%;object-fit:cover;
+  margin-bottom:.6rem;background:rgba(243,239,230,.08);
+  box-shadow:0 0 0 1px rgba(243,239,230,.22);filter:saturate(.92)}
+.sup__name{display:block;font-weight:600;font-size:var(--fs-body);line-height:1.3}
+.sup__name a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(243,239,230,.3)}
+.sup__name a:hover,.sup__name a:focus-visible{color:var(--hero-link);border-bottom-color:currentColor}
+.sup__role{display:block;font-size:var(--fs-small);color:var(--hero-lead);
+  line-height:1.45;margin-top:.2rem}
+.sup__q{margin:0;font-size:clamp(1.05rem,.97rem + .4vw,1.22rem);line-height:1.55;
+  max-width:46ch;text-wrap:pretty}
+.sup__foot{margin-top:clamp(1.6rem,2.6vw,2.2rem);padding-top:1.1rem;
+  border-top:1px solid rgba(243,239,230,.16);font-size:var(--fs-small);
+  color:var(--hero-lead);max-width:44rem;line-height:1.55}
+@media (max-width:759px){
+  .sup__item{grid-template-columns:1fr;gap:.7rem 0}
+  .sup__who{order:2}
+  .sup__q{order:1;max-width:none}
+  .sup__ph{width:44px;height:44px;margin-bottom:.5rem}
+}
 </style>
 </head>
 <body>
@@ -1782,7 +1815,7 @@ html.js .slab .fig{cursor:pointer}
     <div class="statusbar">
     <div class="wrap">
       <div class="cell"><span>Award pool</span><b>Up to <em>$500,000</em></b></div>
-      <div class="cell"><span>Core award</span><b>Up to <em>$30,000</em></b></div>
+      <div class="cell"><span>Per team</span><b>Up to <em>$30,000</em></b></div>
       <div class="cell"><span>Framework</span><b><em>Inspect Robots</em></b></div>
       <div class="cell"><span>Stage 1 closes</span><b><em>21 Sep 2026</em></b></div>
     </div>
@@ -1920,7 +1953,7 @@ html.js .slab .fig{cursor:pointer}
                     <p class="cb__cap">Top&#8209;down. The rings are the 1σ and 2σ contours of the placement distribution; the curves on the near and left edges are the marginal densities of X and Y; the small dots are 96 other draws from it. The dashed cross is the pair of fold axes the goal implies.</p>
                   </div>
 
-                  <p class="cb__note">Every seed draws a different setup from the same task. Features 1 to 3 do not change. Scoring a policy across many seeds tests whether it can do the task, not whether it has memorized one scene.</p>
+                  <p class="cb__note">Every seed draws a different setup from the same task. Features 1 to 3 do not change. Scoring a policy across many seeds tests whether it can do the task, not whether it has memorised one scene.</p>
                 </div>
               </div>
 
@@ -1943,7 +1976,7 @@ html.js .slab .fig{cursor:pointer}
             <span class="edA__deck">Up to 12 teams are funded to build their benchmark and run it on real robots.</span>
           </span>
           <span class="edA__sum">
-            <span class="edA__fig">$20,000 &ndash; $30,000</span>
+            <span class="edA__fig">$20,000</span>
             <span class="edA__figlab">Core award per team</span>
           </span>
           <span class="edA__foot">
@@ -2305,7 +2338,7 @@ html.js .slab .fig{cursor:pointer}
                   <span class="s3-art__tag">illustrative</span>
                 </div>
 
-                <div class="s3-figwrap">
+                <div class="s3-figwrap" tabindex="0" role="region" aria-label="Camera frame figure, scrolls sideways">
                   <svg class="s3-fig" viewBox="0 0 760 354" xmlns="http://www.w3.org/2000/svg" role="img"
                        aria-labelledby="s3figT s3figD">
                     <title id="s3figT">The wrist camera's field of view compared with a bystander camera's</title>
@@ -2394,7 +2427,7 @@ html.js .slab .fig{cursor:pointer}
                     <span>Rollout <b>7 of 20</b></span>
                     <span>Task <b>fold-towel-quarters</b></span>
                     <span>Seed <b>4412</b></span>
-                    <span>Policy <b>gr00t-n1.7-so101</b></span>
+                    <span>Policy <b>molmoact2-so101</b></span>
                   </div>
                   <ol>
                     <li><span class="s3-mf__n">1</span><span class="s3-mf__k">Transcript</span>
@@ -2768,7 +2801,7 @@ html.js .slab .fig{cursor:pointer}
     <div class="wrap">
       <div class="prose">
         <h2>There’s no standard way to measure a robot’s real capabilities.</h2>
-        <p class="accent-line"><span>No shared task suite. No replicated baselines.</span> <span>Nobody outside the labs can compare them.</span></p>
+        <p class="accent-line"><span>No standard task suite. No replicated baselines.</span> <span>Nobody outside the labs can compare them.</span></p>
       </div>
 
 
@@ -2800,6 +2833,39 @@ html.js .slab .fig{cursor:pointer}
         </section>
       </div>
   </section>
+  <!-- ================= SUPPORTERS ================= -->
+  <section id="supporters" class="band sup">
+    <div class="wrap">
+      <div class="prose"><h2>From researchers who work on measuring AI progress.</h2></div>
+      <ul class="sup__list reveal">
+          <li class="sup__item">
+            <div class="sup__who">
+              <img class="sup__ph" src="supporters/sartor.jpg" width="52" height="52" alt="" loading="lazy">
+              <span class="sup__name"><a href="https://sites.google.com/view/sebastian-sartor/" target="_blank" rel="noopener noreferrer">Sebastian Sartor</a></span>
+              <span class="sup__role">PhD student in mechanical engineering, MIT</span>
+            </div>
+            <p class="sup__q">&ldquo;Physical AI may be one of the most transformative technologies in human history, and yet we cannot say with any confidence what robots can do today, how fast it is changing, or when it will start to matter for the economy. Robocurve&rsquo;s benchmarking initiative is therefore a much needed project that will change the way we think about robotics progress.&rdquo;</p>
+          </li>
+          <li class="sup__item">
+            <div class="sup__who">
+              <img class="sup__ph" src="supporters/jurkovic.jpg" width="52" height="52" alt="" loading="lazy">
+              <span class="sup__name"><a href="https://nikolajurkovic.com/" target="_blank" rel="noopener noreferrer">Nikola Jurkovic</a></span>
+              <span class="sup__role">Member of technical staff, METR</span>
+            </div>
+            <p class="sup__q">&ldquo;Measuring robotics capabilities over time seems like a very important input for forecasting AI takeoff speeds. Currently, there are basically no widely-used high-quality robotics benchmarks, and additional work could make a big difference in helping us understand the automation of manual labor.&rdquo;</p>
+          </li>
+          <li class="sup__item">
+            <div class="sup__who">
+              <img class="sup__ph" src="supporters/peri.jpg" width="52" height="52" alt="" loading="lazy">
+              <span class="sup__name"><a href="https://www.neeharperi.com/" target="_blank" rel="noopener noreferrer">Neehar Peri</a></span>
+              <span class="sup__role">Postdoctoral research fellow, Caltech</span>
+            </div>
+            <p class="sup__q">&ldquo;It is difficult to honestly evaluate progress in robotics. This bounty program to support large-scale community-driven benchmarks takes a step in the right direction.&rdquo;</p>
+          </li>
+      </ul>
+      <p class="sup__foot">Supporters have no role in selecting proposals, and are welcome to apply themselves. Affiliations are listed for identification only.</p>
+    </div>
+  </section>
   <!-- ================= FAQ ================= -->
   <section id="faq" class="band">
     <div class="wrap">
@@ -2809,7 +2875,7 @@ html.js .slab .fig{cursor:pointer}
         <details><summary>What do I submit at each stage?</summary>
         <ul class="faq-list">
           <li><b>Stage 1</b> A proposal: the benchmark you want to build, the area it addresses, your background, and the list of tasks it contains. Every task carries all four parts. Due 21 September 2026, 23:59 Pacific. Scored on team capability, idea quality, and relevance.</li>
-          <li><b>Stage 2</b> The hardware benchmark running end to end with a baseline evaluated, plus everything listed in the Stage&nbsp;2 brief above: results for each checkpoint, the records and video for every rollout, and the reproducibility package. Due 18 December 2026, 23:59 Pacific, rolling from 1 December 2026. We then re-run part of the benchmark ourselves, and the replication bonus is released if it passes.</li>
+          <li><b>Stage 2</b> The hardware benchmark running end to end with a baseline evaluated, plus everything listed in the Stage&nbsp;2 brief above: results for both policies, the records and video for every rollout, and the reproducibility package. Due 18 December 2026, 23:59 Pacific, rolling from 1 December 2026. We then re-run part of the benchmark ourselves, and the replication bonus is released if it passes.</li>
         </ul></details>
         <details><summary>Is this a job, a contract, or a grant?</summary><p>None of those. These are competition awards rather than payment for services. There is no employment or contracting relationship, no supervision, no hours reporting, and no work assigned by us. You choose your own task, method, and schedule, and are judged against criteria published on day one. Awards are flat amounts tied to deliverables, not to time spent. If you hold a student visa, confirm with your international student office before entering.</p></details>
         <details><summary>When am I paid?</summary><p>Three times.</p>
@@ -2870,16 +2936,16 @@ html.js .slab .fig{cursor:pointer}
       <div class="foot-col">
         <h3>Get started</h3>
         <a href="https://inspectrobots.org/" target="_blank" rel="noopener noreferrer">Inspect Robots</a>
-        <a href="mailto:bounty@robocurve.org">Email the organizers</a>
+        <a href="mailto:bounty@robocurve.org">Email the organisers</a>
       </div>
     </div>
     <div class="foot-partners">
       <span>Run jointly by</span>
-      <a href="https://robocurve.org/" target="_blank" rel="noopener noreferrer">RoboCurve</a>
+      <a href="https://robocurve.org/" target="_blank" rel="noopener noreferrer">Robocurve</a>
       <a href="https://generatorresidency.org/" target="_blank" rel="noopener noreferrer">Generator Residency</a>
     </div>
     <div class="foot-meta">
-      <span>© 2026 RoboCurve</span>
+      <span>© 2026 Robocurve</span>
     </div>
   </div>
 </footer>
@@ -3269,38 +3335,14 @@ html.js .slab .fig{cursor:pointer}
 })();
 </script>
 <script>
-/* the hero field rests as an unresolved scatter and resolves on a click
-   anywhere in the panel, or on the button laid over the art, which is what
-   carries the keyboard and the accessible name. with no js, or with reduced
-   motion, the css leaves the field already resolved and this never runs */
-(function(){
-  var slab=document.querySelector(".slab");
-  if(!slab)return;
-  var btn=slab.querySelector(".fig-btn");
-  var mq=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)");
-  if(mq&&mq.matches)return;
-  if(btn)btn.hidden=false;
-  /* same restart as the arm replay: drop the class, flush, put it back */
-  function resolve(){
-    slab.classList.remove("hv-on");
-    void slab.getBoundingClientRect();
-    slab.classList.add("hv-on");
-  }
-  slab.addEventListener("click",function(e){
-    var t=e.target;
-    if(t&&t.closest&&t.closest("a[href],button,input,select,textarea,label,summary,[role=button]"))return;
-    var sel=window.getSelection&&window.getSelection();
-    if(sel&&sel.toString())return;
-    resolve();
-  });
-  if(btn)btn.addEventListener("click",resolve);
-})();
-</script>
-<script>
 (function(){
   var slab=document.querySelector(".slab"), hero=document.querySelector(".hero");
   var btn=slab&&slab.querySelector(".fig-btn");
   if(!slab||!hero||!btn) return;
+      /* with reduced motion the css already leaves the field resolved, so there is
+         nothing to replay and the control should not be offered at all */
+      var mq=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)");
+      if(mq&&mq.matches) return;
   btn.hidden=false;                       /* only offered when it can work */
   var t=null;
   function resolve(){

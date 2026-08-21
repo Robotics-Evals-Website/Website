@@ -470,7 +470,7 @@ html:not(.js) .sdt__panel~.sdt__panel,.sdt--degraded .sdt__panel~.sdt__panel{
   .band{padding:14pt 0!important}
   section,.cat,details,.rg,.cb{break-inside:avoid}
   h1,h2,h3,h4{break-after:avoid}
-  .rg__scroll,.cb__spec,.cb__vals{overflow:visible!important} .slab{background:#fff!important;overflow:visible!important;--off:#101010;--lead:#3a3a3a;--cy:#003A46;--cy-br:#003A46} .slab::before,.slab::after,.slab .glow,.slab .fig{display:none!important} .slab *{color:#101010!important;text-shadow:none!important} .slab .cell b em{color:#003A46!important} .sup{background:#fff!important;color:#101010!important} .sup *{color:#101010!important} .sup__item + .sup__item,.sup__foot{border-color:var(--line)!important} .sup__ph{box-shadow:0 0 0 1px var(--line)!important;filter:none!important}
+  .rg__scroll,.cb__spec,.cb__vals{overflow:visible!important} .slab{background:#fff!important;overflow:visible!important;--off:#101010;--lead:#3a3a3a;--cy:#003A46;--cy-br:#003A46} .slab::before,.slab::after,.slab .glow,.slab .fig{display:none!important} .slab *{color:#101010!important;text-shadow:none!important} .slab .cell b em{color:#003A46!important} .sup{background:#fff!important;color:#101010!important} .sup *{color:#101010!important} .sup__item + .sup__item{border-color:var(--line)!important} .sup__ph{box-shadow:0 0 0 1px var(--line)!important;filter:none!important}
   .lead a,.faq details p a,.worked a{text-decoration:none}
   a[href^="http"]::after{content:" (" attr(href) ")";font-size:7.5pt;color:#555;word-break:break-all}}
 /* --- SO-101 bimanual mark --- */
@@ -1142,9 +1142,6 @@ html.js .slab .fig{cursor:pointer}
   line-height:1.45;margin-top:.2rem}
 .sup__q{margin:0;font-size:clamp(1.05rem,.97rem + .4vw,1.22rem);line-height:1.55;
   max-width:46ch;text-wrap:pretty}
-.sup__foot{margin-top:clamp(1.6rem,2.6vw,2.2rem);padding-top:1.1rem;
-  border-top:1px solid rgba(243,239,230,.16);font-size:var(--fs-small);
-  color:var(--hero-lead);max-width:44rem;line-height:1.55}
 @media (max-width:759px){
   .sup__item{grid-template-columns:1fr;gap:.7rem 0}
   .sup__who{order:2}
@@ -2863,7 +2860,6 @@ html.js .slab .fig{cursor:pointer}
             <p class="sup__q">&ldquo;It is difficult to honestly evaluate progress in robotics. This bounty program to support large-scale community-driven benchmarks takes a step in the right direction.&rdquo;</p>
           </li>
       </ul>
-      <p class="sup__foot">Supporters have no role in selecting proposals, and are welcome to apply themselves. Affiliations are listed for identification only.</p>
     </div>
   </section>
   <!-- ================= FAQ ================= -->
